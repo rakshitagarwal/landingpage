@@ -2,13 +2,14 @@ import Link from "next/link";
 import { navLinks, services, siteConfig } from "@/lib/site-config";
 
 export function Footer() {
+  const year = 2026;
   const socialEntries = Object.entries(siteConfig.social).filter(
     ([, url]) => Boolean(url)
   );
 
   return (
     <footer className="border-t border-white/10 bg-bg-primary">
-      <div className="container-site grid gap-10 py-14 sm:py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+      <div className="container-shell grid gap-10 py-14 sm:py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
         <div>
           <div className="flex items-center gap-2.5">
             <span className="flex h-8 w-8 items-center justify-center rounded-md border border-accent-primary/40 bg-accent-primary/10 font-serif text-sm font-bold text-accent-primary">
@@ -19,9 +20,13 @@ export function Footer() {
             </span>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-secondary">
-            Founder-led web and software studio in Ahmedabad helping small
-            businesses get online, get customers and save time.
+            {siteConfig.tagline}
           </p>
+          {siteConfig.registrationLine ? (
+            <p className="mt-3 text-xs text-text-muted">
+              {siteConfig.registrationLine}
+            </p>
+          ) : null}
           {socialEntries.length > 0 ? (
             <div className="mt-5 flex flex-wrap gap-3">
               {socialEntries.map(([label, href]) => (
@@ -46,12 +51,12 @@ export function Footer() {
           <ul className="mt-4 space-y-2">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
+                <Link
+                  href={link.href.startsWith("#") ? `/${link.href}` : link.href}
                   className="text-sm text-text-secondary transition hover:text-text-primary"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -102,13 +107,16 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-site flex flex-col gap-3 py-6 text-sm text-text-secondary sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-shell flex flex-col gap-3 py-6 text-sm text-text-secondary sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {siteConfig.name}. All rights reserved.
+            © {year} {siteConfig.name}. Ahmedabad, India
           </p>
           <div className="flex gap-4">
+            <Link href="/blog" className="hover:text-text-primary">
+              Blog
+            </Link>
             <Link href="/privacy" className="hover:text-text-primary">
-              Privacy Policy
+              Privacy
             </Link>
             <Link href="/terms" className="hover:text-text-primary">
               Terms

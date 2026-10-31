@@ -6,6 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Mail, MapPin, Phone } from "lucide-react";
 import {
+  budgetOptions,
   getWhatsAppLink,
   serviceOptions,
   siteConfig,
@@ -22,8 +23,8 @@ const contactSchema = z.object({
   service: z.string().min(1, "Select a service."),
   message: z.string().min(10, "Tell us a bit more (at least 10 characters)."),
   email: z.union([z.literal(""), z.string().email("Enter a valid email.")]).optional(),
-  company: z.string().optional(),
-  website: z.string().optional(), // honeypot
+  budget: z.string().optional(),
+  website: z.string().optional(),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -31,7 +32,6 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
-  const [showMore, setShowMore] = useState(false);
 
   const {
     register,
@@ -46,7 +46,7 @@ export function Contact() {
       service: "",
       message: "",
       email: "",
-      company: "",
+      budget: "",
       website: "",
     },
   });
@@ -91,7 +91,7 @@ export function Contact() {
           <SectionHeading
             eyebrow="Contact"
             title="Tell us what you need"
-            description={`${siteConfig.replyNote}. Prefer chat? WhatsApp is usually fastest.`}
+            description={`${siteConfig.replyNote} Hours: ${siteConfig.hours}.`}
           />
         </Reveal>
 
@@ -125,6 +125,13 @@ export function Contact() {
                   </div>
                 </a>
                 <div className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
+                  <Phone className="mt-0.5 h-5 w-5 text-accent-primary" />
+                  <div>
+                    <p className="text-sm font-medium text-text-primary">Phone / WhatsApp</p>
+                    <p className="text-sm text-text-secondary">{siteConfig.phone}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
                   <MapPin className="mt-0.5 h-5 w-5 text-accent-primary" />
                   <div>
                     <p className="text-sm font-medium text-text-primary">Studio</p>
@@ -133,29 +140,17 @@ export function Contact() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
-                  <Phone className="mt-0.5 h-5 w-5 text-accent-primary" />
-                  <div>
-                    <p className="text-sm font-medium text-text-primary">Phone / WhatsApp</p>
-                    <p className="text-sm text-text-secondary">{siteConfig.phone}</p>
-                  </div>
-                </div>
               </div>
 
-              {siteConfig.calendarBookingUrl ? (
-                <a
-                  href={siteConfig.calendarBookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex text-sm font-semibold text-accent-primary"
-                >
-                  Book a call on calendar →
-                </a>
-              ) : (
-                <p className="text-sm text-text-muted">
-                  Calendar booking link coming soon.
-                </p>
-              )}
+              <div className="overflow-hidden rounded-xl border border-white/10">
+                <iframe
+                  title="Pixelnest location on Google Maps"
+                  src={siteConfig.mapsEmbedUrl}
+                  className="h-48 w-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
             </div>
           </Reveal>
 
@@ -165,7 +160,6 @@ export function Contact() {
               noValidate
               className="relative rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8"
             >
-              {/* Honeypot */}
               <div className="absolute -left-[9999px] opacity-0" aria-hidden>
                 <label htmlFor="website">Website</label>
                 <input id="website" tabIndex={-1} autoComplete="off" {...register("website")} />
@@ -188,6 +182,25 @@ export function Contact() {
                     ))}
                   </select>
                 </Field>
+                <Field id="email" label="Email" error={errors.email?.message}>
+                  <input
+                    id="email"
+                    type="email"
+                    className={fieldClass}
+                    placeholder="you@business.com"
+                    {...register("email")}
+                  />
+                </Field>
+                <Field id="budget" label="Budget range" error={errors.budget?.message}>
+                  <select id="budget" className={fieldClass} {...register("budget")}>
+                    <option value="">Select a range</option>
+                    {budgetOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
                 <Field id="message" label="Message" required error={errors.message?.message}>
                   <textarea
                     id="message"
@@ -198,25 +211,6 @@ export function Contact() {
                   />
                 </Field>
               </div>
-
-              <button
-                type="button"
-                className="mt-4 text-sm font-medium text-accent-primary"
-                onClick={() => setShowMore((v) => !v)}
-              >
-                {showMore ? "Hide optional details" : "More details (optional)"}
-              </button>
-
-              {showMore ? (
-                <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                  <Field id="email" label="Email" error={errors.email?.message}>
-                    <input id="email" type="email" className={fieldClass} placeholder="you@business.com" {...register("email")} />
-                  </Field>
-                  <Field id="company" label="Company" error={errors.company?.message}>
-                    <input id="company" className={fieldClass} placeholder="Business name" {...register("company")} />
-                  </Field>
-                </div>
-              ) : null}
 
               {statusMessage ? (
                 <p

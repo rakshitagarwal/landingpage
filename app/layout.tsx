@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     "software company Ahmedabad",
     "WhatsApp automation for small business",
     "CRM for small business India",
+    "online store developer Gujarat",
     "Pixelnest",
   ],
   openGraph: {
@@ -67,6 +68,7 @@ const organizationJsonLd = {
   },
   areaServed: "IN",
   description: siteConfig.description,
+  openingHours: "Mo-Sa 10:00-19:00",
   sameAs: Object.values(siteConfig.social).filter(Boolean),
 };
 

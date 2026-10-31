@@ -41,7 +41,7 @@ export function FAQ() {
           />
         </Reveal>
 
-        <div className="mx-auto max-w-3xl divide-y divide-white/10 border-y border-white/10">
+        <div className="w-full divide-y divide-white/10 border-y border-white/10">
           {faqs.map((faq, index) => {
             const open = openIndex === index;
             return (

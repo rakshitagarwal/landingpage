@@ -3,8 +3,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowRight } from "lucide-react";
-import { getWhatsAppLink, heroContent } from "@/lib/site-config";
+import { getWhatsAppLink, heroContent, images } from "@/lib/site-config";
 import { buttonLinkClass } from "@/components/ui/button";
+import { SiteImage } from "@/components/ui/site-image";
 import { cn } from "@/lib/utils";
 
 export function Hero() {
@@ -42,12 +43,9 @@ export function Hero() {
       </div>
 
       <div className="container-site grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="min-w-0 pr-0 lg:pr-4">
+        <div className="min-w-0 lg:pr-4">
           <div className="mb-5 flex flex-col gap-3">
-            <span
-              className="h-0.5 w-10 rounded-full bg-accent-primary"
-              aria-hidden
-            />
+            <span className="h-0.5 w-10 rounded-full bg-accent-primary" aria-hidden />
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-primary">
               {heroContent.eyebrow}
             </p>
@@ -79,62 +77,61 @@ export function Hero() {
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
-          <ul className="mt-8 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-5 sm:gap-y-2">
-            {heroContent.trustRow.map((item) => (
+          <ul className="mt-8 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-0 sm:gap-y-2">
+            {heroContent.trustRow.map((item, index) => (
               <li
                 key={item}
-                className="flex items-center gap-2 text-sm text-text-secondary"
+                className="flex items-center text-sm text-text-secondary"
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-accent-primary" />
-                {item}
+                {index > 0 ? (
+                  <span className="mx-3 hidden text-white/20 sm:inline" aria-hidden>
+                    ·
+                  </span>
+                ) : null}
+                <span className="flex items-center gap-2 sm:gap-0">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent-primary sm:hidden" />
+                  {item}
+                </span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div ref={mockRef} className="relative mx-auto w-full max-w-md lg:max-w-none" aria-hidden>
+        <div
+          ref={mockRef}
+          className="relative mx-auto w-full max-w-lg lg:max-w-none"
+        >
           <div
             data-float
-            className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-bg-card p-4 shadow-[var(--shadow-card)]"
+            className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem] border border-white/10 bg-bg-card shadow-[var(--shadow-card)]"
           >
-            <div className="mb-3 flex items-center justify-between">
-              <div className="flex gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
-              </div>
-              <span className="text-xs text-text-secondary">yourbusiness.in</span>
-            </div>
-            <div className="rounded-xl border border-white/10 bg-bg-secondary p-4">
-              <div className="h-3 w-28 rounded bg-accent-primary/30" />
-              <div className="mt-3 h-3 w-3/4 rounded bg-white/15" />
-              <div className="mt-2 h-3 w-1/2 rounded bg-white/10" />
-              <div className="mt-5 grid grid-cols-3 gap-2">
-                <div className="h-16 rounded-lg bg-white/8" />
-                <div className="h-16 rounded-lg bg-white/8" />
-                <div className="h-16 rounded-lg bg-accent-primary/15" />
-              </div>
-            </div>
+            <SiteImage
+              image={images.heroDashboard}
+              fill
+              sizes="(max-width: 1024px) 90vw, 560px"
+              className="object-cover"
+              priority
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-primary/50 to-transparent" />
           </div>
 
-          <div
-            data-float
-            className="absolute -right-2 top-8 w-[58%] rounded-2xl border border-white/10 bg-bg-elevated p-3 shadow-[var(--shadow-card)] sm:right-0"
-          >
-            <p className="text-xs font-semibold text-text-primary">Today</p>
-            <div className="mt-2 space-y-1.5">
-              <div className="h-2 rounded bg-white/15" />
-              <div className="h-8 rounded-lg bg-gradient-to-r from-accent-primary/25 to-transparent" />
-              <div className="h-2 w-2/3 rounded bg-white/10" />
+          {heroContent.floatingCards.map((card, index) => (
+            <div
+              key={card.label}
+              data-float
+              className={cn(
+                "absolute z-10 max-w-[11.5rem] rounded-2xl border border-white/10 bg-bg-elevated/95 px-3 py-2.5 text-xs font-medium text-text-primary shadow-[var(--shadow-card)] backdrop-blur",
+                index === 0 && "-left-1 top-6 sm:left-0",
+                index === 1 && "-right-1 top-[42%] sm:right-2",
+                index === 2 && "bottom-4 left-[18%] sm:left-[22%]"
+              )}
+            >
+              {card.label}
             </div>
-          </div>
-
-          <div
-            data-float
-            className="absolute -left-1 bottom-4 max-w-[70%] rounded-2xl rounded-bl-md border border-white/10 bg-[#075E54] px-3 py-2 text-sm text-white shadow-[var(--shadow-card)] sm:left-2"
-          >
-            Hi! Thanks for messaging. How can we help today?
-          </div>
+          ))}
+          <p className="mt-3 text-center text-xs text-text-muted">
+            {heroContent.floatingCardsNote}
+          </p>
         </div>
       </div>
     </section>

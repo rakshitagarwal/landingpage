@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="40" viewBox="0 0 160 40" fill="none">
+  <rect x="1" y="4" width="32" height="32" rx="8" stroke="#2ef2ff" stroke-width="1.5" fill="rgba(46,242,255,0.08)"/>
+  <text x="17" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#2ef2ff">P</text>
+  <text x="44" y="27" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#f4f5f7">Pixelnest</text>
+</svg>

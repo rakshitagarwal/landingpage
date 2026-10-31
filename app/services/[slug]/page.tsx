@@ -8,21 +8,16 @@ import { buttonLinkClass } from "@/components/ui/button";
 import { getWhatsAppLink, services, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
-type PageProps = {
-  params: Promise<{ slug: string }>;
-};
+type PageProps = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
   if (!service) return { title: "Service" };
-
   return {
     title: `${service.title} | ${siteConfig.name}`,
     description: service.summary,
@@ -43,8 +38,14 @@ export default async function ServicePage({ params }: PageProps) {
       "@type": "LocalBusiness",
       name: siteConfig.name,
       address: siteConfig.address.full,
+      telephone: siteConfig.phoneTel,
     },
     areaServed: "IN",
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "INR",
+      price: service.priceFrom.replace(/[^\d]/g, ""),
+    },
   };
 
   return (
@@ -76,43 +77,66 @@ export default async function ServicePage({ params }: PageProps) {
             {service.outcome}
           </p>
 
-          <ul className="mt-8 flex flex-wrap gap-2">
-            {service.tags.map((tag) => (
-              <li
-                key={tag}
-                className="rounded-full border border-white/10 px-3 py-1.5 text-sm text-text-secondary"
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            <div className="rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+              <h2 className="font-serif text-2xl font-bold text-text-primary">
+                Who it&apos;s for
+              </h2>
+              <p className="mt-3 text-base leading-relaxed text-text-secondary">
+                {service.whoFor}
+              </p>
+            </div>
+            <div className="rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+              <h2 className="font-serif text-2xl font-bold text-text-primary">
+                Timeline & starting price
+              </h2>
+              <p className="mt-3 text-base text-text-secondary">{service.timeline}</p>
+              <p className="mt-2 text-xl font-semibold text-accent-primary">
+                From {service.priceFrom}
+              </p>
+            </div>
+          </div>
 
-          <div className="mt-10 max-w-2xl rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+          <div className="mt-6 rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
             <h2 className="font-serif text-2xl font-bold text-text-primary">
-              What this usually includes
+              What&apos;s included
             </h2>
             <ul className="mt-5 space-y-3">
-              {service.details.map((detail) => (
-                <li
-                  key={detail}
-                  className="flex gap-3 text-base text-text-secondary"
-                >
+              {service.includes.map((detail) => (
+                <li key={detail} className="flex gap-3 text-base text-text-secondary">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary" />
                   {detail}
                 </li>
               ))}
             </ul>
-            <a
-              href={getWhatsAppLink(
-                `Hi Pixelnest, I'd like to discuss ${service.title}`
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(buttonLinkClass("primary", "lg"), "mt-8")}
-            >
-              Chat on WhatsApp about this
-            </a>
           </div>
+
+          <div className="mt-6 rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+            <h2 className="font-serif text-2xl font-bold text-text-primary">
+              Common questions
+            </h2>
+            <div className="mt-5 space-y-5">
+              {service.faqs.map((faq) => (
+                <div key={faq.question}>
+                  <h3 className="font-semibold text-text-primary">{faq.question}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-text-secondary sm:text-base">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <a
+            href={getWhatsAppLink(
+              `Hi Pixelnest, I'd like to discuss ${service.title}`
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(buttonLinkClass("primary", "lg"), "mt-8")}
+          >
+            Chat on WhatsApp about this
+          </a>
         </article>
       </main>
       <Footer />

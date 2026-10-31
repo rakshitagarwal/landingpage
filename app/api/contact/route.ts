@@ -8,8 +8,8 @@ const contactSchema = z.object({
   service: z.string().min(1),
   message: z.string().min(10),
   email: z.string().optional().default(""),
-  company: z.string().optional().default(""),
-  website: z.string().optional().default(""), // honeypot
+  budget: z.string().optional().default(""),
+  website: z.string().optional().default(""),
 });
 
 export async function POST(request: Request) {
@@ -24,7 +24,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Bot filled honeypot — pretend success
     if (parsed.data.website) {
       return NextResponse.json({ ok: true });
     }
@@ -35,13 +34,12 @@ export async function POST(request: Request) {
       service: parsed.data.service,
       details: parsed.data.message,
       email: parsed.data.email || "",
-      company: parsed.data.company || "",
-      budget: "",
+      company: "",
+      budget: parsed.data.budget || "",
     };
 
     const webhook = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
     const resendKey = process.env.RESEND_API_KEY;
-
     let delivered = false;
 
     if (webhook) {
@@ -55,6 +53,7 @@ export async function POST(request: Request) {
     }
 
     if (resendKey) {
+      const from = process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev";
       const emailRes = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -62,21 +61,46 @@ export async function POST(request: Request) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev",
+          from,
           to: [siteConfig.email],
           subject: `New inquiry from ${payload.fullName}`,
           text: [
             `Name: ${payload.fullName}`,
             `Phone: ${payload.phone}`,
             `Email: ${payload.email || "—"}`,
-            `Company: ${payload.company || "—"}`,
             `Service: ${payload.service}`,
+            `Budget: ${payload.budget || "—"}`,
             "",
             payload.details,
           ].join("\n"),
         }),
       });
       if (emailRes.ok) delivered = true;
+
+      if (payload.email) {
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${resendKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from,
+            to: [payload.email],
+            subject: `We received your message — ${siteConfig.name}`,
+            text: [
+              `Hi ${payload.fullName},`,
+              "",
+              `Thanks for contacting ${siteConfig.name}. We got your message and will reply soon.`,
+              "",
+              `Hours: ${siteConfig.hours}`,
+              `WhatsApp: ${siteConfig.phone}`,
+              "",
+              "— Pixelnest",
+            ].join("\n"),
+          }),
+        });
+      }
     }
 
     if (!delivered && !webhook && !resendKey) {

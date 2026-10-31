@@ -80,7 +80,7 @@ export function Navbar() {
     >
       <nav
         aria-label="Main navigation"
-        className="container-site flex h-16 items-center justify-between gap-4 sm:h-[4.25rem]"
+        className="container-shell flex h-16 items-center justify-between gap-4 sm:h-[4.25rem]"
       >
         <a
           href={resolveHref("#home")}

@@ -1,4 +1,6 @@
-import { conceptProjects } from "@/lib/site-config";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { projects } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -51,20 +53,20 @@ export function Solutions() {
         <Reveal>
           <SectionHeading
             eyebrow="Work"
-            title="Concept projects that show how we think"
-            description="These are illustrative concepts — not client case studies. Real projects will replace them when ready."
+            title="Sample projects that show how we think"
+            description="These are sample projects for illustration. They show the kinds of problems we solve — not live client case studies."
           />
         </Reveal>
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          {conceptProjects.map((project, index) => (
-            <Reveal key={project.id} delay={index * 0.05}>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {projects.map((project, index) => (
+            <Reveal key={project.slug} delay={index * 0.04}>
               <article className="flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-white/10 bg-bg-card">
                 <div className="border-b border-white/10 bg-bg-secondary p-5">
                   <Mockup type={project.mockup} />
                 </div>
                 <div className="flex flex-1 flex-col p-6 sm:p-7">
-                  <span className="inline-flex w-fit rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-1 text-xs text-amber-100">
+                  <span className="inline-flex w-fit rounded-full border border-white/15 px-2.5 py-1 text-xs text-text-secondary">
                     {project.label}
                   </span>
                   <h3 className="mt-4 font-serif text-xl font-bold text-text-primary">
@@ -78,16 +80,29 @@ export function Solutions() {
                     <span className="font-semibold text-text-primary">Solution: </span>
                     {project.solution}
                   </p>
-                  <ul className="mt-4 flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <li
-                        key={tech}
-                        className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-text-secondary"
-                      >
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="mt-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-text-muted">
+                      What this would deliver
+                    </p>
+                    <ul className="mt-2 space-y-1.5">
+                      {project.delivers.map((item) => (
+                        <li
+                          key={item}
+                          className="flex gap-2 text-sm text-text-secondary"
+                        >
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link
+                    href={`/work/${project.slug}`}
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-primary"
+                  >
+                    View sample
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
                 </div>
               </article>
             </Reveal>
