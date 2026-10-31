@@ -1,4 +1,5 @@
 import { About } from "@/components/sections/about";
+import { CaseStudies } from "@/components/sections/case-studies";
 import { Contact } from "@/components/sections/contact";
 import { FAQ } from "@/components/sections/faq";
 import { Footer } from "@/components/sections/footer";
@@ -28,6 +29,7 @@ export default function Home() {
         <Process />
         <TechStack />
         <Solutions />
+        <CaseStudies />
         <Testimonials />
         <Pricing />
         <FAQ />

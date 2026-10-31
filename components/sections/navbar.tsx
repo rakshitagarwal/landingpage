@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { getWhatsAppLink, navLinks, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { buttonLinkClass } from "@/components/ui/button";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -176,6 +177,8 @@ export function Navbar() {
           </motion.div>
         ) : null}
       </AnimatePresence>
+
+      <ScrollProgress />
     </header>
   );
 }

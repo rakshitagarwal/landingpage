@@ -24,7 +24,7 @@ export const siteConfig = {
   registrationLine: "",
   currency: "INR",
   calendarBookingUrl: "",
-  showTestimonials: false,
+  showTestimonials: true,
   social: {
     linkedin: "",
     instagram: "",
@@ -47,9 +47,15 @@ export type SiteImage = {
 };
 
 export const images = {
+  projectImage: {
+    src: "/images/projectimage.png",
+    alt: "Sample project preview for Pixelnest work and hero",
+    width: 1600,
+    height: 1000,
+  },
   heroDashboard: {
-    src: "/images/hero/hero-dashboard.webp",
-    alt: "Illustration of a business dashboard with orders and appointments",
+    src: "/images/projectimage.png",
+    alt: "Business software and dashboard preview",
     width: 1600,
     height: 1000,
   },
@@ -588,7 +594,14 @@ export const testimonials = [
     quote:
       "They explained everything in simple Hindi and Gujarati, and we always knew what was happening.",
     name: "Sample Client",
+    role: "Store owner",
     company: "Retail",
+    avatar: {
+      src: "/images/myprofilepic.png",
+      alt: "Sample retail client portrait",
+      width: 160,
+      height: 160,
+    },
   },
   {
     id: "sample-2",
@@ -596,7 +609,14 @@ export const testimonials = [
     quote:
       "The fixed quote helped us plan. No surprise bills halfway through the website.",
     name: "Sample Client",
+    role: "Clinic manager",
     company: "Clinic",
+    avatar: {
+      src: "/images/myprofilepic.png",
+      alt: "Sample clinic client portrait",
+      width: 160,
+      height: 160,
+    },
   },
   {
     id: "sample-3",
@@ -604,7 +624,14 @@ export const testimonials = [
     quote:
       "WhatsApp updates every week meant we did not have to chase anyone for status.",
     name: "Sample Client",
+    role: "Restaurant partner",
     company: "Restaurant",
+    avatar: {
+      src: "/images/myprofilepic.png",
+      alt: "Sample restaurant client portrait",
+      width: 160,
+      height: 160,
+    },
   },
 ] as const;
 

@@ -6,7 +6,7 @@ import { Footer } from "@/components/sections/footer";
 import { Navbar } from "@/components/sections/navbar";
 import { buttonLinkClass } from "@/components/ui/button";
 import { SiteImage } from "@/components/ui/site-image";
-import { getWhatsAppLink, projects, siteConfig } from "@/lib/site-config";
+import { getWhatsAppLink, images, projects, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -30,19 +30,15 @@ export default async function WorkPage({ params }: PageProps) {
   const project = projects.find((item) => item.slug === slug);
   if (!project) notFound();
 
-  const shots = [1, 2, 3, 4].map((n) => ({
-    src: `/images/projects/${project.slug}/shot-${n}.webp`,
-    alt: `${project.title} screen ${n}`,
-    width: 1600,
-    height: 1000,
-  }));
-
   const cover = {
-    src: `/images/projects/${project.slug}/cover.webp`,
+    ...images.projectImage,
     alt: `${project.title} cover`,
-    width: 1200,
-    height: 800,
   };
+
+  const shots = [1, 2, 3, 4].map((n) => ({
+    ...images.projectImage,
+    alt: `${project.title} screen ${n}`,
+  }));
 
   return (
     <>

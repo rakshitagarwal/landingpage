@@ -52,9 +52,19 @@ export default function BlogPage() {
                   <p className="mt-2 text-sm leading-relaxed text-text-secondary">
                     {post.excerpt}
                   </p>
-                  <p className="mt-4 text-xs text-text-muted">
-                    {post.author} · {post.readTime}
-                  </p>
+                  <div className="mt-4 flex items-center gap-2.5">
+                    <div className="relative h-8 w-8 overflow-hidden rounded-full border border-white/15 bg-bg-secondary">
+                      <SiteImage
+                        image={post.authorAvatar}
+                        fill
+                        sizes="32px"
+                        className="object-cover object-top"
+                      />
+                    </div>
+                    <p className="text-xs text-text-muted">
+                      {post.author} · {post.readTime}
+                    </p>
+                  </div>
                 </div>
               </Link>
             ))}

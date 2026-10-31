@@ -78,9 +78,19 @@ export default async function BlogPostPage({ params }: PageProps) {
           <h1 className="mt-3 max-w-3xl font-serif text-4xl font-bold text-text-primary sm:text-5xl">
             {post.title}
           </h1>
-          <p className="mt-4 text-sm text-text-secondary">
-            {post.author} · {post.date} · {post.readTime}
-          </p>
+          <div className="mt-4 flex items-center gap-3">
+            <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/15 bg-bg-secondary">
+              <SiteImage
+                image={post.authorAvatar}
+                fill
+                sizes="40px"
+                className="object-cover object-top"
+              />
+            </div>
+            <p className="text-sm text-text-secondary">
+              {post.author} · {post.date} · {post.readTime}
+            </p>
+          </div>
 
           <div className="relative mt-8 aspect-[1200/630] overflow-hidden rounded-[1.25rem] border border-white/10 bg-bg-card">
             <SiteImage image={post.cover} fill sizes="(max-width: 1024px) 100vw, 960px" priority />
