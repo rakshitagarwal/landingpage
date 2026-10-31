@@ -1,10 +1,6 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 import {
-  BadgeCheck,
   Bot,
-  Cloud,
   Database,
   Globe,
   Megaphone,
@@ -13,115 +9,75 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { services } from "@/lib/site-config";
-import { Button } from "@/components/ui/button";
-import { Modal } from "@/components/ui/modal";
 import { Reveal } from "@/components/ui/reveal";
+import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 const iconMap: Record<string, LucideIcon> = {
-  Database,
-  Cloud,
   Globe,
-  Megaphone,
-  BadgeCheck,
+  Database,
   Bot,
+  Megaphone,
   Palette,
 };
 
-type Service = (typeof services)[number];
-
 export function Services() {
-  const [active, setActive] = useState<Service | null>(null);
-
   return (
-    <section id="services" className="scroll-mt-24 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <Section id="services" tone="default">
+      <div className="section-stack">
         <Reveal>
           <SectionHeading
             eyebrow="Services"
-            title="Everything You Need to Grow Digitally."
-            description="From building your digital foundation to scaling your business, we provide end-to-end technology and digital growth solutions."
+            title="What we build for small businesses"
+            description="Practical digital work — websites, software and automation — explained without jargon."
           />
         </Reveal>
 
-        <div className="mt-14 divide-y divide-white/8 border-y border-white/8">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
           {services.map((service, index) => {
-            const Icon = iconMap[service.icon] ?? Database;
+            const Icon = iconMap[service.icon] ?? Globe;
+            const span =
+              index < 2
+                ? "lg:col-span-3"
+                : index === 2
+                  ? "lg:col-span-2"
+                  : "lg:col-span-2";
+
             return (
-              <Reveal key={service.id} delay={index * 0.03}>
-                <article className="group grid gap-4 py-7 transition duration-300 hover:bg-white/[0.02] sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-8 sm:px-2">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-accent-primary">
+              <Reveal key={service.slug} delay={index * 0.04} className={span}>
+                <article className="flex h-full flex-col rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-7 transition hover:border-accent-primary/30 hover:bg-bg-elevated">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-accent-primary">
                     <Icon className="h-5 w-5" aria-hidden />
                   </div>
-                  <div>
-                    <h3 className="font-serif text-xl font-bold text-text-primary sm:text-2xl">
-                      {service.title}
-                    </h3>
-                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-secondary sm:text-base">
-                      {service.shortDescription}
-                    </p>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {service.highlights.slice(0, 3).map((item) => (
-                        <li
-                          key={item}
-                          className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-text-secondary"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setActive(service)}
-                    className="inline-flex items-center gap-1.5 self-start text-sm font-semibold text-accent-primary transition group-hover:gap-2 sm:self-center"
+                  <h3 className="font-serif text-xl font-bold text-text-primary">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 text-base leading-relaxed text-text-secondary">
+                    {service.outcome}
+                  </p>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {service.tags.map((tag) => (
+                      <li
+                        key={tag}
+                        className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-text-secondary"
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-primary transition hover:gap-2"
                   >
-                    Learn More
+                    Learn more
                     <ArrowUpRight className="h-4 w-4" />
-                  </button>
+                  </Link>
                 </article>
               </Reveal>
             );
           })}
         </div>
       </div>
-
-      <Modal
-        open={!!active}
-        onClose={() => setActive(null)}
-        title={active?.title ?? ""}
-      >
-        {active ? (
-          <div>
-            <p className="text-sm leading-relaxed text-text-secondary">
-              {active.shortDescription}
-            </p>
-            <ul className="mt-5 space-y-2.5">
-              {active.details.map((detail) => (
-                <li
-                  key={detail}
-                  className="flex items-start gap-2 text-sm text-text-primary"
-                >
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary" />
-                  {detail}
-                </li>
-              ))}
-            </ul>
-            <Button
-              className="mt-6"
-              onClick={() => {
-                setActive(null);
-                document
-                  .querySelector("#contact")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Discuss This Service
-              <ArrowUpRight className="h-4 w-4" />
-            </Button>
-          </div>
-        ) : null}
-      </Modal>
-    </section>
+    </Section>
   );
 }

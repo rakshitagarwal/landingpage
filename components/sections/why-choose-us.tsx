@@ -1,30 +1,30 @@
-import { differentiators } from "@/lib/site-config";
+import { whyPixelnest } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/reveal";
+import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export function WhyChooseUs() {
   return (
-    <section className="scroll-mt-24 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <Section tone="default">
+      <div className="section-stack">
         <Reveal>
           <SectionHeading
-            eyebrow="Why Choose Us"
-            title="More Than Just a Technology Provider."
-            description="We partner with businesses to design, build, and refine digital systems that support real growth."
+            eyebrow="Why Pixelnest"
+            title="A small team you can actually reach"
+            description="Clear promises you can hold us to — editable in our site config if they change."
           />
         </Reveal>
-
-        <div className="mt-14 grid gap-4 sm:grid-cols-2">
-          {differentiators.map((item, index) => (
+        <div className="grid gap-4 sm:grid-cols-2">
+          {whyPixelnest.map((item, index) => (
             <Reveal key={item.title} delay={index * 0.05}>
-              <article className="h-full rounded-[1.5rem] border border-white/10 bg-bg-card p-7 transition duration-300 hover:border-accent-primary/30 hover:bg-bg-elevated">
+              <article className="h-full rounded-[1.25rem] border border-white/10 bg-bg-card p-7">
                 <p className="font-mono text-xs text-accent-primary">
                   0{index + 1}
                 </p>
-                <h3 className="mt-4 font-serif text-2xl font-bold text-text-primary">
+                <h3 className="mt-3 font-serif text-2xl font-bold text-text-primary">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-secondary sm:text-base">
+                <p className="mt-3 text-base leading-relaxed text-text-secondary">
                   {item.description}
                 </p>
               </article>
@@ -32,6 +32,6 @@ export function WhyChooseUs() {
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -1,58 +1,50 @@
-"use client";
+import {
+  BadgeIndianRupee,
+  LifeBuoy,
+  MessageCircle,
+  Wallet,
+  type LucideIcon,
+} from "lucide-react";
+import { valueStrip } from "@/lib/site-config";
+import { Reveal } from "@/components/ui/reveal";
+import { Section } from "@/components/ui/section";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { trustIndicators } from "@/lib/site-config";
-
-gsap.registerPlugin(ScrollTrigger);
+const icons: Record<string, LucideIcon> = {
+  Wallet,
+  MessageCircle,
+  BadgeIndianRupee,
+  LifeBuoy,
+};
 
 export function TrustStrip() {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (reduceMotion) return;
-
-    const ctx = gsap.context(() => {
-      gsap.from("[data-trust-item]", {
-        opacity: 0,
-        y: 24,
-        stagger: 0.08,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 85%",
-        },
-      });
-    }, el);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      ref={ref}
-      aria-label="Value propositions"
-      className="border-y border-white/8 bg-bg-secondary/80"
+    <Section
+      aria-label="Why businesses choose us"
+      tone="muted"
+      className="!py-12 sm:!py-14"
     >
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8 lg:py-14">
-        {trustIndicators.map((item) => (
-          <div key={item.title} data-trust-item>
-            <h3 className="text-sm font-semibold text-text-primary">
-              {item.title}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-              {item.description}
-            </p>
-          </div>
-        ))}
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        {valueStrip.map((item, index) => {
+          const Icon = icons[item.icon] ?? Wallet;
+          return (
+            <Reveal key={item.title} delay={index * 0.05}>
+              <div className="flex gap-3 pr-2">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-accent-primary">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-base font-semibold text-text-primary">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          );
+        })}
       </div>
-    </section>
+    </Section>
   );
 }

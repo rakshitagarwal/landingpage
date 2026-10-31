@@ -6,25 +6,24 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Mail, MapPin, Phone } from "lucide-react";
 import {
-  budgetOptions,
+  getWhatsAppLink,
   serviceOptions,
   siteConfig,
 } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button, buttonLinkClass } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
+import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 const contactSchema = z.object({
-  fullName: z.string().min(2, "Please enter your full name."),
-  email: z.string().email("Enter a valid business email."),
-  phone: z.string().optional(),
-  company: z.string().optional(),
+  fullName: z.string().min(2, "Please enter your name."),
+  phone: z.string().min(8, "Enter a valid phone / WhatsApp number."),
   service: z.string().min(1, "Select a service."),
-  budget: z.string().optional(),
-  details: z
-    .string()
-    .min(20, "Please share a bit more detail (at least 20 characters)."),
+  message: z.string().min(10, "Tell us a bit more (at least 10 characters)."),
+  email: z.union([z.literal(""), z.string().email("Enter a valid email.")]).optional(),
+  company: z.string().optional(),
+  website: z.string().optional(), // honeypot
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -32,6 +31,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const [showMore, setShowMore] = useState(false);
 
   const {
     register,
@@ -42,12 +42,12 @@ export function Contact() {
     resolver: zodResolver(contactSchema),
     defaultValues: {
       fullName: "",
-      email: "",
       phone: "",
-      company: "",
       service: "",
-      budget: "",
-      details: "",
+      message: "",
+      email: "",
+      company: "",
+      website: "",
     },
   });
 
@@ -61,7 +61,6 @@ export function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-
       const data = (await res.json().catch(() => null)) as {
         ok?: boolean;
         error?: string;
@@ -73,156 +72,113 @@ export function Contact() {
 
       reset();
       setStatus("success");
-      setStatusMessage(
-        "Thanks — your inquiry was sent. We'll get back to you soon."
-      );
+      setStatusMessage("Thanks — we got your message. We'll reply soon.");
     } catch {
       setStatus("error");
       setStatusMessage(
-        "Something went wrong while sending your inquiry. Please try again or email us directly."
+        "Could not send the form. Please try WhatsApp or call us instead."
       );
     }
   };
 
   const fieldClass =
-    "w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-sm text-text-primary outline-none transition placeholder:text-text-secondary/60 focus:border-accent-primary/50 focus:ring-2 focus:ring-accent-primary/25";
+    "w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base text-text-primary outline-none transition placeholder:text-text-muted focus:border-accent-primary/50 focus:ring-2 focus:ring-accent-primary/25";
 
   return (
-    <section id="contact" className="scroll-mt-24 bg-bg-secondary/50 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <Section id="contact" tone="muted">
+      <div className="section-stack">
         <Reveal>
           <SectionHeading
-            eyebrow="Get Started"
-            title="Got a project in mind?"
-            description="Tell us about your business goals and challenges. Let's explore how technology can help you grow."
+            eyebrow="Contact"
+            title="Tell us what you need"
+            description={`${siteConfig.replyNote}. Prefer chat? WhatsApp is usually fastest.`}
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
           <Reveal>
-            <div className="space-y-6 rounded-2xl border border-white/10 bg-bg-card p-6 sm:p-8">
-              <p className="text-sm leading-relaxed text-text-secondary">
-                Prefer to reach out directly? Use the placeholders below and
-                replace them with your real business details in{" "}
-                <code className="rounded bg-white/5 px-1.5 py-0.5 text-accent-secondary">
-                  lib/site-config.ts
-                </code>
-                .
-              </p>
-              <div className="space-y-4">
+            <div className="space-y-4 rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+              <a
+                href={getWhatsAppLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(buttonLinkClass("primary", "lg"), "w-full")}
+              >
+                Chat on WhatsApp
+              </a>
+              <a
+                href={`tel:${siteConfig.phoneTel}`}
+                className={cn(buttonLinkClass("secondary", "lg"), "w-full")}
+              >
+                Call us · {siteConfig.phone}
+              </a>
+
+              <div className="space-y-3 pt-2">
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-white/20"
+                  className="flex items-start gap-3 rounded-xl border border-white/10 p-4 transition hover:border-white/20"
                 >
-                  <Mail className="mt-0.5 h-5 w-5 text-accent-secondary" />
+                  <Mail className="mt-0.5 h-5 w-5 text-accent-primary" />
                   <div>
                     <p className="text-sm font-medium text-text-primary">Email</p>
                     <p className="text-sm text-text-secondary">{siteConfig.email}</p>
                   </div>
                 </a>
-                <a
-                  href={`tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`}
-                  className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-white/20"
-                >
-                  <Phone className="mt-0.5 h-5 w-5 text-accent-secondary" />
+                <div className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
+                  <MapPin className="mt-0.5 h-5 w-5 text-accent-primary" />
                   <div>
-                    <p className="text-sm font-medium text-text-primary">Phone</p>
-                    <p className="text-sm text-text-secondary">{siteConfig.phone}</p>
+                    <p className="text-sm font-medium text-text-primary">Studio</p>
+                    <p className="text-sm text-text-secondary">
+                      {siteConfig.address.full}
+                    </p>
                   </div>
-                </a>
-                <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
-                  <MapPin className="mt-0.5 h-5 w-5 text-accent-secondary" />
+                </div>
+                <div className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
+                  <Phone className="mt-0.5 h-5 w-5 text-accent-primary" />
                   <div>
-                    <p className="text-sm font-medium text-text-primary">Office</p>
-                    <p className="text-sm text-text-secondary">{siteConfig.address}</p>
+                    <p className="text-sm font-medium text-text-primary">Phone / WhatsApp</p>
+                    <p className="text-sm text-text-secondary">{siteConfig.phone}</p>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-3 pt-2">
-                {[
-                  { label: "LinkedIn", href: siteConfig.social.linkedin },
-                  { label: "Instagram", href: siteConfig.social.instagram },
-                  { label: "X / Twitter", href: siteConfig.social.twitter },
-                ].map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-lg border border-white/10 px-3 py-1.5 text-xs font-medium text-text-secondary transition hover:border-accent-secondary/40 hover:text-text-primary"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
+
+              {siteConfig.calendarBookingUrl ? (
+                <a
+                  href={siteConfig.calendarBookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex text-sm font-semibold text-accent-primary"
+                >
+                  Book a call on calendar →
+                </a>
+              ) : (
+                <p className="text-sm text-text-muted">
+                  Calendar booking link coming soon.
+                </p>
+              )}
             </div>
           </Reveal>
 
-          <Reveal delay={0.08}>
+          <Reveal delay={0.06}>
             <form
               onSubmit={handleSubmit(onSubmit)}
               noValidate
-              className="rounded-2xl border border-white/10 bg-bg-card p-6 sm:p-8"
+              className="relative rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8"
             >
-              <div className="grid gap-4 sm:grid-cols-2">
-                <Field
-                  id="fullName"
-                  label="Full Name"
-                  required
-                  error={errors.fullName?.message}
-                >
-                  <input
-                    id="fullName"
-                    autoComplete="name"
-                    className={fieldClass}
-                    placeholder="Jane Doe"
-                    {...register("fullName")}
-                  />
+              {/* Honeypot */}
+              <div className="absolute -left-[9999px] opacity-0" aria-hidden>
+                <label htmlFor="website">Website</label>
+                <input id="website" tabIndex={-1} autoComplete="off" {...register("website")} />
+              </div>
+
+              <div className="grid gap-4">
+                <Field id="fullName" label="Name" required error={errors.fullName?.message}>
+                  <input id="fullName" className={fieldClass} placeholder="Your name" {...register("fullName")} />
                 </Field>
-                <Field
-                  id="email"
-                  label="Business Email"
-                  required
-                  error={errors.email?.message}
-                >
-                  <input
-                    id="email"
-                    type="email"
-                    autoComplete="email"
-                    className={fieldClass}
-                    placeholder="jane@company.com"
-                    {...register("email")}
-                  />
+                <Field id="phone" label="Phone / WhatsApp" required error={errors.phone?.message}>
+                  <input id="phone" type="tel" className={fieldClass} placeholder="+91 ..." {...register("phone")} />
                 </Field>
-                <Field id="phone" label="Phone Number" error={errors.phone?.message}>
-                  <input
-                    id="phone"
-                    type="tel"
-                    autoComplete="tel"
-                    className={fieldClass}
-                    placeholder="+1 555 000 0000"
-                    {...register("phone")}
-                  />
-                </Field>
-                <Field
-                  id="company"
-                  label="Company Name"
-                  error={errors.company?.message}
-                >
-                  <input
-                    id="company"
-                    autoComplete="organization"
-                    className={fieldClass}
-                    placeholder="Acme Inc."
-                    {...register("company")}
-                  />
-                </Field>
-                <Field
-                  id="service"
-                  label="Service Required"
-                  required
-                  error={errors.service?.message}
-                >
+                <Field id="service" label="Service" required error={errors.service?.message}>
                   <select id="service" className={fieldClass} {...register("service")}>
                     <option value="">Select a service</option>
                     {serviceOptions.map((option) => (
@@ -232,38 +188,35 @@ export function Contact() {
                     ))}
                   </select>
                 </Field>
-                <Field
-                  id="budget"
-                  label="Estimated Budget"
-                  error={errors.budget?.message}
-                >
-                  <select id="budget" className={fieldClass} {...register("budget")}>
-                    <option value="">Select a range (optional)</option>
-                    {budgetOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </Field>
-              </div>
-
-              <div className="mt-4">
-                <Field
-                  id="details"
-                  label="Project Details"
-                  required
-                  error={errors.details?.message}
-                >
+                <Field id="message" label="Message" required error={errors.message?.message}>
                   <textarea
-                    id="details"
-                    rows={5}
+                    id="message"
+                    rows={4}
                     className={cn(fieldClass, "resize-y")}
-                    placeholder="Share goals, timeline, and what success looks like for this project."
-                    {...register("details")}
+                    placeholder="What do you need help with?"
+                    {...register("message")}
                   />
                 </Field>
               </div>
+
+              <button
+                type="button"
+                className="mt-4 text-sm font-medium text-accent-primary"
+                onClick={() => setShowMore((v) => !v)}
+              >
+                {showMore ? "Hide optional details" : "More details (optional)"}
+              </button>
+
+              {showMore ? (
+                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                  <Field id="email" label="Email" error={errors.email?.message}>
+                    <input id="email" type="email" className={fieldClass} placeholder="you@business.com" {...register("email")} />
+                  </Field>
+                  <Field id="company" label="Company" error={errors.company?.message}>
+                    <input id="company" className={fieldClass} placeholder="Business name" {...register("company")} />
+                  </Field>
+                </div>
+              ) : null}
 
               {statusMessage ? (
                 <p
@@ -279,26 +232,21 @@ export function Contact() {
                 </p>
               ) : null}
 
-              <Button
-                type="submit"
-                size="lg"
-                className="mt-6 w-full sm:w-auto"
-                disabled={isSubmitting}
-              >
+              <Button type="submit" size="lg" className="mt-6 w-full sm:w-auto" disabled={isSubmitting}>
                 {isSubmitting ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
                     Sending…
                   </>
                 ) : (
-                  "Send Project Inquiry"
+                  "Send message"
                 )}
               </Button>
             </form>
           </Reveal>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
 
@@ -319,11 +267,11 @@ function Field({
     <div className="space-y-1.5">
       <label htmlFor={id} className="text-sm font-medium text-text-primary">
         {label}
-        {required ? <span className="text-accent-secondary"> *</span> : null}
+        {required ? <span className="text-accent-primary"> *</span> : null}
       </label>
       {children}
       {error ? (
-        <p className="text-xs text-rose-300" role="alert">
+        <p className="text-sm text-rose-300" role="alert">
           {error}
         </p>
       ) : null}

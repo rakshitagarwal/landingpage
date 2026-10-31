@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Merriweather } from "next/font/google";
+import { Analytics } from "@/components/layout/analytics";
+import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -20,56 +22,52 @@ const body = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `Digital Solutions & Software Development Company | ${siteConfig.name}`,
+    default: `Website Development & Software Studio Ahmedabad | ${siteConfig.name}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
   keywords: [
-    "custom software development",
-    "CRM development",
-    "SaaS development",
-    "website development",
-    "digital marketing",
-    "business automation",
-    "UI UX design",
+    "website development Ahmedabad",
+    "software company Ahmedabad",
+    "WhatsApp automation for small business",
+    "CRM for small business India",
+    "Pixelnest",
   ],
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `Digital Solutions & Software Development Company | ${siteConfig.name}`,
+    title: `Website Development & Software Studio Ahmedabad | ${siteConfig.name}`,
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `Digital Solutions & Software Development Company | ${siteConfig.name}`,
+    title: `Website Development & Software Studio Ahmedabad | ${siteConfig.name}`,
     description: siteConfig.description,
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "LocalBusiness",
   name: siteConfig.name,
   url: siteConfig.url,
   email: siteConfig.email,
-  telephone: siteConfig.phone,
+  telephone: siteConfig.phoneTel,
+  image: `${siteConfig.url}/opengraph-image`,
   address: {
     "@type": "PostalAddress",
-    streetAddress: siteConfig.address,
+    streetAddress: siteConfig.address.line1,
+    addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.state,
+    addressCountry: siteConfig.address.country,
   },
-  sameAs: [
-    siteConfig.social.linkedin,
-    siteConfig.social.instagram,
-    siteConfig.social.twitter,
-  ],
+  areaServed: "IN",
   description: siteConfig.description,
+  sameAs: Object.values(siteConfig.social).filter(Boolean),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -78,7 +76,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${heading.variable} ${body.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-bg-primary font-sans text-text-primary">
+      <body className="flex min-h-full flex-col bg-bg-primary font-sans text-text-primary">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -86,7 +84,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
         <div className="site-noise" aria-hidden />
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          {children}
+          <WhatsAppFloat />
+        </SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );

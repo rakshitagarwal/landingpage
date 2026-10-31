@@ -18,7 +18,7 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  y = 48,
+  y = 32,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -31,25 +31,30 @@ export function Reveal({
     ).matches;
 
     if (reduceMotion) {
-      gsap.set(el, { clearProps: "all", opacity: 1 });
+      el.style.opacity = "1";
+      el.style.transform = "none";
       return;
     }
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el,
-        { opacity: 0, y, filter: "blur(6px)" },
+        { opacity: 0, y },
         {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
-          duration: 1,
+          duration: 0.75,
           delay,
           ease: "power3.out",
+          clearProps: "filter",
           scrollTrigger: {
             trigger: el,
-            start: "top 88%",
+            start: "top 90%",
             toggleActions: "play none none none",
+          },
+          onComplete: () => {
+            el.style.opacity = "1";
+            el.style.transform = "none";
           },
         }
       );
@@ -59,7 +64,7 @@ export function Reveal({
   }, [delay, y]);
 
   return (
-    <div ref={ref} className={cn("will-change-transform", className)}>
+    <div ref={ref} className={cn("opacity-100", className)}>
       {children}
     </div>
   );

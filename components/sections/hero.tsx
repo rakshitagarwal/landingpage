@@ -2,207 +2,140 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
-import { siteConfig } from "@/lib/site-config";
-import { Button } from "@/components/ui/button";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const devices = [
-  {
-    title: "CRM Pipeline",
-    subtitle: "Sales & leads",
-    accent: "from-[#2ef2ff]/30 to-transparent",
-    rotate: "-18deg",
-    x: "-28%",
-    y: "18%",
-    depth: 0.35,
-  },
-  {
-    title: "SaaS Admin",
-    subtitle: "Multi-tenant ops",
-    accent: "from-[#7dffb3]/25 to-transparent",
-    rotate: "-8deg",
-    x: "-8%",
-    y: "8%",
-    depth: 0.55,
-  },
-  {
-    title: "Analytics",
-    subtitle: "Growth dashboards",
-    accent: "from-[#8ab4ff]/30 to-transparent",
-    rotate: "4deg",
-    x: "14%",
-    y: "4%",
-    depth: 0.75,
-  },
-  {
-    title: "Automation",
-    subtitle: "AI workflows",
-    accent: "from-[#ffb86c]/25 to-transparent",
-    rotate: "16deg",
-    x: "34%",
-    y: "16%",
-    depth: 0.45,
-  },
-];
+import { ArrowRight } from "lucide-react";
+import { getWhatsAppLink, heroContent } from "@/lib/site-config";
+import { buttonLinkClass } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const devicesRef = useRef<HTMLDivElement>(null);
+  const mockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const devicesEl = devicesRef.current;
-    if (!section || !devicesEl) return;
-
+    const el = mockRef.current;
+    if (!el) return;
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+    if (reduceMotion) return;
 
     const ctx = gsap.context(() => {
-      const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-      if (!reduceMotion) {
-        intro
-          .from("[data-hero-eyebrow]", { opacity: 0, y: 20, duration: 0.7 })
-          .from("[data-hero-title]", { opacity: 0, y: 36, duration: 0.9 }, "-=0.45")
-          .from("[data-hero-copy]", { opacity: 0, y: 24, duration: 0.7 }, "-=0.55")
-          .from("[data-hero-cta]", { opacity: 0, y: 18, duration: 0.6 }, "-=0.4")
-          .from(
-            "[data-device]",
-            {
-              opacity: 0,
-              y: 80,
-              rotateX: 18,
-              stagger: 0.08,
-              duration: 1.1,
-            },
-            "-=0.7"
-          );
-
-        gsap.to("[data-device]", {
-          y: (i) => -40 - i * 18,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-
-        gsap.to(devicesEl, {
-          y: 120,
-          opacity: 0.35,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      }
-    }, section);
+      gsap.to("[data-float]", {
+        y: -10,
+        duration: 2.8,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut",
+        stagger: 0.35,
+      });
+    }, el);
 
     return () => ctx.revert();
   }, []);
 
-  const scrollTo = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section
       id="home"
-      ref={sectionRef}
-      className="relative isolate min-h-[100svh] overflow-hidden pt-28 pb-8 sm:pt-32"
+      className="relative isolate overflow-hidden border-b border-white/[0.08] pt-28 pb-16 sm:pt-32 sm:pb-24"
     >
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-[42%] h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(46,242,255,0.14),transparent_62%)] blur-2xl" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-bg-primary to-transparent" />
+        <div className="absolute left-[15%] top-[20%] h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(46,242,255,0.14),transparent_65%)] blur-2xl" />
       </div>
 
-      <div className="mx-auto flex max-w-4xl flex-col items-center px-4 text-center sm:px-6">
-        <p
-          data-hero-eyebrow
-          className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-accent-primary"
-        >
-          {siteConfig.tagline}
-        </p>
-        <h1
-          data-hero-title
-          className="font-serif text-[2.35rem] font-bold leading-[1.12] tracking-tight text-text-primary sm:text-5xl lg:text-6xl"
-        >
-          Building Digital Solutions That Move Your Business Forward.
-        </h1>
-        <p
-          data-hero-copy
-          className="mt-6 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg"
-        >
-          From custom software and SaaS platforms to websites and digital
-          marketing, we help businesses transform ideas into powerful digital
-          experiences.
-        </p>
-        <div
-          data-hero-cta
-          className="mt-8 flex flex-col items-center gap-3 sm:flex-row"
-        >
-          <Button size="lg" onClick={() => scrollTo("#contact")}>
-            Start Your Project
-            <ArrowUpRight className="h-4 w-4" />
-          </Button>
-          <Button
-            size="lg"
-            variant="secondary"
-            onClick={() => scrollTo("#services")}
-          >
-            Explore Our Services
-          </Button>
-        </div>
-      </div>
-
-      <div
-        ref={devicesRef}
-        className="relative mx-auto mt-16 h-[340px] w-full max-w-5xl perspective-[1400px] sm:mt-20 sm:h-[420px]"
-        aria-hidden
-      >
-        {devices.map((device) => (
-          <div
-            key={device.title}
-            data-device
-            className="absolute left-1/2 top-6 w-[150px] sm:w-[190px]"
-            style={{
-              transform: `translateX(calc(-50% + ${device.x})) translateY(${device.y}) rotate(${device.rotate})`,
-              zIndex: Math.round(device.depth * 10),
-            }}
-          >
-            <div className="overflow-hidden rounded-[1.6rem] border border-white/12 bg-[#0a0a0a] p-2 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)]">
-              <div
-                className={`relative aspect-[9/16] overflow-hidden rounded-[1.2rem] bg-gradient-to-b ${device.accent} from-10%`}
+      <div className="container-site grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="min-w-0 pr-0 lg:pr-4">
+          <div className="mb-5 flex flex-col gap-3">
+            <span
+              className="h-0.5 w-10 rounded-full bg-accent-primary"
+              aria-hidden
+            />
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-primary">
+              {heroContent.eyebrow}
+            </p>
+          </div>
+          <h1 className="font-serif text-[2.15rem] font-bold leading-[1.15] tracking-tight text-text-primary sm:text-5xl lg:text-[3.25rem]">
+            {heroContent.headline}
+          </h1>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg">
+            {heroContent.subtext}
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a
+              href={getWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(buttonLinkClass("primary", "lg"))}
+            >
+              {heroContent.primaryCta}
+            </a>
+            <a
+              href="#work"
+              className={cn(buttonLinkClass("secondary", "lg"))}
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              {heroContent.secondaryCta}
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+          <ul className="mt-8 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-5 sm:gap-y-2">
+            {heroContent.trustRow.map((item) => (
+              <li
+                key={item}
+                className="flex items-center gap-2 text-sm text-text-secondary"
               >
-                <div className="absolute inset-x-0 top-0 h-8 bg-black/40" />
-                <div className="absolute inset-x-3 top-10 space-y-2">
-                  <div className="h-2 w-16 rounded bg-white/25" />
-                  <div className="h-2 w-24 rounded bg-white/15" />
-                  <div className="mt-4 space-y-2">
-                    <div className="h-16 rounded-xl border border-white/10 bg-white/8" />
-                    <div className="h-10 rounded-xl border border-white/10 bg-white/6" />
-                    <div className="h-10 rounded-xl border border-white/10 bg-white/6" />
-                  </div>
-                </div>
-                <div className="absolute inset-x-3 bottom-4">
-                  <p className="text-[11px] font-semibold text-white">
-                    {device.title}
-                  </p>
-                  <p className="text-[10px] text-white/60">{device.subtitle}</p>
-                </div>
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-primary" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div ref={mockRef} className="relative mx-auto w-full max-w-md lg:max-w-none" aria-hidden>
+          <div
+            data-float
+            className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-bg-card p-4 shadow-[var(--shadow-card)]"
+          >
+            <div className="mb-3 flex items-center justify-between">
+              <div className="flex gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+                <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+                <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
+              </div>
+              <span className="text-xs text-text-secondary">yourbusiness.in</span>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-bg-secondary p-4">
+              <div className="h-3 w-28 rounded bg-accent-primary/30" />
+              <div className="mt-3 h-3 w-3/4 rounded bg-white/15" />
+              <div className="mt-2 h-3 w-1/2 rounded bg-white/10" />
+              <div className="mt-5 grid grid-cols-3 gap-2">
+                <div className="h-16 rounded-lg bg-white/8" />
+                <div className="h-16 rounded-lg bg-white/8" />
+                <div className="h-16 rounded-lg bg-accent-primary/15" />
               </div>
             </div>
           </div>
-        ))}
+
+          <div
+            data-float
+            className="absolute -right-2 top-8 w-[58%] rounded-2xl border border-white/10 bg-bg-elevated p-3 shadow-[var(--shadow-card)] sm:right-0"
+          >
+            <p className="text-xs font-semibold text-text-primary">Today</p>
+            <div className="mt-2 space-y-1.5">
+              <div className="h-2 rounded bg-white/15" />
+              <div className="h-8 rounded-lg bg-gradient-to-r from-accent-primary/25 to-transparent" />
+              <div className="h-2 w-2/3 rounded bg-white/10" />
+            </div>
+          </div>
+
+          <div
+            data-float
+            className="absolute -left-1 bottom-4 max-w-[70%] rounded-2xl rounded-bl-md border border-white/10 bg-[#075E54] px-3 py-2 text-sm text-white shadow-[var(--shadow-card)] sm:left-2"
+          >
+            Hi! Thanks for messaging. How can we help today?
+          </div>
+        </div>
       </div>
     </section>
   );

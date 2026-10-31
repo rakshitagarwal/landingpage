@@ -1,22 +1,46 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
-import { navLinks, siteConfig } from "@/lib/site-config";
+import { Menu, X } from "lucide-react";
+import { getWhatsAppLink, navLinks, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { buttonLinkClass } from "@/components/ui/button";
 
 export function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
   const reduceMotion = useReducedMotion();
+  const homePrefix = pathname === "/" ? "" : "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = navLinks.map((l) => l.href.replace("#", ""));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target.id) setActive(`#${visible.target.id}`);
+      },
+      { rootMargin: "-35% 0px -50% 0px", threshold: [0.1, 0.4, 0.7] }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -26,10 +50,23 @@ export function Navbar() {
     };
   }, [open]);
 
+  const resolveHref = (href: string) =>
+    href.startsWith("#") ? `${homePrefix}${href}` : href;
+
   const scrollTo = (href: string) => {
     setOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    const target = resolveHref(href);
+    if (target.startsWith("/#") || (pathname !== "/" && href.startsWith("#"))) {
+      window.location.href = target.startsWith("/") ? target : `/${href}`;
+      return;
+    }
+    if (href.startsWith("/")) {
+      window.location.href = href;
+      return;
+    }
+    document
+      .querySelector(href)
+      ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
   };
 
   return (
@@ -37,31 +74,31 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-white/8 bg-bg-primary/75 backdrop-blur-xl"
+          ? "border-b border-white/10 bg-bg-primary/80 backdrop-blur-xl"
           : "bg-transparent"
       )}
     >
       <nav
         aria-label="Main navigation"
-        className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-[4.25rem] sm:px-6 lg:px-8"
+        className="container-site flex h-16 items-center justify-between gap-4 sm:h-[4.25rem]"
       >
         <a
-          href="#home"
+          href={resolveHref("#home")}
           onClick={(e) => {
             e.preventDefault();
             scrollTo("#home");
           }}
           className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
         >
-          <span className="flex h-7 w-7 items-center justify-center rounded-md border border-white/15 bg-white/5">
-            <span className="h-3 w-3 rotate-45 rounded-[2px] bg-accent-primary" />
+          <span className="flex h-8 w-8 items-center justify-center rounded-md border border-accent-primary/40 bg-accent-primary/10 font-serif text-sm font-bold text-accent-primary">
+            P
           </span>
           <span className="text-[15px] font-semibold tracking-tight text-text-primary">
             {siteConfig.name}
           </span>
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -70,27 +107,30 @@ export function Navbar() {
                 e.preventDefault();
                 scrollTo(link.href);
               }}
-              className="text-sm text-text-secondary transition hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+              className={cn(
+                "text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary",
+                active === link.href
+                  ? "text-accent-primary"
+                  : "text-text-secondary hover:text-text-primary"
+              )}
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        <div className="hidden md:block">
-          <Button
-            size="sm"
-            variant="secondary"
-            onClick={() => scrollTo("#contact")}
-          >
-            Let&apos;s Talk
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </Button>
-        </div>
+        <a
+          href={getWhatsAppLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(buttonLinkClass("primary", "sm"), "hidden md:inline-flex")}
+        >
+          WhatsApp
+        </a>
 
         <button
           type="button"
-          className="rounded-lg p-2 text-text-primary md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+          className="rounded-lg p-2 text-text-primary lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -107,7 +147,7 @@ export function Navbar() {
             initial={reduceMotion ? false : { opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-b border-white/8 bg-bg-primary/95 backdrop-blur-xl md:hidden"
+            className="border-b border-white/10 bg-bg-primary/95 backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-4">
               {navLinks.map((link) => (
@@ -123,10 +163,15 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <Button className="mt-2 w-full" onClick={() => scrollTo("#contact")}>
-                Let&apos;s Talk
-                <ArrowUpRight className="h-4 w-4" />
-              </Button>
+              <a
+                href={getWhatsAppLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(buttonLinkClass("primary"), "mt-2 w-full")}
+                onClick={() => setOpen(false)}
+              >
+                Chat on WhatsApp
+              </a>
             </div>
           </motion.div>
         ) : null}

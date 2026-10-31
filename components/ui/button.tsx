@@ -43,3 +43,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 Button.displayName = "Button";
+
+export function buttonLinkClass(
+  variant: "primary" | "secondary" | "ghost" = "primary",
+  size: "default" | "sm" | "lg" = "default"
+) {
+  return buttonVariants({ variant, size });
+}

@@ -1,387 +1,425 @@
 export const siteConfig = {
-  name: "MyAIM",
-  tagline: "Your Technology & Digital Growth Partner",
+  name: "Pixelnest",
+  tagline: "Web & software studio · Ahmedabad",
   description:
-    "Build your business with custom CRM solutions, SaaS development, website design, digital marketing, and business automation services.",
-  url: "https://myaim.example.com",
-  email: "hello@myaim.example.com",
-  phone: "+1 (555) 000-0000",
-  address: "123 Innovation Drive, Suite 400, San Francisco, CA 94105",
+    "Pixelnest builds websites, business software and WhatsApp automation for small businesses in India. Founder-led studio in Ahmedabad.",
+  url: "https://pixelnest.example.com",
+  email: "rakshit.agarwal@outlook.com",
+  phone: "+91 99974 43874",
+  phoneTel: "+919997443874",
+  whatsappUrl: "https://wa.me/919997443874",
+  whatsappPrefill:
+    "Hi Pixelnest, I'd like to discuss a project",
+  address: {
+    line1: "Ramdev Nagar",
+    city: "Ahmedabad",
+    state: "Gujarat",
+    country: "India",
+    full: "Ramdev Nagar, Ahmedabad, Gujarat, India",
+  },
+  currency: "INR",
+  replyNote: "Typically replies within 24 hours",
+  calendarBookingUrl: "", // e.g. https://cal.com/your-link
+  showTestimonials: false,
   social: {
-    linkedin: "https://linkedin.com/company/myaim",
-    instagram: "https://instagram.com/myaim",
-    twitter: "https://x.com/myaim",
+    linkedin: "",
+    instagram: "",
+    twitter: "",
+  },
+  analytics: {
+    /** Set NEXT_PUBLIC_GA_ID or NEXT_PUBLIC_PLAUSIBLE_DOMAIN in env */
+    gaIdEnv: "NEXT_PUBLIC_GA_ID",
+    plausibleDomainEnv: "NEXT_PUBLIC_PLAUSIBLE_DOMAIN",
   },
 } as const;
 
+export function getWhatsAppLink(message?: string) {
+  const text = encodeURIComponent(message ?? siteConfig.whatsappPrefill);
+  return `${siteConfig.whatsappUrl}?text=${text}`;
+}
+
 export const navLinks = [
-  { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
-  { label: "About Us", href: "#about" },
-  { label: "Our Process", href: "#process" },
+  { label: "Work", href: "#work" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "About", href: "#about" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ] as const;
 
-export const trustIndicators = [
+export const heroContent = {
+  eyebrow: "Web & software studio · Ahmedabad",
+  headline: "Get your business online, and get more customers.",
+  subtext:
+    "Pixelnest builds websites, business software and WhatsApp automation for small businesses, so you spend less time on busywork and more time growing.",
+  primaryCta: "Chat on WhatsApp",
+  secondaryCta: "See what we build",
+  trustRow: [
+    "Direct access to founders",
+    "Free first consultation",
+    "Fixed-price quotes",
+  ],
+} as const;
+
+export const valueStrip = [
   {
-    title: "Custom-Built Solutions",
-    description: "Software shaped around your workflows, not generic templates.",
+    title: "Built for small budgets",
+    description: "Practical solutions sized for shops, clinics and growing teams.",
+    icon: "Wallet",
   },
   {
-    title: "Business-First Approach",
-    description: "Every decision starts with measurable business outcomes.",
+    title: "Simple, no-jargon communication",
+    description: "We explain options in plain language you can act on.",
+    icon: "MessageCircle",
   },
   {
-    title: "Scalable Technology",
-    description: "Architectures that grow with your team and your customers.",
+    title: "Fixed-price, no surprises",
+    description: "You get a clear quote before we start building.",
+    icon: "BadgeIndianRupee",
   },
   {
-    title: "Long-Term Partnership",
-    description: "Support beyond launch so your digital products keep improving.",
+    title: "Support after launch",
+    description: "We stay available so your site or software keeps working.",
+    icon: "LifeBuoy",
   },
 ] as const;
 
 export const services = [
   {
-    id: "custom-software-crm",
-    title: "Custom Software & CRM Development",
-    shortDescription:
-      "Build CRMs, pipelines, and business systems tailored to how your team actually works.",
-    icon: "Database",
-    accent: "from-violet-500/20 to-fuchsia-500/10",
-    highlights: [
-      "Custom CRM development",
-      "Sales pipeline management",
-      "Lead management systems",
-      "Workflow automation",
-    ],
-    details: [
-      "Custom CRM development",
-      "Customer management systems",
-      "Sales pipeline management",
-      "Lead management systems",
-      "Business dashboards",
-      "Workflow automation",
-      "Third-party API integrations",
-    ],
-  },
-  {
-    id: "saas-product",
-    title: "SaaS Product Development",
-    shortDescription:
-      "Launch subscription platforms with solid architecture, billing, and admin tooling.",
-    icon: "Cloud",
-    accent: "from-cyan-500/20 to-blue-500/10",
-    highlights: [
-      "MVP development",
-      "Multi-tenant applications",
-      "Payment gateway integration",
-      "Admin dashboards",
-    ],
-    details: [
-      "SaaS application development",
-      "MVP development",
-      "Subscription-based platforms",
-      "Multi-tenant applications",
-      "SaaS architecture and scalability",
-      "Payment gateway integration",
-      "Admin dashboards",
-    ],
-  },
-  {
-    id: "website-development",
-    title: "Website Development",
-    shortDescription:
-      "High-performing business sites, landing pages, and e-commerce experiences.",
+    slug: "business-websites",
+    title: "Business Websites & Online Stores",
+    outcome: "Look professional and get found on Google.",
     icon: "Globe",
-    accent: "from-emerald-500/20 to-teal-500/10",
-    highlights: [
-      "Corporate websites",
-      "Landing pages",
-      "E-commerce websites",
-      "Website redesign",
-    ],
+    tags: ["Business website", "E-commerce", "Landing pages"],
+    summary:
+      "Clean, fast websites and online stores that help local customers find you and get in touch.",
     details: [
-      "Business websites",
-      "Corporate websites",
-      "Landing pages",
-      "E-commerce websites",
-      "Portfolio websites",
-      "Web application development",
-      "Website redesign and optimization",
+      "Business and portfolio websites",
+      "Online stores with payments",
+      "Landing pages for offers and ads",
+      "Mobile-friendly design",
+      "Basic SEO setup so Google can find you",
     ],
   },
   {
-    id: "digital-marketing",
-    title: "Digital Marketing & Social Media",
-    shortDescription:
-      "Grow visibility with content strategy, campaigns, SEO, and performance marketing.",
-    icon: "Megaphone",
-    accent: "from-orange-500/20 to-amber-500/10",
-    highlights: [
-      "Social media management",
-      "Content strategy",
-      "Paid advertising",
-      "SEO optimization",
-    ],
+    slug: "custom-software-crm",
+    title: "Custom Software & CRM",
+    outcome: "Replace spreadsheets with a system that fits how you work.",
+    icon: "Database",
+    tags: ["CRM", "Billing/Invoicing", "Inventory"],
+    summary:
+      "Simple tools for leads, billing, inventory and day-to-day operations — built around your process.",
     details: [
-      "Social media management",
-      "Social media marketing",
-      "Content strategy",
-      "Brand awareness campaigns",
-      "Paid advertising campaigns",
-      "SEO optimization",
-      "Performance marketing",
+      "Customer and lead tracking",
+      "Billing and invoicing flows",
+      "Inventory and stock views",
+      "Staff dashboards",
+      "Integrations with tools you already use",
     ],
   },
   {
-    id: "online-presence",
-    title: "Online Presence & Brand Management",
-    shortDescription:
-      "Strengthen how your brand shows up across search, listings, and digital channels.",
-    icon: "BadgeCheck",
-    accent: "from-rose-500/20 to-pink-500/10",
-    highlights: [
-      "Google Business Profile",
-      "Reputation management",
-      "Brand identity",
-      "Website maintenance",
-    ],
-    details: [
-      "Google Business Profile setup and optimization",
-      "Online reputation management",
-      "Brand identity development",
-      "Digital presence management",
-      "Business listing management",
-      "Content management",
-      "Website maintenance",
-    ],
-  },
-  {
-    id: "business-automation",
-    title: "Business Automation & AI Solutions",
-    shortDescription:
-      "Automate operations with AI tools, chatbots, messaging flows, and analytics.",
+    slug: "whatsapp-ai-automation",
+    title: "WhatsApp & AI Automation",
+    outcome: "Reply to customers instantly, even when you're busy.",
     icon: "Bot",
-    accent: "from-indigo-500/20 to-violet-500/10",
-    highlights: [
-      "AI chatbot development",
-      "WhatsApp automation",
-      "Email automation",
-      "Process automation",
-    ],
+    tags: ["WhatsApp bots", "Auto-replies", "Lead capture"],
+    summary:
+      "WhatsApp bots and AI helpers that answer common questions, capture leads and save your team time.",
     details: [
-      "AI-powered business tools",
-      "AI chatbot development",
-      "WhatsApp automation",
-      "Email automation",
-      "Business process automation",
-      "AI integrations",
-      "Reporting and analytics automation",
+      "WhatsApp Business API setups",
+      "Auto-replies for FAQs and hours",
+      "Lead capture and follow-ups",
+      "Order-taking flows for restaurants and shops",
+      "Handoff to a human when needed",
     ],
   },
   {
-    id: "ui-ux-design",
-    title: "UI/UX & Product Design",
-    shortDescription:
-      "Design clear product experiences, dashboards, and design systems users love.",
-    icon: "Palette",
-    accent: "from-sky-500/20 to-cyan-500/10",
-    highlights: [
-      "Website UI/UX design",
-      "SaaS dashboard design",
-      "Mobile-first design",
-      "Design systems",
-    ],
+    slug: "digital-marketing",
+    title: "Digital Marketing & Google Presence",
+    outcome: "Show up when local customers search.",
+    icon: "Megaphone",
+    tags: ["Google Business Profile", "SEO", "Social media"],
+    summary:
+      "Help people nearby find your business on Google and social platforms with clear, consistent presence.",
     details: [
-      "Website UI/UX design",
-      "SaaS dashboard design",
-      "Mobile-first design",
-      "Wireframing and prototyping",
-      "Design systems",
-      "Product redesign",
+      "Google Business Profile setup",
+      "Local SEO basics",
+      "Social media page setup and posting plans",
+      "Simple content that explains what you offer",
+    ],
+  },
+  {
+    slug: "ui-ux-brand",
+    title: "UI/UX & Brand Design",
+    outcome: "Clean design your customers trust.",
+    icon: "Palette",
+    tags: ["Logo & branding", "App design", "Dashboards"],
+    summary:
+      "Straightforward branding and interface design so your product and website feel clear and trustworthy.",
+    details: [
+      "Logo and basic brand kit",
+      "Website and app screens",
+      "Dashboard layouts",
+      "Design systems for ongoing work",
     ],
   },
 ] as const;
 
-export const differentiators = [
+export const whoWeHelp = [
   {
-    title: "Tailored Solutions",
-    description:
-      "Every business has different needs. We build solutions around your business goals.",
+    title: "Shops & retail",
+    problem: "Need a simple website or store so customers can browse and order without calling every time.",
   },
   {
-    title: "Modern Technology",
-    description:
-      "We use modern, reliable, and scalable technologies that support long-term growth.",
+    title: "Restaurants & cafes",
+    problem: "Want WhatsApp or online ordering that keeps up during busy hours.",
   },
   {
-    title: "End-to-End Support",
-    description:
-      "From planning and development to launch and ongoing maintenance, we stay with you.",
+    title: "Clinics & salons",
+    problem: "Tired of missed calls and messy appointment notebooks.",
   },
   {
-    title: "Growth-Focused Approach",
-    description:
-      "We focus on delivering solutions that create measurable business value.",
+    title: "Coaching institutes",
+    problem: "Need a clear site for courses, fees and enquiries in one place.",
+  },
+  {
+    title: "Local services",
+    problem: "Want to show up on Google and make it easy for people to contact you.",
+  },
+  {
+    title: "Startups",
+    problem: "Need an MVP website or first product without hiring a full tech team.",
+  },
+] as const;
+
+export const whyPixelnest = [
+  {
+    title: "Founder-led",
+    description: "You talk to the people building your product.",
+  },
+  {
+    title: "Fixed-price quotes",
+    description: "Agreed in writing before we start.",
+  },
+  {
+    title: "Weekly progress updates",
+    description: "Clear updates on WhatsApp every week.",
+  },
+  {
+    title: "30 days free support",
+    description: "After launch, so small fixes are covered.",
+  },
+] as const;
+
+export const founders = [
+  {
+    name: "Rakshit Agarwal",
+    role: "Co-founder",
+    bio: "Placeholder bio — replace with 2 lines about Rakshit's focus at Pixelnest.",
+    photo: "",
+  },
+  {
+    name: "Divyang Solanki",
+    role: "Co-founder",
+    bio: "Placeholder bio — replace with 2 lines about Divyang's focus at Pixelnest.",
+    photo: "",
   },
 ] as const;
 
 export const aboutContent = {
-  heading: "Technology Meets Business Innovation.",
-  introduction:
-    "We are a digital solutions company focused on helping businesses build, optimize, and grow through technology. Our approach combines software engineering, creative thinking, and digital strategy to deliver solutions that solve real business problems.",
-  mission:
-    "Help businesses establish and scale their digital presence with practical, high-quality technology solutions.",
-  vision:
-    "Become a trusted partner for companies that want technology to drive clearer operations, stronger brands, and sustainable growth.",
+  story:
+    "Pixelnest is a small, founder-led studio in Ahmedabad. We help shops, clinics, restaurants and other small businesses get online, get customers and save time — with websites, custom software and WhatsApp automation.",
+  principles: [
+    {
+      title: "Keep it simple",
+      description: "We build what you need now, not a pile of unused features.",
+    },
+    {
+      title: "Be honest about cost and time",
+      description: "Clear quotes and timelines before work starts.",
+    },
+    {
+      title: "Stay after launch",
+      description: "Support so your site or system keeps working for your team.",
+    },
+  ],
 } as const;
 
 export const processSteps = [
   {
     step: "01",
     title: "Discover",
-    description:
-      "Understand the client's business, requirements, and goals.",
+    duration: "2–5 days",
+    description: "We learn how your business works and what you need first.",
+    outcome: "A short list of goals and must-have features.",
   },
   {
     step: "02",
-    title: "Strategize",
-    description:
-      "Prepare the solution architecture, strategy, scope, and execution plan.",
+    title: "Plan",
+    duration: "3–7 days",
+    description: "We agree scope, price and timeline in plain language.",
+    outcome: "A fixed-price quote and a simple project plan.",
   },
   {
     step: "03",
     title: "Build",
-    description: "Design, develop, test, and refine the solution.",
+    duration: "Depends on scope",
+    description: "We design and build, and share progress every week on WhatsApp.",
+    outcome: "Working screens you can click and give feedback on.",
   },
   {
     step: "04",
-    title: "Launch & Grow",
-    description:
-      "Deploy the solution, provide support, and help the business scale.",
+    title: "Launch & Support",
+    duration: "30 days free support",
+    description: "We go live, hand over access, and stay for early fixes.",
+    outcome: "Your live site or tool, plus ownership of the work.",
   },
 ] as const;
 
-export const solutions = [
+export const techStack = [
+  "Next.js",
+  "React",
+  "Node.js",
+  "Python",
+  "PostgreSQL",
+  "Flutter",
+  "WhatsApp Business API",
+  "Razorpay",
+  "Vercel / AWS",
+  "OpenAI / Claude APIs",
+] as const;
+
+export const conceptProjects = [
   {
-    title: "CRM Dashboards",
-    description: "Pipeline visibility, lead tracking, and team performance views.",
-    tags: ["CRM", "Sales", "Analytics"],
+    id: "clinic-booking",
+    label: "Concept project, not a client",
+    title: "Appointment booking for clinics",
+    problem:
+      "Reception spends hours on missed calls and paper diaries for appointments.",
+    solution:
+      "A simple booking page plus admin view for slots, patients and reminders.",
+    tech: ["Next.js", "PostgreSQL", "WhatsApp reminders"],
+    mockup: "booking" as const,
   },
   {
-    title: "SaaS Platforms",
-    description: "Multi-tenant products with billing, roles, and admin controls.",
-    tags: ["SaaS", "Subscriptions", "MVP"],
+    id: "restaurant-whatsapp",
+    label: "Concept project, not a client",
+    title: "WhatsApp order-taking for restaurants",
+    problem:
+      "Busy kitchens miss messages while staff juggle phone orders.",
+    solution:
+      "A WhatsApp flow that takes the order, confirms items and notifies the kitchen.",
+    tech: ["WhatsApp Business API", "Node.js", "Razorpay"],
+    mockup: "chat" as const,
   },
   {
-    title: "Business Management Systems",
-    description: "Internal tools that connect operations, teams, and reporting.",
-    tags: ["Operations", "Workflows", "Admin"],
-  },
-  {
-    title: "E-commerce Platforms",
-    description: "Storefronts built for conversion, catalog management, and growth.",
-    tags: ["Commerce", "Payments", "UX"],
-  },
-  {
-    title: "Analytics Dashboards",
-    description: "Clear reporting layers that turn raw data into decisions.",
-    tags: ["BI", "Reporting", "KPIs"],
-  },
-  {
-    title: "AI-Powered Applications",
-    description: "Assistants, automation flows, and intelligent business tools.",
-    tags: ["AI", "Automation", "Chatbots"],
+    id: "shop-inventory",
+    label: "Concept project, not a client",
+    title: "Inventory + billing for shops",
+    problem:
+      "Stock and bills live in different notebooks and Excel sheets.",
+    solution:
+      "One light tool for stock, invoices and daily sales summaries.",
+    tech: ["React", "Node.js", "PostgreSQL"],
+    mockup: "dashboard" as const,
   },
 ] as const;
 
-/** Demo content only — replace before publishing as genuine reviews. */
-export const testimonials = [
+export const testimonials = [] as const;
+
+/** Fill in real starting prices when ready. Keep ₹[X] until then. */
+export const pricingTiers = [
   {
-    id: "demo-1",
-    name: "Alex Rivera",
-    company: "Demo Company A",
-    quote:
-      "Working with the team felt structured and collaborative. They translated our requirements into a product roadmap we could actually execute.",
-    isDemo: true,
+    id: "starter-website",
+    name: "Starter Website",
+    priceFrom: "₹[X]",
+    timeline: "Usually 1–3 weeks",
+    description: "A clear multi-page site so customers can find you and contact you.",
+    includes: [
+      "Up to 5 pages",
+      "Mobile-friendly design",
+      "Contact / WhatsApp button",
+      "Basic Google-ready setup",
+    ],
   },
   {
-    id: "demo-2",
-    name: "Jordan Lee",
-    company: "Demo Company B",
-    quote:
-      "The discovery process was thorough. We left with clearer priorities for our CRM and a realistic path to launch.",
-    isDemo: true,
+    id: "business-store",
+    name: "Business Website / Online Store",
+    priceFrom: "₹[X]",
+    timeline: "Usually 3–6 weeks",
+    description: "A fuller site or store with catalogues, enquiries or online orders.",
+    includes: [
+      "Custom pages for your offer",
+      "Product or service listings",
+      "Enquiry or checkout flow",
+      "Payment option if needed (e.g. Razorpay)",
+    ],
+    highlighted: true,
   },
   {
-    id: "demo-3",
-    name: "Sam Okonkwo",
-    company: "Demo Company C",
-    quote:
-      "They balanced design quality with practical delivery. Our landing page and automation flows launched without unnecessary complexity.",
-    isDemo: true,
+    id: "custom-software",
+    name: "Custom Software / Automation",
+    priceFrom: "₹[X]",
+    timeline: "Usually 6–12 weeks",
+    description: "CRM, billing, inventory or WhatsApp automation built for your process.",
+    includes: [
+      "Scoped after a free consultation",
+      "Fixed-price quote before build",
+      "Weekly WhatsApp updates",
+      "30 days free support after launch",
+    ],
   },
 ] as const;
 
 export const faqs = [
   {
-    question: "What types of businesses do you work with?",
+    question: "I'm not technical. Can you still work with me?",
     answer:
-      "We work with startups, SMBs, and established companies that need custom software, websites, digital marketing, or automation support.",
+      "Yes. We explain everything in simple terms and handle the technical work. You only need to tell us how your business runs today.",
   },
   {
-    question: "Can you build custom CRM software?",
+    question: "How much does a website or software cost?",
     answer:
-      "Yes. We design and build CRM systems tailored to your sales process, lead handling, reporting needs, and integrations.",
+      "It depends on pages and features. After a free call we give a fixed quote. Starting prices are listed in the pricing section above.",
   },
   {
-    question: "Do you develop SaaS applications from scratch?",
+    question: "How long does it take?",
     answer:
-      "Yes. We can help with MVP scoping, architecture, development, billing integrations, and admin tooling for SaaS products.",
+      "A simple website often takes 1–3 weeks. Custom software is usually 6–12 weeks, depending on scope. We confirm the timeline before we start.",
   },
   {
-    question: "Can you redesign an existing website?",
+    question: "Do you offer support after launch?",
     answer:
-      "Absolutely. We can audit your current site, improve structure and design, and rebuild for better performance and conversion.",
+      "Yes. You get 30 days of free support after launch. After that you can choose an optional monthly plan for updates and fixes.",
   },
   {
-    question: "Do you offer ongoing maintenance and support?",
+    question: "Who owns the code and website?",
     answer:
-      "Yes. We offer ongoing support options covering updates, monitoring, content changes, and continuous improvements.",
+      "You do. We hand over accounts, files and access when the project is delivered.",
   },
   {
-    question: "Can you manage our social media accounts?",
+    question: "Can you manage my social media and Google profile?",
     answer:
-      "Yes. We can support social media management, content planning, campaign execution, and performance tracking.",
+      "Yes. We can set up and help manage your Google Business Profile and social pages, or train your team to run them.",
   },
   {
-    question: "How much does a custom software project cost?",
+    question: "Do you work with businesses outside Ahmedabad?",
     answer:
-      "Cost depends on scope, complexity, integrations, and timeline. Share your requirements and we will provide a tailored estimate.",
+      "Yes. We work remotely with businesses across India. Calls and updates happen on WhatsApp or video.",
   },
   {
-    question: "How long does it take to develop a website or application?",
-    answer:
-      "Timelines vary by project. A focused website may take a few weeks, while custom software or SaaS builds typically require longer phased delivery.",
+    question: "Do you sign an NDA?",
+    answer: "Yes, on request, before we discuss sensitive details.",
   },
 ] as const;
 
 export const serviceOptions = [
-  "Custom Software & CRM Development",
-  "SaaS Product Development",
-  "Website Development",
-  "Digital Marketing & Social Media",
-  "Online Presence & Brand Management",
-  "Business Automation & AI Solutions",
-  "UI/UX & Product Design",
-  "Not sure yet / Multiple services",
+  "Business Websites & Online Stores",
+  "Custom Software & CRM",
+  "WhatsApp & AI Automation",
+  "Digital Marketing & Google Presence",
+  "UI/UX & Brand Design",
+  "Not sure yet",
 ] as const;
 
-export const budgetOptions = [
-  "Under $5,000",
-  "$5,000 – $15,000",
-  "$15,000 – $50,000",
-  "$50,000+",
-  "Prefer not to say",
-] as const;
+export type Service = (typeof services)[number];
