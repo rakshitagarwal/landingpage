@@ -6,9 +6,9 @@ import { CoverMedia } from "@/components/ui/cover-media";
 import { blogPosts, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Case Studies",
   description:
-    "Practical guides on websites, WhatsApp automation and software for small businesses in India.",
+    "Case studies and guides on websites, WhatsApp automation and software for growing businesses.",
 };
 
 export default function BlogPage() {
@@ -18,13 +18,13 @@ export default function BlogPage() {
       <main className="flex-1 bg-bg-primary text-text-primary">
         <div className="container-site section-y pt-28 sm:pt-32">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-primary">
-            Blog
+            Case studies
           </p>
           <h1 className="mt-3 font-serif text-4xl font-bold text-text-primary sm:text-5xl">
-            Guides for growing businesses
+            Case studies and practical guides
           </h1>
           <p className="mt-4 max-w-2xl text-base text-text-secondary sm:text-lg">
-            Plain-language articles from the {siteConfig.name} team in Ahmedabad.
+            How the {siteConfig.name} team approaches websites, software and automation for growing businesses.
           </p>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">

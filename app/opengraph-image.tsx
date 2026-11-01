@@ -47,10 +47,10 @@ export default function OpenGraphImage() {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div style={{ fontSize: 58, fontWeight: 700, lineHeight: 1.15, maxWidth: 900 }}>
-            Get your business online, and get more customers.
+            Build digital products that win customers and run your business.
           </div>
           <div style={{ fontSize: 26, color: "#b4b8c0", maxWidth: 780 }}>
-            Websites, software and WhatsApp automation for small businesses · Ahmedabad
+            Websites, software and WhatsApp automation from a mid-sized team with 6+ years of delivery
           </div>
         </div>
       </div>

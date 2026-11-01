@@ -11,7 +11,7 @@ type SectionWrapperProps = {
 };
 
 /**
- * Section shell — colors come from html[data-color-mode], not per-section themes.
+ * Section shell. Colors come from html[data-color-mode], not per-section themes.
  */
 export function SectionWrapper({
   id,

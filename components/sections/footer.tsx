@@ -4,11 +4,10 @@ import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 const quickLinks = [
-  { label: "About", href: "/#about" },
-  { label: "Work", href: "/#work" },
   { label: "Services", href: "/#services" },
-  { label: "Blog", href: "/blog" },
-  { label: "Industries", href: "/#who-we-help" },
+  { label: "Case Studies", href: "/#case-studies" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Contact Us", href: "/contact" },
 ] as const;
 
 function LinkedInIcon({ className }: { className?: string }) {
@@ -88,7 +87,7 @@ export function Footer() {
   ] as const;
 
   return (
-    <footer className="border-t border-border-subtle bg-bg-primary pb-28 text-text-primary sm:pb-24">
+    <footer className="border-t border-border-subtle bg-bg-primary text-text-primary">
       <div className="container-shell grid gap-12 py-14 sm:py-16 md:grid-cols-2 lg:grid-cols-[1.1fr_1fr_1.4fr_1fr] lg:gap-10 xl:gap-16">
         <div className="flex items-start">
           <Link

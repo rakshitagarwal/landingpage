@@ -44,9 +44,10 @@ export default function TermsPage() {
           </h2>
           <p>
             Unless otherwise agreed, payment is typically 40% advance, 40% at
-            design or demo approval, and 20% on delivery. Prices exclude 18% GST
-            unless stated. Invoices are provided. Source code and account access
-            for client work are handed over after final payment.
+            design or demo approval, and 20% on delivery. Prices are shown in USD;
+            quotes may be issued in your currency and applicable taxes may apply.
+            Invoices are provided. Source code and account access for client work
+            are handed over after final payment.
           </p>
           <h2 className="font-serif text-2xl font-bold text-text-primary">
             Client responsibilities
@@ -60,17 +61,18 @@ export default function TermsPage() {
             Limitation
           </h2>
           <p>
-            To the extent allowed by Indian law, {siteConfig.name} is not liable
-            for indirect or consequential losses arising from use of this website
-            or from third-party services (hosting, payment gateways, WhatsApp
-            providers, ads platforms).
+            To the extent allowed by applicable law, {siteConfig.name} is not
+            liable for indirect or consequential losses arising from use of this
+            website or from third-party services (hosting, payment gateways,
+            WhatsApp providers, ads platforms).
           </p>
           <h2 className="font-serif text-2xl font-bold text-text-primary">
             Governing law
           </h2>
           <p>
-            These terms are governed by the laws of India. Courts in Ahmedabad,
-            Gujarat shall have jurisdiction, subject to applicable law.
+            These terms are governed by the laws of India, where {siteConfig.name}{" "}
+            is registered. Courts in Ahmedabad, Gujarat shall have jurisdiction,
+            unless a written project agreement states otherwise.
           </p>
           <h2 className="font-serif text-2xl font-bold text-text-primary">
             Contact

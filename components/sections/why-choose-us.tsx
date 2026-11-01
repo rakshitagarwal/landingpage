@@ -10,8 +10,8 @@ export function WhyChooseUs() {
         <Reveal>
           <SectionHeading
             eyebrow="Why Pixelnest"
-            title="Great people. Clear products."
-            description="A small studio that blends practical engineering with domain knowledge — so what we ship fits how your business runs."
+            title="Experienced team. Clear products."
+            description="A mid-sized company with over 6 years building for clients. Practical engineering, clear process, and software that fits how your business runs."
           />
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2">

@@ -135,7 +135,7 @@ export default async function WorkPage({ params }: PageProps) {
               rel="noopener noreferrer"
               className={cn(buttonLinkClass("primary", "lg"), "mt-6")}
             >
-              Chat on WhatsApp
+              Get in touch
             </a>
           </div>
         </article>

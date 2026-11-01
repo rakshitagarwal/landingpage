@@ -224,6 +224,94 @@ html[data-color-mode="light"] .site-noise {
   }
 }
 
+/* Soft teal wash + icon pop + learn-more nudge (site-wide) */
+.card-hover-wash {
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card-hover-wash::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    circle at 14% 0%,
+    color-mix(in srgb, var(--accent-primary) 18%, transparent),
+    transparent 58%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+html[data-color-mode="light"] .card-hover-wash::before {
+  background: radial-gradient(
+    circle at 14% 0%,
+    color-mix(in srgb, var(--accent-primary) 12%, transparent),
+    color-mix(in srgb, var(--accent-primary) 4%, transparent) 42%,
+    transparent 68%
+  );
+}
+
+.card-hover-wash:hover::before {
+  opacity: 1;
+}
+
+.card-hover-wash:hover {
+  border-color: color-mix(in srgb, var(--accent-primary) 40%, transparent);
+}
+
+html[data-color-mode="light"] .card-hover-wash:hover {
+  border-color: color-mix(in srgb, var(--accent-primary) 45%, transparent);
+  box-shadow:
+    0 14px 32px -16px color-mix(in srgb, var(--accent-primary) 28%, transparent),
+    0 8px 20px -12px rgba(15, 23, 42, 0.12);
+}
+
+html[data-color-mode="dark"] .card-hover-wash:hover {
+  box-shadow: 0 22px 44px -24px rgba(0, 0, 0, 0.7);
+}
+
+.card-hover-wash .card-icon {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-hover-wash .card-cta {
+  transition: gap 0.3s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card-hover-wash:hover {
+    transform: translateY(-3px);
+  }
+
+  .card-hover-wash:hover .card-icon {
+    transform: scale(1.1);
+    border-color: color-mix(in srgb, var(--accent-primary) 60%, transparent);
+    background: color-mix(in srgb, var(--accent-primary) 12%, transparent);
+    color: var(--accent-primary);
+  }
+
+  html[data-color-mode="light"] .card-hover-wash:hover .card-icon {
+    background: color-mix(in srgb, var(--accent-primary) 14%, white);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  }
+
+  .card-hover-wash:hover .card-cta {
+    gap: 0.65rem;
+  }
+}
+
 .hero-grid {
   background-image:
     linear-gradient(to right, color-mix(in srgb, var(--accent-primary) 8%, transparent) 1px, transparent 1px),

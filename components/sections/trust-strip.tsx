@@ -29,7 +29,7 @@ export function TrustStrip() {
           <SectionHeading
             eyebrow="Capabilities"
             title="Technology that earns its place"
-            description="Clear builds for getting found online, running day-to-day operations, and answering customers on WhatsApp — without the enterprise fluff."
+            description="Clear builds for getting found online, running operations, and answering customers on WhatsApp, without the enterprise fluff."
           />
         </Reveal>
         <div className="grid gap-5 md:grid-cols-2">

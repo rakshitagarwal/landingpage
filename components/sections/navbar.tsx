@@ -14,9 +14,10 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("");
+  const [sectionActive, setSectionActive] = useState("");
   const reduceMotion = useReducedMotion();
   const homePrefix = pathname === "/" ? "" : "/";
+  const active = pathname !== "/" ? pathname : sectionActive;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -26,13 +27,17 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const ids = navLinks.map((l) => l.href.replace("#", ""));
+    if (pathname !== "/") return;
+
+    const ids = navLinks
+      .filter((l) => l.href.startsWith("#"))
+      .map((l) => l.href.slice(1));
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target.id) setActive(`#${visible.target.id}`);
+        if (visible?.target.id) setSectionActive(`#${visible.target.id}`);
       },
       { rootMargin: "-35% 0px -50% 0px", threshold: [0.1, 0.4, 0.7] }
     );
@@ -43,7 +48,7 @@ export function Navbar() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -127,7 +132,7 @@ export function Navbar() {
             rel="noopener noreferrer"
             className={cn(buttonLinkClass("primary", "sm"), "hidden md:inline-flex")}
           >
-            WhatsApp
+            Get in touch
           </a>
           <button
             type="button"
@@ -172,7 +177,7 @@ export function Navbar() {
                 className={cn(buttonLinkClass("primary"), "mt-2 w-full")}
                 onClick={() => setOpen(false)}
               >
-                Chat on WhatsApp
+                Get in touch
               </a>
             </div>
           </motion.div>

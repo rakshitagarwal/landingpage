@@ -67,9 +67,9 @@ export async function POST(request: Request) {
           text: [
             `Name: ${payload.fullName}`,
             `Phone: ${payload.phone}`,
-            `Email: ${payload.email || "—"}`,
+            `Email: ${payload.email || "-"}`,
             `Service: ${payload.service}`,
-            `Budget: ${payload.budget || "—"}`,
+            `Budget: ${payload.budget || "-"}`,
             "",
             payload.details,
           ].join("\n"),
@@ -87,7 +87,7 @@ export async function POST(request: Request) {
           body: JSON.stringify({
             from,
             to: [payload.email],
-            subject: `We received your message — ${siteConfig.name}`,
+            subject: `We received your message: ${siteConfig.name}`,
             text: [
               `Hi ${payload.fullName},`,
               "",
@@ -96,7 +96,7 @@ export async function POST(request: Request) {
               `Hours: ${siteConfig.hours}`,
               `WhatsApp: ${siteConfig.phone}`,
               "",
-              "— Pixelnest",
+              "Pixelnest",
             ].join("\n"),
           }),
         });

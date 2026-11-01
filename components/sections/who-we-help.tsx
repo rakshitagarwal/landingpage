@@ -10,8 +10,8 @@ export function WhoWeHelp() {
         <Reveal>
           <SectionHeading
             eyebrow="Industries we understand"
-            title="Built for how Indian small businesses actually work"
-            description="We combine engineering with domain context — from the counter to WhatsApp — so what we build fits your day."
+            title="Built for how growing businesses actually work"
+            description="We combine engineering with real operational context, from the counter to WhatsApp, so what we build fits your day."
           />
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

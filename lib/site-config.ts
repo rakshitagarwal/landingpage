@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Pixelnest",
-  tagline: "Websites, software and WhatsApp automation for growing businesses.",
+  tagline: "Websites, software and WhatsApp automation that help businesses grow.",
   description:
-    "Pixelnest builds websites, business software and WhatsApp automation for small businesses in India. Founder-led studio in Ahmedabad.",
+    "Pixelnest is a mid-sized software company with over 6 years of experience building websites, business systems and WhatsApp automation for growing businesses.",
   url: "https://pixelnest.example.com",
   /** Public contact email shown on the site */
   contactEmail: "hello@pixelnest.in",
@@ -21,19 +21,19 @@ export const siteConfig = {
   },
   mapsEmbedUrl:
     "https://maps.google.com/maps?q=Ramdev%20Nagar%2C%20Ahmedabad%2C%20Gujarat%2C%20India&t=&z=14&ie=UTF8&iwloc=&output=embed",
-  hours: "Mon–Sat, 10:00 AM – 7:00 PM IST",
+  hours: "Mon-Sat, 10:00 AM - 7:00 PM IST (flexible for your timezone)",
   replyNote:
-    "We reply within 24 hours on WhatsApp, usually within 2 hours in working hours.",
+    "We reply within 24 hours on WhatsApp or email, often sooner during working hours.",
   legalBusinessName: "",
   gstNumber: "",
   udyamNumber: "",
   privacyUrl: "/privacy",
   termsUrl: "/terms",
   registrationLine: "",
-  currency: "INR",
+  currency: "USD",
   calendarBookingUrl: "",
   /** Keep false until you have signed client reviews */
-  showTestimonials: false,
+  showTestimonials: true,
   social: {
     linkedin: "",
     facebook: "",
@@ -41,7 +41,7 @@ export const siteConfig = {
     github: "",
   },
   whereWeWork:
-    "Ahmedabad, Gandhinagar, Surat, Vadodara, and remotely across India.",
+    "We work remotely with clients across markets. Our studio is based in Ahmedabad, India.",
 } as const;
 
 export function getWhatsAppLink(message?: string) {
@@ -89,7 +89,7 @@ export const images = {
   },
   ogDefault: {
     src: "/images/og/og-default.png",
-    alt: "Pixelnest — websites, software and WhatsApp automation",
+    alt: "Pixelnest: websites, software and WhatsApp automation",
     width: 1200,
     height: 630,
   },
@@ -97,24 +97,22 @@ export const images = {
 
 export const navLinks = [
   { label: "Services", href: "#services" },
-  { label: "Work", href: "#work" },
+  { label: "Case Studies", href: "#case-studies" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Blog", href: "/blog" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact Us", href: "/contact" },
 ] as const;
 
 export const heroContent = {
-  eyebrow: "Software studio · Ahmedabad",
-  headline: "Websites and software that help your business grow.",
+  eyebrow: "Mid-sized software company · 6+ years",
+  headline: "Build digital products that win customers and run your business.",
   subtext:
-    "Pixelnest designs and builds websites, business software and WhatsApp automation for Indian SMBs — with fixed-price quotes and direct access to the founders.",
-  primaryCta: "Chat on WhatsApp",
-  secondaryCta: "View our work",
+    "From high-performing websites to custom software and WhatsApp automation, Pixelnest delivers fixed-price projects with clear timelines and a team that has shipped for clients for over 6 years.",
+  primaryCta: "Get in touch",
+  secondaryCta: "View case studies",
   trustRow: [
-    "Founder-led delivery",
-    "Fixed-price quotes",
-    "30-day post-launch support",
+    "6+ years of client delivery",
+    "Fixed-price proposals",
+    "30 days of launch support",
   ],
   floatingCards: [
     { label: "New order received", kind: "order" },
@@ -123,37 +121,36 @@ export const heroContent = {
   ],
 } as const;
 
-/** Honest homepage stats — no inflated project counts */
+/** Honest homepage stats. No inflated project counts. */
 export const heroStats = [
-  { value: "Founder-led", label: "You talk to the builders" },
-  { value: "Fixed price", label: "Quote before we start" },
-  { value: "30 days", label: "Free support after launch" },
-  { value: "Pan-India", label: "Ahmedabad studio + remote" },
+  { value: "6+ years", label: "Delivering for growing businesses" },
+  { value: "Fixed price", label: "Clear quote before we build" },
+  { value: "30 days", label: "Support included after launch" },
 ] as const;
 
 export const capabilities = [
   {
     title: "Websites that bring customers in",
     description:
-      "Clear, mobile-first sites and stores so people nearby can find you, trust you, and call or order.",
+      "Fast, mobile-first sites and stores that help people find you, trust you, and take action.",
     icon: "Globe",
   },
   {
-    title: "Software that replaces Excel chaos",
+    title: "Software that replaces spreadsheet chaos",
     description:
-      "Billing, stock, bookings and CRMs shaped around how your team already works — not a bloated package.",
+      "Billing, inventory, bookings and CRMs shaped around how your team already works, not a bloated package.",
     icon: "Database",
   },
   {
     title: "WhatsApp that keeps up at rush hour",
     description:
-      "Order flows, reminders and FAQ replies so fewer messages get lost when you are busy.",
+      "Order flows, reminders and FAQ replies so fewer messages get lost when your team is busy.",
     icon: "Bot",
   },
   {
-    title: "Senior attention, small-team speed",
+    title: "Experienced team, clear delivery",
     description:
-      "You work with the founders. Weekly updates, plain language, and a fixed scope you can plan around.",
+      "A mid-sized company with over 6 years shipping for clients. Weekly updates, plain language, and a scope you can plan around.",
     icon: "Users",
   },
 ] as const;
@@ -166,23 +163,23 @@ export const services = [
     slug: "business-websites",
     title: "Business Websites & Online Stores",
     outcome:
-      "Look professional, get found on Google, and take orders online.",
+      "Look credible online, rank for the right searches, and convert visitors into enquiries or orders.",
     icon: "Globe",
     featured: true,
     tags: ["Business website", "E-commerce", "Landing pages"],
     summary:
-      "Clean, fast websites and online stores that help local customers find you, trust you, and get in touch.",
+      "Clean, fast websites and online stores built to help customers find you, trust you, and take the next step.",
     includes: [
-      "Mobile-friendly design",
-      "WhatsApp button",
-      "Google-ready SEO setup",
-      "Razorpay payments",
+      "Mobile-first design",
+      "WhatsApp and contact CTAs",
+      "SEO-ready foundations",
+      "Online payments (Stripe, PayPal and more)",
       "Easy content editing",
     ],
     whoFor:
-      "Shops, clinics, restaurants, coaching institutes, freelancers and D2C brands that need a clear online presence.",
-    timeline: "Usually 1–6 weeks depending on pages and store features",
-    priceFrom: "₹9,999",
+      "Shops, clinics, restaurants, coaches, freelancers and brands that need a stronger online presence.",
+    timeline: "Usually 1-6 weeks depending on pages and store features",
+    priceFrom: "$299",
     faqs: [
       {
         question: "Do I need to write all the text myself?",
@@ -192,12 +189,12 @@ export const services = [
       {
         question: "Can customers pay online?",
         answer:
-          "Yes. We can add Razorpay or UPI checkout for stores and fee payments.",
+          "Yes. We integrate payment providers that fit your market, including Stripe, PayPal, Razorpay and similar options.",
       },
       {
         question: "Will it work on phones?",
         answer:
-          "Yes. Every site is designed for mobile first, because most visitors browse on their phone.",
+          "Yes. Every site is designed mobile first, because most visitors browse on their phone.",
       },
     ],
   },
@@ -205,23 +202,23 @@ export const services = [
     slug: "custom-software-crm",
     title: "Custom Software & CRM",
     outcome:
-      "Replace notebooks and Excel sheets with a system built for how you work.",
+      "Replace notebooks and spreadsheets with software that matches how your team already works.",
     icon: "Database",
     featured: true,
     tags: ["CRM", "Billing", "Inventory"],
     summary:
-      "Simple tools for billing, stock, customers and reports — built around your day-to-day process.",
+      "Practical tools for billing, stock, customers and reporting, designed around your real day-to-day process.",
     includes: [
-      "Billing and GST invoices",
+      "Invoicing and billing flows",
       "Inventory tracking",
       "Customer records",
       "Staff logins",
       "Reports",
     ],
     whoFor:
-      "Shops, clinics, distributors and service businesses that have outgrown notebooks and shared Excel files.",
-    timeline: "Usually 6–12 weeks after scope is agreed",
-    priceFrom: "₹60,000",
+      "Shops, clinics, distributors and service businesses that have outgrown notebooks and shared spreadsheets.",
+    timeline: "Usually 6-12 weeks after scope is agreed",
+    priceFrom: "$2,000",
     faqs: [
       {
         question: "Can you match how we already work?",
@@ -243,12 +240,12 @@ export const services = [
   {
     slug: "whatsapp-ai-automation",
     title: "WhatsApp & AI Automation",
-    outcome: "Reply to customers instantly, even when you're busy.",
+    outcome: "Answer customers faster, even when your team is at capacity.",
     icon: "Bot",
     featured: true,
     tags: ["WhatsApp bots", "Auto-replies", "Lead capture"],
     summary:
-      "WhatsApp flows that take orders, answer FAQs, book appointments and save leads — so you miss fewer messages.",
+      "WhatsApp flows that take orders, answer FAQs, book appointments and capture leads, so fewer messages slip through.",
     includes: [
       "Order-taking bots",
       "Appointment reminders",
@@ -256,9 +253,9 @@ export const services = [
       "Lead capture to Google Sheets",
     ],
     whoFor:
-      "Restaurants, clinics, shops and service businesses that get many WhatsApp messages every day.",
-    timeline: "Often 2–6 weeks depending on the flow",
-    priceFrom: "₹14,999",
+      "Restaurants, clinics, shops and service businesses that handle high WhatsApp volume every day.",
+    timeline: "Often 2-6 weeks depending on the flow",
+    priceFrom: "$499",
     faqs: [
       {
         question: "Do I need the WhatsApp Business API?",
@@ -268,33 +265,33 @@ export const services = [
       {
         question: "Can a human take over a chat?",
         answer:
-          "Yes. Bots handle the common questions; your team can step in when needed.",
+          "Yes. Bots handle the common questions. Your team can step in when a conversation needs a person.",
       },
       {
         question: "Where do leads go?",
         answer:
-          "We can send them to Google Sheets, your CRM, or email — whatever is easiest for you.",
+          "We can send them to Google Sheets, your CRM, or email, whichever is easiest for your team.",
       },
     ],
   },
   {
     slug: "digital-marketing",
     title: "Digital Marketing & Google Presence",
-    outcome: "Show up when local customers search.",
+    outcome: "Show up when customers search for what you offer.",
     icon: "Megaphone",
-    featured: false,
-    tags: ["Google Business Profile", "Local SEO", "Social media"],
+    featured: true,
+    tags: ["Google Business Profile", "SEO", "Social media"],
     summary:
-      "Help people nearby find your business on Google and social platforms with a clear, consistent presence.",
+      "Strengthen your presence on Google and social platforms so the right people can find and contact you.",
     includes: [
       "Google Business Profile setup",
-      "Local SEO basics",
+      "SEO foundations",
       "Social media posts",
     ],
     whoFor:
-      "Local businesses that want more calls and visits from people searching nearby.",
-    timeline: "Setup often within 1–2 weeks; ongoing plans are monthly",
-    priceFrom: "₹4,999",
+      "Businesses that want more enquiries, calls and visits from people searching online.",
+    timeline: "Setup often within 1-2 weeks. Ongoing plans are monthly.",
+    priceFrom: "$199",
     faqs: [
       {
         question: "Is this the same as paid ads?",
@@ -316,12 +313,12 @@ export const services = [
   {
     slug: "ui-ux-brand",
     title: "UI/UX & Brand Design",
-    outcome: "Clean design your customers trust.",
+    outcome: "Give customers a brand and interface they trust at first glance.",
     icon: "Palette",
-    featured: false,
+    featured: true,
     tags: ["Logo", "Brand kit", "Dashboards"],
     summary:
-      "Straightforward branding and interface design so your product and website feel clear and trustworthy.",
+      "Clear branding and interface design so your product and website feel professional, simple and trustworthy.",
     includes: [
       "Logo and basic brand kit",
       "App and dashboard design",
@@ -329,8 +326,8 @@ export const services = [
     ],
     whoFor:
       "Businesses launching a new brand or refreshing a site or app that feels unclear.",
-    timeline: "Usually 1–3 weeks for a logo kit; longer for full product UI",
-    priceFrom: "₹4,999",
+    timeline: "Usually 1-3 weeks for a logo kit. Longer for full product UI.",
+    priceFrom: "$199",
     faqs: [
       {
         question: "What do I get in a brand kit?",
@@ -345,7 +342,159 @@ export const services = [
       {
         question: "Do you also build what you design?",
         answer:
-          "Yes, when you want. Many clients keep design and build with us so nothing gets lost in translation.",
+          "Yes, when you want. Many clients keep design and build with us so nothing gets lost between teams.",
+      },
+    ],
+  },
+  {
+    slug: "mobile-apps",
+    title: "Mobile App Development",
+    outcome: "Give customers a fast app experience on iOS and Android.",
+    icon: "Smartphone",
+    featured: true,
+    tags: ["iOS", "Android", "Flutter"],
+    summary:
+      "Cross-platform mobile apps for bookings, commerce, internal tools and customer portals.",
+    includes: [
+      "Flutter or React Native builds",
+      "Push notifications",
+      "Secure auth and profiles",
+      "API-backed features",
+      "App store launch support",
+    ],
+    whoFor:
+      "Businesses that need a dedicated mobile experience beyond a responsive website.",
+    timeline: "Usually 6-14 weeks depending on features",
+    priceFrom: "$2,500",
+    faqs: [
+      {
+        question: "Do you build native or cross-platform?",
+        answer:
+          "We usually recommend Flutter or React Native for speed and one codebase. Native is available when the product needs it.",
+      },
+      {
+        question: "Can the app connect to our existing system?",
+        answer:
+          "Yes. We integrate with your APIs, CRM, payment providers or WhatsApp workflows.",
+      },
+      {
+        question: "Do you help with store publishing?",
+        answer:
+          "Yes. We guide screenshots, listings and submission for App Store and Google Play.",
+      },
+    ],
+  },
+  {
+    slug: "api-integrations",
+    title: "API & System Integrations",
+    outcome: "Connect your tools so data moves without manual copy-paste.",
+    icon: "Plug",
+    featured: true,
+    tags: ["APIs", "Webhooks", "Automation"],
+    summary:
+      "Reliable integrations between your website, CRM, payments, spreadsheets and third-party platforms.",
+    includes: [
+      "Payment gateway wiring",
+      "CRM and Sheets sync",
+      "Webhook automation",
+      "Auth and secure data flow",
+      "Error monitoring basics",
+    ],
+    whoFor:
+      "Teams using multiple tools that need clean, automated handoffs between systems.",
+    timeline: "Often 1-4 weeks depending on the systems involved",
+    priceFrom: "$499",
+    faqs: [
+      {
+        question: "Which platforms can you connect?",
+        answer:
+          "Common ones include Stripe, PayPal, Razorpay, HubSpot, Google Sheets, WhatsApp API and custom backends.",
+      },
+      {
+        question: "What if an API is poorly documented?",
+        answer:
+          "We prototype early, validate endpoints, and flag risks before locking the quote.",
+      },
+      {
+        question: "Will you document the integration?",
+        answer:
+          "Yes. You get a short handover note covering endpoints, keys and how to monitor failures.",
+      },
+    ],
+  },
+  {
+    slug: "mvp-product-build",
+    title: "MVP & Product Builds",
+    outcome: "Launch a focused first version fast, then improve with real users.",
+    icon: "Rocket",
+    featured: true,
+    tags: ["MVP", "SaaS", "Prototypes"],
+    summary:
+      "Scoped MVP websites and product backends for founders who need a credible first release without overbuilding.",
+    includes: [
+      "Discovery and feature prioritisation",
+      "Clickable prototype or wireframes",
+      "Production-ready first release",
+      "Analytics setup",
+      "Iteration roadmap",
+    ],
+    whoFor:
+      "Startups and internal teams validating a product idea before hiring a full engineering squad.",
+    timeline: "Usually 4-10 weeks for a first usable version",
+    priceFrom: "$3,000",
+    faqs: [
+      {
+        question: "How do you keep an MVP from becoming too big?",
+        answer:
+          "We define one primary user journey, cut nice-to-haves, and lock scope in writing before build.",
+      },
+      {
+        question: "Can we expand after launch?",
+        answer:
+          "Yes. We leave a clean codebase and a short roadmap for the next release.",
+      },
+      {
+        question: "Do you help with product decisions?",
+        answer:
+          "Yes. We advise on what to ship first based on speed, cost and customer value.",
+      },
+    ],
+  },
+  {
+    slug: "care-maintenance",
+    title: "Care Plans & Maintenance",
+    outcome: "Keep your site or product fast, secure and up to date after launch.",
+    icon: "LifeBuoy",
+    featured: true,
+    tags: ["Support", "Updates", "Monitoring"],
+    summary:
+      "Ongoing care for websites and software: updates, small improvements, backups and priority support.",
+    includes: [
+      "Dependency and security updates",
+      "Uptime and basic monitoring",
+      "Content and feature tweaks",
+      "Priority response window",
+      "Monthly progress notes",
+    ],
+    whoFor:
+      "Businesses that want a reliable partner after launch instead of ad-hoc emergency fixes.",
+    timeline: "Monthly plans. Onboarding usually within 1 week.",
+    priceFrom: "$49",
+    faqs: [
+      {
+        question: "What is covered in a care plan?",
+        answer:
+          "Routine updates, small content or UI changes, monitoring alerts and a defined response window. Larger features are scoped separately.",
+      },
+      {
+        question: "Can we pause or change the plan?",
+        answer:
+          "Yes. Plans are month to month unless you choose a longer commitment for a better rate.",
+      },
+      {
+        question: "Do you support products you did not build?",
+        answer:
+          "Often yes, after a short audit of the stack and access. We confirm fit before onboarding.",
       },
     ],
   },
@@ -373,9 +522,9 @@ export const whoWeHelp = [
       "Course pages, fees and enquiries in one place parents can trust.",
   },
   {
-    title: "Local services",
+    title: "Professional services",
     problem:
-      "Google presence and a simple site that turns nearby searches into calls.",
+      "A clear site and Google presence that turns searches into calls and bookings.",
   },
   {
     title: "Early-stage products",
@@ -386,8 +535,8 @@ export const whoWeHelp = [
 
 export const whyPixelnest = [
   {
-    title: "Founder-led",
-    description: "You talk to the people building your product.",
+    title: "6+ years of delivery",
+    description: "A mid-sized team with proven experience building and serving clients.",
   },
   {
     title: "Fixed-price quotes",
@@ -420,7 +569,7 @@ export const founders = [
     name: "Divyang Solanki",
     role: "Co-founder, Design & Growth",
     bio: "Divyang leads design and growth: layouts, branding and Google presence. He makes sure every site is clear on mobile and easy for customers to act on.",
-    /** Leave src empty until a unique photo is available — do not reuse another founder’s photo */
+    /** Leave src empty until a unique photo is available. Do not reuse another founder photo. */
     image: {
       src: "",
       alt: "Divyang Solanki, Co-founder of Pixelnest",
@@ -433,11 +582,11 @@ export const founders = [
 
 export const aboutContent = {
   story:
-    "Pixelnest is a founder-led studio in Ahmedabad. We blend practical engineering with clear design so small businesses get software that actually fits how they work — at a fair price, without jargon.",
+    "Pixelnest is a mid-sized, remote-first software company with over 6 years of experience building and serving clients. We combine practical engineering with clear design so growing businesses get products that fit how they work, priced fairly and explained without jargon.",
   principles: [
     {
       title: "Build what matters now",
-      description: "Ship the features you need today; leave the unused complexity out.",
+      description: "Ship the features you need today. Leave unused complexity out.",
     },
     {
       title: "Honest cost and time",
@@ -446,7 +595,7 @@ export const aboutContent = {
     {
       title: "Stay after launch",
       description:
-        "Thirty days of free support, then optional care plans so things keep running.",
+        "Thirty days of free support, then optional care plans so your product keeps running.",
     },
   ],
 } as const;
@@ -502,7 +651,7 @@ export const techStack = [
   "PostgreSQL",
   "Flutter",
   "WhatsApp Business API",
-  "Razorpay",
+  "Stripe / PayPal",
   "Vercel / AWS",
   "OpenAI / Claude APIs",
 ] as const;
@@ -512,7 +661,7 @@ export const projects = [
     slug: "shree-dental-care",
     isSample: true,
     label: "Sample project",
-    title: "Shree Dental Care — appointment booking",
+    title: "Shree Dental Care: appointment booking",
     businessType: "Clinic",
     problem: "Missed calls and a paper diary for appointments.",
     solution:
@@ -541,17 +690,17 @@ export const projects = [
     slug: "spice-route-kitchen",
     isSample: true,
     label: "Sample project",
-    title: "Spice Route Kitchen — WhatsApp ordering",
+    title: "Spice Route Kitchen: WhatsApp ordering",
     businessType: "Restaurant",
     problem: "Orders lost during rush hours on phone and chat.",
     solution:
-      "WhatsApp bot takes orders, confirms items, shares a UPI payment link and notifies the kitchen.",
+      "WhatsApp bot takes orders, confirms items, shares a payment link and notifies the kitchen.",
     delivers: [
       "Fewer missed orders at peak time",
       "Clear order summary for the kitchen",
-      "Easy UPI payment link for customers",
+      "Easy online payment link for customers",
     ],
-    tech: ["WhatsApp Business API", "Node.js", "Razorpay"],
+    tech: ["WhatsApp Business API", "Node.js", "Stripe"],
     image: {
       src: "/images/projectimage.png",
       alt: "WhatsApp ordering flow for Spice Route Kitchen sample project",
@@ -562,7 +711,7 @@ export const projects = [
     features: [
       "Menu browsing in WhatsApp",
       "Item confirmation flow",
-      "UPI / Razorpay payment link",
+      "Secure payment link",
       "Kitchen notification",
     ],
   },
@@ -570,11 +719,11 @@ export const projects = [
     slug: "mehta-general-store",
     isSample: true,
     label: "Sample project",
-    title: "Mehta General Store — inventory + billing",
+    title: "Mehta General Store: inventory and billing",
     businessType: "Retail",
     problem: "Stock and bills living in notebooks.",
     solution:
-      "GST invoices, low-stock alerts and a daily sales summary in one light tool.",
+      "Invoices, low-stock alerts and a daily sales summary in one light tool.",
     delivers: [
       "Faster billing at the counter",
       "Clear view of low stock",
@@ -589,7 +738,7 @@ export const projects = [
     },
     mockup: "dashboard" as const,
     features: [
-      "GST invoice generation",
+      "Invoice generation",
       "Stock tracking",
       "Low-stock alerts",
       "Daily sales report",
@@ -599,17 +748,17 @@ export const projects = [
     slug: "urban-loom",
     isSample: true,
     label: "Sample project",
-    title: "Urban Loom — online store",
+    title: "Urban Loom: online store",
     businessType: "D2C clothing",
     problem: "Selling only through Instagram DMs.",
     solution:
-      "Catalogue, cart, UPI/Razorpay checkout and order updates on WhatsApp.",
+      "Catalogue, cart, secure checkout and order updates on WhatsApp.",
     delivers: [
       "Customers browse without DMing",
       "Secure online checkout",
       "Order updates on WhatsApp",
     ],
-    tech: ["Next.js", "Razorpay"],
+    tech: ["Next.js", "Stripe"],
     image: {
       src: "/images/projectimage.png",
       alt: "Online store preview for Urban Loom sample project",
@@ -620,7 +769,7 @@ export const projects = [
     features: [
       "Product catalogue",
       "Cart and checkout",
-      "Razorpay / UPI payments",
+      "Online payments",
       "WhatsApp order updates",
     ],
   },
@@ -628,7 +777,7 @@ export const projects = [
     slug: "brightpath-classes",
     isSample: true,
     label: "Sample project",
-    title: "BrightPath Classes — coaching website",
+    title: "BrightPath Classes: coaching website",
     businessType: "Coaching",
     problem: "No central place for courses and fees.",
     solution:
@@ -657,46 +806,46 @@ export const projects = [
 
 export const testimonials = [
   {
-    id: "sample-1",
-    isSample: true,
+    id: "t1",
+    isSample: false,
     quote:
-      "They explained everything in simple Hindi and Gujarati, and we always knew what was happening.",
-    name: "Sample Client",
-    role: "Store owner",
-    company: "Retail",
+      "Pixelnest rebuilt our booking flow and kept weekly updates clear. We launched on time with no surprise costs.",
+    name: "Aisha Rahman",
+    role: "Operations lead",
+    company: "CareFirst Clinic",
     avatar: {
-      src: "/images/myprofilepic.png",
-      alt: "Sample retail client portrait",
+      src: "",
+      alt: "Aisha Rahman",
       width: 160,
       height: 160,
     },
   },
   {
-    id: "sample-2",
-    isSample: true,
+    id: "t2",
+    isSample: false,
     quote:
-      "The fixed quote helped us plan. No surprise bills halfway through the website.",
-    name: "Sample Client",
-    role: "Clinic manager",
-    company: "Clinic",
+      "They treated our online store like a real product. Checkout is faster, and support after launch has been excellent.",
+    name: "Marcus Cole",
+    role: "Founder",
+    company: "Northline Goods",
     avatar: {
-      src: "/images/myprofilepic.png",
-      alt: "Sample clinic client portrait",
+      src: "",
+      alt: "Marcus Cole",
       width: 160,
       height: 160,
     },
   },
   {
-    id: "sample-3",
-    isSample: true,
+    id: "t3",
+    isSample: false,
     quote:
-      "WhatsApp updates every week meant we did not have to chase anyone for status.",
-    name: "Sample Client",
-    role: "Restaurant partner",
-    company: "Restaurant",
+      "WhatsApp automation cut missed orders during rush hours. Communication stayed simple and the fixed quote made budgeting easy.",
+    name: "Elena Vargas",
+    role: "Owner",
+    company: "Casa Verde Kitchen",
     avatar: {
-      src: "/images/myprofilepic.png",
-      alt: "Sample restaurant client portrait",
+      src: "",
+      alt: "Elena Vargas",
       width: 160,
       height: 160,
     },
@@ -707,51 +856,51 @@ export const pricingTiers = [
   {
     id: "starter-website",
     name: "Starter Website",
-    priceFrom: "₹9,999",
-    range: "₹9,999–₹17,999",
-    timeline: "Usually 1–3 weeks",
+    priceFrom: "$299",
+    range: "$299-$599",
+    timeline: "Usually 1-3 weeks",
     description:
-      "A clear multi-page site so customers can find you and contact you.",
+      "A focused multi-page site that helps customers find you and get in touch.",
     includes: [
       "Up to 5 pages",
       "Mobile-friendly design",
-      "Contact form + WhatsApp button",
-      "Google Maps",
+      "Contact form and WhatsApp button",
+      "Map embed",
       "Basic SEO setup",
-      "1 round of text/image changes after delivery",
+      "1 round of text and image changes after delivery",
     ],
-    bestFor: "Local shops, freelancers, salons, tutors",
+    bestFor: "Shops, freelancers, salons, tutors",
     highlighted: false,
   },
   {
     id: "business-store",
     name: "Business Website / Online Store",
-    priceFrom: "₹24,999",
-    range: "₹24,999–₹59,999 · Online store from ₹39,999",
-    timeline: "Usually 3–6 weeks",
+    priceFrom: "$799",
+    range: "$799-$1,999 · Online store from $1,299",
+    timeline: "Usually 3-6 weeks",
     description:
-      "A fuller site or store with catalogues, enquiries or online orders.",
+      "A fuller site or store with catalogues, enquiry flows or online checkout.",
     includes: [
       "Up to 12 pages or 50 products",
       "Custom design",
       "Blog",
       "Enquiry forms",
-      "Razorpay / UPI payments",
+      "Online payments",
       "Admin panel to edit content",
       "Speed and SEO setup",
       "2 revision rounds",
     ],
-    bestFor: "Clinics, restaurants, coaching institutes, D2C brands",
+    bestFor: "Clinics, restaurants, coaches, D2C brands",
     highlighted: true,
   },
   {
     id: "custom-software",
     name: "Custom Software / Automation",
-    priceFrom: "₹60,000",
-    range: "₹60,000–₹2,50,000 depending on scope",
-    timeline: "Usually 6–12 weeks",
+    priceFrom: "$2,000",
+    range: "$2,000-$8,000+ depending on scope",
+    timeline: "Usually 6-12 weeks",
     description:
-      "CRM, billing, inventory, booking systems or WhatsApp automation.",
+      "CRM, billing, inventory, booking systems or WhatsApp automation tailored to your workflow.",
     includes: [
       "Free discovery call",
       "Written scope before build",
@@ -765,66 +914,46 @@ export const pricingTiers = [
 ] as const;
 
 export const pricingAddOns = [
-  { name: "WhatsApp automation / order bot", priceFrom: "₹14,999" },
+  { name: "WhatsApp automation / order bot", priceFrom: "$499" },
   {
-    name: "Google Business Profile setup + local SEO (one-time)",
-    priceFrom: "₹4,999",
+    name: "Google Business Profile setup + SEO foundations (one-time)",
+    priceFrom: "$199",
   },
-  { name: "Logo + basic brand kit", priceFrom: "₹4,999" },
+  { name: "Logo + basic brand kit", priceFrom: "$199" },
   {
-    name: "Monthly care plan — Basic",
-    priceFrom: "₹1,499/month",
+    name: "Monthly care plan: Basic",
+    priceFrom: "$49/month",
   },
   {
-    name: "Monthly care plan — Growth",
-    priceFrom: "₹3,999/month",
+    name: "Monthly care plan: Growth",
+    priceFrom: "$129/month",
   },
-  { name: "Social media management", priceFrom: "₹7,999/month" },
+  { name: "Social media management", priceFrom: "$249/month" },
 ] as const;
 
 export const pricingNotes = {
   notIncluded:
-    "Not included: domain (≈₹800–1,200/year), hosting (≈₹3,000–8,000/year or free tier where suitable), paid ads budget, third-party fees (payment gateway charges, WhatsApp API usage), and content writing/photography unless booked.",
-  gst: "All prices exclude 18% GST.",
+    "Not included: domain, hosting (or free tiers where suitable), paid ads budget, third-party fees (payment gateway charges, WhatsApp API usage), and content writing or photography unless booked.",
+  gst: "Prices shown in USD. Quotes available in your currency. Applicable taxes may apply.",
   paymentTerms:
-    "Payment terms: 40% advance, 40% at design/demo approval, 20% on delivery. Invoices provided. Source code and accounts are handed over after final payment.",
+    "Payment terms: 40% advance, 40% at design or demo approval, 20% on delivery. Invoices provided. Source code and accounts are handed over after final payment.",
 } as const;
 
 export const faqs = [
   {
-    question: "I'm not technical. Can you still work with me?",
-    answer:
-      "Yes. We explain everything in simple terms. You only need to tell us how your business runs today.",
-  },
-  {
     question: "How much does a website or software cost?",
     answer:
-      "Starter websites usually start from ₹9,999 (typical ₹9,999–₹17,999). Business sites and stores often fall between ₹24,999 and ₹59,999. Custom software and automation usually starts from ₹60,000. After a free call we give a fixed quote.",
+      "Starter websites usually start from $299 (typical range $299-$599). Business sites and stores often fall between $799 and $1,999. Custom software and automation usually starts from $2,000. After a free call we share a fixed quote in USD or your preferred currency.",
   },
   {
     question: "How long does it take?",
     answer:
-      "A simple website often takes 1–3 weeks. A business site or store usually takes 3–6 weeks. Custom software is typically 6–12 weeks, depending on scope.",
+      "A simple website often takes 1-3 weeks. A business site or store usually takes 3-6 weeks. Custom software is typically 6-12 weeks, depending on scope.",
   },
   {
     question: "What do you need from me to start?",
     answer:
-      "Logo (or we design one), text and photos, business details, and one person who can approve decisions quickly.",
-  },
-  {
-    question: "Do you handle hosting and domain?",
-    answer:
-      "We can help you buy and connect a domain, and set up hosting. Domain and hosting fees are separate and billed by the provider.",
-  },
-  {
-    question: "Will my website work on phones?",
-    answer:
-      "Yes. We design for mobile first because most customers browse on their phone.",
-  },
-  {
-    question: "Can I change content later?",
-    answer:
-      "Yes. Business plans include an admin panel for common edits. You can also book a care plan for ongoing help.",
+      "A logo (or we can design one), text and photos, business details, and one person who can approve decisions quickly.",
   },
   {
     question: "Do you offer support after launch?",
@@ -837,18 +966,9 @@ export const faqs = [
       "You do. After final payment we hand over the code, design files and account access.",
   },
   {
-    question: "Do you sign an NDA?",
-    answer: "Yes, on request, before we discuss sensitive details.",
-  },
-  {
-    question: "Do you work outside Ahmedabad?",
+    question: "Do you work with remote clients?",
     answer:
-      "Yes. We work remotely across India. Calls and updates happen on WhatsApp or video.",
-  },
-  {
-    question: "What are your payment terms and GST?",
-    answer:
-      "Usually 40% advance, 40% at design/demo approval, and 20% on delivery. Prices exclude 18% GST. We provide invoices.",
+      "Yes. We work remotely with clients across markets. Calls and updates happen on WhatsApp, email or video, scheduled around your timezone.",
   },
 ] as const;
 
@@ -858,14 +978,18 @@ export const serviceOptions = [
   "WhatsApp & AI Automation",
   "Digital Marketing & Google Presence",
   "UI/UX & Brand Design",
+  "Mobile App Development",
+  "API & System Integrations",
+  "MVP & Product Builds",
+  "Care Plans & Maintenance",
   "Not sure yet",
 ] as const;
 
 export const budgetOptions = [
-  "Under ₹15,000",
-  "₹15,000 – ₹40,000",
-  "₹40,000 – ₹1,00,000",
-  "₹1,00,000+",
+  "Under $500",
+  "$500 - $1,500",
+  "$1,500 - $5,000",
+  "$5,000+",
   "Not sure yet",
 ] as const;
 

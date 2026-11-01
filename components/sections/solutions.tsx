@@ -16,7 +16,7 @@ export function Solutions() {
           <SectionHeading
             eyebrow="Selected work"
             title="Projects that show how we deliver"
-            description="Sample builds framed as problem, solution and outcome — the same approach we use for clinics, shops and restaurants."
+            description="Sample builds framed as problem, solution and outcome. The same approach we use for clinics, shops and restaurants."
           />
         </Reveal>
 

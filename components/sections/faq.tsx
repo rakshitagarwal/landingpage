@@ -36,8 +36,8 @@ export function FAQ() {
         <Reveal>
           <SectionHeading
             eyebrow="FAQ"
-            title="Questions small business owners ask us"
-            description="Straight answers. If yours isn't here, message us on WhatsApp."
+            title="Answers before you commit"
+            description="Clear responses to the questions teams ask most. If yours is missing, get in touch."
           />
         </Reveal>
 

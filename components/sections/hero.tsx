@@ -71,11 +71,13 @@ export function Hero() {
               {heroContent.primaryCta}
             </a>
             <a
-              href="#work"
+              href="#case-studies"
               className={cn(buttonLinkClass("secondary", "lg"))}
               onClick={(e) => {
                 e.preventDefault();
-                document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" });
+                document
+                  .querySelector("#case-studies")
+                  ?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               {heroContent.secondaryCta}
@@ -142,7 +144,7 @@ export function Hero() {
       </div>
 
       <div className="container-site mt-14 sm:mt-16 lg:mt-20">
-        <ul className="grid divide-y divide-border-subtle rounded-[1.25rem] border border-border-subtle bg-bg-card/70 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
+        <ul className="grid divide-y divide-border-subtle rounded-[1.25rem] border border-border-subtle bg-bg-card/70 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
           {heroStats.map((stat) => (
             <li key={stat.value} className="min-w-0 px-5 py-5 sm:px-6 sm:py-6">
               <p className="font-serif text-xl font-bold text-text-primary sm:text-2xl">

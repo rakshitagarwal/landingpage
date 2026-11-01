@@ -1,9 +1,12 @@
-import { getWhatsAppLink, pricingAddOns, pricingNotes, pricingTiers } from "@/lib/site-config";
+import { Boxes, Layers, Sparkles } from "lucide-react";
+import { getWhatsAppLink, pricingNotes, pricingTiers } from "@/lib/site-config";
 import { buttonLinkClass } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionWrapper } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { cn } from "@/lib/utils";
+
+const tierIcons = [Layers, Sparkles, Boxes] as const;
 
 export function Pricing() {
   return (
@@ -12,8 +15,8 @@ export function Pricing() {
         <Reveal>
           <SectionHeading
             eyebrow="Pricing"
-            title="Clear starting prices in ₹"
-            description="Final quotes are fixed after a free call. Ranges below help you plan."
+            title="Transparent pricing from day one"
+            description="Starting prices in USD. Final quotes are fixed after a discovery call, and we can quote in your currency."
           />
         </Reveal>
 
@@ -21,42 +24,48 @@ export function Pricing() {
           {pricingTiers.map((tier, index) => {
             const hasPrice = Boolean(tier.priceFrom?.trim());
             const inverted = tier.highlighted;
+            const Icon = tierIcons[index] ?? Layers;
             return (
               <Reveal key={tier.id} delay={index * 0.05} className="flex h-full">
                 <article
                   className={cn(
-                    "flex h-full w-full flex-col rounded-[1.25rem] border p-6 sm:p-7",
+                    "card-hover-wash group relative flex h-full w-full flex-col rounded-[1.25rem] border p-6 sm:p-7",
                     inverted
                       ? "border-accent-primary/40 bg-bg-elevated shadow-[var(--shadow-card)]"
                       : "card-surface"
                   )}
                 >
                   {inverted ? (
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-accent-primary">
+                    <p className="relative z-[1] mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-accent-primary">
                       Most popular
                     </p>
                   ) : null}
-                  <h3 className="font-serif text-2xl font-bold text-text-primary">
+                  <div className="card-icon relative z-[1] mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-border-subtle text-accent-primary">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </div>
+                  <h3 className="relative z-[1] font-serif text-2xl font-bold text-text-primary">
                     {tier.name}
                   </h3>
                   {hasPrice ? (
                     <>
-                      <p className="mt-4 font-serif text-3xl font-bold text-accent-primary">
+                      <p className="relative z-[1] mt-4 font-serif text-3xl font-bold text-accent-primary">
                         {tier.priceFrom}
                         <span className="ml-1 text-sm font-sans font-medium text-text-secondary">
                           from
                         </span>
                       </p>
-                      <p className="mt-1 text-sm text-text-secondary">
+                      <p className="relative z-[1] mt-1 text-sm text-text-secondary">
                         Typical range: {tier.range}
                       </p>
                     </>
                   ) : null}
-                  <p className="mt-2 text-sm text-text-secondary">{tier.timeline}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-text-secondary sm:text-base">
+                  <p className="relative z-[1] mt-2 text-sm text-text-secondary">
+                    {tier.timeline}
+                  </p>
+                  <p className="relative z-[1] mt-4 text-sm leading-relaxed text-text-secondary sm:text-base">
                     {tier.description}
                   </p>
-                  <ul className="mt-5 flex-1 space-y-2">
+                  <ul className="relative z-[1] mt-5 flex-1 space-y-2">
                     {tier.includes.map((item) => (
                       <li
                         key={item}
@@ -67,7 +76,7 @@ export function Pricing() {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-4 text-sm text-text-primary">
+                  <p className="relative z-[1] mt-4 text-sm text-text-primary">
                     <span className="font-semibold">Best for: </span>
                     {tier.bestFor}
                   </p>
@@ -77,9 +86,13 @@ export function Pricing() {
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cn(buttonLinkClass("primary"), "mt-6 w-full")}
+                    className={cn(
+                      buttonLinkClass("primary"),
+                      "card-cta relative z-[1] mt-6 w-full"
+                    )}
                   >
-                    {hasPrice ? "Get a quote on WhatsApp" : "Get a quote"}
+                    Get in touch
+                    <span className="sr-only"> for {tier.name}</span>
                   </a>
                 </article>
               </Reveal>
@@ -87,34 +100,9 @@ export function Pricing() {
           })}
         </div>
 
-        <p className="text-center text-sm font-medium text-text-primary">
+        <p className="text-center text-sm text-text-secondary">
           {pricingNotes.gst}
         </p>
-
-        <Reveal>
-          <div className="card-surface p-6 sm:p-8">
-            <h3 className="font-serif text-xl font-bold text-text-primary">
-              Add-ons
-            </h3>
-            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-              {pricingAddOns.map((item) => (
-                <li
-                  key={item.name}
-                  className="flex items-start justify-between gap-3 border-b border-border-subtle pb-3 text-sm last:border-0"
-                >
-                  <span className="text-text-secondary">{item.name}</span>
-                  <span className="shrink-0 font-medium text-text-primary">
-                    from {item.priceFrom}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 space-y-3 text-sm leading-relaxed text-text-secondary">
-              <p>{pricingNotes.notIncluded}</p>
-              <p>{pricingNotes.paymentTerms}</p>
-            </div>
-          </div>
-        </Reveal>
       </div>
     </SectionWrapper>
   );

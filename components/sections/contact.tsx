@@ -73,7 +73,7 @@ export function Contact() {
 
       reset();
       setStatus("success");
-      setStatusMessage("Thanks — we got your message. We'll reply soon.");
+      setStatusMessage("Thanks, we got your message. We will reply soon.");
     } catch {
       setStatus("error");
       setStatusMessage(
@@ -91,7 +91,7 @@ export function Contact() {
         <Reveal>
           <SectionHeading
             eyebrow="Contact"
-            title="Tell us what you need"
+            title="Start a conversation about your project"
             description={`${siteConfig.replyNote} Hours: ${siteConfig.hours}.`}
           />
         </Reveal>
@@ -105,7 +105,7 @@ export function Contact() {
                 rel="noopener noreferrer"
                 className={cn(buttonLinkClass("primary", "lg"), "w-full")}
               >
-                Chat on WhatsApp
+                Get in touch
               </a>
               <a
                 href={`tel:${siteConfig.phoneTel}`}

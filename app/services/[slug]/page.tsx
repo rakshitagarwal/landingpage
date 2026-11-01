@@ -43,7 +43,7 @@ export default async function ServicePage({ params }: PageProps) {
     areaServed: "IN",
     offers: {
       "@type": "Offer",
-      priceCurrency: "INR",
+      priceCurrency: "USD",
       price: service.priceFrom.replace(/[^\d]/g, ""),
     },
   };
@@ -135,7 +135,7 @@ export default async function ServicePage({ params }: PageProps) {
             rel="noopener noreferrer"
             className={cn(buttonLinkClass("primary", "lg"), "mt-8")}
           >
-            Chat on WhatsApp about this
+            Get in touch
           </a>
         </article>
       </main>

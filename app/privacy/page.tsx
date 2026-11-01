@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: `How ${siteConfig.name} handles personal data under applicable Indian law.`,
+  description: `How ${siteConfig.name} handles personal data under applicable privacy laws.`,
 };
 
 export default function PrivacyPage() {
@@ -29,8 +29,8 @@ export default function PrivacyPage() {
             {siteConfig.name} (“we”, “us”) respects your privacy. This policy
             explains what personal data we collect when you use our website or
             contact us, and how we use it. We aim to follow the principles of
-            India’s Digital Personal Data Protection Act, 2023 (DPDP Act) and
-            other applicable law.
+            applicable privacy laws, including GDPR where relevant and India’s
+            Digital Personal Data Protection Act, 2023 (DPDP Act).
           </p>
           <h2 className="font-serif text-2xl font-bold text-text-primary">
             Who we are

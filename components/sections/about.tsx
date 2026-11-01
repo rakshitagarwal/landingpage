@@ -10,7 +10,7 @@ export function About() {
         <Reveal>
           <SectionHeading
             eyebrow="About"
-            title={`About ${siteConfig.name}`}
+            title={`Why teams choose ${siteConfig.name}`}
             description={aboutContent.story}
           />
         </Reveal>

@@ -146,7 +146,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               rel="noopener noreferrer"
               className={cn(buttonLinkClass("primary", "lg"), "mt-5")}
             >
-              Chat on WhatsApp
+              Get in touch
             </a>
           </div>
 
