@@ -1,17 +1,18 @@
 {
-  // Cloudflare Workers config for this Next.js landing site.
-  // No `services` / WORKER_SELF_REFERENCE binding — that was pointing at a
-  // Worker named "pixelnest" that does not exist yet and is not required
-  // for a normal landing page deploy.
-  "$schema": "node_modules/wrangler/config-schema.json",
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "pixelnest",
-  "compatibility_date": "2025-11-01",
-  "compatibility_flags": ["nodejs_compat"],
   "main": ".open-next/worker.js",
+  "upload_source_maps": true,
+  // Set this to today's date
+  "compatibility_date": "2026-10-31",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
   }
-  // Keep Images bindings in the Cloudflare dashboard if you already added them.
-  // Do not add a `services` array unless you intentionally call another Worker.
 }
