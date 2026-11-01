@@ -14,7 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Button, buttonLinkClass } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
-import { Section } from "@/components/ui/section";
+import { SectionWrapper } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 const contactSchema = z.object({
@@ -32,6 +32,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const contactEmail = siteConfig.contactEmail || siteConfig.email;
 
   const {
     register,
@@ -82,10 +83,10 @@ export function Contact() {
   };
 
   const fieldClass =
-    "w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base text-text-primary outline-none transition placeholder:text-text-muted focus:border-accent-primary/50 focus:ring-2 focus:ring-accent-primary/25";
+    "w-full rounded-xl border border-border-subtle bg-bg-secondary px-3.5 py-2.5 text-base text-text-primary outline-none transition placeholder:text-text-muted focus:border-accent-primary/50 focus:ring-2 focus:ring-accent-primary/25";
 
   return (
-    <Section id="contact" tone="muted">
+    <SectionWrapper id="contact" muted>
       <div className="section-stack">
         <Reveal>
           <SectionHeading
@@ -97,7 +98,7 @@ export function Contact() {
 
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
           <Reveal>
-            <div className="space-y-4 rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+            <div className="card-surface space-y-4 p-6 sm:p-8">
               <a
                 href={getWhatsAppLink()}
                 target="_blank"
@@ -115,23 +116,23 @@ export function Contact() {
 
               <div className="space-y-3 pt-2">
                 <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="flex items-start gap-3 rounded-xl border border-white/10 p-4 transition hover:border-white/20"
+                  href={`mailto:${contactEmail}`}
+                  className="flex min-h-11 items-start gap-3 rounded-xl border border-border-subtle p-4 transition hover:border-accent-primary/30"
                 >
                   <Mail className="mt-0.5 h-5 w-5 text-accent-primary" />
                   <div>
                     <p className="text-sm font-medium text-text-primary">Email</p>
-                    <p className="text-sm text-text-secondary">{siteConfig.email}</p>
+                    <p className="text-sm text-text-secondary">{contactEmail}</p>
                   </div>
                 </a>
-                <div className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
+                <div className="flex items-start gap-3 rounded-xl border border-border-subtle p-4">
                   <Phone className="mt-0.5 h-5 w-5 text-accent-primary" />
                   <div>
                     <p className="text-sm font-medium text-text-primary">Phone / WhatsApp</p>
                     <p className="text-sm text-text-secondary">{siteConfig.phone}</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 rounded-xl border border-white/10 p-4">
+                <div className="flex items-start gap-3 rounded-xl border border-border-subtle p-4">
                   <MapPin className="mt-0.5 h-5 w-5 text-accent-primary" />
                   <div>
                     <p className="text-sm font-medium text-text-primary">Studio</p>
@@ -142,7 +143,7 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="overflow-hidden rounded-xl border border-white/10">
+              <div className="overflow-hidden rounded-xl border border-border-subtle">
                 <iframe
                   title="Pixelnest location on Google Maps"
                   src={siteConfig.mapsEmbedUrl}
@@ -158,7 +159,7 @@ export function Contact() {
             <form
               onSubmit={handleSubmit(onSubmit)}
               noValidate
-              className="relative rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8"
+              className="card-surface relative p-6 sm:p-8"
             >
               <div className="absolute -left-[9999px] opacity-0" aria-hidden>
                 <label htmlFor="website">Website</label>
@@ -218,8 +219,8 @@ export function Contact() {
                   className={cn(
                     "mt-4 rounded-xl border px-4 py-3 text-sm",
                     status === "success"
-                      ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-100"
-                      : "border-rose-400/30 bg-rose-400/10 text-rose-100"
+                      ? "border-emerald-500/30 bg-emerald-500/10 text-text-primary"
+                      : "border-rose-500/30 bg-rose-500/10 text-text-primary"
                   )}
                 >
                   {statusMessage}
@@ -240,7 +241,7 @@ export function Contact() {
           </Reveal>
         </div>
       </div>
-    </Section>
+    </SectionWrapper>
   );
 }
 
@@ -265,7 +266,7 @@ function Field({
       </label>
       {children}
       {error ? (
-        <p className="text-sm text-rose-300" role="alert">
+        <p className="text-sm text-rose-500" role="alert">
           {error}
         </p>
       ) : null}

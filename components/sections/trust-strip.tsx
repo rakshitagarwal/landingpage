@@ -1,50 +1,58 @@
 import {
-  BadgeIndianRupee,
-  LifeBuoy,
-  MessageCircle,
-  Wallet,
+  Bot,
+  Database,
+  Globe,
+  Users,
   type LucideIcon,
 } from "lucide-react";
-import { valueStrip } from "@/lib/site-config";
+import { capabilities } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/reveal";
-import { Section } from "@/components/ui/section";
+import { SectionWrapper } from "@/components/ui/section";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 const icons: Record<string, LucideIcon> = {
-  Wallet,
-  MessageCircle,
-  BadgeIndianRupee,
-  LifeBuoy,
+  Globe,
+  Database,
+  Bot,
+  Users,
 };
 
 export function TrustStrip() {
   return (
-    <Section
-      aria-label="Why businesses choose us"
-      tone="muted"
-      className="!py-12 sm:!py-14"
+    <SectionWrapper
+      id="capabilities"
+      aria-label="What we deliver"
+      muted
     >
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-        {valueStrip.map((item, index) => {
-          const Icon = icons[item.icon] ?? Wallet;
-          return (
-            <Reveal key={item.title} delay={index * 0.05}>
-              <div className="flex gap-3 pr-2">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-accent-primary">
-                  <Icon className="h-5 w-5" aria-hidden />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="text-base font-semibold text-text-primary">
+      <div className="section-stack">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Capabilities"
+            title="Technology that earns its place"
+            description="Clear builds for getting found online, running day-to-day operations, and answering customers on WhatsApp — without the enterprise fluff."
+          />
+        </Reveal>
+        <div className="grid gap-5 md:grid-cols-2">
+          {capabilities.map((item, index) => {
+            const Icon = icons[item.icon] ?? Globe;
+            return (
+              <Reveal key={item.title} delay={index * 0.05}>
+                <article className="card-surface card-lift flex h-full flex-col p-6 sm:p-8">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full border border-border-subtle text-accent-primary">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </div>
+                  <h3 className="font-serif text-2xl font-bold text-text-primary">
                     {item.title}
                   </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
+                  <p className="mt-3 text-base leading-relaxed text-text-secondary">
                     {item.description}
                   </p>
-                </div>
-              </div>
-            </Reveal>
-          );
-        })}
+                </article>
+              </Reveal>
+            );
+          })}
+        </div>
       </div>
-    </Section>
+    </SectionWrapper>
   );
 }

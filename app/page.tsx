@@ -1,15 +1,14 @@
 import { About } from "@/components/sections/about";
-import { CaseStudies } from "@/components/sections/case-studies";
 import { Contact } from "@/components/sections/contact";
 import { FAQ } from "@/components/sections/faq";
 import { Footer } from "@/components/sections/footer";
 import { Hero } from "@/components/sections/hero";
+import { Insights } from "@/components/sections/insights";
 import { Navbar } from "@/components/sections/navbar";
 import { Pricing } from "@/components/sections/pricing";
 import { Process } from "@/components/sections/process";
 import { Services } from "@/components/sections/services";
 import { Solutions } from "@/components/sections/solutions";
-import { TechStack } from "@/components/sections/tech-stack";
 import { Testimonials } from "@/components/sections/testimonials";
 import { TrustStrip } from "@/components/sections/trust-strip";
 import { WhoWeHelp } from "@/components/sections/who-we-help";
@@ -24,12 +23,11 @@ export default function Home() {
         <TrustStrip />
         <Services />
         <WhoWeHelp />
+        <Process />
+        <Solutions />
+        <Insights />
         <WhyChooseUs />
         <About />
-        <Process />
-        <TechStack />
-        <Solutions />
-        <CaseStudies />
         <Testimonials />
         <Pricing />
         <FAQ />

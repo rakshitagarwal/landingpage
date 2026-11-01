@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
@@ -16,11 +16,6 @@ type ModalProps = {
 
 export function Modal({ open, onClose, title, children, className }: ModalProps) {
   const reduceMotion = useReducedMotion();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -36,7 +31,7 @@ export function Modal({ open, onClose, title, children, className }: ModalProps)
     };
   }, [open, onClose]);
 
-  if (!mounted) return null;
+  if (typeof document === "undefined") return null;
 
   return createPortal(
     <AnimatePresence>

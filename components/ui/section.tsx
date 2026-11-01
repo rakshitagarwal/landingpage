@@ -1,37 +1,34 @@
 import { cn } from "@/lib/utils";
 
-type SectionProps = {
+type SectionWrapperProps = {
   id?: string;
   children: React.ReactNode;
   className?: string;
-  /** Alternating surface for clearer section start/end */
-  tone?: "default" | "muted" | "deep";
+  /** Alternate secondary surface for rhythm */
+  muted?: boolean;
   bordered?: boolean;
   "aria-label"?: string;
 };
 
-const toneClass = {
-  default: "bg-bg-primary",
-  muted: "bg-bg-secondary",
-  deep: "bg-[#08080a]",
-} as const;
-
-export function Section({
+/**
+ * Section shell — colors come from html[data-color-mode], not per-section themes.
+ */
+export function SectionWrapper({
   id,
   children,
   className,
-  tone = "default",
+  muted = false,
   bordered = true,
   "aria-label": ariaLabel,
-}: SectionProps) {
+}: SectionWrapperProps) {
   return (
     <section
       id={id}
       aria-label={ariaLabel}
       className={cn(
-        "section-y scroll-mt-24",
-        toneClass[tone],
-        bordered && "border-y border-white/[0.08]",
+        "section-y scroll-mt-24 text-text-primary",
+        muted ? "bg-bg-secondary" : "bg-bg-primary",
+        bordered && "border-y border-border-subtle",
         className
       )}
     >
@@ -39,3 +36,5 @@ export function Section({
     </section>
   );
 }
+
+export const Section = SectionWrapper;

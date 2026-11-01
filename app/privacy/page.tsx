@@ -38,8 +38,8 @@ export default function PrivacyPage() {
           <p>
             {siteConfig.name} is a web and software studio based at{" "}
             {siteConfig.address.full}. Contact:{" "}
-            <a href={`mailto:${siteConfig.email}`} className="text-accent-primary">
-              {siteConfig.email}
+            <a href={`mailto:${siteConfig.contactEmail || siteConfig.email}`} className="text-accent-primary">
+              {siteConfig.contactEmail || siteConfig.email}
             </a>{" "}
             or {siteConfig.phone}.
           </p>
@@ -76,8 +76,8 @@ export default function PrivacyPage() {
           <p>
             You may ask us to correct or delete enquiry data we hold, or
             withdraw consent for future marketing messages, by emailing{" "}
-            <a href={`mailto:${siteConfig.email}`} className="text-accent-primary">
-              {siteConfig.email}
+            <a href={`mailto:${siteConfig.contactEmail || siteConfig.email}`} className="text-accent-primary">
+              {siteConfig.contactEmail || siteConfig.email}
             </a>
             . Some records may be retained where we must keep them for contracts,
             accounts or legal reasons.

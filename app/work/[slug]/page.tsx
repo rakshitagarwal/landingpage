@@ -5,8 +5,8 @@ import { ArrowLeft } from "lucide-react";
 import { Footer } from "@/components/sections/footer";
 import { Navbar } from "@/components/sections/navbar";
 import { buttonLinkClass } from "@/components/ui/button";
-import { SiteImage } from "@/components/ui/site-image";
-import { getWhatsAppLink, images, projects, siteConfig } from "@/lib/site-config";
+import { CoverMedia } from "@/components/ui/cover-media";
+import { getWhatsAppLink, projects, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -30,31 +30,25 @@ export default async function WorkPage({ params }: PageProps) {
   const project = projects.find((item) => item.slug === slug);
   if (!project) notFound();
 
-  const cover = {
-    ...images.projectImage,
-    alt: `${project.title} cover`,
-  };
-
-  const shots = [1, 2, 3, 4].map((n) => ({
-    ...images.projectImage,
-    alt: `${project.title} screen ${n}`,
-  }));
+  const coverImage = project.image.src
+    ? { ...project.image, alt: project.image.alt || `${project.title} cover` }
+    : null;
 
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 bg-bg-primary text-text-primary">
         <article className="container-site section-y pt-28 sm:pt-32">
           <Link
             href="/#work"
-            className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary"
+            className="inline-flex min-h-11 items-center gap-2 text-sm text-text-secondary hover:text-text-primary"
           >
             <ArrowLeft className="h-4 w-4" />
             All work
           </Link>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <span className="rounded-full border border-white/15 px-2.5 py-1 text-xs text-text-secondary">
+            <span className="rounded-full border border-border-subtle bg-bg-soft px-2.5 py-1 text-xs text-text-secondary">
               {project.label}
             </span>
             <span className="text-sm text-text-muted">{project.businessType}</span>
@@ -64,28 +58,35 @@ export default async function WorkPage({ params }: PageProps) {
             {project.title}
           </h1>
 
-          <div className="relative mt-8 aspect-[3/2] overflow-hidden rounded-[1.25rem] border border-white/10 bg-bg-card">
-            <SiteImage image={cover} fill sizes="(max-width: 1024px) 100vw, 960px" />
-          </div>
+          <CoverMedia
+            title={project.title}
+            image={coverImage}
+            icon={project.mockup}
+            className="card-surface mt-8 aspect-[3/2]"
+            sizes="(max-width: 1024px) 100vw, 960px"
+            priority
+          />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <div className="rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+            <div className="card-surface p-6 sm:p-8">
               <h2 className="font-serif text-2xl font-bold text-text-primary">Problem</h2>
               <p className="mt-3 text-base leading-relaxed text-text-secondary">
                 {project.problem}
               </p>
             </div>
-            <div className="rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
-              <h2 className="font-serif text-2xl font-bold text-text-primary">Solution</h2>
+            <div className="card-surface p-6 sm:p-8">
+              <h2 className="font-serif text-2xl font-bold text-text-primary">
+                What we built
+              </h2>
               <p className="mt-3 text-base leading-relaxed text-text-secondary">
                 {project.solution}
               </p>
             </div>
           </div>
 
-          <div className="mt-6 rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+          <div className="card-surface mt-6 p-6 sm:p-8">
             <h2 className="font-serif text-2xl font-bold text-text-primary">
-              What this would deliver
+              Outcome
             </h2>
             <ul className="mt-4 space-y-2">
               {project.delivers.map((item) => (
@@ -100,7 +101,7 @@ export default async function WorkPage({ params }: PageProps) {
               {project.features.map((feature) => (
                 <li
                   key={feature}
-                  className="rounded-full border border-white/10 px-3 py-1.5 text-sm text-text-secondary"
+                  className="rounded-full border border-border-subtle px-3 py-1.5 text-sm text-text-secondary"
                 >
                   {feature}
                 </li>
@@ -119,23 +120,7 @@ export default async function WorkPage({ params }: PageProps) {
             </ul>
           </div>
 
-          <div className="mt-10">
-            <h2 className="font-serif text-2xl font-bold text-text-primary">
-              Screenshots
-            </h2>
-            <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              {shots.map((shot) => (
-                <div
-                  key={shot.src}
-                  className="relative aspect-[16/10] overflow-hidden rounded-xl border border-white/10 bg-bg-card"
-                >
-                  <SiteImage image={shot} fill sizes="(max-width: 640px) 100vw, 50vw" />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-10 rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+          <div className="card-surface mt-10 p-6 sm:p-8">
             <h2 className="font-serif text-2xl font-bold text-text-primary">
               Want something like this?
             </h2>

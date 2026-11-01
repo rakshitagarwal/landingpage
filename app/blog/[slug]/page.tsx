@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { Footer } from "@/components/sections/footer";
 import { Navbar } from "@/components/sections/navbar";
 import { buttonLinkClass } from "@/components/ui/button";
+import { CoverMedia } from "@/components/ui/cover-media";
 import { SiteImage } from "@/components/ui/site-image";
 import { blogPosts, getWhatsAppLink, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
@@ -37,6 +38,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!post) notFound();
 
   const related = blogPosts.filter((item) => item.slug !== post.slug).slice(0, 3);
+  const cover = post.cover.src ? post.cover : null;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -52,13 +54,13 @@ export default async function BlogPostPage({ params }: PageProps) {
       name: siteConfig.name,
     },
     description: post.excerpt,
-    image: `${siteConfig.url}${post.cover.src}`,
+    ...(cover ? { image: `${siteConfig.url}${cover.src}` } : {}),
   };
 
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 bg-bg-primary text-text-primary">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -66,7 +68,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <article className="container-site section-y pt-28 sm:pt-32">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary"
+            className="inline-flex min-h-11 items-center gap-2 text-sm text-text-secondary hover:text-text-primary"
           >
             <ArrowLeft className="h-4 w-4" />
             Blog
@@ -79,22 +81,40 @@ export default async function BlogPostPage({ params }: PageProps) {
             {post.title}
           </h1>
           <div className="mt-4 flex items-center gap-3">
-            <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/15 bg-bg-secondary">
-              <SiteImage
-                image={post.authorAvatar}
-                fill
-                sizes="40px"
-                className="object-cover object-top"
-              />
-            </div>
+            {post.authorAvatar.src ? (
+              <div className="relative h-10 w-10 overflow-hidden rounded-full border border-border-subtle bg-bg-soft">
+                <SiteImage
+                  image={post.authorAvatar}
+                  fill
+                  sizes="40px"
+                  className="object-cover object-top"
+                />
+              </div>
+            ) : (
+              <div
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border-subtle bg-bg-soft text-xs font-semibold text-accent-primary"
+                aria-hidden
+              >
+                {post.author
+                  .split(" ")
+                  .map((p) => p[0])
+                  .join("")
+                  .slice(0, 2)}
+              </div>
+            )}
             <p className="text-sm text-text-secondary">
               {post.author} · {post.date} · {post.readTime}
             </p>
           </div>
 
-          <div className="relative mt-8 aspect-[1200/630] overflow-hidden rounded-[1.25rem] border border-white/10 bg-bg-card">
-            <SiteImage image={post.cover} fill sizes="(max-width: 1024px) 100vw, 960px" priority />
-          </div>
+          <CoverMedia
+            title={post.title}
+            image={cover}
+            icon="website"
+            className="card-surface mt-8 aspect-[1200/630]"
+            sizes="(max-width: 1024px) 100vw, 960px"
+            priority
+          />
 
           <div className="prose-measure mx-auto mt-10 space-y-5">
             {post.content.map((block, index) =>
@@ -116,7 +136,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             )}
           </div>
 
-          <div className="mx-auto mt-10 max-w-2xl rounded-[1.25rem] border border-white/10 bg-bg-card p-6 text-center sm:p-8">
+          <div className="card-surface mx-auto mt-10 max-w-2xl p-6 text-center sm:p-8">
             <p className="text-base text-text-secondary">
               Have a project in mind? Talk to {siteConfig.name} on WhatsApp.
             </p>
@@ -139,7 +159,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <Link
                   key={item.slug}
                   href={`/blog/${item.slug}`}
-                  className="rounded-[1.1rem] border border-white/10 bg-bg-card p-5 transition hover:border-accent-primary/30"
+                  className="card-surface card-lift p-5"
                 >
                   <p className="text-xs uppercase tracking-wide text-accent-primary">
                     {item.category}

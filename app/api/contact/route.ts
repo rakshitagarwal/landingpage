@@ -62,7 +62,7 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           from,
-          to: [siteConfig.email],
+          to: [siteConfig.contactEmail || siteConfig.email],
           subject: `New inquiry from ${payload.fullName}`,
           text: [
             `Name: ${payload.fullName}`,

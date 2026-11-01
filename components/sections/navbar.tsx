@@ -8,6 +8,7 @@ import { getWhatsAppLink, navLinks, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { buttonLinkClass } from "@/components/ui/button";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -73,10 +74,8 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-b border-white/10 bg-bg-primary/80 backdrop-blur-xl"
-          : "bg-transparent"
+        "fixed inset-x-0 top-0 z-50 bg-bg-primary/80 text-text-primary backdrop-blur-xl transition-all duration-300",
+        scrolled && "border-b border-border-subtle"
       )}
     >
       <nav
@@ -89,7 +88,7 @@ export function Navbar() {
             e.preventDefault();
             scrollTo("#home");
           }}
-          className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+          className="flex min-h-11 items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
         >
           <span className="flex h-8 w-8 items-center justify-center rounded-md border border-accent-primary/40 bg-accent-primary/10 font-serif text-sm font-bold text-accent-primary">
             P
@@ -109,7 +108,7 @@ export function Navbar() {
                 scrollTo(link.href);
               }}
               className={cn(
-                "text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary",
+                "inline-flex min-h-11 items-center text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary",
                 active === link.href
                   ? "text-accent-primary"
                   : "text-text-secondary hover:text-text-primary"
@@ -120,25 +119,27 @@ export function Navbar() {
           ))}
         </div>
 
-        <a
-          href={getWhatsAppLink()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(buttonLinkClass("primary", "sm"), "hidden md:inline-flex")}
-        >
-          WhatsApp
-        </a>
-
-        <button
-          type="button"
-          className="rounded-lg p-2 text-text-primary lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <a
+            href={getWhatsAppLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(buttonLinkClass("primary", "sm"), "hidden md:inline-flex")}
+          >
+            WhatsApp
+          </a>
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-text-primary lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -148,7 +149,7 @@ export function Navbar() {
             initial={reduceMotion ? false : { opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-b border-white/10 bg-bg-primary/95 backdrop-blur-xl lg:hidden"
+            className="border-b border-border-subtle bg-bg-primary/95 backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-4">
               {navLinks.map((link) => (
@@ -159,7 +160,7 @@ export function Navbar() {
                     e.preventDefault();
                     scrollTo(link.href);
                   }}
-                  className="rounded-lg px-3 py-3 text-base font-medium text-text-secondary hover:bg-white/5 hover:text-text-primary"
+                  className="rounded-lg px-3 py-3 text-base font-medium text-text-secondary hover:bg-bg-secondary hover:text-text-primary"
                 >
                   {link.label}
                 </a>

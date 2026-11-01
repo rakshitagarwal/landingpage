@@ -77,8 +77,8 @@ export default function TermsPage() {
           </h2>
           <p>
             Questions:{" "}
-            <a href={`mailto:${siteConfig.email}`} className="text-accent-primary">
-              {siteConfig.email}
+            <a href={`mailto:${siteConfig.contactEmail || siteConfig.email}`} className="text-accent-primary">
+              {siteConfig.contactEmail || siteConfig.email}
             </a>
             .
           </p>

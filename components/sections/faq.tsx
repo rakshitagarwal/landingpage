@@ -6,7 +6,7 @@ import { Plus } from "lucide-react";
 import { faqs } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
-import { Section } from "@/components/ui/section";
+import { SectionWrapper } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export function FAQ() {
@@ -27,7 +27,7 @@ export function FAQ() {
   };
 
   return (
-    <Section id="faq" tone="default">
+    <SectionWrapper id="faq">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -41,7 +41,7 @@ export function FAQ() {
           />
         </Reveal>
 
-        <div className="w-full divide-y divide-white/10 border-y border-white/10">
+        <div className="w-full divide-y divide-border-subtle border-y border-border-subtle">
           {faqs.map((faq, index) => {
             const open = openIndex === index;
             return (
@@ -51,7 +51,7 @@ export function FAQ() {
                     <button
                       type="button"
                       aria-expanded={open}
-                      className="flex w-full items-center justify-between gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-primary sm:py-6"
+                      className="flex min-h-11 w-full items-center justify-between gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-primary sm:py-6"
                       onClick={() => setOpenIndex(open ? null : index)}
                     >
                       <span className="pr-2 font-serif text-lg font-bold text-text-primary sm:text-xl">
@@ -92,6 +92,6 @@ export function FAQ() {
           })}
         </div>
       </div>
-    </Section>
+    </SectionWrapper>
   );
 }

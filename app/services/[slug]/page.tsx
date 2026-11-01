@@ -51,7 +51,7 @@ export default async function ServicePage({ params }: PageProps) {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 bg-bg-primary text-text-primary">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -59,7 +59,7 @@ export default async function ServicePage({ params }: PageProps) {
         <article className="container-site section-y pt-28 sm:pt-32">
           <Link
             href="/#services"
-            className="inline-flex items-center gap-2 text-sm text-text-secondary transition hover:text-text-primary"
+            className="inline-flex min-h-11 items-center gap-2 text-sm text-text-secondary transition hover:text-text-primary"
           >
             <ArrowLeft className="h-4 w-4" />
             All services
@@ -78,7 +78,7 @@ export default async function ServicePage({ params }: PageProps) {
           </p>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <div className="rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+            <div className="card-surface p-6 sm:p-8">
               <h2 className="font-serif text-2xl font-bold text-text-primary">
                 Who it&apos;s for
               </h2>
@@ -86,7 +86,7 @@ export default async function ServicePage({ params }: PageProps) {
                 {service.whoFor}
               </p>
             </div>
-            <div className="rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+            <div className="card-surface p-6 sm:p-8">
               <h2 className="font-serif text-2xl font-bold text-text-primary">
                 Timeline & starting price
               </h2>
@@ -97,7 +97,7 @@ export default async function ServicePage({ params }: PageProps) {
             </div>
           </div>
 
-          <div className="mt-6 rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+          <div className="card-surface mt-6 p-6 sm:p-8">
             <h2 className="font-serif text-2xl font-bold text-text-primary">
               What&apos;s included
             </h2>
@@ -111,7 +111,7 @@ export default async function ServicePage({ params }: PageProps) {
             </ul>
           </div>
 
-          <div className="mt-6 rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-8">
+          <div className="card-surface mt-6 p-6 sm:p-8">
             <h2 className="font-serif text-2xl font-bold text-text-primary">
               Common questions
             </h2>

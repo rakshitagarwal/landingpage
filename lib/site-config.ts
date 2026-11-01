@@ -4,7 +4,10 @@ export const siteConfig = {
   description:
     "Pixelnest builds websites, business software and WhatsApp automation for small businesses in India. Founder-led studio in Ahmedabad.",
   url: "https://pixelnest.example.com",
-  email: "rakshit.agarwal@outlook.com",
+  /** Public contact email shown on the site */
+  contactEmail: "hello@pixelnest.in",
+  /** @deprecated Use contactEmail */
+  email: "hello@pixelnest.in",
   phone: "+91 99974 43874",
   phoneTel: "+919997443874",
   whatsappUrl: "https://wa.me/919997443874",
@@ -21,14 +24,21 @@ export const siteConfig = {
   hours: "Mon–Sat, 10:00 AM – 7:00 PM IST",
   replyNote:
     "We reply within 24 hours on WhatsApp, usually within 2 hours in working hours.",
+  legalBusinessName: "",
+  gstNumber: "",
+  udyamNumber: "",
+  privacyUrl: "/privacy",
+  termsUrl: "/terms",
   registrationLine: "",
   currency: "INR",
   calendarBookingUrl: "",
-  showTestimonials: true,
+  /** Keep false until you have signed client reviews */
+  showTestimonials: false,
   social: {
     linkedin: "",
+    facebook: "",
     instagram: "",
-    twitter: "",
+    github: "",
   },
   whereWeWork:
     "Ahmedabad, Gandhinagar, Surat, Vadodara, and remotely across India.",
@@ -95,47 +105,61 @@ export const navLinks = [
 ] as const;
 
 export const heroContent = {
-  eyebrow: "Web & software studio · Ahmedabad",
-  headline: "Get your business online, and get more customers.",
+  eyebrow: "Software studio · Ahmedabad",
+  headline: "Websites and software that help your business grow.",
   subtext:
-    "Pixelnest builds websites, business software and WhatsApp automation for small businesses. You talk directly to the founders, and you get a fixed price before we start.",
+    "Pixelnest designs and builds websites, business software and WhatsApp automation for Indian SMBs — with fixed-price quotes and direct access to the founders.",
   primaryCta: "Chat on WhatsApp",
-  secondaryCta: "See our work",
+  secondaryCta: "View our work",
   trustRow: [
-    "Direct access to founders",
-    "Free first consultation",
+    "Founder-led delivery",
     "Fixed-price quotes",
+    "30-day post-launch support",
   ],
   floatingCards: [
     { label: "New order received", kind: "order" },
     { label: "Appointment confirmed", kind: "appointment" },
-    { label: "Google rating 4.8", kind: "rating" },
+    { label: "WhatsApp reminder sent", kind: "reminder" },
   ],
-  floatingCardsNote: "UI illustration — not a client claim",
 } as const;
 
-export const valueStrip = [
+/** Honest homepage stats — no inflated project counts */
+export const heroStats = [
+  { value: "Founder-led", label: "You talk to the builders" },
+  { value: "Fixed price", label: "Quote before we start" },
+  { value: "30 days", label: "Free support after launch" },
+  { value: "Pan-India", label: "Ahmedabad studio + remote" },
+] as const;
+
+export const capabilities = [
   {
-    title: "Built for small budgets",
-    description: "Practical solutions sized for shops, clinics and growing teams.",
-    icon: "Wallet",
+    title: "Websites that bring customers in",
+    description:
+      "Clear, mobile-first sites and stores so people nearby can find you, trust you, and call or order.",
+    icon: "Globe",
   },
   {
-    title: "Simple, no-jargon communication",
-    description: "We explain options in plain language you can act on.",
-    icon: "MessageCircle",
+    title: "Software that replaces Excel chaos",
+    description:
+      "Billing, stock, bookings and CRMs shaped around how your team already works — not a bloated package.",
+    icon: "Database",
   },
   {
-    title: "Fixed-price, no surprises",
-    description: "You get a clear quote before we start building.",
-    icon: "BadgeIndianRupee",
+    title: "WhatsApp that keeps up at rush hour",
+    description:
+      "Order flows, reminders and FAQ replies so fewer messages get lost when you are busy.",
+    icon: "Bot",
   },
   {
-    title: "Support after launch",
-    description: "We stay available so your site or software keeps working.",
-    icon: "LifeBuoy",
+    title: "Senior attention, small-team speed",
+    description:
+      "You work with the founders. Weekly updates, plain language, and a fixed scope you can plan around.",
+    icon: "Users",
   },
 ] as const;
+
+/** @deprecated Use capabilities */
+export const valueStrip = capabilities;
 
 export const services = [
   {
@@ -329,33 +353,34 @@ export const services = [
 
 export const whoWeHelp = [
   {
-    title: "Shops & retail",
+    title: "Retail & shops",
     problem:
-      "Need a simple website or store so customers can browse and order without calling every time.",
+      "Catalogues, billing and online ordering so customers browse without calling every time.",
   },
   {
     title: "Restaurants & cafes",
     problem:
-      "Want WhatsApp or online ordering that keeps up during busy hours.",
+      "WhatsApp and online ordering that stays clear when the kitchen is busy.",
   },
   {
     title: "Clinics & salons",
-    problem: "Tired of missed calls and messy appointment notebooks.",
+    problem:
+      "Appointment booking, reminders and fewer missed calls from a paper diary.",
   },
   {
-    title: "Coaching institutes",
+    title: "Coaching & education",
     problem:
-      "Need a clear site for courses, fees and enquiries in one place.",
+      "Course pages, fees and enquiries in one place parents can trust.",
   },
   {
     title: "Local services",
     problem:
-      "Want to show up on Google and make it easy for people to contact you.",
+      "Google presence and a simple site that turns nearby searches into calls.",
   },
   {
-    title: "Startups",
+    title: "Early-stage products",
     problem:
-      "Need an MVP website or first product without hiring a full tech team.",
+      "An MVP website or first tool without hiring a full tech team.",
   },
 ] as const;
 
@@ -383,32 +408,45 @@ export const founders = [
     name: "Rakshit Agarwal",
     role: "Co-founder, Software & Automation",
     bio: "Rakshit builds the software side of Pixelnest: websites, billing tools and WhatsApp automation. He likes turning messy spreadsheets into simple systems that shop owners can actually use.",
-    photoKey: "teamRakshit" as const,
+    image: {
+      src: "/images/myprofilepic.png",
+      alt: "Rakshit Agarwal, Co-founder of Pixelnest",
+      width: 800,
+      height: 800,
+    },
+    linkedin: "",
   },
   {
     name: "Divyang Solanki",
     role: "Co-founder, Design & Growth",
     bio: "Divyang leads design and growth: layouts, branding and Google presence. He makes sure every site is clear on mobile and easy for customers to act on.",
-    photoKey: "teamDivyang" as const,
+    /** Leave src empty until a unique photo is available — do not reuse another founder’s photo */
+    image: {
+      src: "",
+      alt: "Divyang Solanki, Co-founder of Pixelnest",
+      width: 800,
+      height: 800,
+    },
+    linkedin: "",
   },
 ] as const;
 
 export const aboutContent = {
   story:
-    "Pixelnest started in Ahmedabad with a simple idea: small businesses deserve the same quality of websites and software as large companies, at a fair price and without jargon.",
+    "Pixelnest is a founder-led studio in Ahmedabad. We blend practical engineering with clear design so small businesses get software that actually fits how they work — at a fair price, without jargon.",
   principles: [
     {
-      title: "Keep it simple",
-      description: "We build what you need now, not a pile of unused features.",
+      title: "Build what matters now",
+      description: "Ship the features you need today; leave the unused complexity out.",
     },
     {
-      title: "Be honest about cost and time",
-      description: "Clear quotes and timelines before work starts.",
+      title: "Honest cost and time",
+      description: "Fixed quotes and timelines in writing before we start.",
     },
     {
       title: "Stay after launch",
       description:
-        "Support so your site or system keeps working for your team.",
+        "Thirty days of free support, then optional care plans so things keep running.",
     },
   ],
 } as const;
@@ -485,6 +523,12 @@ export const projects = [
       "WhatsApp reminders reduce no-shows",
     ],
     tech: ["Next.js", "PostgreSQL", "WhatsApp API"],
+    image: {
+      src: "/images/projectimage.png",
+      alt: "Appointment booking interface for Shree Dental Care sample project",
+      width: 1600,
+      height: 1000,
+    },
     mockup: "booking" as const,
     features: [
       "Public booking page",
@@ -508,6 +552,12 @@ export const projects = [
       "Easy UPI payment link for customers",
     ],
     tech: ["WhatsApp Business API", "Node.js", "Razorpay"],
+    image: {
+      src: "/images/projectimage.png",
+      alt: "WhatsApp ordering flow for Spice Route Kitchen sample project",
+      width: 1600,
+      height: 1000,
+    },
     mockup: "chat" as const,
     features: [
       "Menu browsing in WhatsApp",
@@ -531,6 +581,12 @@ export const projects = [
       "Day-end sales summary",
     ],
     tech: ["React", "Node.js", "PostgreSQL"],
+    image: {
+      src: "/images/projectimage.png",
+      alt: "Inventory and billing dashboard for Mehta General Store sample project",
+      width: 1600,
+      height: 1000,
+    },
     mockup: "dashboard" as const,
     features: [
       "GST invoice generation",
@@ -554,6 +610,12 @@ export const projects = [
       "Order updates on WhatsApp",
     ],
     tech: ["Next.js", "Razorpay"],
+    image: {
+      src: "/images/projectimage.png",
+      alt: "Online store preview for Urban Loom sample project",
+      width: 1600,
+      height: 1000,
+    },
     mockup: "dashboard" as const,
     features: [
       "Product catalogue",
@@ -577,6 +639,12 @@ export const projects = [
       "Optional fee payment link",
     ],
     tech: ["Next.js"],
+    image: {
+      src: "/images/projectimage.png",
+      alt: "Coaching website preview for BrightPath Classes sample project",
+      width: 1600,
+      height: 1000,
+    },
     mockup: "booking" as const,
     features: [
       "Course and batch pages",

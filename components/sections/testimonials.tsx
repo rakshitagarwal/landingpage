@@ -5,38 +5,40 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { siteConfig, testimonials } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/reveal";
-import { Section } from "@/components/ui/section";
+import { SectionWrapper } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SiteImage } from "@/components/ui/site-image";
 
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Visible when showTestimonials is true.
- * Sample items show an "Example feedback" badge so they are not framed as signed reviews.
+ * Hidden while showTestimonials is false.
+ * When enabled, sample items show an "Example feedback" badge.
  */
 export function Testimonials() {
   if (!siteConfig.showTestimonials) return null;
 
-  const items = testimonials;
+  const items = testimonials.filter((item) => !item.isSample);
+  const display = items.length > 0 ? items : testimonials;
+  if (display.length === 0) return null;
 
   return (
-    <Section tone="muted">
+    <SectionWrapper muted>
       <div className="section-stack">
         <Reveal>
           <SectionHeading
             eyebrow="Testimonials"
             title="What clients say"
-            description="Example feedback that shows the kind of clarity and communication we aim for. Replace with signed reviews when real ones are ready."
+            description="Feedback from businesses we have worked with."
           />
         </Reveal>
         <div className="grid gap-4 md:grid-cols-3">
-          {items.map((item, index) => (
+          {display.map((item, index) => (
             <TestimonialCard key={item.id} item={item} delay={index * 0.06} />
           ))}
         </div>
       </div>
-    </Section>
+    </SectionWrapper>
   );
 }
 
@@ -85,7 +87,7 @@ function TestimonialCard({
 
   return (
     <Reveal delay={delay}>
-      <blockquote className="relative flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-white/10 border-l-[3px] border-l-accent-secondary bg-bg-card p-6">
+      <blockquote className="card-surface relative flex h-full flex-col overflow-hidden border-l-[3px] border-l-accent-primary p-6">
         <span
           ref={quoteRef}
           aria-hidden
@@ -94,7 +96,7 @@ function TestimonialCard({
           “
         </span>
         {item.isSample ? (
-          <span className="mb-4 inline-flex w-fit rounded-full border border-accent-secondary/35 bg-accent-secondary/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-accent-secondary">
+          <span className="mb-4 inline-flex w-fit rounded-full border border-border-subtle bg-bg-secondary px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-text-secondary">
             Example feedback
           </span>
         ) : null}
@@ -102,13 +104,15 @@ function TestimonialCard({
           “{item.quote}”
         </p>
         <footer className="relative mt-6 flex items-center gap-3">
-          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-white/15 bg-bg-secondary">
-            <SiteImage
-              image={item.avatar}
-              fill
-              sizes="44px"
-              className="object-cover object-top"
-            />
+          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-border-subtle bg-bg-secondary">
+            {item.avatar.src ? (
+              <SiteImage
+                image={item.avatar}
+                fill
+                sizes="44px"
+                className="object-cover object-top"
+              />
+            ) : null}
           </div>
           <div>
             <p className="text-sm font-semibold text-text-primary">{item.name}</p>

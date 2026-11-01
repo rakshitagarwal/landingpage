@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/sections/footer";
 import { Navbar } from "@/components/sections/navbar";
-import { SiteImage } from "@/components/ui/site-image";
+import { CoverMedia } from "@/components/ui/cover-media";
 import { blogPosts, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 bg-bg-primary text-text-primary">
         <div className="container-site section-y pt-28 sm:pt-32">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-primary">
             Blog
@@ -32,16 +32,15 @@ export default function BlogPage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group overflow-hidden rounded-[1.25rem] border border-white/10 bg-bg-card transition hover:border-accent-primary/30"
+                className="card-surface card-lift group flex flex-col overflow-hidden"
               >
-                <div className="relative aspect-[1200/630] bg-bg-secondary">
-                  <SiteImage
-                    image={post.cover}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover transition duration-300 group-hover:scale-[1.02]"
-                  />
-                </div>
+                <CoverMedia
+                  title={post.title}
+                  image={post.cover.src ? post.cover : null}
+                  icon="website"
+                  className="aspect-[1200/630] border-b border-border-subtle"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
                 <div className="p-6">
                   <p className="text-xs uppercase tracking-wide text-accent-primary">
                     {post.category}
@@ -52,19 +51,9 @@ export default function BlogPage() {
                   <p className="mt-2 text-sm leading-relaxed text-text-secondary">
                     {post.excerpt}
                   </p>
-                  <div className="mt-4 flex items-center gap-2.5">
-                    <div className="relative h-8 w-8 overflow-hidden rounded-full border border-white/15 bg-bg-secondary">
-                      <SiteImage
-                        image={post.authorAvatar}
-                        fill
-                        sizes="32px"
-                        className="object-cover object-top"
-                      />
-                    </div>
-                    <p className="text-xs text-text-muted">
-                      {post.author} · {post.readTime}
-                    </p>
-                  </div>
+                  <p className="mt-4 text-xs text-text-muted">
+                    {post.author} · {post.readTime}
+                  </p>
                 </div>
               </Link>
             ))}

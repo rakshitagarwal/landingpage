@@ -1,11 +1,12 @@
 import { techStack } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/reveal";
-import { Section } from "@/components/ui/section";
+import { SectionWrapper } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
+/** Kept for reuse; homepage embeds tech chips inside Services. */
 export function TechStack() {
   return (
-    <Section tone="muted">
+    <SectionWrapper muted>
       <div className="section-stack">
         <Reveal>
           <SectionHeading
@@ -19,7 +20,7 @@ export function TechStack() {
             {techStack.map((tech) => (
               <li
                 key={tech}
-                className="rounded-full border border-white/10 bg-bg-card px-4 py-2.5 text-sm text-text-secondary"
+                className="rounded-full border border-border-subtle bg-bg-card px-4 py-2.5 text-sm text-text-secondary"
               >
                 {tech}
               </li>
@@ -27,6 +28,6 @@ export function TechStack() {
           </ul>
         </Reveal>
       </div>
-    </Section>
+    </SectionWrapper>
   );
 }

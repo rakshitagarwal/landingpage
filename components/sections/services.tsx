@@ -8,9 +8,9 @@ import {
   ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
-import { services } from "@/lib/site-config";
+import { services, techStack } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/reveal";
-import { Section } from "@/components/ui/section";
+import { SectionWrapper } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -26,23 +26,23 @@ export function Services() {
   const also = services.filter((s) => !s.featured);
 
   return (
-    <Section id="services" tone="default">
+    <SectionWrapper id="services">
       <div className="section-stack">
         <Reveal>
           <SectionHeading
             eyebrow="Services"
-            title="What we build for small businesses"
-            description="Practical digital work — websites, software and automation — explained without jargon."
+            title="Capabilities that cover the full build"
+            description="From first website to custom software and WhatsApp automation — scoped clearly, priced up front, explained without jargon."
           />
         </Reveal>
 
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-5 lg:grid-cols-3">
           {core.map((service, index) => {
             const Icon = iconMap[service.icon] ?? Globe;
             return (
               <Reveal key={service.slug} delay={index * 0.04}>
-                <article className="flex h-full flex-col rounded-[1.25rem] border border-white/10 bg-bg-card p-6 sm:p-7 transition hover:border-accent-primary/30 hover:bg-bg-elevated">
-                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-accent-primary">
+                <article className="card-surface card-lift flex h-full flex-col p-6 sm:p-8">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-border-subtle text-accent-primary">
                     <Icon className="h-5 w-5" aria-hidden />
                   </div>
                   <h3 className="font-serif text-xl font-bold text-text-primary sm:text-2xl">
@@ -64,7 +64,7 @@ export function Services() {
                   </ul>
                   <Link
                     href={`/services/${service.slug}`}
-                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-primary transition hover:gap-2"
+                    className="mt-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-accent-primary transition hover:gap-2"
                   >
                     Learn more
                     <ArrowUpRight className="h-4 w-4" />
@@ -84,8 +84,8 @@ export function Services() {
               const Icon = iconMap[service.icon] ?? Globe;
               return (
                 <Reveal key={service.slug} delay={index * 0.04}>
-                  <article className="flex h-full gap-4 rounded-[1.25rem] border border-white/10 bg-bg-card p-5 sm:p-6">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-accent-primary">
+                  <article className="card-surface card-lift flex h-full gap-4 p-5 sm:p-6">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border-subtle text-accent-primary">
                       <Icon className="h-4 w-4" aria-hidden />
                     </div>
                     <div className="min-w-0">
@@ -97,7 +97,7 @@ export function Services() {
                       </p>
                       <Link
                         href={`/services/${service.slug}`}
-                        className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent-primary"
+                        className="mt-3 inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-accent-primary"
                       >
                         Learn more
                         <ArrowUpRight className="h-3.5 w-3.5" />
@@ -109,7 +109,25 @@ export function Services() {
             })}
           </div>
         </div>
+
+        <Reveal delay={0.05}>
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-text-secondary">
+              Tech we use
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-2.5">
+              {techStack.map((tech) => (
+                <li
+                  key={tech}
+                  className="rounded-full border border-border-subtle bg-bg-card px-4 py-2 text-sm text-text-secondary"
+                >
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </div>
-    </Section>
+    </SectionWrapper>
   );
 }

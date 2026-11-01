@@ -22,7 +22,7 @@ export function SiteImage({
 }: SiteImageProps) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) {
+  if (!image.src || failed) {
     return (
       <div
         className={cn(
@@ -32,7 +32,7 @@ export function SiteImage({
         role="img"
         aria-label={image.alt}
       >
-        <span className="px-4 text-center">{image.alt}</span>
+        <span className="px-4 text-center">{image.alt || "Image coming soon"}</span>
       </div>
     );
   }
