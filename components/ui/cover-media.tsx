@@ -63,7 +63,7 @@ export function CoverMedia({
   return (
     <div
       className={cn(
-        "relative flex overflow-hidden bg-gradient-to-br from-[#0f766e] via-[#134e4a] to-[#0b0f14]",
+        "relative flex overflow-hidden bg-gradient-to-br from-[#1d4ed8] via-[#1e3a8a] to-[#0b0f14]",
         className
       )}
       role="img"
@@ -73,7 +73,7 @@ export function CoverMedia({
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 20%, rgba(45,212,191,0.35), transparent 45%), radial-gradient(circle at 80% 70%, rgba(15,118,110,0.45), transparent 40%)",
+            "radial-gradient(circle at 20% 20%, rgba(59,130,246,0.4), transparent 45%), radial-gradient(circle at 80% 70%, rgba(37,99,235,0.45), transparent 40%)",
         }}
       />
       <div className="relative z-[1] flex h-full w-full flex-col justify-end gap-3 p-5 sm:p-6">

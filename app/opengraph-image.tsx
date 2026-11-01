@@ -25,7 +25,7 @@ export default function OpenGraphImage() {
             display: "flex",
             alignItems: "center",
             gap: 16,
-            color: "#2ef2ff",
+            color: "#3b82f6",
             fontSize: 28,
             fontWeight: 700,
           }}

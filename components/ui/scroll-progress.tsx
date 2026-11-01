@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/** Thin teal progress line under the fixed navbar. */
+/** Thin accent progress line under the fixed navbar. */
 export function ScrollProgress() {
   const barRef = useRef<HTMLDivElement>(null);
 
