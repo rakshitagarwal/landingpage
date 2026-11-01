@@ -96,7 +96,7 @@ export async function POST(request: Request) {
               `Hours: ${siteConfig.hours}`,
               `WhatsApp: ${siteConfig.phone}`,
               "",
-              "Pixelnest",
+              "Obekai",
             ].join("\n"),
           }),
         });

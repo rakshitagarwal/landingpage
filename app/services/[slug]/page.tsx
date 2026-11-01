@@ -129,7 +129,7 @@ export default async function ServicePage({ params }: PageProps) {
 
           <a
             href={getWhatsAppLink(
-              `Hi Pixelnest, I'd like to discuss ${service.title}`
+              `Hi Obekai, I'd like to discuss ${service.title}`
             )}
             target="_blank"
             rel="noopener noreferrer"

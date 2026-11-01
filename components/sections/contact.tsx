@@ -145,7 +145,7 @@ export function Contact() {
 
               <div className="overflow-hidden rounded-xl border border-border-subtle">
                 <iframe
-                  title="Pixelnest location on Google Maps"
+                  title="Obekai location on Google Maps"
                   src={siteConfig.mapsEmbedUrl}
                   className="h-48 w-full"
                   loading="lazy"

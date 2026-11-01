@@ -17,7 +17,7 @@ type ThemeContextValue = {
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
-const STORAGE_KEY = "pixelnest-color-mode";
+const STORAGE_KEY = "obekai-color-mode";
 const listeners = new Set<() => void>();
 
 function emitChange() {

@@ -1,17 +1,18 @@
 export const siteConfig = {
-  name: "Pixelnest",
-  tagline: "Websites, software and WhatsApp automation that help businesses grow.",
+  name: "Obekai",
+  legalName: "Obekai Technologies",
+  tagline: "Building What's Next.",
   description:
-    "Pixelnest is a mid-sized software company with over 6 years of experience building websites, business systems and WhatsApp automation for growing businesses.",
-  url: "https://pixelnest.example.com",
+    "Obekai is a mid-sized software company with over 6 years of experience building websites, business systems and WhatsApp automation for growing businesses.",
+  url: "https://obekai.com",
   /** Public contact email shown on the site */
-  contactEmail: "hello@pixelnest.in",
+  contactEmail: "hello@obekai.com",
   /** @deprecated Use contactEmail */
-  email: "hello@pixelnest.in",
+  email: "hello@obekai.com",
   phone: "+91 99974 43874",
   phoneTel: "+919997443874",
   whatsappUrl: "https://wa.me/919997443874",
-  whatsappPrefill: "Hi Pixelnest, I'd like to discuss a project",
+  whatsappPrefill: "Hi Obekai, I'd like to discuss a project",
   address: {
     line1: "Ramdev Nagar",
     city: "Ahmedabad",
@@ -24,7 +25,7 @@ export const siteConfig = {
   hours: "Mon-Sat, 10:00 AM - 7:00 PM IST (flexible for your timezone)",
   replyNote:
     "We reply within 24 hours on WhatsApp or email, often sooner during working hours.",
-  legalBusinessName: "",
+  legalBusinessName: "Obekai Technologies",
   gstNumber: "",
   udyamNumber: "",
   privacyUrl: "/privacy",
@@ -59,7 +60,7 @@ export type SiteImage = {
 export const images = {
   projectImage: {
     src: "/images/projectimage.png",
-    alt: "Sample project preview for Pixelnest work and hero",
+    alt: "Sample project preview for Obekai work and hero",
     width: 1600,
     height: 1000,
   },
@@ -69,27 +70,64 @@ export const images = {
     width: 1600,
     height: 1000,
   },
+  logoDark: {
+    src: "/images/logo-dark.png",
+    alt: "Obekai Technologies",
+    width: 1428,
+    height: 356,
+  },
+  logoLight: {
+    src: "/images/logo-light.png",
+    alt: "Obekai Technologies",
+    width: 1428,
+    height: 356,
+  },
+  /** @deprecated Prefer logoDark / logoLight */
   logo: {
-    src: "/images/logos/pixelnest-logo.svg",
-    alt: "Pixelnest",
-    width: 160,
-    height: 40,
+    src: "/images/logo-dark.png",
+    alt: "Obekai Technologies",
+    width: 1428,
+    height: 356,
+  },
+  icon: {
+    src: "/images/icon-192.png",
+    alt: "Obekai",
+    width: 192,
+    height: 192,
+  },
+  favicon: {
+    src: "/images/favicon.ico",
+    alt: "Obekai",
+    width: 32,
+    height: 32,
+  },
+  appleTouchIcon: {
+    src: "/images/apple-touch-icon.png",
+    alt: "Obekai",
+    width: 180,
+    height: 180,
+  },
+  icon512: {
+    src: "/images/icon-512.png",
+    alt: "Obekai",
+    width: 512,
+    height: 512,
   },
   teamRakshit: {
     src: "/images/myprofilepic.png",
-    alt: "Rakshit Agarwal, Co-founder of Pixelnest",
+    alt: "Rakshit Agarwal, Co-founder of Obekai",
     width: 800,
     height: 800,
   },
   teamDivyang: {
     src: "/images/myprofilepic.png",
-    alt: "Divyang Solanki, Co-founder of Pixelnest",
+    alt: "Divyang Solanki, Co-founder of Obekai",
     width: 800,
     height: 800,
   },
   ogDefault: {
     src: "/images/og/og-default.png",
-    alt: "Pixelnest: websites, software and WhatsApp automation",
+    alt: "Obekai: websites, software and WhatsApp automation",
     width: 1200,
     height: 630,
   },
@@ -103,10 +141,9 @@ export const navLinks = [
 ] as const;
 
 export const heroContent = {
-  eyebrow: "Mid-sized software company · 6+ years",
   headline: "Build digital products that win customers and run your business.",
   subtext:
-    "From high-performing websites to custom software and WhatsApp automation, Pixelnest delivers fixed-price projects with clear timelines and a team that has shipped for clients for over 6 years.",
+    "From high-performing websites to custom software and WhatsApp automation, Obekai delivers fixed-price projects with clear timelines and a team that has shipped for clients for over 6 years.",
   primaryCta: "Get in touch",
   secondaryCta: "View case studies",
   trustRow: [
@@ -533,7 +570,7 @@ export const whoWeHelp = [
   },
 ] as const;
 
-export const whyPixelnest = [
+export const whyObekai = [
   {
     title: "6+ years of delivery",
     description: "A mid-sized team with proven experience building and serving clients.",
@@ -556,10 +593,10 @@ export const founders = [
   {
     name: "Rakshit Agarwal",
     role: "Co-founder, Software & Automation",
-    bio: "Rakshit builds the software side of Pixelnest: websites, billing tools and WhatsApp automation. He likes turning messy spreadsheets into simple systems that shop owners can actually use.",
+    bio: "Rakshit builds the software side of Obekai: websites, billing tools and WhatsApp automation. He likes turning messy spreadsheets into simple systems that shop owners can actually use.",
     image: {
       src: "/images/myprofilepic.png",
-      alt: "Rakshit Agarwal, Co-founder of Pixelnest",
+      alt: "Rakshit Agarwal, Co-founder of Obekai",
       width: 800,
       height: 800,
     },
@@ -572,7 +609,7 @@ export const founders = [
     /** Leave src empty until a unique photo is available. Do not reuse another founder photo. */
     image: {
       src: "",
-      alt: "Divyang Solanki, Co-founder of Pixelnest",
+      alt: "Divyang Solanki, Co-founder of Obekai",
       width: 800,
       height: 800,
     },
@@ -582,7 +619,7 @@ export const founders = [
 
 export const aboutContent = {
   story:
-    "Pixelnest is a mid-sized, remote-first software company with over 6 years of experience building and serving clients. We combine practical engineering with clear design so growing businesses get products that fit how they work, priced fairly and explained without jargon.",
+    "Obekai is a mid-sized, remote-first software company with over 6 years of experience building and serving clients. We combine practical engineering with clear design so growing businesses get products that fit how they work, priced fairly and explained without jargon.",
   principles: [
     {
       title: "Build what matters now",
@@ -809,7 +846,7 @@ export const testimonials = [
     id: "t1",
     isSample: false,
     quote:
-      "Pixelnest rebuilt our booking flow and kept weekly updates clear. We launched on time with no surprise costs.",
+      "Obekai rebuilt our booking flow and kept weekly updates clear. We launched on time with no surprise costs.",
     name: "Aisha Rahman",
     role: "Operations lead",
     company: "CareFirst Clinic",

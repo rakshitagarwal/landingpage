@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: `About ${siteConfig.name} and how to get in touch. Tell us about your website, software or WhatsApp automation project.`,
+  description: `About ${siteConfig.legalName} and how to get in touch. Tell us about your website, software or WhatsApp automation project.`,
 };
 
 export default function ContactPage() {

@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { getWhatsAppLink, navLinks, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { BrandLogo } from "@/components/ui/brand-logo";
 import { buttonLinkClass } from "@/components/ui/button";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
@@ -93,14 +94,13 @@ export function Navbar() {
             e.preventDefault();
             scrollTo("#home");
           }}
-          className="flex min-h-11 items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+          className="flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-md border border-accent-primary/40 bg-accent-primary/10 font-serif text-sm font-bold text-accent-primary">
-            P
-          </span>
-          <span className="text-[15px] font-semibold tracking-tight text-text-primary">
-            {siteConfig.name}
-          </span>
+          <BrandLogo
+            priority
+            className="h-9 sm:h-10"
+            imgClassName="max-w-[9.5rem] sm:max-w-[11rem]"
+          />
         </a>
 
         <div className="hidden items-center gap-7 lg:flex">

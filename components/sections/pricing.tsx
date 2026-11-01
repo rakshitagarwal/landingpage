@@ -82,7 +82,7 @@ export function Pricing() {
                   </p>
                   <a
                     href={getWhatsAppLink(
-                      `Hi Pixelnest, I'd like a quote for ${tier.name}`
+                      `Hi Obekai, I'd like a quote for ${tier.name}`
                     )}
                     target="_blank"
                     rel="noopener noreferrer"

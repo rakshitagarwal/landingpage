@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
+import { BrandLogo } from "@/components/ui/brand-logo";
 import { cn } from "@/lib/utils";
 
 const quickLinks = [
@@ -92,14 +93,10 @@ export function Footer() {
         <div className="flex items-start">
           <Link
             href="/#home"
-            className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+            className="flex flex-col gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
           >
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent-primary/35 bg-accent-primary/10 font-serif text-xl font-bold text-accent-primary">
-              P
-            </span>
-            <span className="text-xl font-semibold tracking-tight text-text-primary">
-              {siteConfig.name}
-            </span>
+            <BrandLogo className="h-12 sm:h-14" imgClassName="max-w-[13rem]" />
+            <span className="text-sm text-text-secondary">{siteConfig.tagline}</span>
           </Link>
         </div>
 

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Merriweather } from "next/font/google";
 import { Analytics } from "@/components/layout/analytics";
 import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { siteConfig } from "@/lib/site-config";
+import { images, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const heading = Merriweather({
@@ -20,46 +20,102 @@ const body = Inter({
   display: "swap",
 });
 
+const defaultTitle = `${siteConfig.legalName} | ${siteConfig.tagline}`;
+const shortTitle = siteConfig.legalName;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `Website Development & Software Studio | ${siteConfig.name}`,
+    default: defaultTitle,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  applicationName: siteConfig.name,
+  applicationName: siteConfig.legalName,
+  authors: [{ name: siteConfig.legalName, url: siteConfig.url }],
+  creator: siteConfig.legalName,
+  publisher: siteConfig.legalName,
+  category: "technology",
   keywords: [
+    "Obekai",
+    "Obekai Technologies",
     "website development",
-    "software studio",
-    "WhatsApp automation for small business",
+    "custom software",
+    "WhatsApp automation",
     "CRM for small business",
-    "online store developer",
-    "Pixelnest",
+    "business websites",
+    "software studio",
+    "Ahmedabad software company",
   ],
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: [
+      { url: "/images/favicon.ico", sizes: "any" },
+      { url: "/images/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/images/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/images/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/images/apple-touch-icon.png", sizes: "180x180" }],
+    shortcut: ["/images/favicon.ico"],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    siteName: siteConfig.name,
-    title: `Website Development & Software Studio | ${siteConfig.name}`,
+    siteName: siteConfig.legalName,
+    title: defaultTitle,
     description: siteConfig.description,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.legalName} — ${siteConfig.tagline}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Website Development & Software Studio | ${siteConfig.name}`,
+    title: shortTitle,
     description: siteConfig.description,
+    images: ["/opengraph-image"],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  manifest: "/manifest.webmanifest",
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#050505" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+  ],
+  colorScheme: "dark light",
 };
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: siteConfig.name,
+  "@type": "Organization",
+  name: siteConfig.legalName,
+  alternateName: siteConfig.name,
   url: siteConfig.url,
+  logo: `${siteConfig.url}${images.icon512.src}`,
   email: siteConfig.contactEmail || siteConfig.email,
   telephone: siteConfig.phoneTel,
   image: `${siteConfig.url}/opengraph-image`,
+  slogan: siteConfig.tagline,
+  description: siteConfig.description,
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.line1,
@@ -68,12 +124,30 @@ const organizationJsonLd = {
     addressCountry: siteConfig.address.country,
   },
   areaServed: "Worldwide",
-  description: siteConfig.description,
   openingHours: "Mo-Sa 10:00-19:00",
   sameAs: Object.values(siteConfig.social).filter(Boolean),
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: siteConfig.phoneTel,
+    contactType: "sales",
+    email: siteConfig.contactEmail || siteConfig.email,
+    availableLanguage: ["English", "Hindi"],
+  },
 };
 
-const themeInitScript = `(function(){try{var m=localStorage.getItem('pixelnest-color-mode');document.documentElement.setAttribute('data-color-mode',m==='light'?'light':'dark');}catch(e){document.documentElement.setAttribute('data-color-mode','dark');}})();`;
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteConfig.legalName,
+  url: siteConfig.url,
+  description: siteConfig.description,
+  publisher: {
+    "@type": "Organization",
+    name: siteConfig.legalName,
+  },
+};
+
+const themeInitScript = `(function(){try{var m=localStorage.getItem('obekai-color-mode');document.documentElement.setAttribute('data-color-mode',m==='light'?'light':'dark');}catch(e){document.documentElement.setAttribute('data-color-mode','dark');}})();`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -91,6 +165,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd),
           }}
         />
         <div className="site-noise" aria-hidden />

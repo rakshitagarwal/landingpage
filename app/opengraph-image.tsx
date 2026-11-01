@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/lib/site-config";
 
-export const alt = siteConfig.name;
+export const alt = `${siteConfig.legalName} — ${siteConfig.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -41,13 +41,13 @@ export default function OpenGraphImage() {
               justifyContent: "center",
             }}
           >
-            P
+            O
           </div>
-          {siteConfig.name}
+          {siteConfig.legalName}
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div style={{ fontSize: 58, fontWeight: 700, lineHeight: 1.15, maxWidth: 900 }}>
-            Build digital products that win customers and run your business.
+            {siteConfig.tagline}
           </div>
           <div style={{ fontSize: 26, color: "#b4b8c0", maxWidth: 780 }}>
             Websites, software and WhatsApp automation from a mid-sized team with 6+ years of delivery

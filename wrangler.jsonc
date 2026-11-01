@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "pixelnest",
+  "name": "obekai",
   "main": ".open-next/worker.js",
   "upload_source_maps": true,
   // Must be <= newest date supported by local workerd (currently 2026-10-30)

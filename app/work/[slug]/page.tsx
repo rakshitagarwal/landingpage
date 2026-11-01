@@ -129,7 +129,7 @@ export default async function WorkPage({ params }: PageProps) {
             </p>
             <a
               href={getWhatsAppLink(
-                `Hi Pixelnest, I liked the ${project.title} sample and want something similar`
+                `Hi Obekai, I liked the ${project.title} sample and want something similar`
               )}
               target="_blank"
               rel="noopener noreferrer"

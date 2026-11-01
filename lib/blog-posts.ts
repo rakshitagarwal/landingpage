@@ -61,7 +61,7 @@ export const blogPosts = [
       },
       {
         type: "p",
-        text: "Want a fixed quote for your business? Message Pixelnest on WhatsApp and tell us what you sell and what you need the site to do.",
+        text: "Want a fixed quote for your business? Message Obekai on WhatsApp and tell us what you sell and what you need the site to do.",
       },
     ],
   },
@@ -119,7 +119,7 @@ export const blogPosts = [
       },
       {
         type: "p",
-        text: "Not sure which fits? Send Pixelnest a WhatsApp message with how many chats you get each day. We will recommend a simple next step.",
+        text: "Not sure which fits? Send Obekai a WhatsApp message with how many chats you get each day. We will recommend a simple next step.",
       },
     ],
   },
@@ -193,7 +193,7 @@ export const blogPosts = [
       },
       {
         type: "p",
-        text: "Need help setting this up? Pixelnest offers Google Business Profile setup for businesses that want to be easier to find online.",
+        text: "Need help setting this up? Obekai offers Google Business Profile setup for businesses that want to be easier to find online.",
       },
     ],
   },
@@ -259,7 +259,7 @@ export const blogPosts = [
       },
       {
         type: "p",
-        text: "Want help deciding? Message Pixelnest with how you bill today. We will tell you honestly if software is needed.",
+        text: "Want help deciding? Message Obekai with how you bill today. We will tell you honestly if software is needed.",
       },
     ],
   },
@@ -333,7 +333,7 @@ export const blogPosts = [
       },
       {
         type: "p",
-        text: "Ready with this checklist? Talk to Pixelnest on WhatsApp for a fixed-price plan that matches your goal.",
+        text: "Ready with this checklist? Talk to Obekai on WhatsApp for a fixed-price plan that matches your goal.",
       },
     ],
   },

@@ -49,12 +49,7 @@ export function Hero() {
 
       <div className="container-site grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 xl:gap-20">
         <div className="min-w-0 lg:pr-2">
-          <div className="mb-5 flex flex-col gap-3">
-            <span className="h-0.5 w-10 rounded-full bg-accent-primary" aria-hidden />
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-primary">
-              {heroContent.eyebrow}
-            </p>
-          </div>
+          <span className="mb-5 block h-0.5 w-10 rounded-full bg-accent-primary" aria-hidden />
           <h1 className="font-serif text-[2.35rem] font-bold leading-[1.1] tracking-tight text-text-primary sm:text-5xl lg:text-[3.4rem]">
             {heroContent.headline}
           </h1>
