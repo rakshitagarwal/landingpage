@@ -6,9 +6,9 @@ const contactSchema = z.object({
   fullName: z.string().min(2),
   phone: z.string().min(8),
   service: z.string().min(1),
-  message: z.string().min(10),
-  email: z.string().optional().default(""),
-  budget: z.string().optional().default(""),
+  message: z.string().min(20),
+  email: z.string().email(),
+  budget: z.string().min(1),
   website: z.string().optional().default(""),
 });
 
@@ -103,15 +103,16 @@ export async function POST(request: Request) {
       }
     }
 
+    // Sheet / email delivery can be wired later. Accept valid enquiries so the
+    // form UX works before GOOGLE_SHEETS_WEBHOOK_URL or RESEND_API_KEY is set.
     if (!delivered && !webhook && !resendKey) {
-      return NextResponse.json(
-        {
-          ok: false,
-          error:
-            "No delivery method configured. Set GOOGLE_SHEETS_WEBHOOK_URL or RESEND_API_KEY.",
-        },
-        { status: 500 }
-      );
+      console.info("[contact] enquiry accepted (no delivery configured)", {
+        name: payload.fullName,
+        email: payload.email,
+        service: payload.service,
+        budget: payload.budget,
+      });
+      return NextResponse.json({ ok: true, pendingDelivery: true });
     }
 
     if (!delivered) {

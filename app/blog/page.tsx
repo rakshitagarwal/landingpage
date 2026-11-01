@@ -8,7 +8,7 @@ import { blogPosts, siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "Case studies and guides on websites, WhatsApp automation and software for growing businesses.",
+    "Case studies from Obekai projects: custom CRM, e-commerce platforms and business automation—written as practical stories with real product screens.",
 };
 
 export default function BlogPage() {
@@ -21,10 +21,11 @@ export default function BlogPage() {
             Case studies
           </p>
           <h1 className="mt-3 font-serif text-4xl font-bold text-text-primary sm:text-5xl">
-            Case studies and practical guides
+            Case studies from our projects
           </h1>
           <p className="mt-4 max-w-2xl text-base text-text-secondary sm:text-lg">
-            How the {siteConfig.name} team approaches websites, software and automation for growing businesses.
+            Blog-style stories behind {siteConfig.name}&apos;s CRM, store and
+            automation work—what broke, what we built, and what changed after launch.
           </p>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">

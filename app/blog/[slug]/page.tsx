@@ -7,7 +7,7 @@ import { Navbar } from "@/components/sections/navbar";
 import { buttonLinkClass } from "@/components/ui/button";
 import { CoverMedia } from "@/components/ui/cover-media";
 import { SiteImage } from "@/components/ui/site-image";
-import { blogPosts, getWhatsAppLink, siteConfig } from "@/lib/site-config";
+import { blogPosts, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -71,13 +71,13 @@ export default async function BlogPostPage({ params }: PageProps) {
             className="inline-flex min-h-11 items-center gap-2 text-sm text-text-secondary hover:text-text-primary"
           >
             <ArrowLeft className="h-4 w-4" />
-            Blog
+            Case studies
           </Link>
 
           <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-accent-primary">
             {post.category}
           </p>
-          <h1 className="mt-3 max-w-3xl font-serif text-4xl font-bold text-text-primary sm:text-5xl">
+          <h1 className="mt-3 max-w-4xl font-serif text-4xl font-bold text-text-primary sm:text-5xl">
             {post.title}
           </h1>
           <div className="mt-4 flex items-center gap-3">
@@ -111,12 +111,12 @@ export default async function BlogPostPage({ params }: PageProps) {
             title={post.title}
             image={cover}
             icon="website"
-            className="card-surface mt-8 aspect-[1200/630]"
-            sizes="(max-width: 1024px) 100vw, 960px"
+            className="card-surface mt-8 aspect-[3/2]"
+            sizes="(max-width: 1024px) 100vw, 1120px"
             priority
           />
 
-          <div className="prose-measure mx-auto mt-10 space-y-5">
+          <div className="mt-10 space-y-5">
             {post.content.map((block, index) =>
               block.type === "h2" ? (
                 <h2
@@ -128,7 +128,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               ) : (
                 <p
                   key={`${block.text}-${index}`}
-                  className="text-base leading-relaxed text-text-secondary sm:text-lg"
+                  className="max-w-none text-base leading-relaxed text-text-secondary sm:text-lg"
                 >
                   {block.text}
                 </p>
@@ -136,15 +136,17 @@ export default async function BlogPostPage({ params }: PageProps) {
             )}
           </div>
 
-          <div className="card-surface mx-auto mt-10 max-w-2xl p-6 text-center sm:p-8">
-            <p className="text-base text-text-secondary">
-              Have a project in mind? Talk to {siteConfig.name} on WhatsApp.
+          <div className="card-surface mt-10 p-6 sm:p-8">
+            <h2 className="font-serif text-2xl font-bold text-text-primary">
+              Want something like this?
+            </h2>
+            <p className="mt-3 text-base text-text-secondary">
+              Share your requirements on the enquiry form. We&apos;ll suggest a
+              simple next step and a fixed quote.
             </p>
             <a
-              href={getWhatsAppLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(buttonLinkClass("primary", "lg"), "mt-5")}
+              href="/contact"
+              className={cn(buttonLinkClass("primary", "lg"), "mt-6")}
             >
               Get in touch
             </a>
@@ -152,7 +154,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           <div className="mt-14">
             <h2 className="font-serif text-2xl font-bold text-text-primary">
-              Related posts
+              Related case studies
             </h2>
             <div className="mt-5 grid gap-4 md:grid-cols-3">
               {related.map((item) => (

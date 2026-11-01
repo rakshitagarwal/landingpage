@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { getWhatsAppLink, navLinks, siteConfig } from "@/lib/site-config";
+import { navLinks } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { BrandLogo } from "@/components/ui/brand-logo";
 import { buttonLinkClass } from "@/components/ui/button";
@@ -127,9 +127,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <a
-            href={getWhatsAppLink()}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact"
             className={cn(buttonLinkClass("primary", "sm"), "hidden md:inline-flex")}
           >
             Get in touch
@@ -171,9 +169,7 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href={getWhatsAppLink()}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/contact"
                 className={cn(buttonLinkClass("primary"), "mt-2 w-full")}
                 onClick={() => setOpen(false)}
               >

@@ -1,5 +1,5 @@
 import { Boxes, Layers, Sparkles } from "lucide-react";
-import { getWhatsAppLink, pricingNotes, pricingTiers } from "@/lib/site-config";
+import { pricingNotes, pricingTiers } from "@/lib/site-config";
 import { buttonLinkClass } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionWrapper } from "@/components/ui/section";
@@ -81,11 +81,7 @@ export function Pricing() {
                     {tier.bestFor}
                   </p>
                   <a
-                    href={getWhatsAppLink(
-                      `Hi Obekai, I'd like a quote for ${tier.name}`
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/contact"
                     className={cn(
                       buttonLinkClass("primary"),
                       "card-cta relative z-[1] mt-6 w-full"

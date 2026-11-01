@@ -1,339 +1,207 @@
+/**
+ * Case studies written as blog-style articles, each tied to a shipped project.
+ * Display order: Project 03 → Project 01 → Project 02.
+ * Covers use the real project images from /public/images.
+ */
 export const blogPosts = [
   {
-    slug: "website-cost-small-business-india-2026",
-    isSample: true,
-    title: "How much does a website cost for a small business in 2026?",
+    slug: "business-automation-case-study",
+    isSample: false,
+    projectSlug: "business-automation",
+    title: "Automating enquiries, bookings and WhatsApp follow-ups",
     excerpt:
-      "A plain-language guide to website pricing, what changes the quote, and how to budget without surprises.",
-    category: "Pricing",
-    tags: ["Website", "Pricing", "Small business"],
-    author: "Rakshit Agarwal",
-    authorAvatar: {
-      src: "/images/myprofilepic.png",
-      alt: "Rakshit Agarwal",
-      width: 160,
-      height: 160,
-    },
-    date: "2026-03-12",
-    readTime: "6 min",
-    cover: {
-      src: "/images/projectimage.png",
-      alt: "Small business owner reviewing website pricing options on a laptop",
-      width: 1200,
-      height: 630,
-    },
-    content: [
-      {
-        type: "p",
-        text: "If you run a shop, clinic, coaching business or small brand, one of the first questions is simple: how much should a website cost? The honest answer is: it depends on pages, design and features. Still, you can plan with clear ranges.",
-      },
-      {
-        type: "h2",
-        text: "Typical price ranges in 2026",
-      },
-      {
-        type: "p",
-        text: "A starter brochure website with up to five pages often starts around $299 and commonly stays between $299 and $599. A fuller business website or online store usually falls between $799 and $1,999, with many online stores starting near $1,299. Custom software, CRM tools or WhatsApp automation is a different product and often starts from $2,000.",
-      },
-      {
-        type: "h2",
-        text: "What changes the price",
-      },
-      {
-        type: "p",
-        text: "More pages mean more design and content work. Online payments, product catalogues, booking systems and admin panels add development time. Fresh branding, professional photos and long-form copy also affect the quote. Hosting, domain and taxes are usually separate from the build price.",
-      },
-      {
-        type: "h2",
-        text: "How to avoid surprise bills",
-      },
-      {
-        type: "p",
-        text: "Ask for a fixed-price quote after a short discovery call. Get the scope in writing: pages, features, revision rounds and what is not included. Agree payment stages such as advance, mid-project approval and final delivery. That way both sides know when money moves and when work is complete.",
-      },
-      {
-        type: "h2",
-        text: "A practical way to decide",
-      },
-      {
-        type: "p",
-        text: "If you only need people to find you and call or message, start with a starter site. If you sell products or take many enquiries online, budget for a business site or store. If spreadsheets and notebooks are slowing your team down, look at custom software instead of forcing everything into a website.",
-      },
-      {
-        type: "p",
-        text: "Want a fixed quote for your business? Message Obekai on WhatsApp and tell us what you sell and what you need the site to do.",
-      },
-    ],
-  },
-  {
-    slug: "whatsapp-business-vs-api",
-    isSample: true,
-    title: "WhatsApp Business vs WhatsApp API: which one does your business need?",
-    excerpt:
-      "A simple comparison so shop and restaurant owners can choose the right WhatsApp setup.",
+      "An operations-heavy team cut missed messages by routing FAQs, appointments and reminders through automation—while keeping a human path for anything sensitive.",
     category: "Automation",
-    tags: ["WhatsApp", "Automation", "Retail"],
-    author: "Rakshit Agarwal",
+    tags: ["WhatsApp", "AI", "Bookings", "Operations"],
+    author: "Obekai Team",
     authorAvatar: {
-      src: "/images/myprofilepic.png",
-      alt: "Rakshit Agarwal",
-      width: 160,
-      height: 160,
+      src: "/images/icon-192.png",
+      alt: "Obekai",
+      width: 192,
+      height: 192,
     },
-    date: "2026-02-20",
-    readTime: "5 min",
-    cover: {
-      src: "/images/projectimage.png",
-      alt: "Phone showing a WhatsApp business chat for shop orders",
-      width: 1200,
-      height: 630,
-    },
-    content: [
-      {
-        type: "p",
-        text: "Many growing businesses already use WhatsApp to talk to customers. The confusion starts when someone says you need the “API”. Here is a plain way to choose.",
-      },
-      {
-        type: "h2",
-        text: "WhatsApp Business app",
-      },
-      {
-        type: "p",
-        text: "The WhatsApp Business app is free to install and works well for a single phone or small team. You get a business profile, quick replies, greeting messages and simple labels. It is a good start if one person handles chats and volume is manageable.",
-      },
-      {
-        type: "h2",
-        text: "WhatsApp Business API",
-      },
-      {
-        type: "p",
-        text: "The API connects WhatsApp to software. That lets you run order flows, send appointment reminders at scale, and save leads to Sheets or a CRM. Several people can reply from one number through a shared inbox. There can be provider and message fees, so it suits higher volume or structured workflows.",
-      },
-      {
-        type: "h2",
-        text: "Which should you pick?",
-      },
-      {
-        type: "p",
-        text: "Stay on the Business app if chats are light and personal. Move toward the API if orders get lost in rush hours, you need automatic reminders, or more than one staff member must answer the same number. Many businesses start simple, then upgrade when the pain is clear.",
-      },
-      {
-        type: "p",
-        text: "Not sure which fits? Send Obekai a WhatsApp message with how many chats you get each day. We will recommend a simple next step.",
-      },
-    ],
-  },
-  {
-    slug: "google-business-profile-checklist",
-    isSample: true,
-    title: "5 things every Google Business Profile needs to win more customers",
-    excerpt:
-      "Five practical checks so people searching nearby can find you, trust you and contact you.",
-    category: "SEO",
-    tags: ["Google", "SEO", "Local"],
-    author: "Divyang Solanki",
-    authorAvatar: {
-      src: "/images/myprofilepic.png",
-      alt: "Divyang Solanki",
-      width: 160,
-      height: 160,
-    },
-    date: "2026-01-28",
-    readTime: "5 min",
-    cover: {
-      src: "/images/projectimage.png",
-      alt: "Google map pin over a local business street",
-      width: 1200,
-      height: 630,
-    },
-    content: [
-      {
-        type: "p",
-        text: "If customers search “near me”, your Google Business Profile is often the first impression. These five basics matter more than fancy tricks.",
-      },
-      {
-        type: "h2",
-        text: "1. Correct name, category and address",
-      },
-      {
-        type: "p",
-        text: "Use the name customers know. Pick the closest primary category. Keep the address accurate so Maps directions work.",
-      },
-      {
-        type: "h2",
-        text: "2. Working phone and messaging path",
-      },
-      {
-        type: "p",
-        text: "List a number someone answers. If WhatsApp is your main channel, make that clear on your website and profile description.",
-      },
-      {
-        type: "h2",
-        text: "3. Hours that match reality",
-      },
-      {
-        type: "p",
-        text: "Wrong hours create frustrated visits. Update holiday closures. Accurate hours build trust.",
-      },
-      {
-        type: "h2",
-        text: "4. Real photos",
-      },
-      {
-        type: "p",
-        text: "Show your storefront, products, team and work area. Fresh photos help people feel confident before they call.",
-      },
-      {
-        type: "h2",
-        text: "5. Reviews and replies",
-      },
-      {
-        type: "p",
-        text: "Ask happy customers for honest reviews. Reply politely to feedback. Over time, this helps visibility and trust.",
-      },
-      {
-        type: "p",
-        text: "Need help setting this up? Obekai offers Google Business Profile setup for businesses that want to be easier to find online.",
-      },
-    ],
-  },
-  {
-    slug: "excel-vs-custom-billing-app",
-    isSample: true,
-    title: "Spreadsheets vs a custom billing app: when should you switch?",
-    excerpt:
-      "Signs your spreadsheet is costing time, and when a simple billing tool is worth it.",
-    category: "Software",
-    tags: ["Billing", "Spreadsheets", "Retail"],
-    author: "Rakshit Agarwal",
-    authorAvatar: {
-      src: "/images/myprofilepic.png",
-      alt: "Rakshit Agarwal",
-      width: 160,
-      height: 160,
-    },
-    date: "2025-12-10",
+    date: "2026-06-22",
     readTime: "6 min",
     cover: {
-      src: "/images/projectimage.png",
-      alt: "Shop counter with invoice printer and inventory notes",
-      width: 1200,
-      height: 630,
+      src: "/images/project333.jpg",
+      alt: "Business automation flows for enquiries, bookings and WhatsApp alerts",
+      width: 1536,
+      height: 1024,
     },
     content: [
       {
         type: "p",
-        text: "Spreadsheets are fine until they are not. Many businesses start there for stock and bills. The question is when a simple billing app becomes the cheaper option in time and mistakes.",
+        text: "High message volume sounds like demand until the same questions repeat and appointments slip. This case study shows how we automated customer enquiries, appointment bookings and WhatsApp notifications without turning the brand into a bot that never hands off to a person.",
       },
       {
         type: "h2",
-        text: "When a spreadsheet still works",
+        text: "The problem",
       },
       {
         type: "p",
-        text: "If one person handles billing, product count is small, and you do not need formal invoices every few minutes, a spreadsheet can be enough. Keep backups and avoid five people editing the same file at once.",
+        text: "Staff spent evenings answering routine questions, confirming slots and sending reminders by hand. Peak hours meant missed chats. No-shows hurt because reminders were inconsistent. Leadership wanted relief, not a black-box tool they could not explain to the floor team.",
       },
       {
         type: "h2",
-        text: "Signs you should switch",
+        text: "What we built",
       },
       {
         type: "p",
-        text: "You recreate invoices by hand. Stock numbers are always wrong. Staff wait for the “main spreadsheet”. You cannot see today’s sales without digging. Month-end reporting takes too long. Those are process problems a light app can fix.",
+        text: "We implemented automated enquiry handling, booking flows and WhatsApp notifications, with AI-assisted replies for common intents and clear escalation to a human when the conversation needed judgment. The goal was fewer dropped messages and a calmer day for the people still doing the real work.",
       },
       {
         type: "h2",
-        text: "What a custom billing tool can do",
+        text: "How the work unfolded",
       },
       {
         type: "p",
-        text: "A focused tool can create invoices, track stock, alert low items and show a daily sales summary. It does not need to be a giant ERP. For many shops, a few clear screens are better than a complex package nobody uses.",
+        text: "We listed the top enquiry types and booking rules first. Only those paths were automated. WhatsApp Business API carried transactional messages; light AI covered FAQ-style answers with guardrails; the booking calendar stayed the source of truth. Weekly reviews caught edge cases before launch.",
       },
       {
         type: "h2",
-        text: "A simple decision rule",
+        text: "Outcomes",
       },
       {
         type: "p",
-        text: "If spreadsheet mistakes or delays cost more than a modest amount each month in time, it is worth a discovery call. If your sheets stay calm and accurate, keep them and revisit later.",
+        text: "Routine questions get answered faster, appointments confirm without phone tag, and reminders go out on time. The team spends attention on exceptions instead of copy-paste replies. Because ownership and credentials were handed over after final payment, they are not locked into a vendor chat they cannot leave.",
       },
       {
         type: "p",
-        text: "Want help deciding? Message Obekai with how you bill today. We will tell you honestly if software is needed.",
+        text: "If your inbox is full of the same five questions, automation is usually a process project first and a tech project second. Tell us your daily message volume and we will recommend a lean first version.",
       },
     ],
   },
   {
-    slug: "website-checklist-before-hiring-developer",
-    isSample: true,
-    title: "Website checklist before you hire a developer",
+    slug: "custom-crm-platform-case-study",
+    isSample: false,
+    projectSlug: "custom-crm-platform",
+    title: "How a custom CRM replaced scattered sheets and missed follow-ups",
     excerpt:
-      "Prepare these items before you hire anyone, so your website project stays clear and on budget.",
-    category: "Guides",
-    tags: ["Website", "Checklist", "Hiring"],
-    author: "Divyang Solanki",
+      "A mid-sized sales team moved from spreadsheets and chat threads into one pipeline, analytics view and workflow layer—without a bloated off-the-shelf suite.",
+    category: "Custom software",
+    tags: ["CRM", "Next.js", "PostgreSQL", "Sales"],
+    author: "Obekai Team",
     authorAvatar: {
-      src: "/images/myprofilepic.png",
-      alt: "Divyang Solanki",
-      width: 160,
-      height: 160,
+      src: "/images/icon-192.png",
+      alt: "Obekai",
+      width: 192,
+      height: 192,
     },
-    date: "2025-11-05",
-    readTime: "6 min",
+    date: "2026-09-18",
+    readTime: "7 min",
     cover: {
-      src: "/images/projectimage.png",
-      alt: "Checklist notebook beside a laptop for a website project",
-      width: 1200,
-      height: 630,
+      src: "/images/project111.jpg",
+      alt: "Custom CRM platform dashboard with pipelines and analytics",
+      width: 1600,
+      height: 1200,
     },
     content: [
       {
         type: "p",
-        text: "Hiring a developer goes smoother when you arrive prepared. You do not need perfect documents. You need clear answers.",
+        text: "When customer records live in spreadsheets, deal notes sit in chat, and follow-ups depend on memory, growth slows. This case study walks through how we designed and shipped a custom CRM platform for a team that needed clarity more than another generic SaaS login.",
       },
       {
         type: "h2",
-        text: "1. Goal in one sentence",
+        text: "The problem",
       },
       {
         type: "p",
-        text: "Examples: get more WhatsApp enquiries, show courses and fees, or sell 30 products online. One goal keeps the first version focused.",
+        text: "Sales and account data were split across sheets, inboxes and personal trackers. Managers could not see pipeline health in one place. Reps duplicated work, and handoffs between discovery and closing were easy to lose. Off-the-shelf CRMs felt heavy, expensive and full of fields the team would never use.",
       },
       {
         type: "h2",
-        text: "2. Pages you need",
+        text: "What we built",
       },
       {
         type: "p",
-        text: "List pages such as Home, About, Services, Contact. For a store, list product types. Cross out nice-to-haves for later.",
+        text: "We delivered a centralized business management platform with customer tracking, sales pipelines, analytics and automated workflows. The product was scoped around the journeys the team actually ran—lead capture, stage movement, activity logging and weekly reporting—rather than copying every feature from a market leader.",
       },
       {
         type: "h2",
-        text: "3. Content and photos",
+        text: "How the work unfolded",
       },
       {
         type: "p",
-        text: "Gather a logo, phone number, address, hours and any existing photos. Rough notes are fine. Waiting for perfect copy often delays launch.",
+        text: "Discovery mapped the real sales stages and the minimum data each stage needed. Design focused on a command-center dashboard: KPIs up top, pipeline and trajectory in the middle, and priority actions on the side. Engineering used Next.js on the front end with a Node.js API and PostgreSQL so ownership stayed with the client after handoff.",
       },
       {
         type: "h2",
-        text: "4. Budget and timeline",
+        text: "Outcomes",
       },
       {
         type: "p",
-        text: "Share a range and a deadline if you have one. Ask what is included: revisions, SEO setup, payments, training and support.",
+        text: "The team now tracks customers in one system, moves deals through a visible pipeline, and runs automated reminders for follow-ups. Leadership gets analytics without exporting sheets every Friday. Because the quote was fixed and the scope was written down, launch stayed on schedule with no surprise feature creep.",
+      },
+      {
+        type: "p",
+        text: "If your sales process is stuck in spreadsheets, a focused CRM often beats forcing a giant platform onto a small team. Tell us how you sell today and we will say honestly whether a custom build is worth it.",
+      },
+    ],
+  },
+  {
+    slug: "ecommerce-platform-case-study",
+    isSample: false,
+    projectSlug: "ecommerce-platform",
+    title: "Building a custom store when Instagram DMs stop scaling",
+    excerpt:
+      "From catalogue chaos to checkout, payments and order tracking—how we shaped a shopping experience that staff could run without a developer on call.",
+    category: "E-commerce",
+    tags: ["E-commerce", "React", "Stripe", "Retail"],
+    author: "Obekai Team",
+    authorAvatar: {
+      src: "/images/icon-192.png",
+      alt: "Obekai",
+      width: 192,
+      height: 192,
+    },
+    date: "2026-08-04",
+    readTime: "6 min",
+    cover: {
+      src: "/images/project222.jpg",
+      alt: "Custom e-commerce platform with product catalogue and checkout",
+      width: 1600,
+      height: 1200,
+    },
+    content: [
+      {
+        type: "p",
+        text: "Selling through social chats works until volume rises. Stock questions pile up, payment links get lost, and nobody has a clean order history. This case study covers a custom e-commerce platform we built so browsing, checkout and fulfilment lived in one product.",
       },
       {
         type: "h2",
-        text: "5. Who approves",
+        text: "The problem",
       },
       {
         type: "p",
-        text: "Pick one decision-maker. Projects stall when too many people must approve every detail.",
+        text: "The business needed a reliable catalogue, cart and payment flow. Orders were tracked manually. Customers asked the same availability questions every day. A template store would have forced awkward workarounds for how they priced, packaged and fulfilled items.",
+      },
+      {
+        type: "h2",
+        text: "What we built",
       },
       {
         type: "p",
-        text: "Ready with this checklist? Talk to Obekai on WhatsApp for a fixed-price plan that matches your goal.",
+        text: "We shipped a custom shopping experience with product management, checkout, Stripe payments and order tracking. Admins can update catalogue details without waiting on a developer. Buyers get a clear path from product to paid order, and the team sees status without digging through chats.",
+      },
+      {
+        type: "h2",
+        text: "How the work unfolded",
+      },
+      {
+        type: "p",
+        text: "We started with the purchase journey on mobile, because that is where most traffic came from. React powered the storefront experience; Node.js handled orders and inventory updates; Stripe covered card payments. Weekly demos kept the catalogue structure honest—only fields staff would actually maintain.",
+      },
+      {
+        type: "h2",
+        text: "Outcomes",
+      },
+      {
+        type: "p",
+        text: "Customers browse and buy without messaging for every SKU. Payments are recorded against orders, and tracking cuts “where is my order?” back-and-forth. The store is treated like a product, not a brochure: after launch, small catalogue and checkout fixes landed inside the support window, then moved to an optional care plan.",
+      },
+      {
+        type: "p",
+        text: "If DMs are your checkout, a focused store with clean payments usually pays for itself in saved hours. Share what you sell and your average order volume and we will outline a fixed-scope build.",
       },
     ],
   },

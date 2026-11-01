@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { Footer } from "@/components/sections/footer";
 import { Navbar } from "@/components/sections/navbar";
 import { buttonLinkClass } from "@/components/ui/button";
-import { getWhatsAppLink, services, siteConfig } from "@/lib/site-config";
+import { services, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -128,11 +128,7 @@ export default async function ServicePage({ params }: PageProps) {
           </div>
 
           <a
-            href={getWhatsAppLink(
-              `Hi Obekai, I'd like to discuss ${service.title}`
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact"
             className={cn(buttonLinkClass("primary", "lg"), "mt-8")}
           >
             Get in touch

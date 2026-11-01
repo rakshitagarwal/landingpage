@@ -6,7 +6,7 @@ import { Footer } from "@/components/sections/footer";
 import { Navbar } from "@/components/sections/navbar";
 import { buttonLinkClass } from "@/components/ui/button";
 import { CoverMedia } from "@/components/ui/cover-media";
-import { getWhatsAppLink, projects, siteConfig } from "@/lib/site-config";
+import { projects, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -40,11 +40,11 @@ export default async function WorkPage({ params }: PageProps) {
       <main className="flex-1 bg-bg-primary text-text-primary">
         <article className="container-site section-y pt-28 sm:pt-32">
           <Link
-            href="/#work"
+            href="/#projects"
             className="inline-flex min-h-11 items-center gap-2 text-sm text-text-secondary hover:text-text-primary"
           >
             <ArrowLeft className="h-4 w-4" />
-            All work
+            All projects
           </Link>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -125,14 +125,10 @@ export default async function WorkPage({ params }: PageProps) {
               Want something like this?
             </h2>
             <p className="mt-3 text-base text-text-secondary">
-              Tell us about your business on WhatsApp. We&apos;ll suggest a simple next step and a fixed quote.
+              Share your requirements on the enquiry form. We&apos;ll suggest a simple next step and a fixed quote.
             </p>
             <a
-              href={getWhatsAppLink(
-                `Hi Obekai, I liked the ${project.title} sample and want something similar`
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact"
               className={cn(buttonLinkClass("primary", "lg"), "mt-6")}
             >
               Get in touch

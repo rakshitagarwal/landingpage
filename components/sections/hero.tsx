@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowRight } from "lucide-react";
-import { getWhatsAppLink, heroContent, heroStats, images } from "@/lib/site-config";
+import { heroContent, heroStats, images } from "@/lib/site-config";
 import { buttonLinkClass } from "@/components/ui/button";
 import { CoverMedia } from "@/components/ui/cover-media";
 import { SiteImage } from "@/components/ui/site-image";
@@ -57,21 +57,16 @@ export function Hero() {
             {heroContent.subtext}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a
-              href={getWhatsAppLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(buttonLinkClass("primary", "lg"))}
-            >
+            <a href="/contact" className={cn(buttonLinkClass("primary", "lg"))}>
               {heroContent.primaryCta}
             </a>
             <a
-              href="#case-studies"
+              href="#projects"
               className={cn(buttonLinkClass("secondary", "lg"))}
               onClick={(e) => {
                 e.preventDefault();
                 document
-                  .querySelector("#case-studies")
+                  .querySelector("#projects")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
             >

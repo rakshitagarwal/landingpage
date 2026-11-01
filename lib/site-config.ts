@@ -135,7 +135,7 @@ export const images = {
 
 export const navLinks = [
   { label: "Services", href: "#services" },
-  { label: "Case Studies", href: "#case-studies" },
+  { label: "Projects", href: "#projects" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact Us", href: "/contact" },
 ] as const;
@@ -145,7 +145,7 @@ export const heroContent = {
   subtext:
     "From high-performing websites to custom software and WhatsApp automation, Obekai delivers fixed-price projects with clear timelines and a team that has shipped for clients for over 6 years.",
   primaryCta: "Get in touch",
-  secondaryCta: "View case studies",
+  secondaryCta: "View projects",
   trustRow: [
     "6+ years of client delivery",
     "Fixed-price proposals",
@@ -680,163 +680,113 @@ export const processExtras = {
     "1–2 rounds of revisions are included depending on your plan. Extra changes are quoted in advance so there are no surprises.",
 } as const;
 
+/** Curated for websites, CRM/software, automation, design and cloud delivery. */
 export const techStack = [
-  "Next.js",
-  "React",
-  "Node.js",
-  "Python",
-  "PostgreSQL",
-  "Flutter",
-  "WhatsApp Business API",
-  "Stripe / PayPal",
-  "Vercel / AWS",
-  "OpenAI / Claude APIs",
+  { name: "Next.js", src: "/images/tech/nextjs.png" },
+  { name: "React", src: "/images/tech/react.png" },
+  { name: "TypeScript", src: "/images/tech/typescript.png" },
+  { name: "Node.js", src: "/images/tech/nodejs.png" },
+  { name: "NestJS", src: "/images/tech/nestjs.png" },
+  { name: "Python", src: "/images/tech/python.png" },
+  { name: "PostgreSQL", src: "/images/tech/postgresql.png" },
+  { name: "MongoDB", src: "/images/tech/mongodb.png" },
+  { name: "Redis", src: "/images/tech/redis.png" },
+  { name: "Tailwind CSS", src: "/images/tech/tailwind.png" },
+  { name: "Docker", src: "/images/tech/docker.png" },
+  { name: "AWS", src: "/images/tech/aws.png" },
+  { name: "Figma", src: "/images/tech/figma.png" },
+  { name: "GitHub", src: "/images/tech/github.png" },
 ] as const;
 
 export const projects = [
   {
-    slug: "shree-dental-care",
-    isSample: true,
-    label: "Sample project",
-    title: "Shree Dental Care: appointment booking",
-    businessType: "Clinic",
-    problem: "Missed calls and a paper diary for appointments.",
+    slug: "custom-crm-platform",
+    isSample: false,
+    label: "Project 01",
+    title: "Custom CRM Platform",
+    businessType: "CRM",
+    problem:
+      "Sales and customer data scattered across sheets, chats and disconnected tools.",
     solution:
-      "Online booking page, doctor-wise slots, WhatsApp reminders and an admin dashboard.",
+      "A centralized business management platform with customer tracking, sales pipelines, analytics, and automated workflows.",
     delivers: [
-      "Patients book without calling",
-      "Doctors see their day's slots clearly",
-      "WhatsApp reminders reduce no-shows",
+      "Customer tracking in one place",
+      "Sales pipelines and analytics",
+      "Automated workflows",
     ],
-    tech: ["Next.js", "PostgreSQL", "WhatsApp API"],
+    tech: ["Next.js", "Node.js", "PostgreSQL"],
     image: {
-      src: "/images/projectimage.png",
-      alt: "Appointment booking interface for Shree Dental Care sample project",
+      src: "/images/project111.jpg",
+      alt: "Custom CRM platform dashboard with pipelines and analytics",
       width: 1600,
-      height: 1000,
-    },
-    mockup: "booking" as const,
-    features: [
-      "Public booking page",
-      "Doctor and slot management",
-      "WhatsApp confirmation and reminders",
-      "Admin view for today's appointments",
-    ],
-  },
-  {
-    slug: "spice-route-kitchen",
-    isSample: true,
-    label: "Sample project",
-    title: "Spice Route Kitchen: WhatsApp ordering",
-    businessType: "Restaurant",
-    problem: "Orders lost during rush hours on phone and chat.",
-    solution:
-      "WhatsApp bot takes orders, confirms items, shares a payment link and notifies the kitchen.",
-    delivers: [
-      "Fewer missed orders at peak time",
-      "Clear order summary for the kitchen",
-      "Easy online payment link for customers",
-    ],
-    tech: ["WhatsApp Business API", "Node.js", "Stripe"],
-    image: {
-      src: "/images/projectimage.png",
-      alt: "WhatsApp ordering flow for Spice Route Kitchen sample project",
-      width: 1600,
-      height: 1000,
-    },
-    mockup: "chat" as const,
-    features: [
-      "Menu browsing in WhatsApp",
-      "Item confirmation flow",
-      "Secure payment link",
-      "Kitchen notification",
-    ],
-  },
-  {
-    slug: "mehta-general-store",
-    isSample: true,
-    label: "Sample project",
-    title: "Mehta General Store: inventory and billing",
-    businessType: "Retail",
-    problem: "Stock and bills living in notebooks.",
-    solution:
-      "Invoices, low-stock alerts and a daily sales summary in one light tool.",
-    delivers: [
-      "Faster billing at the counter",
-      "Clear view of low stock",
-      "Day-end sales summary",
-    ],
-    tech: ["React", "Node.js", "PostgreSQL"],
-    image: {
-      src: "/images/projectimage.png",
-      alt: "Inventory and billing dashboard for Mehta General Store sample project",
-      width: 1600,
-      height: 1000,
+      height: 1200,
     },
     mockup: "dashboard" as const,
     features: [
-      "Invoice generation",
-      "Stock tracking",
-      "Low-stock alerts",
-      "Daily sales report",
+      "Customer and lead tracking",
+      "Sales pipeline management",
+      "Analytics dashboards",
+      "Automated workflows",
     ],
   },
   {
-    slug: "urban-loom",
-    isSample: true,
-    label: "Sample project",
-    title: "Urban Loom: online store",
-    businessType: "D2C clothing",
-    problem: "Selling only through Instagram DMs.",
+    slug: "ecommerce-platform",
+    isSample: false,
+    label: "Project 02",
+    title: "E-commerce Platform",
+    businessType: "Commerce",
+    problem:
+      "Selling online without a reliable catalogue, checkout or order system.",
     solution:
-      "Catalogue, cart, secure checkout and order updates on WhatsApp.",
+      "A custom shopping experience with product management, checkout, payments, and order tracking.",
     delivers: [
-      "Customers browse without DMing",
-      "Secure online checkout",
-      "Order updates on WhatsApp",
+      "Product management",
+      "Secure checkout and payments",
+      "Order tracking",
     ],
-    tech: ["Next.js", "Stripe"],
+    tech: ["React", "Stripe", "Node.js"],
     image: {
-      src: "/images/projectimage.png",
-      alt: "Online store preview for Urban Loom sample project",
+      src: "/images/project222.jpg",
+      alt: "Custom e-commerce platform with product catalogue and checkout",
       width: 1600,
-      height: 1000,
+      height: 1200,
     },
-    mockup: "dashboard" as const,
+    mockup: "store" as const,
     features: [
-      "Product catalogue",
+      "Product catalogue management",
       "Cart and checkout",
-      "Online payments",
-      "WhatsApp order updates",
+      "Stripe payments",
+      "Order tracking",
     ],
   },
   {
-    slug: "brightpath-classes",
-    isSample: true,
-    label: "Sample project",
-    title: "BrightPath Classes: coaching website",
-    businessType: "Coaching",
-    problem: "No central place for courses and fees.",
+    slug: "business-automation",
+    isSample: false,
+    label: "Project 03",
+    title: "Business Automation",
+    businessType: "Automation",
+    problem:
+      "Manual replies, bookings and reminders eating into daily operations.",
     solution:
-      "Course pages, batch timings, enquiry form and a fee payment link.",
+      "Automated customer enquiries, appointment bookings, and WhatsApp notifications.",
     delivers: [
-      "Parents see courses and batches clearly",
-      "Enquiries in one inbox",
-      "Optional fee payment link",
+      "Automated customer enquiries",
+      "Appointment bookings",
+      "WhatsApp notifications",
     ],
-    tech: ["Next.js"],
+    tech: ["WhatsApp API", "AI", "Automation"],
     image: {
-      src: "/images/projectimage.png",
-      alt: "Coaching website preview for BrightPath Classes sample project",
-      width: 1600,
-      height: 1000,
+      src: "/images/project333.jpg",
+      alt: "Business automation flows for enquiries, bookings and WhatsApp alerts",
+      width: 1536,
+      height: 1024,
     },
-    mockup: "booking" as const,
+    mockup: "automation" as const,
     features: [
-      "Course and batch pages",
-      "Enquiry form",
-      "Fee payment link",
-      "Mobile-friendly layout",
+      "Enquiry automation",
+      "Appointment booking flows",
+      "WhatsApp notifications",
+      "AI-assisted responses",
     ],
   },
 ] as const;
@@ -844,47 +794,50 @@ export const projects = [
 export const testimonials = [
   {
     id: "t1",
+    projectSlug: "business-automation",
     isSample: false,
     quote:
-      "Obekai rebuilt our booking flow and kept weekly updates clear. We launched on time with no surprise costs.",
-    name: "Aisha Rahman",
-    role: "Operations lead",
-    company: "CareFirst Clinic",
+      "The business automation Obekai built changed our front desk. Enquiry replies, appointment bookings and WhatsApp reminders now run on their own. Missed chats dropped fast, and staff only step in when a conversation needs a human.",
+    name: "Priya Nair",
+    role: "Clinic Operations Manager",
+    company: "Harborview Dental",
     avatar: {
-      src: "",
-      alt: "Aisha Rahman",
-      width: 160,
-      height: 160,
+      src: "/images/person11.jpg",
+      alt: "Priya Nair, Clinic Operations Manager at Harborview Dental",
+      width: 600,
+      height: 900,
     },
   },
   {
     id: "t2",
+    projectSlug: "custom-crm-platform",
     isSample: false,
     quote:
-      "They treated our online store like a real product. Checkout is faster, and support after launch has been excellent.",
-    name: "Marcus Cole",
-    role: "Founder",
-    company: "Northline Goods",
+      "They replaced our spreadsheet CRM with a real pipeline: customer tracking, stages, analytics and follow-up workflows. Reps actually use it day to day, and we received the source code after final payment.",
+    name: "Arjun Mehta",
+    role: "Head of Sales",
+    company: "Brightline Services",
     avatar: {
-      src: "",
-      alt: "Marcus Cole",
-      width: 160,
-      height: 160,
+      src: "/images/person44.jpeg",
+      alt: "Arjun Mehta, Head of Sales at Brightline Services",
+      width: 683,
+      height: 1024,
     },
   },
   {
     id: "t3",
+    projectSlug: "ecommerce-platform",
     isSample: false,
     quote:
-      "WhatsApp automation cut missed orders during rush hours. Communication stayed simple and the fixed quote made budgeting easy.",
-    name: "Elena Vargas",
-    role: "Owner",
-    company: "Casa Verde Kitchen",
+      "Their e-commerce platform gave us a proper store—catalogue, Stripe checkout and order tracking—instead of selling through DMs. Launch matched the fixed quote and timeline, and we update products without calling a developer.",
+    name: "Daniel Brooks",
+    role: "Founder",
+    company: "Northline Supply Co.",
     avatar: {
-      src: "",
-      alt: "Elena Vargas",
-      width: 160,
-      height: 160,
+      src: "/images/person22.jpg",
+      alt: "Daniel Brooks, Founder of Northline Supply Co.",
+      width: 740,
+      height: 493,
     },
   },
 ] as const;
@@ -980,32 +933,52 @@ export const faqs = [
   {
     question: "How much does a website or software cost?",
     answer:
-      "Starter websites usually start from $299 (typical range $299-$599). Business sites and stores often fall between $799 and $1,999. Custom software and automation usually starts from $2,000. After a free call we share a fixed quote in USD or your preferred currency.",
+      "We give fixed-price quotes after a short discovery call, so you know the total before we start. Starter websites usually start from $299 (typical range $299-$599). Business sites and online stores often fall between $799 and $1,999. Custom software, CRM and automation usually start from $2,000. Quotes can be issued in USD or another currency you prefer, with scope and timeline written down before any payment.",
   },
   {
-    question: "How long does it take?",
+    question: "Who owns the source code?",
     answer:
-      "A simple website often takes 1-3 weeks. A business site or store usually takes 3-6 weeks. Custom software is typically 6-12 weeks, depending on scope.",
+      "You do. Once the final invoice is paid, ownership of the project source code, design files and related project assets transfers to you. We do not keep proprietary lock-in on your product. Hosting accounts, domains and third-party services set up for the project are also handed over or transferred into your name wherever the provider allows it.",
+  },
+  {
+    question: "Do you provide source code after project completion?",
+    answer:
+      "Yes. After final payment we deliver the complete source code through a private Git repository or an agreed archive, plus credentials for deployment and any admin panels. You receive what you need to run, maintain or extend the product with your own team or another vendor. Documentation for setup and handoff is included with the delivery.",
+  },
+  {
+    question: "What happens after the 30-day support period?",
+    answer:
+      "Every project includes 30 days of free post-launch support for bug fixes and small adjustments covered by the agreed scope. After that window, you can continue on a monthly care plan, request paid changes as one-off work, or maintain the product yourself with the source code and access we handed over. Nothing is forced; you choose what fits your operations.",
+  },
+  {
+    question: "Do you provide monthly maintenance?",
+    answer:
+      "Yes. Our care plans cover updates, monitoring, minor content or feature tweaks, dependency patches and priority support. Plans are optional and priced monthly based on how active the product is. If you only need occasional help, we can quote individual tasks instead of a retainer.",
+  },
+  {
+    question: "Can you work with international clients?",
+    answer:
+      "Yes. We work remotely with clients across markets and time zones. Communication happens on WhatsApp, email or video calls scheduled around your working hours. Contracts, invoices and payments can be handled in USD or another agreed currency. Our studio is based in Ahmedabad, India, and delivery is fully remote-first.",
+  },
+  {
+    question: "What are your payment milestones?",
+    answer:
+      "Standard terms are 40% advance to start, 40% at design or working-demo approval, and 20% on final delivery before handoff. Larger builds can use a written milestone schedule that matches delivery stages. Invoices are provided for each payment. Source code and account handoff complete after the final payment clears.",
+  },
+  {
+    question: "Do you sign NDAs?",
+    answer:
+      "Yes. We routinely sign mutual NDAs before detailed discussions when your idea, data or process needs protection. Share your NDA template or ask us for ours. Confidential materials shared during discovery and build stay confidential under the agreement.",
+  },
+  {
+    question: "How long does a typical project take?",
+    answer:
+      "A simple marketing website often takes 1-3 weeks. A business site or store usually takes 3-6 weeks. Custom software, CRM or automation is typically 6-12 weeks, depending on integrations and how quickly feedback comes back. Every quote includes a realistic timeline so you can plan launch dates.",
   },
   {
     question: "What do you need from me to start?",
     answer:
-      "A logo (or we can design one), text and photos, business details, and one person who can approve decisions quickly.",
-  },
-  {
-    question: "Do you offer support after launch?",
-    answer:
-      "Yes. Every project includes 30 days of free support. After that you can choose a monthly care plan.",
-  },
-  {
-    question: "Who owns the code and website?",
-    answer:
-      "You do. After final payment we hand over the code, design files and account access.",
-  },
-  {
-    question: "Do you work with remote clients?",
-    answer:
-      "Yes. We work remotely with clients across markets. Calls and updates happen on WhatsApp, email or video, scheduled around your timezone.",
+      "A clear goal for the project, a logo or brand direction (we can design one if needed), text and photos or access to gather them, business details such as services and hours, and one decision-maker who can approve scope and designs promptly. That keeps the build moving and avoids rework.",
   },
 ] as const;
 

@@ -12,7 +12,7 @@ import {
   ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
-import { services, techStack } from "@/lib/site-config";
+import { services } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionWrapper } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -79,24 +79,6 @@ export function Services() {
             );
           })}
         </div>
-
-        <Reveal delay={0.05}>
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-text-secondary">
-              Tech we use
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-2.5">
-              {techStack.map((tech) => (
-                <li
-                  key={tech}
-                  className="rounded-full border border-border-subtle bg-bg-card px-4 py-2 text-sm text-text-secondary transition hover:border-accent-primary/40 hover:text-text-primary"
-                >
-                  {tech}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
       </div>
     </SectionWrapper>
   );

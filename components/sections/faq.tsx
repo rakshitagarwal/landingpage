@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useId, useState } from "react";
 import { Plus } from "lucide-react";
 import { faqs } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
@@ -10,8 +9,8 @@ import { SectionWrapper } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export function FAQ() {
+  const baseId = useId();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const reduceMotion = useReducedMotion();
 
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -37,20 +36,25 @@ export function FAQ() {
           <SectionHeading
             eyebrow="FAQ"
             title="Answers before you commit"
-            description="Clear responses to the questions teams ask most. If yours is missing, get in touch."
+            description="Ownership, support, payments and how we work with remote teams. If your question is missing, get in touch."
           />
         </Reveal>
 
         <div className="w-full divide-y divide-border-subtle border-y border-border-subtle">
           {faqs.map((faq, index) => {
             const open = openIndex === index;
+            const panelId = `${baseId}-panel-${index}`;
+            const buttonId = `${baseId}-button-${index}`;
+
             return (
               <Reveal key={faq.question} delay={index * 0.02}>
                 <div>
                   <h3>
                     <button
+                      id={buttonId}
                       type="button"
                       aria-expanded={open}
+                      aria-controls={panelId}
                       className="flex min-h-11 w-full items-center justify-between gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-primary sm:py-6"
                       onClick={() => setOpenIndex(open ? null : index)}
                     >
@@ -66,26 +70,26 @@ export function FAQ() {
                       />
                     </button>
                   </h3>
-                  <AnimatePresence initial={false}>
-                    {open ? (
-                      <motion.div
-                        key="content"
-                        initial={
-                          reduceMotion ? false : { height: 0, opacity: 0 }
-                        }
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={
-                          reduceMotion ? undefined : { height: 0, opacity: 0 }
-                        }
-                        transition={{ duration: 0.28 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="pb-5 pr-8 text-base leading-relaxed text-text-secondary sm:pb-6">
-                          {faq.answer}
-                        </p>
-                      </motion.div>
-                    ) : null}
-                  </AnimatePresence>
+                  {/*
+                    Keep every answer in the HTML (not unmounted) so crawlers and
+                    “view source” retrieval always see complete FAQ content.
+                  */}
+                  <div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={buttonId}
+                    aria-hidden={!open}
+                    className={cn(
+                      "grid transition-[grid-template-rows] duration-300 ease-out",
+                      open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    )}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="pb-5 pr-8 text-base leading-relaxed text-text-secondary sm:pb-6">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </Reveal>
             );
