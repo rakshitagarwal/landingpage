@@ -3,8 +3,8 @@
   "name": "pixelnest",
   "main": ".open-next/worker.js",
   "upload_source_maps": true,
-  // Set this to today's date
-  "compatibility_date": "2026-10-31",
+  // Must be <= newest date supported by local workerd (currently 2026-10-30)
+  "compatibility_date": "2026-10-30",
   "compatibility_flags": [
     "nodejs_compat"
   ],
