@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { techStack } from "@/lib/site-config";
+import { Reveal } from "@/components/ui/reveal";
 
 function TechTrack({ ariaHidden }: { ariaHidden?: boolean }) {
   return (
@@ -75,17 +76,19 @@ export function TechStack() {
       className="scroll-mt-24 border-y border-border-subtle bg-bg-primary py-12 text-text-primary sm:py-14"
     >
       <div className="container-site mb-8 sm:mb-10">
-        <span className="inline-flex rounded-md border border-border-subtle bg-bg-secondary px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
-          Tech we use
-        </span>
-        <h2 className="mt-4 max-w-3xl font-serif text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
-          Stack behind our websites, software and automation
-        </h2>
-        <p className="mt-3 max-w-2xl text-base text-text-secondary sm:text-lg">
-          Proven tools for business sites, CRM platforms, WhatsApp automation,
-          APIs and product MVPs—chosen so your build stays maintainable after
-          launch.
-        </p>
+        <Reveal>
+          <span className="inline-flex rounded-md border border-border-subtle bg-bg-secondary px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
+            Tech we use
+          </span>
+          <h2 className="mt-4 max-w-3xl font-serif text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
+            Stack behind our websites, software and automation
+          </h2>
+          <p className="mt-3 max-w-2xl text-base text-text-secondary sm:text-lg">
+            Proven tools for business sites, CRM platforms, WhatsApp automation,
+            APIs and product MVPs—chosen so your build stays maintainable after
+            launch.
+          </p>
+        </Reveal>
       </div>
 
       <div

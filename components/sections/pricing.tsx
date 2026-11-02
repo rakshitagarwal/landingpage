@@ -26,7 +26,13 @@ export function Pricing() {
             const inverted = tier.highlighted;
             const Icon = tierIcons[index] ?? Layers;
             return (
-              <Reveal key={tier.id} delay={index * 0.05} className="flex h-full">
+              <Reveal
+                key={tier.id}
+                delay={index * 0.1}
+                y={48}
+                scale={0.96}
+                className="flex h-full"
+              >
                 <article
                   className={cn(
                     "card-hover-wash group relative flex h-full w-full flex-col rounded-[1.25rem] border p-6 sm:p-7",

@@ -20,14 +20,14 @@ export function Projects() {
 
         <div className="grid gap-6 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <Reveal key={project.slug} delay={index * 0.05}>
+            <Reveal key={project.slug} delay={index * 0.08} y={48} scale={0.97}>
               <article className="card-surface card-hover-wash group flex h-full flex-col overflow-hidden">
                 <div className="relative z-[1] overflow-hidden">
                   <CoverMedia
                     title={project.title}
                     image={project.image}
                     icon={project.mockup}
-                    className="aspect-[16/10] border-b border-border-subtle transition duration-500 group-hover:scale-[1.02]"
+                    className="aspect-[16/10] border-b border-border-subtle transition duration-700 ease-out group-hover:scale-[1.05]"
                     sizes="(max-width: 1024px) 100vw, 33vw"
                   />
                 </div>

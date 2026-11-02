@@ -320,6 +320,77 @@ html[data-color-mode="dark"] .card-hover-wash:hover {
   mask-image: radial-gradient(ellipse 70% 60% at 70% 40%, black 20%, transparent 75%);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .hero-orb {
+    animation: hero-orb-drift 12s ease-in-out infinite;
+  }
+
+  .hero-orb-delayed {
+    animation-delay: -4s;
+    animation-duration: 16s;
+  }
+}
+
+@keyframes hero-orb-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, -22px, 0) scale(1.06);
+  }
+}
+
+.service-card {
+  transition:
+    border-color 0.45s ease,
+    box-shadow 0.45s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.service-card:hover,
+.service-card.is-expanded,
+.service-card:focus-within {
+  border-color: color-mix(in srgb, var(--accent-primary) 42%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .service-card:hover,
+  .service-card.is-expanded,
+  .service-card:focus-within {
+    transform: translateY(-4px);
+  }
+
+  html[data-color-mode="dark"] .service-card:hover,
+  html[data-color-mode="dark"] .service-card.is-expanded,
+  html[data-color-mode="dark"] .service-card:focus-within {
+    box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.75);
+  }
+
+  html[data-color-mode="light"] .service-card:hover,
+  html[data-color-mode="light"] .service-card.is-expanded,
+  html[data-color-mode="light"] .service-card:focus-within {
+    box-shadow:
+      0 16px 36px -18px color-mix(in srgb, var(--accent-primary) 26%, transparent),
+      0 8px 20px -12px rgba(15, 23, 42, 0.12);
+  }
+
+  .service-card:hover .card-icon,
+  .service-card.is-expanded .card-icon,
+  .service-card:focus-within .card-icon {
+    border-color: color-mix(in srgb, var(--accent-primary) 60%, transparent);
+    background: color-mix(in srgb, var(--accent-primary) 12%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  }
+}
+
+/* Keep button CSS transitions from fighting the hero entrance tween */
+.hero-cta-btn {
+  transition-property: background-color, border-color, color, box-shadow, filter,
+    brightness;
+}
+
 .caption {
   font-size: 0.875rem;
   line-height: 1.5;

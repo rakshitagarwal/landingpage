@@ -47,8 +47,8 @@ export function FAQ() {
             const buttonId = `${baseId}-button-${index}`;
 
             return (
-              <Reveal key={faq.question} delay={index * 0.02}>
-                <div>
+              <Reveal key={faq.question} delay={Math.min(index * 0.03, 0.24)} y={24}>
+                <div className="transition-colors duration-300 hover:bg-bg-secondary/40">
                   <h3>
                     <button
                       id={buttonId}
@@ -63,7 +63,7 @@ export function FAQ() {
                       </span>
                       <Plus
                         className={cn(
-                          "h-5 w-5 shrink-0 text-accent-primary transition-transform duration-300",
+                          "h-5 w-5 shrink-0 text-accent-primary transition-transform duration-300 ease-out",
                           open && "rotate-45"
                         )}
                         aria-hidden

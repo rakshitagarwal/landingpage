@@ -32,7 +32,7 @@ export function Testimonials() {
               .slice(0, 2);
 
             return (
-              <Reveal key={item.id} delay={index * 0.05}>
+              <Reveal key={item.id} delay={index * 0.09} y={44} scale={0.98}>
                 <blockquote className="card-surface card-hover-wash relative flex h-full flex-col border-l-[3px] border-l-accent-primary p-6 sm:p-7">
                   <div className="card-icon relative z-[1] mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border-subtle text-accent-primary">
                     <Quote className="h-4 w-4" aria-hidden />

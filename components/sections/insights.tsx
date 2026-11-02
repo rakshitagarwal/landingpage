@@ -31,7 +31,7 @@ export function Insights() {
 
         <div className="grid gap-5 md:grid-cols-3">
           {featured.map((post, index) => (
-            <Reveal key={post.slug} delay={index * 0.04}>
+            <Reveal key={post.slug} delay={index * 0.08} y={40} scale={0.97}>
               <Link
                 href={`/blog/${post.slug}`}
                 className="card-surface card-hover-wash group relative flex h-full flex-col overflow-hidden"
@@ -41,7 +41,7 @@ export function Insights() {
                     title={post.title}
                     image={post.cover}
                     icon="website"
-                    className="aspect-[16/10] border-b border-border-subtle transition duration-500 group-hover:scale-[1.02]"
+                    className="aspect-[16/10] border-b border-border-subtle transition duration-700 ease-out group-hover:scale-[1.05]"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
