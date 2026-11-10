@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 
 export function Pricing() {
   return (
-    <SectionWrapper id="pricing" aria-label="Engagement and pricing">
+    <SectionWrapper id="pricing" tone="paper" aria-label="Engagement and pricing">
       <div className="section-stack">
         <Reveal>
           <SectionHeading

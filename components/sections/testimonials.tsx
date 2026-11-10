@@ -13,7 +13,7 @@ export function Testimonials() {
   if (display.length === 0) return null;
 
   return (
-    <SectionWrapper id="testimonials" muted>
+    <SectionWrapper id="testimonials" tone="ink-2">
       <div className="section-stack">
         <Reveal>
           <SectionHeading

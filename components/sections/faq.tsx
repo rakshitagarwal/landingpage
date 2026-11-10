@@ -26,7 +26,7 @@ export function FAQ() {
   };
 
   return (
-    <SectionWrapper id="faq" tone="raised">
+    <SectionWrapper id="faq" tone="white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

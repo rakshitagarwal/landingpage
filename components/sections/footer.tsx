@@ -68,11 +68,11 @@ export function Footer() {
   ] as const;
 
   return (
-    <footer className="border-t border-border-subtle bg-bg-primary text-text-primary">
+    <footer className="surface-ink border-t border-border-subtle text-text-primary">
       <div className="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <Link href="/#home" className="inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary">
-            <BrandLogo className="h-10" imgClassName="max-w-[11rem]" />
+            <BrandLogo tone="on-dark" className="h-10" imgClassName="max-w-[11rem]" />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-secondary">
             {siteConfig.tagline} Software engineering studio in{" "}

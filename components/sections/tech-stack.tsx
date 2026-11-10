@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export function TechStack() {
   return (
-    <SectionWrapper id="technology" aria-label="Technology expertise">
+    <SectionWrapper id="technology" tone="ink-2" aria-label="Technology expertise">
       <div className="section-stack">
         <Reveal>
           <SectionHeading

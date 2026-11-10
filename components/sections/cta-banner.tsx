@@ -45,17 +45,17 @@ export function CtaBanner() {
       ref={ref}
       id="discuss"
       aria-label="Discuss your project"
-      className="relative overflow-hidden border-y border-white/10 bg-[#0b0d12] text-[#f4f6fb]"
+      className="surface-ink relative overflow-hidden border-y border-border-subtle"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(139,124,255,0.28),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,color-mix(in_srgb,var(--copper)_18%,transparent),transparent_55%)]"
         aria-hidden
       />
       <div className="hero-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden />
       <div className="container-site relative py-20 sm:py-28">
         <p
           data-final-cta
-          className="text-xs font-semibold uppercase tracking-[0.22em] text-[#c4b8ff]"
+          className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-primary"
         >
           Start a project
         </p>
@@ -67,7 +67,7 @@ export function CtaBanner() {
         </h2>
         <p
           data-final-cta
-          className="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg"
+          className="mt-5 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg"
         >
           Tell us what you&apos;re building. We&apos;ll help you identify the
           right technical approach and the next steps.
@@ -78,7 +78,7 @@ export function CtaBanner() {
           </Link>
           <a
             href={`mailto:${email}`}
-            className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/15 px-7 text-base font-semibold text-white transition hover:border-white/40"
+            className={cn(buttonLinkClass("secondary", "lg"))}
           >
             Email Us
           </a>

@@ -1,34 +1,67 @@
 @import "tailwindcss";
 
 :root {
-  --bg-dark: #0b0d12;
-  --bg-light: #f8f9fc;
-  --bg-soft: #f1f3f8;
-  --text-strong: #0b0d12;
-  --text-body: #3e4658;
-  --text-on-dark: #f4f6fb;
-  --text-muted-on-dark: #9aa3b5;
-  --accent-on-dark: #8b7cff;
-  --accent-on-light: #5b4fe0;
-  --border-light: #e4e7f0;
-  --border-dark: rgba(255, 255, 255, 0.08);
+  /* Brand tokens. Change these to recolor the site. */
+  --color-navy: #101923;
+  --color-navy-secondary: #152330;
+  --color-surface-dark: #1b2a38;
+  --color-surface-elevated: #223545;
+  --color-border-dark: #304252;
+
+  --color-background-light: #f5f3ef;
+  --color-background-white: #ffffff;
+  --color-background-soft: #eceae5;
+  --color-border-light: #e2ded6;
+  --color-border-light-strong: #d6d3cd;
+
+  --copper: #d88755;
+  --copper-dark: #b96b40;
+  --copper-light: #e9b18c;
+  --copper-soft: #f5e5d9;
+  --navy: #101923;
+  --color-copper: var(--copper);
+  --color-copper-dark: var(--copper-dark);
+  --color-copper-light: var(--copper-light);
+  --color-copper-soft: var(--copper-soft);
+
+  --color-text-light: #f4f7fa;
+  --color-text-light-secondary: #c5d0da;
+  --color-text-light-muted: #93a4b3;
+  --color-text-dark: #17212b;
+  --color-text-dark-secondary: #475569;
+  --color-text-dark-muted: #718096;
+
+  --bg-dark: var(--color-navy);
+  --bg-light: var(--color-background-light);
+  --bg-soft: var(--color-background-soft);
+  --text-strong: var(--color-text-dark);
+  --text-body: var(--color-text-dark-secondary);
+  --text-on-dark: var(--color-text-light);
+  --text-muted-on-dark: var(--color-text-light-secondary);
+  --accent-on-dark: var(--color-copper-light);
+  --accent-on-light: var(--color-copper-dark);
+  --border-light: var(--color-border-light);
+  --border-dark: var(--color-border-dark);
 
   /* Default = dark (matches html data-color-mode="dark") */
-  --bg-primary: var(--bg-dark);
-  --bg-secondary: #12151d;
-  --bg-card: #12151d;
-  --bg-elevated: #181c27;
+  --bg-primary: var(--color-navy);
+  --bg-secondary: var(--color-navy-secondary);
+  --bg-card: var(--color-surface-dark);
+  --bg-elevated: var(--color-surface-elevated);
   --accent-primary: var(--accent-on-dark);
-  --text-primary: var(--text-on-dark);
-  --text-secondary: var(--text-muted-on-dark);
-  --text-muted: #7e8798;
-  --border-subtle: var(--border-dark);
-  --shadow-card: 0 24px 60px -32px rgba(0, 0, 0, 0.72);
-  --btn-primary-fg: #ffffff;
+  --text-primary: var(--color-text-light);
+  --text-secondary: var(--color-text-light-secondary);
+  --text-muted: var(--color-text-light-muted);
+  --border-subtle: var(--color-border-dark);
+  --shadow-card: 0 18px 40px -28px rgba(16, 25, 35, 0.55);
+  --btn-primary-bg: var(--color-copper);
+  --btn-primary-fg: var(--color-navy);
+  --btn-primary-hover: var(--color-copper-light);
+  --btn-secondary-border: #475569;
 
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
   --container: 80rem;
   --section-y: clamp(5rem, 8vw, 7rem);
   --page-gutter: clamp(1rem, 2.5vw, 1.75rem);
@@ -38,32 +71,38 @@
 
 html[data-color-mode="dark"] {
   color-scheme: dark;
-  --bg-primary: var(--bg-dark);
-  --bg-secondary: #12151d;
-  --bg-card: #12151d;
-  --bg-elevated: #181c27;
+  --bg-primary: var(--color-navy);
+  --bg-secondary: var(--color-navy-secondary);
+  --bg-card: var(--color-surface-dark);
+  --bg-elevated: var(--color-surface-elevated);
   --accent-primary: var(--accent-on-dark);
-  --text-primary: var(--text-on-dark);
-  --text-secondary: var(--text-muted-on-dark);
-  --text-muted: #7e8798;
-  --border-subtle: var(--border-dark);
-  --shadow-card: 0 24px 60px -32px rgba(0, 0, 0, 0.72);
-  --btn-primary-fg: #ffffff;
+  --text-primary: var(--color-text-light);
+  --text-secondary: var(--color-text-light-secondary);
+  --text-muted: var(--color-text-light-muted);
+  --border-subtle: var(--color-border-dark);
+  --shadow-card: 0 18px 40px -28px rgba(16, 25, 35, 0.55);
+  --btn-primary-bg: var(--color-copper);
+  --btn-primary-fg: var(--color-navy);
+  --btn-primary-hover: var(--color-copper-light);
+  --btn-secondary-border: #475569;
 }
 
 html[data-color-mode="light"] {
   color-scheme: light;
-  --bg-primary: var(--bg-light);
-  --bg-secondary: #ffffff;
-  --bg-card: #ffffff;
-  --bg-elevated: #ffffff;
+  --bg-primary: var(--color-background-light);
+  --bg-secondary: var(--color-background-white);
+  --bg-card: var(--color-background-white);
+  --bg-elevated: var(--color-background-white);
   --accent-primary: var(--accent-on-light);
-  --text-primary: var(--text-strong);
-  --text-secondary: var(--text-body);
-  --text-muted: #667085;
-  --border-subtle: var(--border-light);
-  --shadow-card: 0 18px 40px -28px rgba(11, 13, 18, 0.28);
-  --btn-primary-fg: #ffffff;
+  --text-primary: var(--color-text-dark);
+  --text-secondary: var(--color-text-dark-secondary);
+  --text-muted: var(--color-text-dark-muted);
+  --border-subtle: var(--color-border-light);
+  --shadow-card: 0 12px 28px -22px rgba(23, 33, 43, 0.18);
+  --btn-primary-bg: var(--color-copper);
+  --btn-primary-fg: var(--color-navy);
+  --btn-primary-hover: var(--color-copper-light);
+  --btn-secondary-border: var(--color-border-light-strong);
 }
 
 @theme inline {
@@ -87,7 +126,14 @@ html[data-color-mode="light"] {
   --color-border-subtle: var(--border-subtle);
   --color-border-light: var(--border-light);
   --color-border-dark: var(--border-dark);
+  --color-btn-primary-bg: var(--btn-primary-bg);
   --color-btn-primary-fg: var(--btn-primary-fg);
+  --color-btn-primary-hover: var(--btn-primary-hover);
+  --color-btn-secondary-border: var(--btn-secondary-border);
+  --color-copper: var(--copper);
+  --color-copper-dark: var(--copper-dark);
+  --color-copper-light: var(--copper-light);
+  --color-navy: var(--navy);
   --font-sans: var(--font-geist), Inter, system-ui, sans-serif;
   --font-serif: var(--font-geist), Inter, system-ui, sans-serif;
   --radius-sm: var(--radius-sm);
@@ -188,40 +234,72 @@ html[data-color-mode="light"] .site-noise {
 }
 
 .glow-accent {
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--accent-primary) 28%, transparent),
-    0 10px 28px -14px color-mix(in srgb, var(--accent-primary) 70%, transparent);
+  box-shadow: none;
 }
 
-/* Intentional light/dark break so sections are not identical. */
-.section-contrast {
-  background: #f8f9fc;
-  color: #0b0d12;
-  --text-primary: #0b0d12;
-  --text-secondary: #3e4658;
-  --text-muted: #667085;
-  --bg-primary: #f8f9fc;
-  --bg-secondary: #eef1f6;
-  --bg-card: #ffffff;
-  --bg-elevated: #ffffff;
-  --border-subtle: #e4e7f0;
-  --accent-primary: #5b4fe0;
-  --shadow-card: 0 18px 40px -28px rgba(11, 13, 18, 0.22);
+/* Fixed section surfaces. They do not follow the theme toggle, so the
+   navy / paper rhythm stays intact. Accent text uses the readable copper. */
+.surface-ink,
+.surface-ink-2,
+.surface-paper,
+.surface-white {
+  --btn-primary-bg: var(--color-copper);
+  --btn-primary-fg: var(--color-navy);
+  --btn-primary-hover: var(--color-copper-light);
 }
 
-html[data-color-mode="light"] .section-contrast {
-  background: #0b0d12;
-  color: #f4f6fb;
-  --text-primary: #f4f6fb;
-  --text-secondary: #9aa3b5;
-  --text-muted: #7e8798;
-  --bg-primary: #0b0d12;
-  --bg-secondary: #12151d;
-  --bg-card: #12151d;
-  --bg-elevated: #181c27;
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --accent-primary: #8b7cff;
-  --shadow-card: 0 24px 60px -32px rgba(0, 0, 0, 0.72);
+.surface-ink,
+.surface-ink-2 {
+  color: var(--color-text-light);
+  color-scheme: dark;
+  --text-primary: var(--color-text-light);
+  --text-secondary: var(--color-text-light-secondary);
+  --text-muted: var(--color-text-light-muted);
+  --bg-card: var(--color-surface-dark);
+  --bg-elevated: var(--color-surface-elevated);
+  --border-subtle: var(--color-border-dark);
+  --accent-primary: var(--color-copper-light);
+  --btn-secondary-border: #475569;
+  --shadow-card: 0 16px 36px -28px rgba(0, 0, 0, 0.55);
+}
+
+.surface-ink {
+  background: var(--color-navy);
+  --bg-primary: var(--color-navy);
+  --bg-secondary: var(--color-navy-secondary);
+}
+
+.surface-ink-2 {
+  background: var(--color-navy-secondary);
+  --bg-primary: var(--color-navy-secondary);
+  --bg-secondary: var(--color-navy);
+}
+
+.surface-paper,
+.surface-white {
+  color: var(--color-text-dark);
+  color-scheme: light;
+  --text-primary: var(--color-text-dark);
+  --text-secondary: var(--color-text-dark-secondary);
+  --text-muted: var(--color-text-dark-muted);
+  --bg-card: var(--color-background-white);
+  --bg-elevated: var(--color-background-white);
+  --border-subtle: var(--color-border-light);
+  --accent-primary: var(--color-copper-dark);
+  --btn-secondary-border: var(--color-border-light-strong);
+  --shadow-card: 0 10px 24px -20px rgba(23, 33, 43, 0.16);
+}
+
+.surface-paper {
+  background: var(--color-background-light);
+  --bg-primary: var(--color-background-light);
+  --bg-secondary: var(--color-background-soft);
+}
+
+.surface-white {
+  background: var(--color-background-white);
+  --bg-primary: var(--color-background-white);
+  --bg-secondary: var(--color-background-light);
 }
 
 .card-surface {
@@ -243,16 +321,9 @@ html[data-color-mode="light"] .section-contrast {
     transform: translateY(-3px);
   }
 
-  html[data-color-mode="dark"] .card-lift:hover {
-    box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.75);
-    border-color: color-mix(in srgb, var(--accent-primary) 28%, transparent);
-  }
-
-  html[data-color-mode="light"] .card-lift:hover {
-    box-shadow:
-      0 10px 24px -12px rgba(15, 23, 42, 0.18),
-      0 1px 3px rgba(15, 23, 42, 0.08);
-    border-color: color-mix(in srgb, var(--accent-primary) 35%, transparent);
+  .card-lift:hover {
+    border-color: var(--copper);
+    box-shadow: var(--shadow-card);
   }
 }
 
@@ -295,18 +366,8 @@ html[data-color-mode="light"] .card-hover-wash::before {
 }
 
 .card-hover-wash:hover {
-  border-color: color-mix(in srgb, var(--accent-primary) 40%, transparent);
-}
-
-html[data-color-mode="light"] .card-hover-wash:hover {
-  border-color: color-mix(in srgb, var(--accent-primary) 45%, transparent);
-  box-shadow:
-    0 14px 32px -16px color-mix(in srgb, var(--accent-primary) 28%, transparent),
-    0 8px 20px -12px rgba(15, 23, 42, 0.12);
-}
-
-html[data-color-mode="dark"] .card-hover-wash:hover {
-  box-shadow: 0 22px 44px -24px rgba(0, 0, 0, 0.7);
+  border-color: var(--copper);
+  box-shadow: var(--shadow-card);
 }
 
 .card-hover-wash .card-icon {
@@ -346,8 +407,8 @@ html[data-color-mode="dark"] .card-hover-wash:hover {
 
 .hero-grid {
   background-image:
-    linear-gradient(to right, color-mix(in srgb, var(--accent-primary) 8%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in srgb, var(--accent-primary) 8%, transparent) 1px, transparent 1px);
+    linear-gradient(to right, color-mix(in srgb, var(--border-subtle) 80%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border-subtle) 80%, transparent) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 70% 60% at 70% 40%, black 20%, transparent 75%);
 }
@@ -384,7 +445,7 @@ html[data-color-mode="dark"] .card-hover-wash:hover {
 .service-card:hover,
 .service-card.is-expanded,
 .service-card:focus-within {
-  border-color: color-mix(in srgb, var(--accent-primary) 42%, transparent);
+  border-color: var(--copper);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -394,18 +455,10 @@ html[data-color-mode="dark"] .card-hover-wash:hover {
     transform: translateY(-4px);
   }
 
-  html[data-color-mode="dark"] .service-card:hover,
-  html[data-color-mode="dark"] .service-card.is-expanded,
-  html[data-color-mode="dark"] .service-card:focus-within {
-    box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.75);
-  }
-
-  html[data-color-mode="light"] .service-card:hover,
-  html[data-color-mode="light"] .service-card.is-expanded,
-  html[data-color-mode="light"] .service-card:focus-within {
-    box-shadow:
-      0 16px 36px -18px color-mix(in srgb, var(--accent-primary) 26%, transparent),
-      0 8px 20px -12px rgba(15, 23, 42, 0.12);
+  .service-card:hover,
+  .service-card.is-expanded,
+  .service-card:focus-within {
+    box-shadow: 0 12px 28px -20px rgba(23, 33, 43, 0.18);
   }
 
   .service-card:hover .card-icon,

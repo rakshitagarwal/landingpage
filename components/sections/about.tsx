@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 
 export function About() {
   return (
-    <SectionWrapper id="about" tone="raised" aria-label="About Obekai">
+    <SectionWrapper id="about" tone="white" aria-label="About Obekai">
       <div className="section-stack">
         <Reveal>
           <SectionHeading

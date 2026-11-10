@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export function Projects() {
   return (
-    <SectionWrapper id="work" tone="raised" aria-label="Selected work">
+    <SectionWrapper id="work" tone="ink" aria-label="Selected work">
       <div className="section-stack">
         <Reveal>
           <SectionHeading
@@ -68,7 +68,7 @@ export function Projects() {
                     {project.tech.map((item) => (
                       <li
                         key={item}
-                        className="rounded-full border border-border-subtle px-2.5 py-1 text-xs text-text-secondary"
+                        className="rounded-[8px] border border-copper/30 px-2.5 py-1 text-xs text-accent-primary"
                       >
                         {item}
                       </li>

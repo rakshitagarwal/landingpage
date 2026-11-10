@@ -24,10 +24,10 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 const marks = [
-  "bg-[linear-gradient(135deg,rgba(91,79,224,0.18),transparent_55%)]",
-  "bg-[radial-gradient(circle_at_80%_0%,rgba(91,79,224,0.22),transparent_46%)]",
-  "bg-[linear-gradient(180deg,transparent,rgba(91,79,224,0.14))]",
-  "bg-[radial-gradient(circle_at_0%_100%,rgba(91,79,224,0.2),transparent_50%)]",
+  "bg-[linear-gradient(135deg,color-mix(in_srgb,var(--copper)_16%,transparent),transparent_55%)]",
+  "bg-[radial-gradient(circle_at_80%_0%,color-mix(in_srgb,var(--copper)_18%,transparent),transparent_46%)]",
+  "bg-[linear-gradient(180deg,transparent,color-mix(in_srgb,var(--copper)_12%,transparent))]",
+  "bg-[radial-gradient(circle_at_0%_100%,color-mix(in_srgb,var(--copper)_16%,transparent),transparent_50%)]",
 ];
 
 export function Services() {
@@ -35,7 +35,7 @@ export function Services() {
   const secondary = services.filter((service) => !service.featured);
 
   return (
-    <SectionWrapper id="services" tone="contrast">
+    <SectionWrapper id="services" tone="white">
       <div className="section-stack">
         <Reveal>
           <SectionHeading

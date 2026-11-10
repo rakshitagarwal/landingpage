@@ -8,11 +8,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "rounded-full bg-accent-primary text-btn-primary-fg glow-accent hover:brightness-110 active:scale-[0.98]",
+          "rounded-[8px] bg-btn-primary-bg text-btn-primary-fg hover:bg-btn-primary-hover active:scale-[0.98]",
         secondary:
-          "rounded-full border border-border-subtle bg-transparent text-text-primary hover:border-accent-primary/40 hover:bg-accent-primary/5",
+          "rounded-[8px] border border-btn-secondary-border bg-transparent text-text-primary hover:border-copper hover:bg-bg-card",
         ghost:
-          "rounded-full text-text-secondary hover:bg-accent-primary/5 hover:text-text-primary",
+          "rounded-[8px] text-text-secondary hover:bg-bg-card hover:text-text-primary",
       },
       size: {
         default: "h-11 px-5 py-2.5",

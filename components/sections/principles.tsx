@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 
 export function Principles() {
   return (
-    <SectionWrapper id="principles" tone="raised" aria-label="Working principles">
+    <SectionWrapper id="principles" tone="ink-2" aria-label="Working principles">
       <div className="section-stack">
         <Reveal>
           <SectionHeading

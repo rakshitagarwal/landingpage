@@ -6,6 +6,8 @@ type BrandLogoProps = {
   className?: string;
   imgClassName?: string;
   priority?: boolean;
+  /** Navy surfaces always use the dark-UI wordmark. */
+  tone?: "theme" | "on-dark";
 };
 
 /**
@@ -16,6 +18,7 @@ export function BrandLogo({
   className,
   imgClassName,
   priority = false,
+  tone = "theme",
 }: BrandLogoProps) {
   return (
     <span className={cn("relative inline-flex items-center", className)}>
@@ -27,7 +30,8 @@ export function BrandLogo({
         aria-hidden
         priority={priority}
         className={cn(
-          "h-full w-auto object-contain object-left [[data-color-mode=light]_&]:hidden",
+          tone === "theme" && "[[data-color-mode=light]_&]:hidden",
+          "h-full w-auto object-contain object-left",
           imgClassName
         )}
       />
@@ -39,7 +43,9 @@ export function BrandLogo({
         aria-hidden
         priority={priority}
         className={cn(
-          "h-full w-auto object-contain object-left [[data-color-mode=dark]_&]:hidden",
+          tone === "on-dark" && "hidden",
+          tone === "theme" && "[[data-color-mode=dark]_&]:hidden",
+          "h-full w-auto object-contain object-left",
           imgClassName
         )}
       />

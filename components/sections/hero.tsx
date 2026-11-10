@@ -79,12 +79,12 @@ export function Hero() {
     <section
       ref={rootRef}
       id="home"
-      className="relative isolate overflow-hidden bg-bg-primary pt-28 pb-16 text-text-primary sm:pt-32 sm:pb-20 lg:pb-28"
+      className="surface-ink relative isolate overflow-hidden pt-28 pb-16 text-text-primary sm:pt-32 sm:pb-20 lg:pb-28"
     >
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
         <div className="hero-grid absolute inset-0 opacity-70" />
         <div className="hero-orb absolute -left-24 top-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--accent-primary)_18%,transparent),transparent_68%)] blur-3xl" />
-        <div className="hero-orb hero-orb-delayed absolute right-[-6rem] bottom-0 h-80 w-80 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,#6d5efc_16%,transparent),transparent_70%)] blur-3xl" />
+        <div className="hero-orb hero-orb-delayed absolute right-[-6rem] bottom-0 h-80 w-80 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--copper)_14%,transparent),transparent_70%)] blur-3xl" />
       </div>
 
       <div className="container-site grid items-center gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 xl:gap-20">
@@ -101,7 +101,16 @@ export function Hero() {
             data-hero-animate
             className="font-heading mt-5 max-w-[16ch] text-[2.6rem] font-semibold leading-[1.02] text-text-primary sm:text-6xl lg:text-[4.15rem]"
           >
-            {heroContent.headline}
+            {heroContent.headline.startsWith("Engineering digital products that ") ? (
+              <>
+                Engineering digital products that{" "}
+                <span className="text-accent-primary">
+                  move businesses forward.
+                </span>
+              </>
+            ) : (
+              heroContent.headline
+            )}
           </h1>
           <p
             data-hero-sub
@@ -169,12 +178,12 @@ function ProductStage() {
       className="relative mx-auto w-full max-w-xl lg:max-w-none"
     >
       <div
-        className="pointer-events-none absolute -inset-8 -z-10 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,#8b7cff_28%,transparent),transparent_68%)] blur-2xl"
+        className="pointer-events-none absolute -inset-8 -z-10 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--copper)_18%,transparent),transparent_68%)] blur-2xl"
         aria-hidden
       />
 
       <div
-        className="overflow-hidden rounded-[1.4rem] border border-white/10 bg-[#10131a] text-[#f4f6fb] shadow-[0_30px_80px_-36px_rgba(0,0,0,0.85)]"
+        className="overflow-hidden rounded-[12px] border border-[var(--color-border-dark)] bg-[var(--color-surface-dark)] text-[var(--color-text-light)] shadow-[0_30px_80px_-36px_rgba(0,0,0,0.55)]"
         aria-hidden
       >
         <div className="flex items-center gap-3 border-b border-white/8 px-4 py-3">
@@ -225,13 +234,13 @@ function ProductStage() {
             <div className="rounded-xl border border-white/8 bg-white/[0.03] p-3">
               <div className="mb-3 flex items-center justify-between text-[11px] text-white/45">
                 <span>Release health</span>
-                <span className="text-[#c4b8ff]">Stable</span>
+                <span className="text-[var(--copper-light)]">Stable</span>
               </div>
               <div className="flex h-16 items-end gap-1.5">
                 {[38, 52, 46, 70, 62, 84, 76, 90].map((height, index) => (
                   <span
                     key={index}
-                    className="flex-1 rounded-sm bg-gradient-to-t from-[#5b4fe0] to-[#c4b8ff]"
+                    className="flex-1 rounded-sm bg-gradient-to-t from-[var(--copper-dark)] to-[var(--copper-light)]"
                     style={{ height: `${height}%`, opacity: 0.45 + index * 0.06 }}
                   />
                 ))}
@@ -266,23 +275,23 @@ function ProductStage() {
 
       <div
         data-hero-float
-        className="absolute -left-3 top-16 hidden rounded-2xl border border-white/10 bg-[#181c27]/95 px-3 py-2 text-xs text-white shadow-xl backdrop-blur sm:block"
+        className="absolute -left-3 top-16 hidden rounded-[12px] border border-[var(--color-border-dark)] bg-[var(--color-surface-elevated)]/95 px-3 py-2 text-xs text-[var(--color-text-light)] shadow-xl backdrop-blur sm:block"
       >
         <p className="text-[10px] uppercase tracking-[0.16em] text-white/40">API</p>
         <p className="mt-0.5 font-medium">Orders · sync</p>
       </div>
       <div
         data-hero-float
-        className="absolute -right-2 top-28 hidden rounded-2xl border border-white/10 bg-[#181c27]/95 px-3 py-2 text-xs text-white shadow-xl backdrop-blur sm:block"
+        className="absolute -right-2 top-28 hidden rounded-[12px] border border-[var(--color-border-dark)] bg-[var(--color-surface-elevated)]/95 px-3 py-2 text-xs text-[var(--color-text-light)] shadow-xl backdrop-blur sm:block"
       >
         <p className="text-[10px] uppercase tracking-[0.16em] text-white/40">Queue</p>
         <p className="mt-0.5 font-medium">Jobs · healthy</p>
       </div>
       <div
         data-hero-float
-        className="absolute bottom-6 left-8 hidden rounded-2xl border border-[#8b7cff]/30 bg-[#12101c]/95 px-3 py-2 text-xs text-white shadow-xl backdrop-blur sm:block"
+        className="absolute bottom-6 left-8 hidden rounded-[12px] border border-[color-mix(in_srgb,var(--copper)_40%,transparent)] bg-[var(--color-surface-elevated)]/95 px-3 py-2 text-xs text-[var(--color-text-light)] shadow-xl backdrop-blur sm:block"
       >
-        <p className="text-[10px] uppercase tracking-[0.16em] text-[#c4b8ff]">Postgres</p>
+        <p className="text-[10px] uppercase tracking-[0.16em] text-[var(--copper-light)]">Postgres</p>
         <p className="mt-0.5 font-medium">Primary data</p>
       </div>
       <p className="sr-only">

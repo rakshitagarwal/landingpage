@@ -4,7 +4,7 @@ import { SectionWrapper } from "@/components/ui/section";
 
 export function WhyChooseUs() {
   return (
-    <SectionWrapper id="why" tone="contrast" aria-label="Why work with Obekai">
+    <SectionWrapper id="why" tone="paper" aria-label="Why work with Obekai">
       <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-primary">

@@ -105,10 +105,10 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 text-text-primary transition-all duration-300",
+        "surface-ink fixed inset-x-0 top-0 z-50 text-text-primary transition-all duration-300",
         scrolled || open
-          ? "border-b border-border-subtle bg-bg-primary/85 shadow-[0_10px_40px_-28px_rgba(0,0,0,0.7)] backdrop-blur-xl"
-          : "bg-transparent"
+          ? "border-b border-border-subtle shadow-[0_10px_40px_-28px_rgba(0,0,0,0.45)]"
+          : ""
       )}
     >
       <nav
@@ -127,6 +127,7 @@ export function Navbar() {
         >
           <BrandLogo
             priority
+            tone="on-dark"
             className="h-8 sm:h-9"
             imgClassName="max-w-[8.5rem] sm:max-w-[10rem]"
           />
@@ -144,8 +145,8 @@ export function Navbar() {
               className={cn(
                 "inline-flex min-h-11 items-center gap-1 rounded-full px-3 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary",
                 active === "#services" || servicesOpen
-                  ? "text-text-primary"
-                  : "text-text-secondary hover:text-text-primary"
+                  ? "text-accent-primary"
+                  : "text-text-secondary hover:text-accent-primary"
               )}
               aria-expanded={servicesOpen}
               aria-controls={servicesId}
@@ -208,8 +209,8 @@ export function Navbar() {
                 className={cn(
                   "inline-flex min-h-11 items-center rounded-full px-3 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary",
                   active === link.href
-                    ? "text-text-primary"
-                    : "text-text-secondary hover:text-text-primary"
+                    ? "text-accent-primary"
+                    : "text-text-secondary hover:text-accent-primary"
                 )}
               >
                 {link.label}
@@ -221,8 +222,8 @@ export function Navbar() {
                 className={cn(
                   "inline-flex min-h-11 items-center rounded-full px-3 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary",
                   pathname === link.href
-                    ? "text-text-primary"
-                    : "text-text-secondary hover:text-text-primary"
+                    ? "text-accent-primary"
+                    : "text-text-secondary hover:text-accent-primary"
                 )}
               >
                 {link.label}
@@ -259,7 +260,7 @@ export function Navbar() {
             initial={reduceMotion ? false : { opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-b border-border-subtle bg-bg-primary/95 backdrop-blur-xl lg:hidden"
+            className="border-b border-border-subtle bg-bg-primary lg:hidden"
           >
             <div className="flex max-h-[calc(100vh-4.5rem)] flex-col gap-1 overflow-y-auto px-4 py-4">
               <p className="px-3 pt-1 text-xs font-semibold uppercase tracking-[0.18em] text-text-muted">
@@ -269,7 +270,7 @@ export function Navbar() {
                 <Link
                   key={service.slug}
                   href={`/services/${service.slug}`}
-                  className="rounded-lg px-3 py-3 text-base text-text-secondary hover:bg-bg-secondary hover:text-text-primary"
+                  className="rounded-lg px-3 py-3 text-base text-text-secondary hover:bg-bg-secondary hover:text-accent-primary"
                   onClick={() => setOpen(false)}
                 >
                   {service.title}
@@ -284,7 +285,7 @@ export function Navbar() {
                       event.preventDefault();
                       scrollTo(link.href);
                     }}
-                    className="rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-bg-secondary"
+                    className="rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-bg-secondary hover:text-accent-primary"
                   >
                     {link.label}
                   </a>
@@ -292,7 +293,7 @@ export function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-bg-secondary"
+                    className="rounded-lg px-3 py-3 text-base font-medium text-text-primary hover:bg-bg-secondary hover:text-accent-primary"
                     onClick={() => setOpen(false)}
                   >
                     {link.label}

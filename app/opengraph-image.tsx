@@ -15,8 +15,8 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#0B0D12",
-          color: "#F4F6FB",
+          background: "#101923",
+          color: "#F4F7FA",
           padding: 72,
         }}
       >
@@ -25,7 +25,7 @@ export default function OpenGraphImage() {
             display: "flex",
             alignItems: "center",
             gap: 16,
-            color: "#C4B8FF",
+            color: "#E9B18C",
             fontSize: 28,
             fontWeight: 700,
           }}
@@ -35,7 +35,7 @@ export default function OpenGraphImage() {
               width: 48,
               height: 48,
               borderRadius: 10,
-              border: "1px solid rgba(196,184,255,0.55)",
+              border: "1px solid rgba(216,135,85,0.7)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -49,7 +49,7 @@ export default function OpenGraphImage() {
           <div style={{ fontSize: 58, fontWeight: 700, lineHeight: 1.15, maxWidth: 900 }}>
             {siteConfig.tagline}
           </div>
-          <div style={{ fontSize: 26, color: "#b4b8c0", maxWidth: 780 }}>
+          <div style={{ fontSize: 26, color: "#C5D0DA", maxWidth: 780 }}>
             Custom software, web applications and AI automation from Ahmedabad, for clients in India and internationally.
           </div>
         </div>

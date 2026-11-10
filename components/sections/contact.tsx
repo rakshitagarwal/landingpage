@@ -118,7 +118,7 @@ export function Contact() {
     "w-full rounded-xl border border-border-subtle bg-bg-secondary px-3.5 py-2.5 text-base text-text-primary outline-none transition placeholder:text-text-muted focus:border-accent-primary/50 focus:ring-2 focus:ring-accent-primary/25";
 
   return (
-    <SectionWrapper id="contact">
+    <SectionWrapper id="contact" tone="paper">
       <div className="section-stack">
         <Reveal>
           <form

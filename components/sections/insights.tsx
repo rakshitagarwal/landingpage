@@ -10,7 +10,7 @@ const featured = blogPosts;
 
 export function Insights() {
   return (
-    <SectionWrapper id="case-studies">
+    <SectionWrapper id="case-studies" tone="ink" bordered={false}>
       <div className="section-stack">
         <Reveal>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">

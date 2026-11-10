@@ -19,7 +19,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export function Differentiators() {
   return (
-    <SectionWrapper id="approach" tone="raised" aria-label="Why companies work with Obekai">
+    <SectionWrapper id="approach" tone="paper" aria-label="Why companies work with Obekai">
       <div className="section-stack">
         <Reveal>
           <SectionHeading

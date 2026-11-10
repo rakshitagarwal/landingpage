@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 
 export function Process() {
   return (
-    <SectionWrapper id="process" aria-label="Delivery process">
+    <SectionWrapper id="process" tone="paper" aria-label="Delivery process">
       <div className="section-stack">
         <Reveal>
           <SectionHeading
