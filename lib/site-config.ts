@@ -15,14 +15,15 @@ export const siteConfig = {
   whatsappUrl: "https://wa.me/919997443874",
   whatsappPrefill: "Hi Obekai, I'd like to discuss a project",
   address: {
-    line1: "Ramdev Nagar",
+    line1: "",
     city: "Ahmedabad",
     state: "Gujarat",
     country: "India",
-    full: "Ramdev Nagar, Ahmedabad, Gujarat, India",
+    postalCode: "380015",
+    full: "Ahmedabad, Gujarat, India 380015",
   },
   mapsEmbedUrl:
-    "https://maps.google.com/maps?q=Ramdev%20Nagar%2C%20Ahmedabad%2C%20Gujarat%2C%20India&t=&z=14&ie=UTF8&iwloc=&output=embed",
+    "https://maps.google.com/maps?q=Ahmedabad%2C%20Gujarat%2C%20India%20380015&t=&z=12&ie=UTF8&iwloc=&output=embed",
   hours: "Mon-Sat, 10:00 AM - 7:00 PM IST (flexible for your timezone)",
   replyNote:
     "We reply within 24 hours on WhatsApp or email, often sooner during working hours.",
@@ -40,10 +41,10 @@ export const siteConfig = {
    */
   showTestimonials: false,
   social: {
+    /** Add the live company profile URL when available. */
     linkedin: "",
-    facebook: "",
+    /** Add the live company profile URL when available. */
     instagram: "",
-    github: "",
   },
   whereWeWork:
     "We work remotely with clients across markets. Our studio is based in Ahmedabad, India.",
@@ -202,253 +203,8 @@ export const capabilities = differentiators;
 /** @deprecated Use capabilities */
 export const valueStrip = capabilities;
 
-export const services = [
-  {
-    slug: "custom-software-engineering",
-    title: "Custom Software Engineering",
-    outcome:
-      "Replace disconnected tools with software that matches how the business actually operates.",
-    icon: "Code2",
-    featured: true,
-    tags: ["Platforms", "CRM", "Internal tools"],
-    summary:
-      "Business platforms, CRM systems, dashboards, internal tools and custom applications.",
-    includes: [
-      "Business and CRM platforms",
-      "Operational dashboards",
-      "Internal tools for your team",
-      "Role-based access",
-      "Source-code handover",
-    ],
-    technologies: ["Next.js", "Node.js", "NestJS", "PostgreSQL"],
-    whoFor:
-      "Startups and established companies that have outgrown spreadsheets, off-the-shelf tools or software that no longer fits.",
-    timeline: "Usually 6-12 weeks after scope is agreed",
-    priceFrom: "$2,000",
-    commercial:
-      "Discovery, then a fixed proposal. Custom systems usually start from $2,000 once the scope is written.",
-    faqs: [
-      {
-        question: "Can you match how we already work?",
-        answer:
-          "Yes. We start from the current process and build the parts the business actually needs.",
-      },
-      {
-        question: "Will my team need training?",
-        answer:
-          "We include a walkthrough and handover notes so your team can use the system.",
-      },
-      {
-        question: "Who owns the software?",
-        answer:
-          "You do. After final payment we hand over the source code and related accounts.",
-      },
-    ],
-  },
-  {
-    slug: "web-saas-development",
-    title: "Web & SaaS Development",
-    outcome:
-      "Ship a website, web application or first product release that is ready to operate.",
-    icon: "AppWindow",
-    featured: true,
-    tags: ["Web apps", "SaaS", "MVP"],
-    summary:
-      "Modern websites, web applications, SaaS platforms and MVP development.",
-    includes: [
-      "Marketing and product websites",
-      "Authenticated web applications",
-      "SaaS and MVP releases",
-      "Admin tools for your team",
-      "SEO-ready technical foundations",
-    ],
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    whoFor:
-      "Founders and growing businesses launching a product, replacing a fragile site, or turning a validated idea into a first release.",
-    timeline:
-      "Websites are often 1-6 weeks. Application and SaaS timelines follow the agreed first release.",
-    priceFrom: "$299",
-    commercial:
-      "Website projects start from $299 using defined packages. Web applications and SaaS products are quoted from a written scope.",
-    faqs: [
-      {
-        question: "Do website packages include a web application?",
-        answer:
-          "No. A marketing site and a product with accounts, billing or custom workflows are scoped separately. We say which one you need before quoting.",
-      },
-      {
-        question: "Can customers use it on a phone?",
-        answer:
-          "Yes. Interfaces are designed for phones and desktops.",
-      },
-      {
-        question: "Who owns the code?",
-        answer:
-          "You do, after the final invoice is paid.",
-      },
-    ],
-  },
-  {
-    slug: "ai-business-automation",
-    title: "AI & Business Automation",
-    outcome:
-      "Take repetitive communication and operations off your team without losing a human handoff.",
-    icon: "Workflow",
-    featured: true,
-    tags: ["AI", "Workflows", "WhatsApp"],
-    summary:
-      "AI integrations, intelligent workflows, WhatsApp automation and business process automation.",
-    includes: [
-      "AI features inside your product or workflow",
-      "WhatsApp automation and API integrations",
-      "Enquiry, booking and reminder flows",
-      "Handoff to a person when needed",
-      "Connections to the tools you already use",
-    ],
-    technologies: ["LLM APIs", "WhatsApp API", "Node.js", "Python"],
-    whoFor:
-      "Teams spending too much time on repetitive messages, bookings, data entry or handoffs between tools.",
-    timeline: "Often 2-6 weeks for a defined flow. Broader AI work depends on the integrations.",
-    priceFrom: "$499",
-    commercial:
-      "WhatsApp and workflow automation starts from $499. Wider AI integrations are quoted from the systems and complexity involved.",
-    faqs: [
-      {
-        question: "Do I need the WhatsApp Business API?",
-        answer:
-          "Simple replies can use WhatsApp Business. Larger automated flows usually need the API. We help you choose before building.",
-      },
-      {
-        question: "Can a person take over a conversation?",
-        answer:
-          "Yes. Automation covers the repeatable steps. Your team can step in when a conversation needs a person.",
-      },
-      {
-        question: "Where does the information go?",
-        answer:
-          "Into the system we agree on: your product, a spreadsheet, email or an existing tool.",
-      },
-    ],
-  },
-  {
-    slug: "ecommerce-platforms",
-    title: "E-commerce & Digital Platforms",
-    outcome:
-      "Sell through a store you control, with catalogue, checkout and operations in one place.",
-    icon: "Store",
-    featured: true,
-    tags: ["Stores", "Payments", "Platforms"],
-    summary:
-      "Custom online stores, payment integrations, inventory systems and customer-facing platforms.",
-    includes: [
-      "Product catalogue and merchandising",
-      "Cart, checkout and payments",
-      "Order and inventory flows",
-      "Customer accounts where needed",
-      "An admin your team can use",
-    ],
-    technologies: ["React", "Node.js", "Stripe", "PostgreSQL"],
-    whoFor:
-      "Brands and operators that need more than a template shop, including custom checkout, inventory or a customer platform.",
-    timeline: "Usually 3-8 weeks depending on catalogue, payments and operations.",
-    priceFrom: "$1,299",
-    commercial:
-      "Custom online stores start from $1,299. The final figure follows catalogue size, payments and operational scope.",
-    faqs: [
-      {
-        question: "Which payment providers can you integrate?",
-        answer:
-          "Stripe, PayPal, Razorpay and similar providers, chosen for the markets you sell in.",
-      },
-      {
-        question: "Can we manage products ourselves?",
-        answer:
-          "Yes. The handover includes an admin for catalogue and orders, plus the source code after final payment.",
-      },
-      {
-        question: "Is this a template theme?",
-        answer:
-          "No. The store is built for your catalogue and operations, not dropped in from a generic theme.",
-      },
-    ],
-  },
-  {
-    slug: "ui-ux-brand",
-    title: "UI/UX & Brand Design",
-    outcome: "Give a product or company an interface and brand people can trust.",
-    icon: "Palette",
-    featured: false,
-    tags: ["Product UI", "Brand"],
-    summary:
-      "Interface and brand design for products and websites, usually alongside an engineering engagement.",
-    includes: [
-      "Logo and basic brand kit",
-      "Product and dashboard UI",
-      "Website layouts",
-    ],
-    technologies: ["Figma"],
-    whoFor:
-      "Teams launching a product or refreshing an interface that is hard to use.",
-    timeline: "Usually 1-3 weeks for a logo kit. Longer for full product UI.",
-    priceFrom: "$199",
-    commercial: "A logo and basic brand kit starts from $199. Product UI is quoted with the build.",
-    faqs: [
-      {
-        question: "What is in a brand kit?",
-        answer:
-          "Logo files, colours, fonts and simple usage notes you can share with anyone producing materials.",
-      },
-      {
-        question: "Can you design a few screens first?",
-        answer: "Yes. We can design the key screens and expand from there.",
-      },
-      {
-        question: "Do you build what you design?",
-        answer:
-          "Yes, when you want design and engineering to stay with one team.",
-      },
-    ],
-  },
-  {
-    slug: "digital-marketing",
-    title: "Digital Marketing & Google Presence",
-    outcome: "Make the business easier to find when people search.",
-    icon: "Megaphone",
-    featured: false,
-    tags: ["Google Business Profile", "SEO"],
-    summary:
-      "Search and Google presence support for clients who also need the product or website built.",
-    includes: [
-      "Google Business Profile setup",
-      "SEO foundations",
-      "Social media posts",
-    ],
-    technologies: ["Google Business Profile", "SEO"],
-    whoFor:
-      "Businesses that want the site or product we build to be findable, without treating marketing as the core engagement.",
-    timeline: "Setup is often within 1-2 weeks. Ongoing plans are monthly.",
-    priceFrom: "$199",
-    commercial:
-      "One-time Google Business Profile setup and SEO foundations start from $199. Monthly social plans are separate.",
-    faqs: [
-      {
-        question: "Is this paid advertising?",
-        answer:
-          "No. This covers your Google profile and organic foundations. Paid ads are separate and optional.",
-      },
-      {
-        question: "Do you post every month?",
-        answer:
-          "Only on a monthly social plan. One-time setup is also available.",
-      },
-      {
-        question: "How soon does this change search visibility?",
-        answer:
-          "A Google profile can look complete within days. Rankings take longer and depend on competition and reviews.",
-      },
-    ],
-  },
-] as const;
+export { services, getServiceBySlug } from "@/lib/services";
+export type { Service } from "@/lib/services";
 
 export const whoWeHelp = [
   {
@@ -1016,7 +772,6 @@ export const serviceOptions = [
   "Web & SaaS Development",
   "AI & Business Automation",
   "E-commerce & Digital Platforms",
-  "UI/UX & Brand Design",
   "Not sure yet",
 ] as const;
 
@@ -1030,7 +785,6 @@ export const budgetOptions = [
 
 export const currencyOptions = ["USD", "INR", "No preference"] as const;
 
-export type Service = (typeof services)[number];
 export type Project = (typeof projects)[number];
 
 export { blogPosts } from "@/lib/blog-posts";

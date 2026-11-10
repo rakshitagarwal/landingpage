@@ -20,14 +20,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const post = blogPosts.find((item) => item.slug === slug);
   if (!post) return { title: "Blog" };
+  const url = `/blog/${post.slug}`;
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: { canonical: url },
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url,
       type: "article",
       publishedTime: post.date,
+      images: post.cover.src
+        ? [
+            {
+              url: post.cover.src,
+              width: post.cover.width,
+              height: post.cover.height,
+              alt: post.cover.alt || post.title,
+            },
+          ]
+        : undefined,
     },
   };
 }

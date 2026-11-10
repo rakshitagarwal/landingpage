@@ -32,7 +32,6 @@ const marks = [
 
 export function Services() {
   const primary = services.filter((service) => service.featured);
-  const secondary = services.filter((service) => !service.featured);
 
   return (
     <SectionWrapper id="services" tone="white">
@@ -103,22 +102,6 @@ export function Services() {
           })}
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-border-subtle pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-text-secondary">
-            Also available with a project: interface design and search presence.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            {secondary.map((service) => (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}`}
-                className="inline-flex min-h-11 items-center text-sm font-medium text-text-primary underline-offset-4 hover:underline"
-              >
-                {service.title}
-              </Link>
-            ))}
-          </div>
-        </div>
       </div>
     </SectionWrapper>
   );

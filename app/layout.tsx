@@ -38,9 +38,6 @@ export const metadata: Metadata = {
     "CRM development",
     "Ahmedabad software company",
   ],
-  alternates: {
-    canonical: "/",
-  },
   icons: {
     icon: [
       { url: "/images/favicon.ico", sizes: "any" },
@@ -110,14 +107,20 @@ const organizationJsonLd = {
   description: siteConfig.description,
   address: {
     "@type": "PostalAddress",
-    streetAddress: siteConfig.address.line1,
+    ...(siteConfig.address.line1
+      ? { streetAddress: siteConfig.address.line1 }
+      : {}),
     addressLocality: siteConfig.address.city,
     addressRegion: siteConfig.address.state,
+    postalCode: siteConfig.address.postalCode,
     addressCountry: siteConfig.address.country,
   },
   areaServed: "Worldwide",
   openingHours: "Mo-Sa 10:00-19:00",
-  sameAs: Object.values(siteConfig.social).filter(Boolean),
+  sameAs: [
+    ...Object.values(siteConfig.social).filter(Boolean),
+    siteConfig.whatsappUrl,
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     telephone: siteConfig.phoneTel,

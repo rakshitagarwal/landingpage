@@ -9,6 +9,14 @@ export const metadata: Metadata = {
   title: "Case Studies",
   description:
     "Four Obekai product case studies: an electronics storefront, a sales command center, an AI workflow console and a CRM dashboard.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Case Studies | Obekai",
+    description:
+      "Product case studies from Obekai engineering work across commerce, sales, AI workflows and CRM.",
+    url: "/blog",
+    type: "website",
+  },
 };
 
 export default function BlogPage() {

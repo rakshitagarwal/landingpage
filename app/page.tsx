@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { About } from "@/components/sections/about";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { Differentiators } from "@/components/sections/differentiators";
@@ -14,6 +15,20 @@ import { TechStack } from "@/components/sections/tech-stack";
 import { Testimonials } from "@/components/sections/testimonials";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { siteConfig } from "@/lib/site-config";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: siteConfig.metaTitle,
+  },
+  description: siteConfig.description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: siteConfig.metaTitle,
+    description: siteConfig.description,
+    url: "/",
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (

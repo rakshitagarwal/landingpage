@@ -19,9 +19,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const project = projects.find((item) => item.slug === slug);
   if (!project) return { title: "Work" };
+  const url = `/work/${project.slug}`;
   return {
     title: project.title,
     description: project.solution,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${project.title} | Obekai`,
+      description: project.solution,
+      url,
+      type: "article",
+      images: project.image.src
+        ? [
+            {
+              url: project.image.src,
+              width: project.image.width,
+              height: project.image.height,
+              alt: project.image.alt,
+            },
+          ]
+        : undefined,
+    },
   };
 }
 
@@ -40,7 +58,7 @@ export default async function WorkPage({ params }: PageProps) {
       <main className="flex-1 bg-bg-primary text-text-primary">
         <article className="container-site section-y pt-28 sm:pt-32">
           <Link
-            href="/#work"
+            href="/work"
             className="inline-flex min-h-11 items-center gap-2 text-sm text-text-secondary hover:text-text-primary"
           >
             <ArrowLeft className="h-4 w-4" />

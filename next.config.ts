@@ -20,8 +20,28 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/services/custom-software-engineering",
+        destination: "/services/custom-software-development",
+        permanent: true,
+      },
+      {
         source: "/services/custom-software-crm",
-        destination: "/services/custom-software-engineering",
+        destination: "/services/custom-software-development",
+        permanent: true,
+      },
+      {
+        source: "/services/crm-development",
+        destination: "/services/custom-software-development",
+        permanent: true,
+      },
+      {
+        source: "/services/web-development",
+        destination: "/services/web-saas-development",
+        permanent: true,
+      },
+      {
+        source: "/services/saas-development",
+        destination: "/services/web-saas-development",
         permanent: true,
       },
       {
@@ -30,8 +50,28 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/services/ai-business-automation",
+        destination: "/services/ai-automation",
+        permanent: true,
+      },
+      {
         source: "/services/whatsapp-ai-automation",
-        destination: "/services/ai-business-automation",
+        destination: "/services/ai-automation",
+        permanent: true,
+      },
+      {
+        source: "/services/ecommerce-platforms",
+        destination: "/services/ecommerce-development",
+        permanent: true,
+      },
+      {
+        source: "/services/ui-ux-brand",
+        destination: "/services/web-saas-development",
+        permanent: true,
+      },
+      {
+        source: "/services/digital-marketing",
+        destination: "/contact",
         permanent: true,
       },
     ];
