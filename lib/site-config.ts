@@ -125,10 +125,10 @@ export const images = {
     height: 800,
   },
   teamDivyang: {
-    src: "/images/myprofilepic.png",
+    src: "/images/solanki.png",
     alt: "Divyang Solanki, Co-founder of Obekai",
-    width: 800,
-    height: 800,
+    width: 3018,
+    height: 2718,
   },
   ogDefault: {
     src: "/images/og/og-default.png",
@@ -276,7 +276,13 @@ export const founders = [
   {
     name: "Rakshit Agarwal",
     role: "Co-founder, Software & Automation",
+    responsibilities: "Engineering leadership, architecture and delivery",
     bio: "Rakshit leads engineering at Obekai: custom software, web applications and automation. He founded the studio to build products businesses can rely on after launch.",
+    expertise: [
+      "Custom software & CRM platforms",
+      "Web applications and APIs",
+      "AI and business automation",
+    ],
     image: {
       src: "/images/myprofilepic.png",
       alt: "Rakshit Agarwal, Co-founder of Obekai",
@@ -288,15 +294,40 @@ export const founders = [
   {
     name: "Divyang Solanki",
     role: "Co-founder, Design",
-    bio: "Divyang leads design: product interfaces, brand and the clarity of what customers see. A unique photograph is not published yet.",
-    /** Leave src empty until a unique photo is available. Do not reuse another founder photo. */
+    responsibilities: "Product interfaces, brand and visual systems",
+    bio: "Divyang leads design at Obekai: product interfaces, brand systems and the clarity of what customers see across web and product surfaces.",
+    expertise: [
+      "Product and dashboard UI",
+      "Brand and visual systems",
+      "Interface clarity for complex workflows",
+    ],
     image: {
-      src: "",
+      src: "/images/solanki.png",
       alt: "Divyang Solanki, Co-founder of Obekai",
-      width: 800,
-      height: 800,
+      width: 3018,
+      height: 2718,
     },
     linkedin: "",
+  },
+] as const;
+
+/** Credible studio signals only — no invented client names or metrics. */
+export const credibilityStrip = [
+  {
+    label: "Custom CRM",
+    detail: "Pipelines, customer records and operational dashboards",
+  },
+  {
+    label: "E-commerce",
+    detail: "Catalogue, checkout, payments and order flows",
+  },
+  {
+    label: "Automation",
+    detail: "Enquiry, booking and WhatsApp notification systems",
+  },
+  {
+    label: "Web & SaaS",
+    detail: "Marketing sites, authenticated apps and MVP releases",
   },
 ] as const;
 

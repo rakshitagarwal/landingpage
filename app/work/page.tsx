@@ -57,21 +57,21 @@ export default function WorkIndexPage() {
         </section>
 
         <section className="surface-paper border-b border-border-subtle section-y text-text-primary">
-          <div className="container-site grid gap-6 lg:grid-cols-2">
+          <div className="container-site grid gap-6 lg:gap-8">
             {projects.map((project) => (
               <Link
                 key={project.slug}
                 href={`/work/${project.slug}`}
-                className="card-surface card-hover-wash group overflow-hidden"
+                className="card-surface card-hover-wash group overflow-hidden lg:grid lg:grid-cols-[1.15fr_0.85fr]"
               >
                 <CoverMedia
                   title={project.title}
                   image={project.image}
                   icon={project.mockup}
-                  className="aspect-[16/10] border-b border-border-subtle"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="aspect-[16/10] border-b border-border-subtle transition duration-700 ease-out group-hover:scale-[1.025] lg:aspect-auto lg:h-full lg:min-h-[20rem] lg:border-b-0 lg:border-r"
+                  sizes="(max-width: 1024px) 100vw, 55vw"
                 />
-                <div className="p-6 sm:p-8">
+                <div className="p-6 sm:p-8 lg:flex lg:flex-col lg:justify-center lg:p-10">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-primary">
                     {project.businessType}
                   </p>
@@ -83,7 +83,7 @@ export default function WorkIndexPage() {
                     {project.problem}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-text-secondary sm:text-base">
-                    <span className="font-medium text-text-primary">Built. </span>
+                    <span className="font-medium text-text-primary">Solution. </span>
                     {project.solution}
                   </p>
                   <ul className="mt-5 flex flex-wrap gap-2">

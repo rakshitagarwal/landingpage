@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { About } from "@/components/sections/about";
+import { CredibilityStrip } from "@/components/sections/credibility-strip";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { Differentiators } from "@/components/sections/differentiators";
 import { FAQ } from "@/components/sections/faq";
@@ -38,6 +39,7 @@ export default function Home() {
         <Hero />
         <Differentiators />
         <Services />
+        <CredibilityStrip />
         <TechStack />
         <Projects />
         <Insights />

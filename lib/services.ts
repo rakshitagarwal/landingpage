@@ -32,6 +32,13 @@ export type Service = {
   whyChoose: string[];
   processFocus: string;
   faqs: ServiceFaq[];
+  /** Product screenshot used on homepage service cards. */
+  previewImage: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 };
 
 export const services: Service[] = [
@@ -79,6 +86,12 @@ export const services: Service[] = [
     commercial:
       "Discovery, then a fixed proposal. Custom systems usually start from $2,000 once the scope is written.",
     relatedProjectSlugs: ["custom-crm-platform", "business-automation"],
+    previewImage: {
+      src: "/images/project111.jpg",
+      alt: "Custom CRM dashboard interface engineered by Obekai",
+      width: 1200,
+      height: 1600,
+    },
     whyChoose: [
       "You talk to the engineers building the system, not a separate sales layer.",
       "Scope, price and timeline are written before engineering starts.",
@@ -155,6 +168,12 @@ export const services: Service[] = [
     commercial:
       "Website projects start from $299 using defined packages. Web applications and SaaS products are quoted from a written scope.",
     relatedProjectSlugs: ["ecommerce-platform", "custom-crm-platform"],
+    previewImage: {
+      src: "/images/projectimage.png",
+      alt: "Web application interface engineered by Obekai",
+      width: 1536,
+      height: 864,
+    },
     whyChoose: [
       "We say clearly whether you need a marketing site or a product before quoting.",
       "Pages and apps are built to be crawlable and maintainable.",
@@ -229,6 +248,12 @@ export const services: Service[] = [
     commercial:
       "WhatsApp and workflow automation starts from $499. Wider AI integrations are quoted from the systems and complexity involved.",
     relatedProjectSlugs: ["business-automation"],
+    previewImage: {
+      src: "/images/project333.jpg",
+      alt: "Business automation console engineered by Obekai",
+      width: 1536,
+      height: 1024,
+    },
     whyChoose: [
       "We design for handoff to a person, not automation for its own sake.",
       "Scope stays tied to one operational outcome you can measure.",
@@ -304,6 +329,12 @@ export const services: Service[] = [
     commercial:
       "Custom online stores start from $1,299. The final figure follows catalogue size, payments and operational scope.",
     relatedProjectSlugs: ["ecommerce-platform"],
+    previewImage: {
+      src: "/images/project222.jpg",
+      alt: "E-commerce storefront interface engineered by Obekai",
+      width: 1600,
+      height: 1200,
+    },
     whyChoose: [
       "Built for your catalogue and operations, not dropped in from a generic theme.",
       "Payment providers chosen for the markets you sell in.",

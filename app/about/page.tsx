@@ -81,40 +81,62 @@ export default function AboutPage() {
 
         <section className="surface-paper border-b border-border-subtle section-y text-text-primary">
           <div className="container-site">
-            <h2 className="font-heading text-3xl font-semibold">Founders</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-primary">
+              Founders
+            </p>
+            <h2 className="mt-3 font-heading text-3xl font-semibold sm:text-4xl">
+              Meet the people behind Obekai
+            </h2>
             <p className="mt-3 max-w-2xl text-base text-text-secondary">
               Clients work directly with the people responsible for design and
               engineering.
             </p>
-            <div className="mt-10 grid gap-8 md:grid-cols-2">
+            <div className="mt-10 grid gap-6 lg:grid-cols-2">
               {founders.map((founder) => (
                 <article
                   key={founder.name}
-                  className="rounded-[8px] border border-border-subtle bg-bg-card p-6 sm:p-8"
+                  className="overflow-hidden rounded-[12px] border border-border-subtle bg-bg-card"
                 >
-                  {founder.image.src ? (
-                    <Image
-                      src={founder.image.src}
-                      alt={founder.image.alt}
-                      width={founder.image.width}
-                      height={founder.image.height}
-                      className="h-20 w-20 rounded-full object-cover"
-                    />
-                  ) : (
-                    <span className="inline-flex h-20 w-20 items-center justify-center rounded-full border border-border-subtle text-sm font-semibold text-text-secondary">
-                      {founder.name
-                        .split(" ")
-                        .map((part) => part[0])
-                        .join("")}
-                    </span>
-                  )}
-                  <h3 className="mt-5 font-heading text-2xl font-semibold">
-                    {founder.name}
-                  </h3>
-                  <p className="mt-1 text-sm text-accent-primary">{founder.role}</p>
-                  <p className="mt-3 text-base leading-relaxed text-text-secondary">
-                    {founder.bio}
-                  </p>
+                  <div className="relative aspect-[5/4] overflow-hidden bg-bg-secondary">
+                    {founder.image.src ? (
+                      <Image
+                        src={founder.image.src}
+                        alt={founder.image.alt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <span className="flex h-full items-center justify-center text-sm font-semibold text-text-secondary">
+                        {founder.name
+                          .split(" ")
+                          .map((part) => part[0])
+                          .join("")}
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-6 sm:p-8">
+                    <h3 className="font-heading text-2xl font-semibold">
+                      {founder.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-accent-primary">{founder.role}</p>
+                    <p className="mt-2 text-sm font-medium text-text-primary">
+                      {founder.responsibilities}
+                    </p>
+                    <p className="mt-3 text-base leading-relaxed text-text-secondary">
+                      {founder.bio}
+                    </p>
+                    <ul className="mt-5 flex flex-wrap gap-2">
+                      {founder.expertise.map((item) => (
+                        <li
+                          key={item}
+                          className="rounded-[8px] border border-border-subtle px-2.5 py-1 text-xs text-text-secondary"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </article>
               ))}
             </div>
