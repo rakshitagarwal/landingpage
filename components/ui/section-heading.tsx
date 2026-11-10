@@ -34,7 +34,7 @@ export function SectionHeading({
             className="h-0.5 w-10 rounded-full bg-accent-primary"
             aria-hidden
           />
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-primary">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-primary">
             {eyebrow}
           </p>
         </div>
@@ -47,7 +47,7 @@ export function SectionHeading({
           aria-hidden
         />
       )}
-      <h2 className="font-serif text-3xl font-bold tracking-tight text-text-primary sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
+      <h2 className="font-heading text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl lg:text-5xl lg:leading-[1.08]">
         {title}
       </h2>
       {description ? (

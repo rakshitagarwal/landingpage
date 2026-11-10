@@ -1,120 +1,66 @@
-"use client";
-
 import Image from "next/image";
-import { useEffect, useRef } from "react";
-import { techStack } from "@/lib/site-config";
+import { techGroups } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/reveal";
-
-function TechTrack({ ariaHidden }: { ariaHidden?: boolean }) {
-  return (
-    <ul
-      className="flex shrink-0 items-end gap-10 pr-10 sm:gap-14 sm:pr-14"
-      aria-hidden={ariaHidden || undefined}
-    >
-      {techStack.map((tech) => (
-        <li
-          key={`${ariaHidden ? "dup" : "main"}-${tech.name}`}
-          className="flex w-[5.5rem] shrink-0 flex-col items-center gap-3 sm:w-24"
-        >
-          <span className="relative flex h-[4.5rem] w-[4.5rem] items-center justify-center overflow-hidden rounded-[1.25rem] border border-border-subtle bg-bg-elevated sm:h-20 sm:w-20">
-            <Image
-              src={tech.src}
-              alt=""
-              width={80}
-              height={80}
-              className="h-full w-full object-contain p-2"
-              draggable={false}
-            />
-          </span>
-          <span className="w-full text-center text-xs font-medium leading-tight text-text-secondary sm:text-sm">
-            {tech.name}
-          </span>
-        </li>
-      ))}
-    </ul>
-  );
-}
+import { SectionWrapper } from "@/components/ui/section";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { cn } from "@/lib/utils";
 
 export function TechStack() {
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const offsetRef = useRef(0);
-  const pausedRef = useRef(false);
-
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    const track = trackRef.current;
-    if (!viewport || !track) return;
-
-    let frame = 0;
-    // Steady right-to-left crawl; ignore OS “reduce motion” for this strip so
-    // the marquee always matches the Clients-style continuous scroll.
-    const speed = 0.65;
-
-    const tick = () => {
-      if (!pausedRef.current) {
-        const loopWidth = track.scrollWidth / 2;
-        if (loopWidth > 0) {
-          offsetRef.current -= speed;
-          if (-offsetRef.current >= loopWidth) {
-            offsetRef.current += loopWidth;
-          }
-          viewport.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`;
-        }
-      }
-      frame = window.requestAnimationFrame(tick);
-    };
-
-    frame = window.requestAnimationFrame(tick);
-    return () => window.cancelAnimationFrame(frame);
-  }, []);
-
   return (
-    <section
-      id="tech"
-      aria-label="Technologies we use"
-      className="scroll-mt-24 border-y border-border-subtle bg-bg-primary py-12 text-text-primary sm:py-14"
-    >
-      <div className="container-site mb-8 sm:mb-10">
+    <SectionWrapper id="technology" aria-label="Technology expertise">
+      <div className="section-stack">
         <Reveal>
-          <span className="inline-flex rounded-md border border-border-subtle bg-bg-secondary px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
-            Tech we use
-          </span>
-          <h2 className="mt-4 max-w-3xl font-serif text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
-            Stack behind our websites, software and automation
-          </h2>
-          <p className="mt-3 max-w-2xl text-base text-text-secondary sm:text-lg">
-            Proven tools for business sites, CRM platforms, WhatsApp automation,
-            APIs and product MVPs—chosen so your build stays maintainable after
-            launch.
-          </p>
+          <SectionHeading
+            eyebrow="Technology"
+            title="The stack we use to ship and keep systems running."
+            description="Tools are chosen for the product, not collected for a logo wall. These are the ones we reach for most often."
+          />
         </Reveal>
-      </div>
 
-      <div
-        className="relative overflow-hidden"
-        onMouseEnter={() => {
-          pausedRef.current = true;
-        }}
-        onMouseLeave={() => {
-          pausedRef.current = false;
-        }}
-      >
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-10 bg-gradient-to-r from-bg-primary to-transparent sm:w-16"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-10 bg-gradient-to-l from-bg-primary to-transparent sm:w-16"
-          aria-hidden
-        />
-        <div ref={viewportRef} className="flex w-max will-change-transform">
-          <div ref={trackRef} className="flex">
-            <TechTrack />
-            <TechTrack ariaHidden />
-          </div>
+        <div className="grid gap-4 md:grid-cols-6">
+          {techGroups.map((group, index) => (
+            <Reveal
+              key={group.name}
+              delay={index * 0.04}
+              className={cn(
+                "h-full",
+                index < 2 ? "md:col-span-3" : "md:col-span-2"
+              )}
+            >
+              <article className="card-surface flex h-full flex-col p-5 sm:p-6">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-primary">
+                  {group.name}
+                </h3>
+                <ul className="mt-4 grid gap-2">
+                  {group.items.map((item) => (
+                    <li
+                      key={item.name}
+                      className="flex items-center gap-3 rounded-xl border border-border-subtle bg-bg-secondary/50 px-3 py-2.5"
+                    >
+                      {"src" in item && item.src ? (
+                        <Image
+                          src={item.src}
+                          alt=""
+                          width={28}
+                          height={28}
+                          className="h-7 w-7 object-contain"
+                        />
+                      ) : (
+                        <span className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border-subtle text-[10px] font-semibold text-accent-primary">
+                          {item.name.slice(0, 2).toUpperCase()}
+                        </span>
+                      )}
+                      <span className="text-sm font-medium text-text-primary">
+                        {item.name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

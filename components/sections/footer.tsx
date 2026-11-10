@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
-import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
+import { getWhatsAppLink, services, siteConfig } from "@/lib/site-config";
 import { BrandLogo } from "@/components/ui/brand-logo";
-import { cn } from "@/lib/utils";
 
-const quickLinks = [
-  { label: "Services", href: "/#services" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "Contact Us", href: "/contact" },
+const companyLinks = [
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
+  { label: "Process", href: "/#process" },
+  { label: "Engagement", href: "/#pricing" },
+  { label: "Journal", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 function LinkedInIcon({ className }: { className?: string }) {
@@ -55,59 +56,60 @@ const iconBtnClass =
   "inline-flex h-11 w-11 items-center justify-center rounded-full border border-border-subtle text-text-primary transition hover:border-accent-primary/40 hover:text-accent-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary";
 
 export function Footer() {
-  const year = 2026;
+  const year = new Date().getFullYear();
   const contactEmail = siteConfig.contactEmail || siteConfig.email;
+  const featured = services.filter((service) => service.featured);
 
   const socialItems = [
-    {
-      label: "LinkedIn",
-      href: siteConfig.social.linkedin,
-      Icon: LinkedInIcon,
-    },
-    {
-      label: "Facebook",
-      href: siteConfig.social.facebook,
-      Icon: FacebookIcon,
-    },
-    {
-      label: "Instagram",
-      href: siteConfig.social.instagram,
-      Icon: InstagramIcon,
-    },
-    {
-      label: "GitHub",
-      href: siteConfig.social.github,
-      Icon: GithubIcon,
-    },
-    {
-      label: "WhatsApp",
-      href: getWhatsAppLink(),
-      Icon: WhatsAppIcon,
-      external: true,
-    },
+    { label: "LinkedIn", href: siteConfig.social.linkedin, Icon: LinkedInIcon },
+    { label: "Facebook", href: siteConfig.social.facebook, Icon: FacebookIcon },
+    { label: "Instagram", href: siteConfig.social.instagram, Icon: InstagramIcon },
+    { label: "GitHub", href: siteConfig.social.github, Icon: GithubIcon },
+    { label: "WhatsApp", href: getWhatsAppLink(), Icon: WhatsAppIcon },
   ] as const;
 
   return (
     <footer className="border-t border-border-subtle bg-bg-primary text-text-primary">
-      <div className="container-shell grid gap-12 py-14 sm:py-16 md:grid-cols-2 lg:grid-cols-[1.1fr_1fr_1.4fr_1fr] lg:gap-10 xl:gap-16">
-        <div className="flex items-start">
-          <Link
-            href="/#home"
-            className="flex flex-col gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
-          >
-            <BrandLogo className="h-12 sm:h-14" imgClassName="max-w-[13rem]" />
-            <span className="text-sm text-text-secondary">{siteConfig.tagline}</span>
+      <div className="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <Link href="/#home" className="inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary">
+            <BrandLogo className="h-10" imgClassName="max-w-[11rem]" />
           </Link>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-secondary">
+            {siteConfig.tagline} Software engineering studio in{" "}
+            {siteConfig.address.city}, {siteConfig.address.country}, working with
+            clients internationally.
+          </p>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold text-accent-primary">Quick Links</h3>
-          <ul className="mt-5 space-y-1">
-            {quickLinks.map((link) => (
+          <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-text-muted">
+            Services
+          </h2>
+          <ul className="mt-4 space-y-1">
+            {featured.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="inline-flex min-h-11 items-center text-sm text-text-secondary transition hover:text-text-primary"
+                >
+                  {service.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-text-muted">
+            Company
+          </h2>
+          <ul className="mt-4 space-y-1">
+            {companyLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="inline-flex min-h-11 items-center text-sm text-text-primary transition hover:text-accent-primary"
+                  className="inline-flex min-h-11 items-center text-sm text-text-secondary transition hover:text-text-primary"
                 >
                   {link.label}
                 </Link>
@@ -116,61 +118,36 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="space-y-8">
-          <div>
-            <h3 className="text-sm font-semibold text-accent-primary">
-              {siteConfig.address.country}
-            </h3>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-primary">
-              {siteConfig.address.line1}
-              <br />
-              {siteConfig.address.city}, {siteConfig.address.state}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-accent-primary">Contact Us</h3>
-            <ul className="mt-4 space-y-1">
-              <li>
-                <a
-                  href={`mailto:${contactEmail}`}
-                  className="inline-flex min-h-11 items-center gap-3 text-sm text-text-primary transition hover:text-accent-primary"
-                >
-                  <Mail className="h-4 w-4 shrink-0 text-accent-primary" aria-hidden />
-                  {contactEmail}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${siteConfig.phoneTel}`}
-                  className="inline-flex min-h-11 items-center gap-3 text-sm text-text-primary transition hover:text-accent-primary"
-                >
-                  <Phone className="h-4 w-4 shrink-0 text-accent-primary" aria-hidden />
-                  {siteConfig.phone}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
         <div>
-          <h3 className="text-sm font-semibold text-accent-primary">Follow Us</h3>
-          <ul className="mt-5 flex flex-wrap gap-3">
-            {socialItems.map(({ label, href, Icon }) => {
-              const hasLink = Boolean(href);
-              if (!hasLink) {
-                return (
-                  <li key={label}>
-                    <span
-                      aria-label={`${label} (coming soon)`}
-                      title={`${label} coming soon`}
-                      className={cn(iconBtnClass, "cursor-default opacity-55")}
-                    >
-                      <Icon className="h-5 w-5" />
-                    </span>
-                  </li>
-                );
-              }
-              return (
+          <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-text-muted">
+            Contact
+          </h2>
+          <ul className="mt-4 space-y-1">
+            <li>
+              <a
+                href={`mailto:${contactEmail}`}
+                className="inline-flex min-h-11 items-center gap-2 text-sm text-text-secondary hover:text-text-primary"
+              >
+                <Mail className="h-4 w-4 text-accent-primary" aria-hidden />
+                {contactEmail}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`tel:${siteConfig.phoneTel}`}
+                className="inline-flex min-h-11 items-center gap-2 text-sm text-text-secondary hover:text-text-primary"
+              >
+                <Phone className="h-4 w-4 text-accent-primary" aria-hidden />
+                {siteConfig.phone}
+              </a>
+            </li>
+          </ul>
+          <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+            {siteConfig.address.full}
+          </p>
+          <ul className="mt-5 flex flex-wrap gap-2">
+            {socialItems.map(({ label, href, Icon }) =>
+              href ? (
                 <li key={label}>
                   <a
                     href={href}
@@ -179,42 +156,26 @@ export function Footer() {
                     aria-label={label}
                     className={iconBtnClass}
                   >
-                    <Icon className="h-5 w-5" />
+                    <Icon className="h-4 w-4" />
                   </a>
                 </li>
-              );
-            })}
+              ) : null
+            )}
           </ul>
         </div>
       </div>
 
       <div className="border-t border-border-subtle">
-        <div className="container-shell flex flex-col gap-3 py-6 text-sm text-text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-site flex flex-col gap-3 py-6 text-sm text-text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {siteConfig.name}. All rights reserved.
+            © {year} {siteConfig.legalName}. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-1">
-            {siteConfig.termsUrl ? (
-              <Link
-                href={siteConfig.termsUrl}
-                className="inline-flex min-h-11 items-center transition hover:text-text-primary"
-              >
-                Terms & Conditions
-              </Link>
-            ) : null}
-            {siteConfig.privacyUrl ? (
-              <Link
-                href={siteConfig.privacyUrl}
-                className="inline-flex min-h-11 items-center transition hover:text-text-primary"
-              >
-                Privacy Policy
-              </Link>
-            ) : null}
-            <Link
-              href="/sitemap.xml"
-              className="inline-flex min-h-11 items-center transition hover:text-text-primary"
-            >
-              Sitemap
+            <Link href={siteConfig.privacyUrl} className="inline-flex min-h-11 items-center hover:text-text-primary">
+              Privacy Policy
+            </Link>
+            <Link href={siteConfig.termsUrl} className="inline-flex min-h-11 items-center hover:text-text-primary">
+              Terms & Conditions
             </Link>
           </div>
         </div>

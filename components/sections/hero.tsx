@@ -3,25 +3,32 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowRight } from "lucide-react";
-import { heroContent, heroStats, images } from "@/lib/site-config";
+import { heroContent } from "@/lib/site-config";
 import { buttonLinkClass } from "@/components/ui/button";
-import { CoverMedia } from "@/components/ui/cover-media";
-import { SiteImage } from "@/components/ui/site-image";
 import { cn } from "@/lib/utils";
+
+const metrics = [
+  { label: "Scope", value: "Defined" },
+  { label: "Build", value: "Active" },
+  { label: "Release", value: "Staged" },
+] as const;
+
+const pipeline = [
+  { name: "Discovery", state: "Done" },
+  { name: "Architecture", state: "In review" },
+  { name: "Build", state: "Active" },
+] as const;
 
 export function Hero() {
   const rootRef = useRef<HTMLElement>(null);
-  const mockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const root = rootRef.current;
-    const mock = mockRef.current;
     if (!root) return;
 
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-
     const animated = root.querySelectorAll<HTMLElement>("[data-hero-animate]");
 
     if (reduceMotion) {
@@ -34,120 +41,72 @@ export function Hero() {
     }
 
     const ctx = gsap.context(() => {
-      gsap.set(animated, { autoAlpha: 0, y: 28 });
-      gsap.set("[data-hero-accent]", { autoAlpha: 1, y: 0, scaleX: 0 });
-      gsap.set("[data-hero-visual]", { autoAlpha: 0, y: 40, scale: 0.97 });
-      gsap.set("[data-float]", { autoAlpha: 0, y: 14 });
+      gsap.set(animated, { autoAlpha: 0, y: 24 });
+      gsap.set("[data-hero-visual]", { autoAlpha: 0, y: 32, scale: 0.98 });
 
-      const intro = gsap.timeline({
-        defaults: { ease: "power3.out" },
-        onComplete: () => {
-          animated.forEach((el) => {
-            gsap.set(el, { clearProps: "transform" });
-          });
-        },
-      });
-
+      const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
       intro
-        .to("[data-hero-accent]", {
-          scaleX: 1,
-          transformOrigin: "left center",
-          duration: 0.5,
-        })
-        .to(
-          "[data-hero-title]",
-          { autoAlpha: 1, y: 0, duration: 0.75 },
-          "-=0.2"
-        )
-        .to(
-          "[data-hero-sub]",
-          { autoAlpha: 1, y: 0, duration: 0.65 },
-          "-=0.45"
-        )
-        .to(
-          "[data-hero-cta]",
-          { autoAlpha: 1, y: 0, duration: 0.6 },
-          "-=0.35"
-        )
+        .to("[data-hero-kicker]", { autoAlpha: 1, y: 0, duration: 0.45 })
+        .to("[data-hero-title]", { autoAlpha: 1, y: 0, duration: 0.7 }, "-=0.2")
+        .to("[data-hero-sub]", { autoAlpha: 1, y: 0, duration: 0.6 }, "-=0.4")
+        .to("[data-hero-cta]", { autoAlpha: 1, y: 0, duration: 0.5 }, "-=0.35")
         .to(
           "[data-hero-trust] li",
-          { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.06 },
-          "-=0.3"
+          { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.06 },
+          "-=0.25"
         )
         .to(
           "[data-hero-visual]",
           { autoAlpha: 1, y: 0, scale: 1, duration: 0.85 },
-          "-=0.75"
-        )
-        .to(
-          "[data-float]",
-          { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.1 },
-          "-=0.4"
-        )
-        .to(
-          "[data-hero-stat]",
-          { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.08 },
-          "-=0.25"
+          "-=0.7"
         );
 
-      if (mock) {
-        gsap.to("[data-float]", {
-          y: -10,
-          duration: 3.2,
-          yoyo: true,
-          repeat: -1,
-          ease: "sine.inOut",
-          stagger: 0.45,
-          delay: 1.4,
-        });
-
-        gsap.to("[data-hero-visual-frame]", {
-          y: -6,
-          duration: 4.5,
-          yoyo: true,
-          repeat: -1,
-          ease: "sine.inOut",
-          delay: 1.2,
-        });
-      }
+      gsap.to("[data-hero-float]", {
+        y: -8,
+        duration: 3.6,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut",
+        stagger: 0.35,
+        delay: 1.1,
+      });
     }, root);
 
     return () => ctx.revert();
   }, []);
 
-  const heroHasImage = Boolean(images.heroDashboard.src);
-
   return (
     <section
       ref={rootRef}
       id="home"
-      className="relative isolate overflow-hidden border-b border-border-subtle bg-bg-primary pt-28 pb-16 text-text-primary sm:pt-32 sm:pb-20 lg:pb-24"
+      className="relative isolate overflow-hidden bg-bg-primary pt-28 pb-16 text-text-primary sm:pt-32 sm:pb-20 lg:pb-28"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="hero-grid absolute inset-0 opacity-50" />
-        <div className="hero-orb absolute left-[10%] top-[12%] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--accent-primary)_16%,transparent),transparent_68%)] blur-2xl" />
-        <div className="hero-orb hero-orb-delayed absolute bottom-[5%] right-[8%] h-64 w-64 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--accent-primary)_10%,transparent),transparent_70%)] blur-2xl" />
+      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+        <div className="hero-grid absolute inset-0 opacity-70" />
+        <div className="hero-orb absolute -left-24 top-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--accent-primary)_18%,transparent),transparent_68%)] blur-3xl" />
+        <div className="hero-orb hero-orb-delayed absolute right-[-6rem] bottom-0 h-80 w-80 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,#6d5efc_16%,transparent),transparent_70%)] blur-3xl" />
       </div>
 
-      <div className="container-site grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 xl:gap-20">
-        <div className="min-w-0 lg:pr-2">
-          <span
-            data-hero-accent
+      <div className="container-site grid items-center gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 xl:gap-20">
+        <div className="min-w-0">
+          <p
+            data-hero-kicker
             data-hero-animate
-            className="mb-5 block h-0.5 w-10 origin-left rounded-full bg-accent-primary"
-            aria-hidden
-          />
+            className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-primary"
+          >
+            Software engineering studio · Ahmedabad
+          </p>
           <h1
             data-hero-title
             data-hero-animate
-            className="font-serif text-[2.35rem] font-bold leading-[1.1] tracking-tight text-text-primary sm:text-5xl lg:text-[3.4rem]"
+            className="font-heading mt-5 max-w-[16ch] text-[2.6rem] font-semibold leading-[1.02] text-text-primary sm:text-6xl lg:text-[4.15rem]"
           >
             {heroContent.headline}
           </h1>
           <p
             data-hero-sub
             data-hero-animate
-            className="mt-5 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg"
+            className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg"
           >
             {heroContent.subtext}
           </p>
@@ -163,103 +122,172 @@ export function Hero() {
               {heroContent.primaryCta}
             </a>
             <a
-              href="#projects"
+              href="#work"
               className={cn(buttonLinkClass("secondary", "lg"), "hero-cta-btn")}
-              onClick={(e) => {
-                e.preventDefault();
+              onClick={(event) => {
+                event.preventDefault();
                 document
-                  .querySelector("#projects")
+                  .querySelector("#work")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               {heroContent.secondaryCta}
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
           </div>
           <ul
             data-hero-trust
-            className="mt-8 flex flex-wrap gap-x-5 gap-y-2 border-t border-border-subtle pt-6"
+            className="mt-8 grid gap-3 border-t border-border-subtle pt-6 sm:grid-cols-3"
           >
             {heroContent.trustRow.map((item) => (
               <li
                 key={item}
                 data-hero-animate
-                className="flex items-center gap-2 text-sm text-text-secondary"
+                className="flex items-start gap-2.5 text-sm leading-snug text-text-secondary"
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-accent-primary" aria-hidden />
+                <span
+                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary"
+                  aria-hidden
+                />
                 {item}
               </li>
             ))}
           </ul>
         </div>
 
-        <div
-          ref={mockRef}
-          data-hero-visual
-          data-hero-animate
-          className="relative mx-auto w-full max-w-lg lg:max-w-none"
-        >
-          <div
-            data-hero-visual-frame
-            className="relative aspect-[16/10] overflow-hidden rounded-[1.35rem] border border-border-subtle shadow-[var(--shadow-card)]"
-          >
-            {heroHasImage ? (
-              <>
-                <SiteImage
-                  image={images.heroDashboard}
-                  fill
-                  sizes="(max-width: 1024px) 90vw, 560px"
-                  className="object-cover"
-                  priority
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-primary/50 via-transparent to-transparent" />
-              </>
-            ) : (
-              <CoverMedia
-                title="Business software & WhatsApp tools"
-                icon="dashboard"
-                className="absolute inset-0 h-full w-full"
-                priority
-              />
-            )}
+        <ProductStage />
+      </div>
+    </section>
+  );
+}
+
+function ProductStage() {
+  return (
+    <div
+      data-hero-visual
+      data-hero-animate
+      className="relative mx-auto w-full max-w-xl lg:max-w-none"
+    >
+      <div
+        className="pointer-events-none absolute -inset-8 -z-10 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,#8b7cff_28%,transparent),transparent_68%)] blur-2xl"
+        aria-hidden
+      />
+
+      <div
+        className="overflow-hidden rounded-[1.4rem] border border-white/10 bg-[#10131a] text-[#f4f6fb] shadow-[0_30px_80px_-36px_rgba(0,0,0,0.85)]"
+        aria-hidden
+      >
+        <div className="flex items-center gap-3 border-b border-white/8 px-4 py-3">
+          <span className="flex gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+          </span>
+          <span className="text-[11px] tracking-wide text-white/45">
+            obekai / delivery
+          </span>
+        </div>
+
+        <div className="grid min-h-[320px] grid-cols-1 sm:grid-cols-[5.5rem_1fr]">
+          <div className="hidden flex-col gap-2 border-r border-white/8 p-3 sm:flex">
+            {["Overview", "Work", "Systems", "Release"].map((item, index) => (
+              <span
+                key={item}
+                className={cn(
+                  "rounded-lg px-2 py-2 text-[11px]",
+                  index === 0
+                    ? "bg-white/8 text-white"
+                    : "text-white/40"
+                )}
+              >
+                {item}
+              </span>
+            ))}
           </div>
 
-          {heroContent.floatingCards.map((card, index) => (
-            <div
-              key={card.label}
-              data-float
-              className={cn(
-                "absolute z-10 max-w-[11.5rem] rounded-2xl border border-border-subtle bg-bg-elevated/95 px-3.5 py-2.5 text-xs font-medium text-text-primary shadow-[var(--shadow-card)] backdrop-blur",
-                index === 0 && "-left-1 top-6 sm:left-0",
-                index === 1 && "-right-1 top-[42%] sm:right-2",
-                index === 2 && "bottom-4 left-[18%] sm:left-[22%]"
-              )}
-            >
-              {card.label}
+          <div className="space-y-4 p-4 sm:p-5">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              {metrics.map((metric) => (
+                <div
+                  key={metric.label}
+                  className="rounded-xl border border-white/8 bg-white/[0.03] px-2.5 py-3 sm:px-3"
+                >
+                  <p className="text-[10px] uppercase tracking-[0.14em] text-white/40">
+                    {metric.label}
+                  </p>
+                  <p className="mt-1 font-heading text-lg font-semibold sm:text-xl">
+                    {metric.value}
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
+
+            <div className="rounded-xl border border-white/8 bg-white/[0.03] p-3">
+              <div className="mb-3 flex items-center justify-between text-[11px] text-white/45">
+                <span>Release health</span>
+                <span className="text-[#c4b8ff]">Stable</span>
+              </div>
+              <div className="flex h-16 items-end gap-1.5">
+                {[38, 52, 46, 70, 62, 84, 76, 90].map((height, index) => (
+                  <span
+                    key={index}
+                    className="flex-1 rounded-sm bg-gradient-to-t from-[#5b4fe0] to-[#c4b8ff]"
+                    style={{ height: `${height}%`, opacity: 0.45 + index * 0.06 }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <ul className="space-y-2">
+              {pipeline.map((item) => (
+                <li
+                  key={item.name}
+                  className="flex items-center justify-between rounded-lg border border-white/8 px-3 py-2 text-xs"
+                >
+                  <span className="text-white/80">{item.name}</span>
+                  <span className="text-white/40">{item.state}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div className="container-site mt-14 sm:mt-16 lg:mt-20">
-        <ul className="grid divide-y divide-border-subtle rounded-[1.25rem] border border-border-subtle bg-bg-card/70 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
-          {heroStats.map((stat) => (
-            <li
-              key={stat.value}
-              data-hero-stat
-              data-hero-animate
-              className="min-w-0 px-5 py-5 sm:px-6 sm:py-6"
-            >
-              <p className="font-serif text-xl font-bold text-text-primary sm:text-2xl">
-                {stat.value}
-              </p>
-              <p className="mt-1.5 text-sm leading-snug text-text-secondary">
-                {stat.label}
-              </p>
-            </li>
-          ))}
-        </ul>
+      <div className="mt-3 grid grid-cols-3 gap-2 sm:hidden">
+        {["API", "Queue", "Postgres"].map((label) => (
+          <span
+            key={label}
+            className="rounded-xl border border-border-subtle bg-bg-elevated px-2 py-2 text-center text-[11px] font-medium text-text-secondary"
+          >
+            {label}
+          </span>
+        ))}
       </div>
-    </section>
+
+      <div
+        data-hero-float
+        className="absolute -left-3 top-16 hidden rounded-2xl border border-white/10 bg-[#181c27]/95 px-3 py-2 text-xs text-white shadow-xl backdrop-blur sm:block"
+      >
+        <p className="text-[10px] uppercase tracking-[0.16em] text-white/40">API</p>
+        <p className="mt-0.5 font-medium">Orders · sync</p>
+      </div>
+      <div
+        data-hero-float
+        className="absolute -right-2 top-28 hidden rounded-2xl border border-white/10 bg-[#181c27]/95 px-3 py-2 text-xs text-white shadow-xl backdrop-blur sm:block"
+      >
+        <p className="text-[10px] uppercase tracking-[0.16em] text-white/40">Queue</p>
+        <p className="mt-0.5 font-medium">Jobs · healthy</p>
+      </div>
+      <div
+        data-hero-float
+        className="absolute bottom-6 left-8 hidden rounded-2xl border border-[#8b7cff]/30 bg-[#12101c]/95 px-3 py-2 text-xs text-white shadow-xl backdrop-blur sm:block"
+      >
+        <p className="text-[10px] uppercase tracking-[0.16em] text-[#c4b8ff]">Postgres</p>
+        <p className="mt-0.5 font-medium">Primary data</p>
+      </div>
+      <p className="sr-only">
+        Illustrated product workspace showing delivery stages, release health and connected services.
+      </p>
+    </div>
   );
 }

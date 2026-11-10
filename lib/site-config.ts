@@ -1,9 +1,10 @@
 export const siteConfig = {
   name: "Obekai",
   legalName: "Obekai Technologies",
-  tagline: "Building What's Next.",
+  tagline: "Engineering digital products that move businesses forward.",
+  metaTitle: "Obekai | Custom Software Development Company",
   description:
-    "Obekai is a mid-sized software company with over 6 years of experience building websites, business systems and WhatsApp automation for growing businesses.",
+    "Obekai is a software engineering studio in Ahmedabad, India. We build custom software, web applications, SaaS products and AI automation for businesses in India and internationally.",
   url: "https://obekai.com",
   /** Public contact email shown on the site */
   contactEmail: "hello@obekai.com",
@@ -33,8 +34,11 @@ export const siteConfig = {
   registrationLine: "",
   currency: "USD",
   calendarBookingUrl: "",
-  /** Keep false until you have signed client reviews */
-  showTestimonials: true,
+  /**
+   * Unpublished until each review is confirmed as genuine and authorized.
+   * Existing entries below are kept for review and are not rendered.
+   */
+  showTestimonials: false,
   social: {
     linkedin: "",
     facebook: "",
@@ -134,22 +138,23 @@ export const images = {
 } as const satisfies Record<string, SiteImage>;
 
 export const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Work", href: "#work" },
+  { label: "About", href: "#about" },
+  { label: "Process", href: "#process" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export const heroContent = {
-  headline: "Build digital products that win customers and run your business.",
+  headline: "Engineering digital products that move businesses forward.",
   subtext:
-    "From high-performing websites to custom software and WhatsApp automation, Obekai delivers fixed-price projects with clear timelines and a team that has shipped for clients for over 6 years.",
-  primaryCta: "Get in touch",
-  secondaryCta: "View projects",
+    "From custom software and scalable web applications to AI-powered automation, we help businesses turn complex ideas into reliable digital products.",
+  primaryCta: "Start a Project",
+  secondaryCta: "Explore Our Work",
+  /** REVIEW: "6+ years" is carried from existing site copy. Confirm before treating it as final. */
   trustRow: [
-    "6+ years of client delivery",
-    "Fixed-price proposals",
-    "30 days of launch support",
+    "6+ years of delivery experience",
+    "Transparent project proposals",
+    "30 days of post-launch support",
   ],
   floatingCards: [
     { label: "New order received", kind: "order" },
@@ -165,221 +170,281 @@ export const heroStats = [
   { value: "30 days", label: "Support included after launch" },
 ] as const;
 
-export const capabilities = [
+export const differentiators = [
   {
-    title: "Websites that bring customers in",
+    title: "Engineering-first approach",
     description:
-      "Fast, mobile-first sites and stores that help people find you, trust you, and take action.",
-    icon: "Globe",
+      "You work with the people designing and building the product. Technical choices follow the business problem.",
+    icon: "Code2",
   },
   {
-    title: "Software that replaces spreadsheet chaos",
+    title: "Transparent communication",
     description:
-      "Billing, inventory, bookings and CRMs shaped around how your team already works, not a bloated package.",
-    icon: "Database",
+      "Scope, price and milestones are written down before we start. Progress is shown in language you can act on.",
+    icon: "MessagesSquare",
   },
   {
-    title: "WhatsApp that keeps up at rush hour",
+    title: "Scalable, maintainable architecture",
     description:
-      "Order flows, reminders and FAQ replies so fewer messages get lost when your team is busy.",
-    icon: "Bot",
+      "Systems are structured so your team can extend them: clear models, sensible boundaries and technology chosen for the job.",
+    icon: "Boxes",
   },
   {
-    title: "Experienced team, clear delivery",
+    title: "Ownership and post-launch support",
     description:
-      "A mid-sized company with over 6 years shipping for clients. Weekly updates, plain language, and a scope you can plan around.",
-    icon: "Users",
+      "Source code transfers to you after final payment. Every project includes 30 days of support for issues inside the agreed scope.",
+    icon: "KeyRound",
   },
 ] as const;
+
+export const capabilities = differentiators;
 
 /** @deprecated Use capabilities */
 export const valueStrip = capabilities;
 
 export const services = [
   {
-    slug: "business-websites",
-    title: "Business Websites & Online Stores",
+    slug: "custom-software-engineering",
+    title: "Custom Software Engineering",
     outcome:
-      "Look credible online, rank for the right searches, and convert visitors into enquiries or orders.",
-    icon: "Globe",
+      "Replace disconnected tools with software that matches how the business actually operates.",
+    icon: "Code2",
     featured: true,
-    tags: ["Business website", "E-commerce", "Landing pages"],
+    tags: ["Platforms", "CRM", "Internal tools"],
     summary:
-      "Clean, fast websites and online stores built to help customers find you, trust you, and take the next step.",
+      "Business platforms, CRM systems, dashboards, internal tools and custom applications.",
     includes: [
-      "Mobile-first design",
-      "WhatsApp and contact CTAs",
-      "SEO-ready foundations",
-      "Online payments (Stripe, PayPal and more)",
-      "Easy content editing",
+      "Business and CRM platforms",
+      "Operational dashboards",
+      "Internal tools for your team",
+      "Role-based access",
+      "Source-code handover",
     ],
+    technologies: ["Next.js", "Node.js", "NestJS", "PostgreSQL"],
     whoFor:
-      "Shops, clinics, restaurants, coaches, freelancers and brands that need a stronger online presence.",
-    timeline: "Usually 1-6 weeks depending on pages and store features",
-    priceFrom: "$299",
-    faqs: [
-      {
-        question: "Do I need to write all the text myself?",
-        answer:
-          "You can share rough notes. We help shape clear page copy, or you can book content writing as an add-on.",
-      },
-      {
-        question: "Can customers pay online?",
-        answer:
-          "Yes. We integrate payment providers that fit your market, including Stripe, PayPal, Razorpay and similar options.",
-      },
-      {
-        question: "Will it work on phones?",
-        answer:
-          "Yes. Every site is designed mobile first, because most visitors browse on their phone.",
-      },
-    ],
-  },
-  {
-    slug: "custom-software-crm",
-    title: "Custom Software & CRM",
-    outcome:
-      "Replace notebooks and spreadsheets with software that matches how your team already works.",
-    icon: "Database",
-    featured: true,
-    tags: ["CRM", "Billing", "Inventory"],
-    summary:
-      "Practical tools for billing, stock, customers and reporting, designed around your real day-to-day process.",
-    includes: [
-      "Invoicing and billing flows",
-      "Inventory tracking",
-      "Customer records",
-      "Staff logins",
-      "Reports",
-    ],
-    whoFor:
-      "Shops, clinics, distributors and service businesses that have outgrown notebooks and shared spreadsheets.",
+      "Startups and established companies that have outgrown spreadsheets, off-the-shelf tools or software that no longer fits.",
     timeline: "Usually 6-12 weeks after scope is agreed",
     priceFrom: "$2,000",
+    commercial:
+      "Discovery, then a fixed proposal. Custom systems usually start from $2,000 once the scope is written.",
     faqs: [
       {
         question: "Can you match how we already work?",
         answer:
-          "Yes. We start by learning your current process, then build only what you need.",
+          "Yes. We start from the current process and build the parts the business actually needs.",
       },
       {
-        question: "Will my staff need training?",
+        question: "Will my team need training?",
         answer:
-          "We include a short walkthrough and simple notes so your team can use the system confidently.",
+          "We include a walkthrough and handover notes so your team can use the system.",
       },
       {
         question: "Who owns the software?",
         answer:
-          "You do. After final payment we hand over the code and accounts.",
+          "You do. After final payment we hand over the source code and related accounts.",
       },
     ],
   },
   {
-    slug: "whatsapp-ai-automation",
-    title: "WhatsApp & AI Automation",
-    outcome: "Answer customers faster, even when your team is at capacity.",
-    icon: "Bot",
+    slug: "web-saas-development",
+    title: "Web & SaaS Development",
+    outcome:
+      "Ship a website, web application or first product release that is ready to operate.",
+    icon: "AppWindow",
     featured: true,
-    tags: ["WhatsApp bots", "Auto-replies", "Lead capture"],
+    tags: ["Web apps", "SaaS", "MVP"],
     summary:
-      "WhatsApp flows that take orders, answer FAQs, book appointments and capture leads, so fewer messages slip through.",
+      "Modern websites, web applications, SaaS platforms and MVP development.",
     includes: [
-      "Order-taking bots",
-      "Appointment reminders",
-      "FAQ auto-replies",
-      "Lead capture to Google Sheets",
+      "Marketing and product websites",
+      "Authenticated web applications",
+      "SaaS and MVP releases",
+      "Admin tools for your team",
+      "SEO-ready technical foundations",
     ],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     whoFor:
-      "Restaurants, clinics, shops and service businesses that handle high WhatsApp volume every day.",
-    timeline: "Often 2-6 weeks depending on the flow",
+      "Founders and growing businesses launching a product, replacing a fragile site, or turning a validated idea into a first release.",
+    timeline:
+      "Websites are often 1-6 weeks. Application and SaaS timelines follow the agreed first release.",
+    priceFrom: "$299",
+    commercial:
+      "Website projects start from $299 using defined packages. Web applications and SaaS products are quoted from a written scope.",
+    faqs: [
+      {
+        question: "Do website packages include a web application?",
+        answer:
+          "No. A marketing site and a product with accounts, billing or custom workflows are scoped separately. We say which one you need before quoting.",
+      },
+      {
+        question: "Can customers use it on a phone?",
+        answer:
+          "Yes. Interfaces are designed for phones and desktops.",
+      },
+      {
+        question: "Who owns the code?",
+        answer:
+          "You do, after the final invoice is paid.",
+      },
+    ],
+  },
+  {
+    slug: "ai-business-automation",
+    title: "AI & Business Automation",
+    outcome:
+      "Take repetitive communication and operations off your team without losing a human handoff.",
+    icon: "Workflow",
+    featured: true,
+    tags: ["AI", "Workflows", "WhatsApp"],
+    summary:
+      "AI integrations, intelligent workflows, WhatsApp automation and business process automation.",
+    includes: [
+      "AI features inside your product or workflow",
+      "WhatsApp automation and API integrations",
+      "Enquiry, booking and reminder flows",
+      "Handoff to a person when needed",
+      "Connections to the tools you already use",
+    ],
+    technologies: ["LLM APIs", "WhatsApp API", "Node.js", "Python"],
+    whoFor:
+      "Teams spending too much time on repetitive messages, bookings, data entry or handoffs between tools.",
+    timeline: "Often 2-6 weeks for a defined flow. Broader AI work depends on the integrations.",
     priceFrom: "$499",
+    commercial:
+      "WhatsApp and workflow automation starts from $499. Wider AI integrations are quoted from the systems and complexity involved.",
     faqs: [
       {
         question: "Do I need the WhatsApp Business API?",
         answer:
-          "For simple auto-replies, WhatsApp Business may be enough. For larger order flows we recommend the API. We help you choose.",
+          "Simple replies can use WhatsApp Business. Larger automated flows usually need the API. We help you choose before building.",
       },
       {
-        question: "Can a human take over a chat?",
+        question: "Can a person take over a conversation?",
         answer:
-          "Yes. Bots handle the common questions. Your team can step in when a conversation needs a person.",
+          "Yes. Automation covers the repeatable steps. Your team can step in when a conversation needs a person.",
       },
       {
-        question: "Where do leads go?",
+        question: "Where does the information go?",
         answer:
-          "We can send them to Google Sheets, your CRM, or email, whichever is easiest for your team.",
+          "Into the system we agree on: your product, a spreadsheet, email or an existing tool.",
       },
     ],
   },
   {
-    slug: "digital-marketing",
-    title: "Digital Marketing & Google Presence",
-    outcome: "Show up when customers search for what you offer.",
-    icon: "Megaphone",
+    slug: "ecommerce-platforms",
+    title: "E-commerce & Digital Platforms",
+    outcome:
+      "Sell through a store you control, with catalogue, checkout and operations in one place.",
+    icon: "Store",
     featured: true,
-    tags: ["Google Business Profile", "SEO", "Social media"],
+    tags: ["Stores", "Payments", "Platforms"],
     summary:
-      "Strengthen your presence on Google and social platforms so the right people can find and contact you.",
+      "Custom online stores, payment integrations, inventory systems and customer-facing platforms.",
     includes: [
-      "Google Business Profile setup",
-      "SEO foundations",
-      "Social media posts",
+      "Product catalogue and merchandising",
+      "Cart, checkout and payments",
+      "Order and inventory flows",
+      "Customer accounts where needed",
+      "An admin your team can use",
     ],
+    technologies: ["React", "Node.js", "Stripe", "PostgreSQL"],
     whoFor:
-      "Businesses that want more enquiries, calls and visits from people searching online.",
-    timeline: "Setup often within 1-2 weeks. Ongoing plans are monthly.",
-    priceFrom: "$199",
+      "Brands and operators that need more than a template shop, including custom checkout, inventory or a customer platform.",
+    timeline: "Usually 3-8 weeks depending on catalogue, payments and operations.",
+    priceFrom: "$1,299",
+    commercial:
+      "Custom online stores start from $1,299. The final figure follows catalogue size, payments and operational scope.",
     faqs: [
       {
-        question: "Is this the same as paid ads?",
+        question: "Which payment providers can you integrate?",
         answer:
-          "No. This focuses on your free Google profile and organic presence. Paid ads are separate and optional.",
+          "Stripe, PayPal, Razorpay and similar providers, chosen for the markets you sell in.",
       },
       {
-        question: "Do you manage posts every month?",
+        question: "Can we manage products ourselves?",
         answer:
-          "Yes, if you choose a monthly social plan. One-time setup is also available.",
+          "Yes. The handover includes an admin for catalogue and orders, plus the source code after final payment.",
       },
       {
-        question: "How soon will I see results?",
+        question: "Is this a template theme?",
         answer:
-          "Google profiles can start looking better within days. Ranking takes longer and depends on competition and reviews.",
+          "No. The store is built for your catalogue and operations, not dropped in from a generic theme.",
       },
     ],
   },
   {
     slug: "ui-ux-brand",
     title: "UI/UX & Brand Design",
-    outcome: "Give customers a brand and interface they trust at first glance.",
+    outcome: "Give a product or company an interface and brand people can trust.",
     icon: "Palette",
-    featured: true,
-    tags: ["Logo", "Brand kit", "Dashboards"],
+    featured: false,
+    tags: ["Product UI", "Brand"],
     summary:
-      "Clear branding and interface design so your product and website feel professional, simple and trustworthy.",
+      "Interface and brand design for products and websites, usually alongside an engineering engagement.",
     includes: [
       "Logo and basic brand kit",
-      "App and dashboard design",
-      "Website UI layouts",
+      "Product and dashboard UI",
+      "Website layouts",
     ],
+    technologies: ["Figma"],
     whoFor:
-      "Businesses launching a new brand or refreshing a site or app that feels unclear.",
+      "Teams launching a product or refreshing an interface that is hard to use.",
     timeline: "Usually 1-3 weeks for a logo kit. Longer for full product UI.",
     priceFrom: "$199",
+    commercial: "A logo and basic brand kit starts from $199. Product UI is quoted with the build.",
     faqs: [
       {
-        question: "What do I get in a brand kit?",
+        question: "What is in a brand kit?",
         answer:
-          "Logo files, colours, fonts and simple usage guidance you can share with printers or freelancers.",
+          "Logo files, colours, fonts and simple usage notes you can share with anyone producing materials.",
       },
       {
-        question: "Can you design only a few screens?",
-        answer:
-          "Yes. We can design key screens first and expand later.",
+        question: "Can you design a few screens first?",
+        answer: "Yes. We can design the key screens and expand from there.",
       },
       {
-        question: "Do you also build what you design?",
+        question: "Do you build what you design?",
         answer:
-          "Yes, when you want. Many clients keep design and build with us so nothing gets lost between teams.",
+          "Yes, when you want design and engineering to stay with one team.",
+      },
+    ],
+  },
+  {
+    slug: "digital-marketing",
+    title: "Digital Marketing & Google Presence",
+    outcome: "Make the business easier to find when people search.",
+    icon: "Megaphone",
+    featured: false,
+    tags: ["Google Business Profile", "SEO"],
+    summary:
+      "Search and Google presence support for clients who also need the product or website built.",
+    includes: [
+      "Google Business Profile setup",
+      "SEO foundations",
+      "Social media posts",
+    ],
+    technologies: ["Google Business Profile", "SEO"],
+    whoFor:
+      "Businesses that want the site or product we build to be findable, without treating marketing as the core engagement.",
+    timeline: "Setup is often within 1-2 weeks. Ongoing plans are monthly.",
+    priceFrom: "$199",
+    commercial:
+      "One-time Google Business Profile setup and SEO foundations start from $199. Monthly social plans are separate.",
+    faqs: [
+      {
+        question: "Is this paid advertising?",
+        answer:
+          "No. This covers your Google profile and organic foundations. Paid ads are separate and optional.",
+      },
+      {
+        question: "Do you post every month?",
+        answer:
+          "Only on a monthly social plan. One-time setup is also available.",
+      },
+      {
+        question: "How soon does this change search visibility?",
+        answer:
+          "A Google profile can look complete within days. Rankings take longer and depend on competition and reviews.",
       },
     ],
   },
@@ -420,20 +485,34 @@ export const whoWeHelp = [
 
 export const whyObekai = [
   {
-    title: "6+ years of delivery",
-    description: "A mid-sized team with proven experience building and serving clients.",
+    title: "Direct engineering communication",
+    description:
+      "You speak with the people doing the work. Questions about architecture, tradeoffs and delivery do not pass through a separate account layer.",
   },
   {
-    title: "Fixed-price quotes",
-    description: "Agreed in writing before we start.",
+    title: "Transparent fixed-price proposals",
+    description:
+      "Scope, price and timeline are written before build starts. Changes are quoted before they are made.",
   },
   {
-    title: "Weekly progress updates",
-    description: "Clear updates on WhatsApp every week.",
+    title: "Clear delivery milestones",
+    description:
+      "Work is broken into stages you can review. You see working software, not only status updates.",
   },
   {
-    title: "30 days free support",
-    description: "After launch, so small fixes are covered.",
+    title: "Source-code ownership",
+    description:
+      "After the final payment, the source code, design files and project access transfer to you.",
+  },
+  {
+    title: "Maintainable architecture",
+    description:
+      "The system is structured so your team, or another vendor, can keep building on it.",
+  },
+  {
+    title: "Post-launch assistance",
+    description:
+      "Thirty days of support cover issues inside the agreed scope. Care plans after that are optional.",
   },
 ] as const;
 
@@ -441,7 +520,7 @@ export const founders = [
   {
     name: "Rakshit Agarwal",
     role: "Co-founder, Software & Automation",
-    bio: "Rakshit builds the software side of Obekai: websites, billing tools and WhatsApp automation. He likes turning messy spreadsheets into simple systems that shop owners can actually use.",
+    bio: "Rakshit leads engineering at Obekai: custom software, web applications and automation. He founded the studio to build products businesses can rely on after launch.",
     image: {
       src: "/images/myprofilepic.png",
       alt: "Rakshit Agarwal, Co-founder of Obekai",
@@ -452,8 +531,8 @@ export const founders = [
   },
   {
     name: "Divyang Solanki",
-    role: "Co-founder, Design & Growth",
-    bio: "Divyang leads design and growth: layouts, branding and Google presence. He makes sure every site is clear on mobile and easy for customers to act on.",
+    role: "Co-founder, Design",
+    bio: "Divyang leads design: product interfaces, brand and the clarity of what customers see. A unique photograph is not published yet.",
     /** Leave src empty until a unique photo is available. Do not reuse another founder photo. */
     image: {
       src: "",
@@ -467,53 +546,85 @@ export const founders = [
 
 export const aboutContent = {
   story:
-    "Obekai is a mid-sized, remote-first software company with over 6 years of experience building and serving clients. We combine practical engineering with clear design so growing businesses get products that fit how they work, priced fairly and explained without jargon.",
+    "Obekai is an engineering-led software studio in Ahmedabad, India. We work with startups, growing businesses and established companies in India and internationally. The studio was founded by a software engineer, and clients work directly with the people building the product.",
   principles: [
     {
-      title: "Build what matters now",
-      description: "Ship the features you need today. Leave unused complexity out.",
-    },
-    {
-      title: "Honest cost and time",
-      description: "Fixed quotes and timelines in writing before we start.",
-    },
-    {
-      title: "Stay after launch",
+      title: "Build what the business needs now",
       description:
-        "Thirty days of free support, then optional care plans so your product keeps running.",
+        "The first release covers the workflow that matters. Unused complexity stays out of scope.",
+    },
+    {
+      title: "Put the commercial terms in writing",
+      description:
+        "Price, timeline and deliverables are agreed before engineering starts.",
+    },
+    {
+      title: "Stay through launch",
+      description:
+        "Thirty days of support follow go-live. Ongoing care after that is optional.",
     },
   ],
 } as const;
+
+export const workingPrinciples = [
+  {
+    title: "Engineers on the call",
+    description:
+      "Discovery, scope and delivery conversations happen with the people who will build the system.",
+  },
+  {
+    title: "Nothing important stays verbal",
+    description:
+      "Scope, milestones, price and what is out of scope are written down before work starts.",
+  },
+  {
+    title: "You can leave with the code",
+    description:
+      "Final payment transfers the repository, design files and the access required to run the product.",
+  },
+  {
+    title: "Built to be maintained",
+    description:
+      "Structure, data and integrations are chosen so the product can be extended without a rewrite.",
+  },
+  {
+    title: "Support has a defined window",
+    description:
+      "The first 30 days after launch cover issues inside the agreed scope. Later work is a care plan or a quoted change.",
+  },
+] as const;
 
 export const processSteps = [
   {
     step: "01",
     title: "Discover",
     duration: "2–3 days",
-    description: "We learn how your business works and what you need first.",
-    outcome: "A short list of goals and must-have features.",
+    description:
+      "Understand the business problem, requirements and objectives.",
+    outcome: "A shared picture of the problem and what the first release must do.",
   },
   {
     step: "02",
-    title: "Plan",
+    title: "Plan & Design",
     duration: "3–5 days",
-    description: "We agree scope, price and timeline in plain language.",
-    outcome: "A fixed-price quote and a simple project plan.",
+    description:
+      "Define architecture, user experience, milestones and scope.",
+    outcome: "A written proposal: scope, price, timeline and what is out of scope.",
   },
   {
     step: "03",
-    title: "Build",
+    title: "Engineer",
     duration: "1–10 weeks",
-    description:
-      "We design and build, and share progress every week on WhatsApp.",
-    outcome: "Working screens you can click and give feedback on.",
+    description: "Develop, integrate, test and demonstrate progress.",
+    outcome: "Working software you can review at each milestone.",
   },
   {
     step: "04",
     title: "Launch & Support",
-    duration: "30 days free support",
-    description: "We go live, hand over access, and stay for early fixes.",
-    outcome: "Your live site or tool, plus ownership of the work.",
+    duration: "30 days of support",
+    description:
+      "Deploy, hand over source code and provide post-launch support.",
+    outcome: "A live product, repository access, and 30 days of in-scope support.",
   },
 ] as const;
 
@@ -544,6 +655,50 @@ export const techStack = [
   { name: "AWS", src: "/images/tech/aws.png" },
   { name: "Figma", src: "/images/tech/figma.png" },
   { name: "GitHub", src: "/images/tech/github.png" },
+] as const;
+
+export const techGroups = [
+  {
+    name: "Frontend",
+    items: [
+      { name: "React", src: "/images/tech/react.png" },
+      { name: "Next.js", src: "/images/tech/nextjs.png" },
+      { name: "TypeScript", src: "/images/tech/typescript.png" },
+      { name: "Tailwind CSS", src: "/images/tech/tailwind.png" },
+    ],
+  },
+  {
+    name: "Backend",
+    items: [
+      { name: "Node.js", src: "/images/tech/nodejs.png" },
+      { name: "NestJS", src: "/images/tech/nestjs.png" },
+      { name: "Python", src: "/images/tech/python.png" },
+    ],
+  },
+  {
+    name: "Database",
+    items: [
+      { name: "PostgreSQL", src: "/images/tech/postgresql.png" },
+      { name: "MongoDB", src: "/images/tech/mongodb.png" },
+      { name: "Redis", src: "/images/tech/redis.png" },
+    ],
+  },
+  {
+    name: "Cloud & Infrastructure",
+    items: [
+      { name: "AWS", src: "/images/tech/aws.png" },
+      { name: "Docker", src: "/images/tech/docker.png" },
+      { name: "GitHub", src: "/images/tech/github.png" },
+    ],
+  },
+  {
+    name: "AI & Integrations",
+    items: [
+      { name: "LLM APIs" },
+      { name: "Automation" },
+      { name: "Third-party integrations" },
+    ],
+  },
 ] as const;
 
 export const projects = [
@@ -690,6 +845,37 @@ export const testimonials = [
   },
 ] as const;
 
+export const engagementModels = [
+  {
+    id: "websites",
+    title: "Websites",
+    approach: "Starting price or defined packages",
+    detail:
+      "Page count, design and launch are written into a package. Current website packages are listed below.",
+  },
+  {
+    id: "web-apps",
+    title: "Web applications",
+    approach: "Scope-based quotation",
+    detail:
+      "Accounts, workflows and integrations are quoted after the first release is clear. There is no single public price for a product build.",
+  },
+  {
+    id: "custom",
+    title: "Custom software and SaaS",
+    approach: "Discovery, then a fixed proposal",
+    detail:
+      "We write the scope before engineering starts. Custom systems usually begin from the figure on the software package below.",
+  },
+  {
+    id: "automation",
+    title: "AI and automation",
+    approach: "Based on integrations and complexity",
+    detail:
+      "A defined WhatsApp or workflow automation has a starting price in the add-ons. Broader AI work is quoted from the systems involved.",
+  },
+] as const;
+
 export const pricingTiers = [
   {
     id: "starter-website",
@@ -779,62 +965,57 @@ export const pricingNotes = {
 
 export const faqs = [
   {
-    question: "How much does a website or software cost?",
+    question: "What services do you offer?",
     answer:
-      "We give fixed-price quotes after a short discovery call, so you know the total before we start. Starter websites usually start from $299 (typical range $299-$599). Business sites and online stores often fall between $799 and $1,999. Custom software, CRM and automation usually start from $2,000. Quotes can be issued in USD or another currency you prefer, with scope and timeline written down before any payment.",
+      "The core work is custom software engineering, web and SaaS development, AI and business automation, and e-commerce or other customer platforms. UI/UX and search presence are available alongside a build. Each engagement starts from the business problem, then a written scope.",
+  },
+  {
+    question: "How does the development process work?",
+    answer:
+      "We discover the problem, write the architecture, scope, milestones and price, then engineer against that plan with reviews along the way. Launch includes deployment, source-code handover and 30 days of support for issues inside the agreed scope. To start we need a clear goal, brand or content direction, and one person who can approve decisions.",
+  },
+  {
+    question: "How much does a project cost?",
+    answer:
+      "Website packages start from $299 (typical range $299-$599). Business sites are often $799-$1,999, and online stores start from $1,299. Custom software usually starts from $2,000. WhatsApp or workflow automation starts from $499. Web applications, SaaS and broader AI work are quoted from scope. Quotes can be issued in USD or INR. Standard payment is 40% to start, 40% at design or demo approval, and 20% on delivery. Domain, hosting, paid ads and third-party usage fees are excluded unless we agree otherwise.",
+  },
+  {
+    question: "How long does development take?",
+    answer:
+      "A simple marketing website often takes 1-3 weeks. A business site or store usually takes 3-6 weeks. Custom software, CRM or automation is typically 6-12 weeks, depending on integrations and how quickly feedback comes back. Every quote includes a timeline.",
   },
   {
     question: "Who owns the source code?",
     answer:
-      "You do. Once the final invoice is paid, ownership of the project source code, design files and related project assets transfers to you. We do not keep proprietary lock-in on your product. Hosting accounts, domains and third-party services set up for the project are also handed over or transferred into your name wherever the provider allows it.",
+      "You do. Once the final invoice is paid, ownership of the project source code, design files and related project assets transfers to you. We deliver the repository or an agreed archive, plus the credentials needed to run it. Hosting, domains and third-party services are transferred into your name wherever the provider allows it.",
   },
   {
-    question: "Do you provide source code after project completion?",
+    question: "Do you provide ongoing maintenance?",
     answer:
-      "Yes. After final payment we deliver the complete source code through a private Git repository or an agreed archive, plus credentials for deployment and any admin panels. You receive what you need to run, maintain or extend the product with your own team or another vendor. Documentation for setup and handoff is included with the delivery.",
-  },
-  {
-    question: "What happens after the 30-day support period?",
-    answer:
-      "Every project includes 30 days of free post-launch support for bug fixes and small adjustments covered by the agreed scope. After that window, you can continue on a monthly care plan, request paid changes as one-off work, or maintain the product yourself with the source code and access we handed over. Nothing is forced; you choose what fits your operations.",
-  },
-  {
-    question: "Do you provide monthly maintenance?",
-    answer:
-      "Yes. Our care plans cover updates, monitoring, minor content or feature tweaks, dependency patches and priority support. Plans are optional and priced monthly based on how active the product is. If you only need occasional help, we can quote individual tasks instead of a retainer.",
+      "Yes, as an optional monthly care plan covering updates, monitoring, small in-scope tweaks, dependency patches and priority support. If you only need occasional help, we quote individual tasks. You can also maintain the product yourself with the source code we hand over.",
   },
   {
     question: "Can you work with international clients?",
     answer:
-      "Yes. We work remotely with clients across markets and time zones. Communication happens on WhatsApp, email or video calls scheduled around your working hours. Contracts, invoices and payments can be handled in USD or another agreed currency. Our studio is based in Ahmedabad, India, and delivery is fully remote-first.",
-  },
-  {
-    question: "What are your payment milestones?",
-    answer:
-      "Standard terms are 40% advance to start, 40% at design or working-demo approval, and 20% on final delivery before handoff. Larger builds can use a written milestone schedule that matches delivery stages. Invoices are provided for each payment. Source code and account handoff complete after the final payment clears.",
+      "Yes. We work remotely with clients across markets and time zones. Communication is on WhatsApp, email or scheduled calls. Contracts, invoices and payments can be handled in USD or INR. The studio is in Ahmedabad, India.",
   },
   {
     question: "Do you sign NDAs?",
     answer:
-      "Yes. We routinely sign mutual NDAs before detailed discussions when your idea, data or process needs protection. Share your NDA template or ask us for ours. Confidential materials shared during discovery and build stay confidential under the agreement.",
+      "Yes. We sign mutual NDAs before detailed discussions when an idea, dataset or process needs protection. Share your template or ask for ours.",
   },
   {
-    question: "How long does a typical project take?",
+    question: "What happens after project delivery?",
     answer:
-      "A simple marketing website often takes 1-3 weeks. A business site or store usually takes 3-6 weeks. Custom software, CRM or automation is typically 6-12 weeks, depending on integrations and how quickly feedback comes back. Every quote includes a realistic timeline so you can plan launch dates.",
-  },
-  {
-    question: "What do you need from me to start?",
-    answer:
-      "A clear goal for the project, a logo or brand direction (we can design one if needed), text and photos or access to gather them, business details such as services and hours, and one decision-maker who can approve scope and designs promptly. That keeps the build moving and avoids rework.",
+      "You receive the live product, source code and access after final payment. The next 30 days cover bug fixes and small adjustments inside the agreed scope. After that you can take a care plan, request paid changes, or run the product with your own team.",
   },
 ] as const;
 
 export const serviceOptions = [
-  "Business Websites & Online Stores",
-  "Custom Software & CRM",
-  "WhatsApp & AI Automation",
-  "Digital Marketing & Google Presence",
+  "Custom Software Engineering",
+  "Web & SaaS Development",
+  "AI & Business Automation",
+  "E-commerce & Digital Platforms",
   "UI/UX & Brand Design",
   "Not sure yet",
 ] as const;
@@ -846,6 +1027,8 @@ export const budgetOptions = [
   "$5,000+",
   "Not sure yet",
 ] as const;
+
+export const currencyOptions = ["USD", "INR", "No preference"] as const;
 
 export type Service = (typeof services)[number];
 export type Project = (typeof projects)[number];

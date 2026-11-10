@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Merriweather } from "next/font/google";
+import { Geist } from "next/font/google";
 import { Analytics } from "@/components/layout/analytics";
 import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
@@ -7,21 +7,14 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import { images, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
-const heading = Merriweather({
-  variable: "--font-heading-family",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-
-const body = Inter({
-  variable: "--font-body-family",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
 });
 
-const defaultTitle = `${siteConfig.legalName} | ${siteConfig.tagline}`;
-const shortTitle = siteConfig.legalName;
+const defaultTitle = siteConfig.metaTitle;
+const shortTitle = siteConfig.name;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -37,13 +30,12 @@ export const metadata: Metadata = {
   category: "technology",
   keywords: [
     "Obekai",
-    "Obekai Technologies",
-    "website development",
-    "custom software",
-    "WhatsApp automation",
-    "CRM for small business",
-    "business websites",
-    "software studio",
+    "software development company",
+    "custom software development",
+    "web application development",
+    "SaaS development",
+    "AI automation",
+    "CRM development",
     "Ahmedabad software company",
   ],
   alternates: {
@@ -98,8 +90,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#050505" },
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B0D12" },
+    { media: "(prefers-color-scheme: light)", color: "#F8F9FC" },
   ],
   colorScheme: "dark light",
 };
@@ -154,7 +146,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-color-mode="dark"
-      className={`${heading.variable} ${body.variable} h-full antialiased`}
+      className={`${geist.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

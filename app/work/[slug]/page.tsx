@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = projects.find((item) => item.slug === slug);
   if (!project) return { title: "Work" };
   return {
-    title: `${project.title} | ${siteConfig.name}`,
+    title: project.title,
     description: project.solution,
   };
 }
@@ -40,7 +40,7 @@ export default async function WorkPage({ params }: PageProps) {
       <main className="flex-1 bg-bg-primary text-text-primary">
         <article className="container-site section-y pt-28 sm:pt-32">
           <Link
-            href="/#projects"
+            href="/#work"
             className="inline-flex min-h-11 items-center gap-2 text-sm text-text-secondary hover:text-text-primary"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -54,9 +54,13 @@ export default async function WorkPage({ params }: PageProps) {
             <span className="text-sm text-text-muted">{project.businessType}</span>
           </div>
 
-          <h1 className="mt-4 max-w-3xl font-serif text-4xl font-bold text-text-primary sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl font-heading text-4xl font-semibold text-text-primary sm:text-5xl">
             {project.title}
           </h1>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-text-secondary">
+            Client name and measurable results are not shown here. They are
+            published only when that client has approved them.
+          </p>
 
           <CoverMedia
             title={project.title}
@@ -69,13 +73,13 @@ export default async function WorkPage({ params }: PageProps) {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             <div className="card-surface p-6 sm:p-8">
-              <h2 className="font-serif text-2xl font-bold text-text-primary">Problem</h2>
+              <h2 className="font-heading text-2xl font-semibold text-text-primary">Problem</h2>
               <p className="mt-3 text-base leading-relaxed text-text-secondary">
                 {project.problem}
               </p>
             </div>
             <div className="card-surface p-6 sm:p-8">
-              <h2 className="font-serif text-2xl font-bold text-text-primary">
+              <h2 className="font-heading text-2xl font-semibold text-text-primary">
                 What we built
               </h2>
               <p className="mt-3 text-base leading-relaxed text-text-secondary">
@@ -85,8 +89,8 @@ export default async function WorkPage({ params }: PageProps) {
           </div>
 
           <div className="card-surface mt-6 p-6 sm:p-8">
-            <h2 className="font-serif text-2xl font-bold text-text-primary">
-              Outcome
+            <h2 className="font-heading text-2xl font-semibold text-text-primary">
+              Delivered
             </h2>
             <ul className="mt-4 space-y-2">
               {project.delivers.map((item) => (
@@ -121,7 +125,7 @@ export default async function WorkPage({ params }: PageProps) {
           </div>
 
           <div className="card-surface mt-10 p-6 sm:p-8">
-            <h2 className="font-serif text-2xl font-bold text-text-primary">
+            <h2 className="font-heading text-2xl font-semibold text-text-primary">
               Want something like this?
             </h2>
             <p className="mt-3 text-base text-text-secondary">

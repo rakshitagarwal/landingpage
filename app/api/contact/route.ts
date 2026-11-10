@@ -4,11 +4,12 @@ import { siteConfig } from "@/lib/site-config";
 
 const contactSchema = z.object({
   fullName: z.string().min(2),
-  phone: z.string().min(8),
-  service: z.string().min(1),
-  message: z.string().min(20),
   email: z.string().email(),
+  company: z.string().optional().default(""),
+  service: z.string().min(1),
   budget: z.string().min(1),
+  currency: z.string().optional().default(""),
+  message: z.string().min(20),
   website: z.string().optional().default(""),
 });
 
@@ -30,12 +31,13 @@ export async function POST(request: Request) {
 
     const payload = {
       fullName: parsed.data.fullName,
-      phone: parsed.data.phone,
+      phone: "",
       service: parsed.data.service,
       details: parsed.data.message,
       email: parsed.data.email || "",
-      company: "",
+      company: parsed.data.company || "",
       budget: parsed.data.budget || "",
+      currency: parsed.data.currency || "",
     };
 
     const webhook = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
@@ -66,10 +68,11 @@ export async function POST(request: Request) {
           subject: `New inquiry from ${payload.fullName}`,
           text: [
             `Name: ${payload.fullName}`,
-            `Phone: ${payload.phone}`,
             `Email: ${payload.email || "-"}`,
+            `Company: ${payload.company || "-"}`,
             `Service: ${payload.service}`,
             `Budget: ${payload.budget || "-"}`,
+            `Quote currency: ${payload.currency || "-"}`,
             "",
             payload.details,
           ].join("\n"),

@@ -1,75 +1,46 @@
-import { processExtras, processSteps } from "@/lib/site-config";
+import { processSteps } from "@/lib/site-config";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionWrapper } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export function Process() {
   return (
-    <SectionWrapper id="process">
+    <SectionWrapper id="process" aria-label="Delivery process">
       <div className="section-stack">
         <Reveal>
           <SectionHeading
-            eyebrow="How we engage"
-            title="Delivery you can set your watch to"
-            description="Four clear steps. You always know what happens next and what you get."
+            eyebrow="Process"
+            title="A delivery path you can follow."
+            description="Four stages, from the business problem to a launched product with the source code in your hands."
           />
         </Reveal>
 
-        <ol className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="relative grid gap-4 md:grid-cols-4 md:gap-5">
+          <div
+            className="pointer-events-none absolute left-[12%] right-[12%] top-9 hidden h-px bg-border-subtle md:block"
+            aria-hidden
+          />
           {processSteps.map((step, index) => (
-            <Reveal key={step.step} delay={index * 0.05}>
-              <li className="card-surface h-full p-6 sm:p-7">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="font-mono text-sm text-accent-primary">
-                    {step.step}
-                  </span>
-                  <span className="rounded-full border border-border-subtle px-2.5 py-1 text-xs text-text-secondary">
-                    {step.duration}
-                  </span>
-                </div>
-                <h3 className="mt-4 font-serif text-2xl font-bold text-text-primary">
+            <Reveal key={step.step} delay={index * 0.06}>
+              <article className="card-surface relative h-full p-5 sm:p-6">
+                <span className="relative z-[1] inline-flex h-10 w-10 items-center justify-center rounded-full border border-accent-primary/40 bg-bg-primary font-heading text-sm font-semibold text-accent-primary">
+                  {step.step}
+                </span>
+                <h3 className="font-heading mt-5 text-xl font-semibold text-text-primary">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-secondary sm:text-base">
+                <p className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-text-muted">
+                  {step.duration}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-text-secondary">
                   {step.description}
                 </p>
-                <p className="mt-4 text-sm font-medium text-text-primary">
-                  You get: {step.outcome}
+                <p className="mt-4 border-t border-border-subtle pt-4 text-sm text-text-primary">
+                  {step.outcome}
                 </p>
-              </li>
+              </article>
             </Reveal>
           ))}
-        </ol>
-
-        <div className="grid gap-4 lg:grid-cols-2">
-          <Reveal>
-            <div className="card-surface h-full p-6 sm:p-7">
-              <h3 className="font-serif text-xl font-bold text-text-primary">
-                What we need from you
-              </h3>
-              <ul className="mt-4 space-y-2">
-                {processExtras.whatWeNeed.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-2 text-sm text-text-secondary sm:text-base"
-                  >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <div className="card-surface h-full p-6 sm:p-7">
-              <h3 className="font-serif text-xl font-bold text-text-primary">
-                Revisions
-              </h3>
-              <p className="mt-4 text-sm leading-relaxed text-text-secondary sm:text-base">
-                {processExtras.revisions}
-              </p>
-            </div>
-          </Reveal>
         </div>
       </div>
     </SectionWrapper>

@@ -47,11 +47,13 @@ export default function PrivacyPage() {
             What we collect
           </h2>
           <p>
-            When you fill our contact form or message us on WhatsApp, email or
-            phone, we may receive your name, phone number, email address,
-            company name, budget range and project details. Our website may also
-            collect basic technical data such as browser type and pages visited
-            if analytics is enabled.
+            When you fill our contact form we receive your name, work email,
+            company name if you provide it, the service you need, a budget
+            range, your preferred quote currency and the project description.
+            If you message us on WhatsApp, email or phone, we may also receive
+            your phone number and anything you include in that message. Our
+            website may collect basic technical data such as browser type and
+            pages visited if analytics is enabled.
           </p>
           <h2 className="font-serif text-2xl font-bold text-text-primary">
             Why we use it

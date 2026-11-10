@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import {
   budgetOptions,
+  currencyOptions,
   getWhatsAppLink,
   serviceOptions,
   siteConfig,
@@ -26,10 +27,11 @@ import { SectionWrapper } from "@/components/ui/section";
 
 const contactSchema = z.object({
   fullName: z.string().min(2, "Please enter your name."),
-  email: z.string().email("Enter a valid business email."),
-  phone: z.string().min(8, "Enter a valid phone / WhatsApp number."),
+  email: z.string().email("Enter a valid work email."),
+  company: z.string().optional(),
   service: z.string().min(1, "Select a service."),
   budget: z.string().min(1, "Select an approximate budget."),
+  currency: z.string().min(1, "Choose a quote currency."),
   message: z
     .string()
     .min(20, "Add a short project description (at least 20 characters)."),
@@ -71,9 +73,10 @@ export function Contact() {
     defaultValues: {
       fullName: "",
       email: "",
-      phone: "",
+      company: "",
       service: "",
       budget: "",
+      currency: "No preference",
       message: "",
       website: "",
     },
@@ -137,12 +140,12 @@ export function Contact() {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-primary">
                 Business enquiry
               </p>
-              <h2 className="mt-3 font-serif text-3xl font-bold text-text-primary sm:text-4xl">
+              <h2 className="mt-3 font-heading text-3xl font-semibold text-text-primary sm:text-4xl">
                 Tell us what you want to build
               </h2>
               <p className="mt-3 max-w-2xl text-base leading-relaxed text-text-secondary">
-                Fill in the form below. A clear brief helps us reply with a
-                realistic scope, timeline and fixed quote.
+                A short brief is enough for a first reply. Quotes can be
+                prepared in INR or USD. Budget ranges below are in USD.
               </p>
             </div>
 
@@ -164,7 +167,7 @@ export function Contact() {
 
               <Field
                 id="email"
-                label="Business email"
+                label="Work email"
                 required
                 error={errors.email?.message}
               >
@@ -179,18 +182,16 @@ export function Contact() {
               </Field>
 
               <Field
-                id="phone"
-                label="Phone / WhatsApp"
-                required
-                error={errors.phone?.message}
+                id="company"
+                label="Company name"
+                error={errors.company?.message}
               >
                 <input
-                  id="phone"
-                  type="tel"
-                  autoComplete="tel"
+                  id="company"
+                  autoComplete="organization"
                   className={fieldClass}
-                  placeholder="+1 or +91 …"
-                  {...register("phone")}
+                  placeholder="Optional"
+                  {...register("company")}
                 />
               </Field>
 
@@ -216,10 +217,9 @@ export function Contact() {
 
               <Field
                 id="budget"
-                label="Approximate budget"
+                label="Project budget (USD)"
                 required
                 error={errors.budget?.message}
-                className="sm:col-span-2"
               >
                 <select
                   id="budget"
@@ -228,6 +228,25 @@ export function Contact() {
                 >
                   <option value="">Select a range</option>
                   {budgetOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+
+              <Field
+                id="currency"
+                label="Quote currency"
+                required
+                error={errors.currency?.message}
+              >
+                <select
+                  id="currency"
+                  className={fieldClass}
+                  {...register("currency")}
+                >
+                  {currencyOptions.map((option) => (
                     <option key={option} value={option}>
                       {option}
                     </option>
@@ -286,7 +305,7 @@ export function Contact() {
 
         <Reveal delay={0.05}>
           <div className="mx-auto max-w-3xl">
-            <h3 className="font-serif text-2xl font-bold text-text-primary">
+            <h3 className="font-heading text-2xl font-semibold text-text-primary">
               Helpful details while you fill the form
             </h3>
             <p className="mt-2 text-base text-text-secondary">

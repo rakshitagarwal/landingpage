@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: `Send a business enquiry to ${siteConfig.legalName}. Share your name, email, service needs, budget and project description for a fixed quote.`,
+  description: `Start a software project with ${siteConfig.legalName} in Ahmedabad. Share your work email, the service you need, a budget range and a short description. Quotes are available in INR or USD.`,
 };
 
 export default function ContactPage() {
@@ -18,12 +18,12 @@ export default function ContactPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent-primary">
             Contact us
           </p>
-          <h1 className="mt-3 font-serif text-4xl font-bold text-text-primary sm:text-5xl">
-            Get in touch
+          <h1 className="mt-3 font-heading text-4xl font-semibold text-text-primary sm:text-5xl">
+            Discuss your project
           </h1>
           <p className="mt-4 max-w-2xl text-base text-text-secondary sm:text-lg">
-            Start with the enquiry form. We reply within 24 hours with next
-            steps and a clear quote path.
+            Tell us what you are building. We reply within 24 hours with a
+            clear next step, and can quote in INR or USD.
           </p>
         </div>
         <Contact />
