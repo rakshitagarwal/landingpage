@@ -6,7 +6,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { SectionWrapper } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-const featured = blogPosts.slice(0, 3);
+const featured = blogPosts;
 
 export function Insights() {
   return (
@@ -17,7 +17,7 @@ export function Insights() {
             <SectionHeading
               eyebrow="Case studies"
               title="Stories behind the products we ship"
-              description="Blog-style write-ups of our CRM, store and automation projects—problem, approach and outcome, with the real product screens."
+              description="Four product studies, each with its own screen. These images are not the ones on the project cards above. Figures drawn on the interfaces are part of the screen, not published client results."
             />
             <Link
               href="/blog"
@@ -29,7 +29,7 @@ export function Insights() {
           </div>
         </Reveal>
 
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2">
           {featured.map((post, index) => (
             <Reveal key={post.slug} delay={index * 0.08} y={40} scale={0.97}>
               <Link

@@ -37,7 +37,7 @@ export function Navbar() {
   useEffect(() => {
     if (pathname !== "/") return;
 
-    const ids = ["services", "work", "about", "process", "pricing", "contact"];
+    const ids = ["services", "work", "case-studies", "about", "process", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -233,12 +233,12 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Link
+          <a
             href="/contact"
             className={cn(buttonLinkClass("primary", "sm"), "hidden md:inline-flex")}
           >
             Let&apos;s Talk
-          </Link>
+          </a>
           <button
             type="button"
             className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-text-primary lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
@@ -299,13 +299,13 @@ export function Navbar() {
                   </Link>
                 )
               )}
-              <Link
+              <a
                 href="/contact"
                 className={cn(buttonLinkClass("primary"), "mt-2 w-full")}
                 onClick={() => setOpen(false)}
               >
                 Let&apos;s Talk
-              </Link>
+              </a>
             </div>
           </motion.div>
         ) : null}

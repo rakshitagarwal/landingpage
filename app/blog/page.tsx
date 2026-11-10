@@ -8,7 +8,7 @@ import { blogPosts, siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "Case studies from Obekai projects: custom CRM, e-commerce platforms and business automation—written as practical stories with real product screens.",
+    "Four Obekai product case studies: an electronics storefront, a sales command center, an AI workflow console and a CRM dashboard.",
 };
 
 export default function BlogPage() {
@@ -24,11 +24,12 @@ export default function BlogPage() {
             Case studies from our projects
           </h1>
           <p className="mt-4 max-w-2xl text-base text-text-secondary sm:text-lg">
-            Blog-style stories behind {siteConfig.name}&apos;s CRM, store and
-            automation work—what broke, what we built, and what changed after launch.
+            Four product studies from {siteConfig.name}. The screens here are
+            separate from the project cards on the homepage. Figures on the
+            interfaces are part of the screen, not published client results.
           </p>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
             {blogPosts.map((post) => (
               <Link
                 key={post.slug}

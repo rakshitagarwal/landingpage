@@ -7,8 +7,7 @@ const companyLinks = [
   { label: "Work", href: "/#work" },
   { label: "About", href: "/#about" },
   { label: "Process", href: "/#process" },
-  { label: "Engagement", href: "/#pricing" },
-  { label: "Journal", href: "/blog" },
+  { label: "Case studies", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ] as const;
 

@@ -5,7 +5,7 @@ import { FAQ } from "@/components/sections/faq";
 import { Footer } from "@/components/sections/footer";
 import { Hero } from "@/components/sections/hero";
 import { Navbar } from "@/components/sections/navbar";
-import { Pricing } from "@/components/sections/pricing";
+import { Insights } from "@/components/sections/insights";
 import { Principles } from "@/components/sections/principles";
 import { Process } from "@/components/sections/process";
 import { Projects } from "@/components/sections/projects";
@@ -25,11 +25,11 @@ export default function Home() {
         <Services />
         <TechStack />
         <Projects />
+        <Insights />
         <Process />
         <About />
         <WhyChooseUs />
         {siteConfig.showTestimonials ? <Testimonials /> : <Principles />}
-        <Pricing />
         <FAQ />
         <CtaBanner />
       </main>
