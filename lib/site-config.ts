@@ -120,15 +120,9 @@ export const images = {
   },
   teamRakshit: {
     src: "/images/myprofilepic.png",
-    alt: "Rakshit Agarwal, Co-founder of Obekai",
+    alt: "Rakshit Agarwal, Founder of Obekai",
     width: 800,
     height: 800,
-  },
-  teamDivyang: {
-    src: "/images/solanki.png",
-    alt: "Divyang Solanki, Co-founder of Obekai",
-    width: 3018,
-    height: 2718,
   },
   ogDefault: {
     src: "/images/og/og-default.png",
@@ -275,7 +269,7 @@ export const whyObekai = [
 export const founders = [
   {
     name: "Rakshit Agarwal",
-    role: "Co-founder, Software & Automation",
+    role: "Founder, Software & Automation",
     responsibilities: "Engineering leadership, architecture and delivery",
     bio: "Rakshit leads engineering at Obekai: custom software, web applications and automation. He founded the studio to build products businesses can rely on after launch.",
     expertise: [
@@ -285,27 +279,9 @@ export const founders = [
     ],
     image: {
       src: "/images/myprofilepic.png",
-      alt: "Rakshit Agarwal, Co-founder of Obekai",
+      alt: "Rakshit Agarwal, Founder of Obekai",
       width: 800,
       height: 800,
-    },
-    linkedin: "",
-  },
-  {
-    name: "Divyang Solanki",
-    role: "Co-founder, Design",
-    responsibilities: "Product interfaces, brand and visual systems",
-    bio: "Divyang leads design at Obekai: product interfaces, brand systems and the clarity of what customers see across web and product surfaces.",
-    expertise: [
-      "Product and dashboard UI",
-      "Brand and visual systems",
-      "Interface clarity for complex workflows",
-    ],
-    image: {
-      src: "/images/solanki.png",
-      alt: "Divyang Solanki, Co-founder of Obekai",
-      width: 3018,
-      height: 2718,
     },
     linkedin: "",
   },

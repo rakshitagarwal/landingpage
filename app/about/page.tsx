@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "About Obekai",
   description:
-    "Obekai is an engineering-led software studio in Ahmedabad, India. Meet the founders, working principles and how we deliver custom software for clients in India and internationally.",
+    "Obekai is an engineering-led software studio in Ahmedabad, India. Meet the founder, working principles and how we deliver custom software for clients in India and internationally.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About Obekai | Software Engineering Studio",
@@ -82,64 +82,54 @@ export default function AboutPage() {
         <section className="surface-paper border-b border-border-subtle section-y text-text-primary">
           <div className="container-site">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-primary">
-              Founders
+              Founder
             </p>
             <h2 className="mt-3 font-heading text-3xl font-semibold sm:text-4xl">
-              Meet the people behind Obekai
+              Meet the person behind Obekai
             </h2>
             <p className="mt-3 max-w-2xl text-base text-text-secondary">
-              Clients work directly with the people responsible for design and
+              Clients work directly with the person responsible for design and
               engineering.
             </p>
-            <div className="mt-10 grid gap-6 lg:grid-cols-2">
-              {founders.map((founder) => (
-                <article
-                  key={founder.name}
-                  className="overflow-hidden rounded-[12px] border border-border-subtle bg-bg-card"
-                >
-                  <div className="relative aspect-[5/4] overflow-hidden bg-bg-secondary">
-                    {founder.image.src ? (
-                      <Image
-                        src={founder.image.src}
-                        alt={founder.image.alt}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover object-top"
-                      />
-                    ) : (
-                      <span className="flex h-full items-center justify-center text-sm font-semibold text-text-secondary">
-                        {founder.name
-                          .split(" ")
-                          .map((part) => part[0])
-                          .join("")}
-                      </span>
-                    )}
-                  </div>
-                  <div className="p-6 sm:p-8">
-                    <h3 className="font-heading text-2xl font-semibold">
-                      {founder.name}
-                    </h3>
-                    <p className="mt-1 text-sm text-accent-primary">{founder.role}</p>
-                    <p className="mt-2 text-sm font-medium text-text-primary">
-                      {founder.responsibilities}
-                    </p>
-                    <p className="mt-3 text-base leading-relaxed text-text-secondary">
-                      {founder.bio}
-                    </p>
-                    <ul className="mt-5 flex flex-wrap gap-2">
-                      {founder.expertise.map((item) => (
-                        <li
-                          key={item}
-                          className="rounded-[8px] border border-border-subtle px-2.5 py-1 text-xs text-text-secondary"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              ))}
-            </div>
+            {founders[0] ? (
+              <article className="mt-10 overflow-hidden rounded-[12px] border border-border-subtle bg-bg-card lg:grid lg:grid-cols-[0.9fr_1.1fr]">
+                <div className="relative aspect-[5/4] overflow-hidden bg-bg-secondary lg:aspect-auto lg:min-h-[26rem]">
+                  {founders[0].image.src ? (
+                    <Image
+                      src={founders[0].image.src}
+                      alt={founders[0].image.alt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                      className="object-cover object-top"
+                    />
+                  ) : null}
+                </div>
+                <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                  <h3 className="font-heading text-2xl font-semibold sm:text-3xl">
+                    {founders[0].name}
+                  </h3>
+                  <p className="mt-1 text-sm text-accent-primary">
+                    {founders[0].role}
+                  </p>
+                  <p className="mt-3 text-sm font-medium text-text-primary">
+                    {founders[0].responsibilities}
+                  </p>
+                  <p className="mt-3 text-base leading-relaxed text-text-secondary">
+                    {founders[0].bio}
+                  </p>
+                  <ul className="mt-6 flex flex-wrap gap-2">
+                    {founders[0].expertise.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-[8px] border border-border-subtle px-2.5 py-1 text-xs text-text-secondary"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ) : null}
           </div>
         </section>
 

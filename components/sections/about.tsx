@@ -48,105 +48,93 @@ export function About() {
           <Reveal>
             <div className="max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-primary">
-                Founders
+                Founder
               </p>
               <h2 className="font-heading mt-3 text-3xl font-semibold text-text-primary sm:text-4xl">
-                Meet the people behind Obekai
+                Meet the person behind Obekai
               </h2>
               <p className="mt-4 text-base leading-relaxed text-text-secondary">
-                Founders stay on the project. You talk with the people designing
-                and engineering the product — not a separate account layer.
+                You talk with the person designing and engineering the product —
+                not a separate account layer.
               </p>
             </div>
           </Reveal>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {founders.map((founder, index) => (
-              <Reveal key={founder.name} delay={index * 0.08}>
-                <article className="card-surface card-hover-wash group overflow-hidden">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-bg-secondary sm:aspect-[5/4]">
-                    {founder.image.src ? (
-                      <SiteImage
-                        image={founder.image}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover object-top transition duration-700 ease-out group-hover:scale-[1.03]"
-                      />
+          {founders[0] ? (
+            <Reveal delay={0.06}>
+              <article className="card-surface card-hover-wash group mt-10 overflow-hidden lg:grid lg:grid-cols-[0.9fr_1.1fr]">
+                <div className="relative aspect-[4/5] overflow-hidden bg-bg-secondary sm:aspect-[5/4] lg:aspect-auto lg:min-h-[26rem]">
+                  {founders[0].image.src ? (
+                    <SiteImage
+                      image={founders[0].image}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                      className="object-cover object-top transition duration-700 ease-out group-hover:scale-[1.03]"
+                    />
+                  ) : null}
+                </div>
+                <div className="relative z-[1] flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="font-heading text-2xl font-semibold text-text-primary sm:text-3xl">
+                        {founders[0].name}
+                      </h3>
+                      <p className="mt-1 text-sm text-accent-primary">
+                        {founders[0].role}
+                      </p>
+                    </div>
+                    {founders[0].linkedin ? (
+                      <a
+                        href={founders[0].linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${founders[0].name} on LinkedIn`}
+                        className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] border border-border-subtle text-text-primary transition hover:border-copper hover:text-accent-primary"
+                      >
+                        <LinkedInIcon className="h-4 w-4" />
+                      </a>
                     ) : (
-                      <div className="flex h-full items-center justify-center text-sm font-semibold text-text-secondary">
-                        {founder.name
-                          .split(" ")
-                          .map((part) => part[0])
-                          .join("")}
-                      </div>
+                      <span
+                        aria-label={`${founders[0].name} LinkedIn coming soon`}
+                        title="LinkedIn profile coming soon"
+                        className="inline-flex h-11 w-11 shrink-0 cursor-not-allowed items-center justify-center rounded-[8px] border border-border-subtle text-text-muted opacity-50"
+                      >
+                        <LinkedInIcon className="h-4 w-4" />
+                      </span>
                     )}
                   </div>
-                  <div className="relative z-[1] p-6 sm:p-8">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <h3 className="font-heading text-2xl font-semibold text-text-primary">
-                          {founder.name}
-                        </h3>
-                        <p className="mt-1 text-sm text-accent-primary">
-                          {founder.role}
-                        </p>
-                      </div>
-                      {founder.linkedin ? (
-                        <a
-                          href={founder.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${founder.name} on LinkedIn`}
-                          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] border border-border-subtle text-text-primary transition hover:border-copper hover:text-accent-primary"
-                        >
-                          <LinkedInIcon className="h-4 w-4" />
-                        </a>
-                      ) : (
-                        <span
-                          aria-label={`${founder.name} LinkedIn coming soon`}
-                          title="LinkedIn profile coming soon"
-                          className="inline-flex h-11 w-11 shrink-0 cursor-not-allowed items-center justify-center rounded-[8px] border border-border-subtle text-text-muted opacity-50"
-                        >
-                          <LinkedInIcon className="h-4 w-4" />
-                        </span>
+                  <p className="mt-4 text-sm font-medium text-text-primary">
+                    {founders[0].responsibilities}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-text-secondary sm:text-base">
+                    {founders[0].bio}
+                  </p>
+                  <ul className="mt-6 flex flex-wrap gap-2">
+                    {founders[0].expertise.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-[8px] border border-border-subtle px-2.5 py-1 text-xs text-text-secondary"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-8 text-sm text-text-secondary">
+                    Prefer a longer intro?{" "}
+                    <Link
+                      href="/about"
+                      className={cn(
+                        "font-semibold text-accent-primary underline-offset-4 hover:underline"
                       )}
-                    </div>
-                    <p className="mt-3 text-sm font-medium text-text-primary">
-                      {founder.responsibilities}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-text-secondary sm:text-base">
-                      {founder.bio}
-                    </p>
-                    <ul className="mt-5 flex flex-wrap gap-2">
-                      {founder.expertise.map((item) => (
-                        <li
-                          key={item}
-                          className="rounded-[8px] border border-border-subtle px-2.5 py-1 text-xs text-text-secondary"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.1}>
-            <p className="mt-8 text-sm text-text-secondary">
-              Prefer a longer intro?{" "}
-              <Link
-                href="/about"
-                className={cn(
-                  "font-semibold text-accent-primary underline-offset-4 hover:underline"
-                )}
-              >
-                Read more about the studio
-              </Link>
-              .
-            </p>
-          </Reveal>
+                    >
+                      Read more about the studio
+                    </Link>
+                    .
+                  </p>
+                </div>
+              </article>
+            </Reveal>
+          ) : null}
         </div>
       </div>
     </SectionWrapper>
